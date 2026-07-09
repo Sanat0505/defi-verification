@@ -2,56 +2,507 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>DeFi Verification Agent</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DeFi Agent — AI-Powered DeFi Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <style>
+    /* ─── Design Tokens ───────────────────────────────────────────────── */
+    :root {
+      --bg:          #F7F8FC;
+      --surface:     #FFFFFF;
+      --border:      #E8EAF0;
+
+      --blue:        #0052FF;
+      --blue-dark:   #003FCC;
+      --blue-light:  #EEF3FF;
+      --blue-mid:    #C7D9FF;
+
+      --navy:        #0A0B1E;
+      --navy-2:      #1A1B35;
+      --gray-5:      #6B7280;
+      --gray-4:      #9CA3AF;
+      --gray-2:      #E5E7EB;
+
+      --green:       #00C48C;
+      --green-dark:  #009E71;
+      --green-light: #E8FBF5;
+      --green-border:#A7F3D0;
+
+      --red:         #EF4444;
+      --red-light:   #FEF2F2;
+      --red-border:  #FECACA;
+
+      --sh-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --sh:    0 4px 16px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+      --sh-lg: 0 8px 32px rgba(0,0,0,.10), 0 2px 8px rgba(0,0,0,.05);
+
+      --r:    16px;
+      --r-sm: 10px;
+      --r-xs:  8px;
+    }
+
+    /* ─── Reset ───────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--navy);
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Animations ──────────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .6; transform: scale(1.15); }
+    }
+    @keyframes checkPop {
+      0%   { transform: scale(0) rotate(-15deg); opacity: 0; }
+      70%  { transform: scale(1.15) rotate(3deg); }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    @keyframes successGlow {
+      0%   { box-shadow: 0 0 0 0 rgba(0,196,140,0); }
+      45%  { box-shadow: 0 0 0 14px rgba(0,196,140,.18); }
+      100% { box-shadow: var(--sh-lg); }
+    }
+
+    /* ─── Navbar ──────────────────────────────────────────────────────── */
+    .navbar {
+      position: sticky; top: 0; z-index: 200;
+      height: 64px; padding: 0 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(247,248,252,.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--navy);
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg,#0052FF 0%,#0A35FF 100%);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 3px 10px rgba(0,82,255,.28); flex-shrink: 0;
+    }
+    .nav-logo-name { font-size: 17px; font-weight: 700; letter-spacing: -.4px; }
+    .nav-logo-pill {
+      font-size: 10px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase;
+      color: var(--blue); background: var(--blue-light);
+      padding: 2px 8px; border-radius: 20px;
+    }
+    .wallet-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 20px;
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: 50px;
+      font-family: inherit; font-size: 13.5px; font-weight: 600; color: var(--navy);
+      cursor: pointer;
+      transition: border-color .2s, box-shadow .2s, color .2s;
+      box-shadow: var(--sh-sm);
+    }
+    .wallet-btn:hover {
+      border-color: var(--blue); color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0,82,255,.09), var(--sh-sm);
+    }
+    .wallet-btn.connected { border-color: var(--green); background: var(--green-light); color: var(--navy); }
+    .wallet-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+      animation: pulse 2.2s ease infinite;
+    }
+
+    /* ─── Main wrapper ────────────────────────────────────────────────── */
+    .main {
+      flex: 1; max-width: 760px; width: 100%; margin: 0 auto;
+      padding: 0 20px; display: flex; flex-direction: column;
+    }
+
+    /* ─── Welcome Screen ──────────────────────────────────────────────── */
+    #welcome-screen {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 56px 0 32px; text-align: center;
+      animation: fadeUp .65s ease both;
+    }
+    .welcome-orb {
+      width: 72px; height: 72px;
+      background: linear-gradient(135deg,#0052FF 0%,#0A35FF 100%);
+      border-radius: 22px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 40px rgba(0,82,255,.28), 0 2px 8px rgba(0,82,255,.15);
+    }
+    #welcome-screen h1 {
+      font-size: 36px; font-weight: 700; letter-spacing: -.8px; line-height: 1.2;
+      color: var(--navy); max-width: 520px; margin-bottom: 14px;
+    }
+    #welcome-screen p {
+      font-size: 16px; color: var(--gray-5); line-height: 1.65;
+      max-width: 420px; margin-bottom: 44px;
+    }
+    .example-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 12px; width: 100%; max-width: 700px;
+    }
+    .ex-card {
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: var(--r-sm); padding: 16px 16px 14px;
+      text-align: left; cursor: pointer;
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+      box-shadow: var(--sh-sm);
+    }
+    .ex-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0,82,255,.08), var(--sh);
+      transform: translateY(-2px);
+    }
+    .ex-card-icon {
+      width: 32px; height: 32px; background: var(--blue-light);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 11px;
+    }
+    .ex-card-label { font-size: 13px; font-weight: 500; color: var(--navy); line-height: 1.45; }
+    .ex-card-hint  { font-size: 11px; color: var(--blue); margin-top: 8px; font-weight: 600; opacity: 0; transition: opacity .2s; }
+    .ex-card:hover .ex-card-hint { opacity: 1; }
+
+    /* ─── Chat container ──────────────────────────────────────────────── */
+    #chat-container {
+      display: none; flex-direction: column; gap: 0;
+      padding: 32px 0 0;
+    }
+    .msg-row { display: flex; gap: 12px; margin-bottom: 22px; animation: fadeUp .3s ease both; }
+    .msg-row.user { justify-content: flex-end; }
+    .ai-avatar {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: linear-gradient(135deg,#0052FF 0%,#0A35FF 100%);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 3px; box-shadow: 0 2px 8px rgba(0,82,255,.2);
+    }
+    .bubble-wrap { max-width: 88%; }
+    .bubble-wrap.user .bubble {
+      background: var(--navy); color: #fff;
+      border-radius: 18px 18px 5px 18px;
+      padding: 12px 18px; font-size: 14.5px; line-height: 1.55;
+    }
+    .bubble-wrap.ai .bubble {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 5px 18px 18px 18px;
+      padding: 14px 18px; font-size: 14.5px; line-height: 1.55;
+      color: var(--navy); box-shadow: var(--sh-sm);
+    }
+
+    /* ─── Processing Card ─────────────────────────────────────────────── */
+    .proc-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 22px 22px 16px; box-shadow: var(--sh);
+      min-width: 280px;
+    }
+    .proc-title {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .6px; color: var(--gray-4); margin-bottom: 20px;
+    }
+    .step-row { display: flex; gap: 13px; align-items: flex-start; }
+    .step-track { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .step-node {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .35s, border-color .35s; flex-shrink: 0;
+    }
+    .step-node.st-idle   { background: var(--bg);         border: 2px solid var(--border); }
+    .step-node.st-active { background: var(--blue-light);  border: 2px solid var(--blue);   }
+    .step-node.st-done   { background: var(--green-light); border: 2px solid var(--green);  }
+    .step-line {
+      width: 2px; height: 26px; background: var(--border);
+      margin: 3px 0; transition: background .35s; flex-shrink: 0;
+    }
+    .step-line.done { background: var(--green); }
+    .step-info { padding-top: 4px; padding-bottom: 22px; }
+    .step-label { font-size: 13.5px; font-weight: 600; transition: color .3s; }
+    .step-label.st-idle   { color: var(--gray-4); }
+    .step-label.st-active { color: var(--blue);   }
+    .step-label.st-done   { color: var(--navy);   }
+    .step-sublabel { font-size: 12px; color: var(--gray-4); margin-top: 3px; }
+
+    /* Spinner */
+    .spin {
+      width: 15px; height: 15px;
+      border: 2px solid var(--blue-mid); border-top-color: var(--blue);
+      border-radius: 50%; animation: spin .75s linear infinite;
+    }
+    /* Exec inline spinner */
+    .exec-loading {
+      display: flex; align-items: center; gap: 14px; padding: 6px 0 2px;
+    }
+    .exec-loading .spin { width: 18px; height: 18px; border-width: 2.5px; }
+    .exec-loading-label { font-size: 14px; color: var(--gray-5); font-weight: 500; }
+
+    /* ─── Verification Card ───────────────────────────────────────────── */
+    .verif-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden;
+      box-shadow: var(--sh); min-width: 280px;
+    }
+    .verif-head { padding: 18px 22px; display: flex; align-items: center; gap: 13px; }
+    .verif-head.ok  { background: linear-gradient(135deg,#F0FDF8,#DCFCE7); border-bottom: 1px solid var(--green-border); }
+    .verif-head.bad { background: linear-gradient(135deg,#FFF5F5,#FEE2E2); border-bottom: 1px solid var(--red-border);   }
+    .verif-badge {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .verif-badge.ok  { background: var(--green); box-shadow: 0 3px 10px rgba(0,196,140,.3); }
+    .verif-badge.bad { background: var(--red);   box-shadow: 0 3px 10px rgba(239,68,68,.3);  }
+    .verif-head-title { font-size: 16px; font-weight: 700; letter-spacing: -.25px; }
+    .verif-head-title.ok  { color: #065F46; }
+    .verif-head-title.bad { color: #991B1B; }
+    .verif-head-sub { font-size: 12.5px; margin-top: 2px; }
+    .verif-head-sub.ok  { color: #047857; }
+    .verif-head-sub.bad { color: #B91C1C; }
+    .verif-body { padding: 20px 22px; }
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+    .detail-item label {
+      display: block; font-size: 10.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .55px;
+      color: var(--gray-4); margin-bottom: 4px;
+    }
+    .detail-item span { font-size: 14px; font-weight: 600; color: var(--navy); }
+    .graph-badge {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 14px;
+      background: var(--green-light); border: 1px solid var(--green-border);
+      border-radius: var(--r-xs);
+      font-size: 12.5px; font-weight: 500; color: #065F46;
+      margin-bottom: 18px;
+    }
+    .reject-msg {
+      padding: 14px 16px;
+      background: var(--red-light); border: 1px solid var(--red-border);
+      border-radius: var(--r-xs);
+      font-size: 14px; color: #7F1D1D; line-height: 1.6;
+    }
+    .exec-cta {
+      width: 100%; padding: 14px 20px;
+      background: linear-gradient(135deg,#0052FF 0%,#0A35FF 100%);
+      color: #fff; border: none; border-radius: var(--r-sm);
+      font-family: inherit; font-size: 15px; font-weight: 600;
+      cursor: pointer; letter-spacing: -.2px;
+      box-shadow: 0 4px 18px rgba(0,82,255,.32);
+      transition: transform .2s, box-shadow .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .exec-cta:hover  { transform: translateY(-1px); box-shadow: 0 7px 26px rgba(0,82,255,.42); }
+    .exec-cta:active { transform: translateY(0); }
+    .exec-cta:disabled { background: var(--gray-2); box-shadow: none; cursor: default; transform: none; }
+
+    /* ─── Success Card ────────────────────────────────────────────────── */
+    .success-card {
+      background: var(--surface); border: 1px solid var(--green-border);
+      border-radius: var(--r); overflow: hidden;
+      box-shadow: var(--sh-lg); animation: successGlow .9s ease both;
+      min-width: 280px;
+    }
+    .success-head {
+      background: linear-gradient(135deg,#00C48C 0%,#009E71 100%);
+      padding: 22px 24px; display: flex; align-items: center; gap: 14px;
+    }
+    .success-orb {
+      width: 50px; height: 50px; border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .success-head-title { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: -.4px; }
+    .success-head-sub   { font-size: 13px; color: rgba(255,255,255,.8); margin-top: 3px; }
+    .success-body { padding: 22px 24px; }
+    .success-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+    .success-item label {
+      display: block; font-size: 10.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .55px;
+      color: var(--gray-4); margin-bottom: 4px;
+    }
+    .success-item span { font-size: 13.5px; font-weight: 600; color: var(--navy); }
+    .success-item.full { grid-column: 1 / -1; }
+    .hash-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 7px; padding: 7px 12px;
+      font-size: 11.5px; font-weight: 500; color: var(--navy);
+      font-family: 'SF Mono','Fira Code','Consolas',monospace;
+      word-break: break-all; max-width: 100%;
+    }
+    .net-chip {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 10px; border-radius: 20px;
+      background: var(--blue-light); color: var(--blue);
+      font-size: 12px; font-weight: 600;
+    }
+    .view-btn {
+      width: 100%; padding: 13px;
+      background: var(--navy); color: #fff;
+      border: none; border-radius: var(--r-sm);
+      font-family: inherit; font-size: 14.5px; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: background .2s, transform .2s;
+    }
+    .view-btn:hover { background: var(--navy-2); transform: translateY(-1px); }
+
+    /* ─── Input Area ──────────────────────────────────────────────────── */
+    .input-area {
+      position: sticky; bottom: 0;
+      padding: 14px 0 26px;
+      background: linear-gradient(to bottom,transparent 0%,var(--bg) 32%);
+    }
+    .input-shell {
+      display: flex; align-items: flex-end; gap: 10px;
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 11px 11px 11px 18px;
+      box-shadow: var(--sh); transition: border-color .2s, box-shadow .2s;
+    }
+    .input-shell:focus-within {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0,82,255,.1), var(--sh);
+    }
+    .input-spark { color: var(--blue); opacity: .75; flex-shrink: 0; margin-bottom: 3px; }
+    #prompt-input {
+      flex: 1; border: none; outline: none; resize: none;
+      font-family: inherit; font-size: 15px; color: var(--navy);
+      background: transparent; line-height: 1.55; max-height: 120px; padding: 0;
+    }
+    #prompt-input::placeholder { color: var(--gray-4); }
+    .send-btn {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: var(--blue); border: none; border-radius: 12px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,82,255,.3);
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .send-btn:hover  { background: var(--blue-dark); transform: scale(1.06); box-shadow: 0 4px 16px rgba(0,82,255,.4); }
+    .send-btn:active { transform: scale(.97); }
+    .send-btn:disabled { background: var(--gray-2); box-shadow: none; cursor: default; transform: none; }
+
+    /* ─── Responsive ──────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .navbar { padding: 0 16px; }
+      .main   { padding: 0 14px; }
+      .example-grid { grid-template-columns: 1fr; }
+      #welcome-screen h1 { font-size: 26px; }
+      #welcome-screen p  { font-size: 15px; }
+      .detail-grid, .success-grid { grid-template-columns: 1fr; }
+      .wallet-btn { padding: 7px 14px; font-size: 13px; }
+    }
+  </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body>
 
-<div class="max-w-2xl mx-auto p-6">
-
-  <div class="flex items-center justify-between mb-6">
-    <div>
-      <h1 class="text-xl font-semibold text-gray-900">DeFi Verification Agent</h1>
-      <p class="text-sm text-gray-500">Graph-based pre-execution verification</p>
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav class="navbar">
+  <a class="nav-logo" href="#" aria-label="DeFi Agent home">
+    <div class="nav-logo-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 2L17.32 6V14L10 18L2.68 14V6L10 2Z" fill="white" opacity=".9"/>
+        <path d="M10 5.5L15.2 8.5V14.5L10 17.5L4.8 14.5V8.5L10 5.5Z" fill="white" opacity=".35"/>
+        <circle cx="10" cy="11" r="2.2" fill="white"/>
+      </svg>
     </div>
-    <button id="wallet-btn" onclick="connectWallet()"
-      class="px-4 py-2 text-sm border border-gray-200 rounded-lg hover:bg-gray-100">
-      Connect Wallet
-    </button>
+    <span class="nav-logo-name">DeFi Agent</span>
+    <span class="nav-logo-pill">AI</span>
+  </a>
+
+  <button class="wallet-btn" id="wallet-btn" onclick="connectWallet()" aria-label="Connect wallet">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <rect x="2" y="7" width="20" height="14" rx="2.5"/>
+      <path d="M16 14h.01"/><path d="M2 10h20"/>
+    </svg>
+    <span id="wallet-label">Connect Wallet</span>
+  </button>
+</nav>
+
+<!-- ══════════════ MAIN ══════════════ -->
+<main class="main">
+
+  <!-- Welcome screen -->
+  <div id="welcome-screen">
+    <div class="welcome-orb" aria-hidden="true">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <path d="M17 4L30 11V23L17 30L4 23V11L17 4Z" fill="white" opacity=".9"/>
+        <path d="M17 9L26 14V24L17 29L8 24V14L17 9Z" fill="white" opacity=".35"/>
+        <circle cx="17" cy="17" r="3.5" fill="white"/>
+      </svg>
+    </div>
+    <h1>What would you like<br>to do in DeFi?</h1>
+    <p>Describe your transaction in natural language.<br>Your intent will be verified before execution.</p>
+
+    <div class="example-grid">
+      <div class="ex-card" onclick="quick('Swap 0.001 USDC to WETH on Uniswap')" role="button" tabindex="0">
+        <div class="ex-card-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0052FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 16V4m0 0L3 8m4-4l4 4"/><path d="M17 8v12m0 0l4-4m-4 4l-4-4"/>
+          </svg>
+        </div>
+        <div class="ex-card-label">Swap 0.001 USDC to WETH on Uniswap</div>
+        <div class="ex-card-hint">Try this →</div>
+      </div>
+
+      <div class="ex-card" onclick="quick('Supply 10 USDC to Aave')" role="button" tabindex="0">
+        <div class="ex-card-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0052FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5m0 0l-5 5m5-5l5 5"/><rect x="4" y="17" width="16" height="4" rx="1.5"/>
+          </svg>
+        </div>
+        <div class="ex-card-label">Supply 10 USDC to Aave</div>
+        <div class="ex-card-hint">Try this →</div>
+      </div>
+
+      <div class="ex-card" onclick="quick('Transfer USDC to another wallet')" role="button" tabindex="0">
+        <div class="ex-card-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0052FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/>
+          </svg>
+        </div>
+        <div class="ex-card-label">Transfer USDC to another wallet</div>
+        <div class="ex-card-hint">Try this →</div>
+      </div>
+    </div>
   </div>
 
-  <div id="wallet-info" class="hidden mb-4 px-4 py-2 bg-green-50 border border-green-200 rounded-lg text-sm text-green-700"></div>
+  <!-- Chat messages -->
+  <div id="chat-container"></div>
 
-  <div id="chat" class="space-y-3 mb-4 min-h-32"></div>
-
-  <div class="flex gap-2">
-    <input id="input" type="text"
-      placeholder='Try: "Swap 100 USDC for WETH on Uniswap"'
-      class="flex-1 px-4 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400"
-      onkeydown="if(event.key==='Enter') send()"/>
-    <button onclick="send()"
-      class="px-4 py-2 text-sm bg-gray-900 text-white rounded-lg hover:bg-gray-700">
-      Send
-    </button>
+  <!-- Input -->
+  <div class="input-area">
+    <div class="input-shell">
+      <div class="input-spark" aria-hidden="true">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-5.26L4 11l5.91-1.74L12 2z"/>
+        </svg>
+      </div>
+      <textarea id="prompt-input" rows="1"
+        placeholder="Ask the agent to perform a DeFi action…"
+        onkeydown="handleInputKey(event)"
+        oninput="autoResize(this)"
+        aria-label="DeFi action prompt"></textarea>
+      <button class="send-btn" id="send-btn" onclick="send()" aria-label="Send">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>
+        </svg>
+      </button>
+    </div>
   </div>
 
-  <div class="mt-3 flex gap-2 flex-wrap">
-    <button onclick="quick('Swap 100 USDC for WETH on Uniswap')"
-      class="px-3 py-1 text-xs border border-gray-200 rounded-full hover:bg-gray-100">
-      Swap USDC → WETH
-    </button>
-    <button onclick="quick('Supply 50 USDC to Aave')"
-      class="px-3 py-1 text-xs border border-gray-200 rounded-full hover:bg-gray-100">
-      Supply USDC to Aave
-    </button>
-    <button onclick="quick('Swap USDC using Official-Uniswap-Pool')"
-      class="px-3 py-1 text-xs border border-gray-200 rounded-full hover:bg-gray-100 text-red-500">
-      Adversarial prompt
-    </button>
-  </div>
-</div>
+</main>
 
-<script src="/static/app.js"></script>
+<script src="/static/app.js?v=20260709-fix-handlers"></script>
 </body>
 </html>

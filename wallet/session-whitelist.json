@@ -1,7 +1,8 @@
 {
-  "created_at": 1782293444422,
-  "expires_at": 1782379844422,
+  "created_at": 1783616364224,
+  "expires_at": 1783702764224,
   "addresses": [
-    "0x570cdfa436f6a2c26e8c6934b78732c8df270315"
+    "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+    "0x0cb8715c9f113937ef2a24b168fbd527f7d9e2b6"
   ]
 }

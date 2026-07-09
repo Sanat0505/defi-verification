@@ -2,6 +2,9 @@
  * wallet.mjs — ZeroDev ERC-4337 wallet for Avalanche Fuji
  * Called from Python as a subprocess.
  *
+ * OPTIMIZATION: Lazy-loads heavy dependencies (viem, ZeroDev) only for blockchain commands.
+ * File I/O commands (add_whitelist, check_session) start instantly.
+ *
  * Usage:
  *   node wallet.mjs create_wallet
  *   node wallet.mjs add_whitelist '{"address":"0x..."}'
@@ -13,38 +16,17 @@ import dotenv from "dotenv";
 import fs from "fs";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
-
-import {
-  createKernelAccount,
-  createKernelAccountClient,
-  createZeroDevPaymasterClient
-} from "@zerodev/sdk";
-
-import { KERNEL_V3_1, getEntryPoint } from "@zerodev/sdk/constants";
-import { signerToEcdsaValidator } from "@zerodev/ecdsa-validator";
-
-import {
-  http,
-  createPublicClient,
-  parseEther,
-  isAddress
-} from "viem";
-
-import { privateKeyToAccount } from "viem/accounts";
-import { avalancheFuji } from "viem/chains";
-
+import { isAddress } from "viem"; // Lightweight util-only import
 
 // ── Load .env from project root ───────────────────────────
-// wallet.mjs is inside /wallet, so ../.env means project-root .env
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 dotenv.config({
   path: resolve(__dirname, "../.env"),
-  quiet: true
+  quiet: true,
 });
-
 
 // ── Config ────────────────────────────────────────────────
 
@@ -54,15 +36,10 @@ const ZERODEV_RPC =
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
-const ENTRY_POINT = getEntryPoint("0.7");
-const KERNEL_VER = KERNEL_V3_1;
-const CHAIN = avalancheFuji;
-
 const SESSION_LIMIT_ETH = 0.005;
 const SESSION_DURATION_MS = 24 * 60 * 60 * 1000;
 
 const WHITELIST_FILE = resolve(__dirname, "session-whitelist.json");
-
 
 // ── JSON response helper ──────────────────────────────────
 
@@ -76,14 +53,54 @@ function fail(message, extra = {}) {
     {
       success: false,
       error: message,
-      ...extra
+      ...extra,
     },
-    1
+    1,
   );
 }
 
+// ── Lazy loader for heavy dependencies ────────────────────
+// Only load viem, ZeroDev, etc. when blockchain operations needed
 
-// ── Whitelist persistence ─────────────────────────────────
+let zerodevImportsLoaded = false;
+let ENTRY_POINT, KERNEL_VER, CHAIN;
+
+async function loadZeroDevDependencies() {
+  if (zerodevImportsLoaded) return;
+
+  const {
+    createKernelAccount,
+    createKernelAccountClient: _createKernelAccountClient,
+    createZeroDevPaymasterClient,
+  } = await import("@zerodev/sdk");
+
+  const { KERNEL_V3_1, getEntryPoint } = await import("@zerodev/sdk/constants");
+  const { signerToEcdsaValidator } = await import("@zerodev/ecdsa-validator");
+  const {
+    http,
+    createPublicClient: _createPublicClient,
+    parseEther: _parseEther,
+  } = await import("viem");
+  const { privateKeyToAccount } = await import("viem/accounts");
+  const { avalancheFuji } = await import("viem/chains");
+
+  ENTRY_POINT = getEntryPoint("0.7");
+  KERNEL_VER = KERNEL_V3_1;
+  CHAIN = avalancheFuji;
+
+  // Store in global scope for buildClients to use
+  globalThis.__createKernelAccount = createKernelAccount;
+  globalThis.__createKernelAccountClient = _createKernelAccountClient;
+  globalThis.__createZeroDevPaymasterClient = createZeroDevPaymasterClient;
+  globalThis.__http = http;
+  globalThis.__createPublicClient = _createPublicClient;
+  globalThis.__parseEther = _parseEther;
+  globalThis.__signerToEcdsaValidator = signerToEcdsaValidator;
+  globalThis.__privateKeyToAccount = privateKeyToAccount;
+  globalThis.__avalancheFuji = avalancheFuji;
+
+  zerodevImportsLoaded = true;
+}
 
 function loadWhitelist() {
   try {
@@ -91,7 +108,7 @@ function loadWhitelist() {
       return {
         created_at: Date.now(),
         expires_at: Date.now() + SESSION_DURATION_MS,
-        addresses: []
+        addresses: [],
       };
     }
 
@@ -102,30 +119,26 @@ function loadWhitelist() {
       return {
         created_at: Date.now(),
         expires_at: Date.now() + SESSION_DURATION_MS,
-        addresses: []
+        addresses: [],
       };
     }
 
     return {
       created_at: data.created_at || Date.now(),
       expires_at: data.expires_at,
-      addresses: Array.isArray(data.addresses) ? data.addresses : []
+      addresses: Array.isArray(data.addresses) ? data.addresses : [],
     };
   } catch {
     return {
       created_at: Date.now(),
       expires_at: Date.now() + SESSION_DURATION_MS,
-      addresses: []
+      addresses: [],
     };
   }
 }
 
 function saveWhitelist(data) {
-  fs.writeFileSync(
-    WHITELIST_FILE,
-    JSON.stringify(data, null, 2),
-    "utf8"
-  );
+  fs.writeFileSync(WHITELIST_FILE, JSON.stringify(data, null, 2), "utf8");
 }
 
 function addToWhitelist(args) {
@@ -134,7 +147,7 @@ function addToWhitelist(args) {
   if (!address || !isAddress(address)) {
     respond({
       success: false,
-      error: "Invalid address for whitelist"
+      error: "Invalid address for whitelist",
     });
   }
 
@@ -150,10 +163,9 @@ function addToWhitelist(args) {
   respond({
     success: true,
     whitelisted: address,
-    expires_at: new Date(data.expires_at).toISOString()
+    expires_at: new Date(data.expires_at).toISOString(),
   });
 }
-
 
 // ── Session checking ──────────────────────────────────────
 
@@ -161,28 +173,28 @@ function checkSession(to, valueEth) {
   if (!to || !isAddress(to)) {
     return {
       ok: false,
-      reason: "Invalid destination address"
+      reason: "Invalid destination address",
     };
   }
 
   if (typeof valueEth !== "number" || Number.isNaN(valueEth)) {
     return {
       ok: false,
-      reason: "Invalid value_eth"
+      reason: "Invalid value_eth",
     };
   }
 
   if (valueEth <= 0) {
     return {
       ok: false,
-      reason: "Amount must be greater than 0"
+      reason: "Amount must be greater than 0",
     };
   }
 
   if (valueEth > SESSION_LIMIT_ETH) {
     return {
       ok: false,
-      reason: `Amount ${valueEth} ETH exceeds session limit ${SESSION_LIMIT_ETH} ETH`
+      reason: `Amount ${valueEth} ETH exceeds session limit ${SESSION_LIMIT_ETH} ETH`,
     };
   }
 
@@ -191,7 +203,7 @@ function checkSession(to, valueEth) {
   if (Date.now() > data.expires_at) {
     return {
       ok: false,
-      reason: "Session key expired"
+      reason: "Session key expired",
     };
   }
 
@@ -200,12 +212,12 @@ function checkSession(to, valueEth) {
   if (!data.addresses.includes(normalized)) {
     return {
       ok: false,
-      reason: `Address ${to.slice(0, 10)}... not whitelisted by graph layer`
+      reason: `Address ${to.slice(0, 10)}... not whitelisted by graph layer`,
     };
   }
 
   return {
-    ok: true
+    ok: true,
   };
 }
 
@@ -215,14 +227,15 @@ function checkSessionCommand(args) {
   respond({
     success: true,
     allowed: result.ok,
-    reason: result.ok ? "Session check passed" : result.reason
+    reason: result.ok ? "Session check passed" : result.reason,
   });
 }
-
 
 // ── ZeroDev client builder ────────────────────────────────
 
 async function buildClients() {
+  await loadZeroDevDependencies(); // Ensure deps are loaded
+
   if (!PRIVATE_KEY) {
     throw new Error("PRIVATE_KEY not set in environment");
   }
@@ -231,55 +244,59 @@ async function buildClients() {
     throw new Error("PRIVATE_KEY must start with 0x");
   }
 
-  const signer = privateKeyToAccount(PRIVATE_KEY);
+  const signer = globalThis.__privateKeyToAccount(PRIVATE_KEY);
 
-  const publicClient = createPublicClient({
+  const publicClient = globalThis.__createPublicClient({
     chain: CHAIN,
-    transport: http(ZERODEV_RPC)
+    transport: globalThis.__http(ZERODEV_RPC),
   });
 
-  const ecdsaValidator = await signerToEcdsaValidator(publicClient, {
-    signer,
-    entryPoint: ENTRY_POINT,
-    kernelVersion: KERNEL_VER
-  });
+  const ecdsaValidator = await globalThis.__signerToEcdsaValidator(
+    publicClient,
+    {
+      signer,
+      entryPoint: ENTRY_POINT,
+      kernelVersion: KERNEL_VER,
+    },
+  );
 
-  const account = await createKernelAccount(publicClient, {
+  const account = await globalThis.__createKernelAccount(publicClient, {
     plugins: {
-      sudo: ecdsaValidator
+      sudo: ecdsaValidator,
     },
     entryPoint: ENTRY_POINT,
-    kernelVersion: KERNEL_VER
+    kernelVersion: KERNEL_VER,
   });
 
-  const paymasterClient = createZeroDevPaymasterClient({
+  const paymasterClient = globalThis.__createZeroDevPaymasterClient({
     chain: CHAIN,
-    transport: http(ZERODEV_RPC)
+    transport: globalThis.__http(ZERODEV_RPC),
   });
 
-  const kernelClient = createKernelAccountClient({
+  const kernelClient = globalThis.__createKernelAccountClient({
     account,
     chain: CHAIN,
-    bundlerTransport: http(ZERODEV_RPC),
+    bundlerTransport: globalThis.__http(ZERODEV_RPC),
     paymaster: {
       getPaymasterData: async (userOperation) => {
         return paymasterClient.sponsorUserOperation({
-          userOperation
+          userOperation,
         });
-      }
-    }
+      },
+    },
   });
 
   return {
     account,
-    kernelClient
+    kernelClient,
   };
 }
-
 
 // ── Commands ──────────────────────────────────────────────
 
 async function createWallet() {
+  await loadZeroDevDependencies(); // Ensure deps are loaded
+
   const { account } = await buildClients();
 
   respond({
@@ -287,11 +304,13 @@ async function createWallet() {
     smart_wallet_address: account.address,
     chain: "avalanche-fuji",
     chain_id: 43113,
-    type: "ERC-4337 Kernel Account"
+    type: "ERC-4337 Kernel Account",
   });
 }
 
 async function sendUserOp(args) {
+  await loadZeroDevDependencies(); // Ensure deps are loaded
+
   const start = Date.now();
 
   const to = args.to;
@@ -306,7 +325,7 @@ async function sendUserOp(args) {
       executed: false,
       blocked_by: "ERC-4337 session key",
       reason: session.reason,
-      latency_ms: Date.now() - start
+      latency_ms: Date.now() - start,
     });
   }
 
@@ -315,8 +334,8 @@ async function sendUserOp(args) {
 
     const txHash = await kernelClient.sendTransaction({
       to,
-      value: parseEther(String(valueEth)),
-      data: "0x"
+      value: globalThis.__parseEther(String(valueEth)),
+      data: "0x",
     });
 
     respond({
@@ -329,7 +348,7 @@ async function sendUserOp(args) {
       action,
       chain: "avalanche-fuji",
       explorer: `https://testnet.snowtrace.io/tx/${txHash}`,
-      latency_ms: Date.now() - start
+      latency_ms: Date.now() - start,
     });
   } catch (err) {
     respond({
@@ -337,11 +356,10 @@ async function sendUserOp(args) {
       executed: false,
       blocked_by: "ERC-4337 bundler",
       reason: err?.message || String(err),
-      latency_ms: Date.now() - start
+      latency_ms: Date.now() - start,
     });
   }
 }
-
 
 // ── Entry point ───────────────────────────────────────────
 
@@ -375,16 +393,22 @@ async function main() {
         break;
 
       default:
-        respond({
-          success: false,
-          error: `Unknown command: ${command}`
-        }, 1);
+        respond(
+          {
+            success: false,
+            error: `Unknown command: ${command}`,
+          },
+          1,
+        );
     }
   } catch (err) {
-    respond({
-      success: false,
-      error: err?.message || String(err)
-    }, 1);
+    respond(
+      {
+        success: false,
+        error: err?.message || String(err),
+      },
+      1,
+    );
   }
 }
 

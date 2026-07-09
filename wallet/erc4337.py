@@ -29,12 +29,22 @@ def _call_js(command: str, args: dict = None) -> dict:
 
     env = {**os.environ}  # passes PRIVATE_KEY and AVALANCHE_FUJI_RPC from .env
 
+    # Command-specific timeouts: add_whitelist is fast (file I/O only),
+    # send_userop needs more time for blockchain interaction
+    timeout_map = {
+        "add_whitelist": 5,     # Now instant - just file I/O (no heavy deps)
+        "check_session": 5,     # File I/O + validation (no heavy deps)
+        "create_wallet": 30,    # First time loads deps, then RPC calls
+        "send_userop": 120      # Full blockchain interaction (30-60s typical)
+    }
+    timeout = timeout_map.get(command, 60)
+
     try:
         result = subprocess.run(
             cmd,
             capture_output=True,
             text=True,
-            timeout=60,       # UserOps can take up to 30s on Fuji
+            timeout=timeout,
             env=env
         )
         if result.returncode != 0:
@@ -51,7 +61,7 @@ def _call_js(command: str, args: dict = None) -> dict:
                 continue
         return {"success": False, "error": "No JSON response from wallet script"}
     except subprocess.TimeoutExpired:
-        return {"success": False, "error": "Wallet script timed out (>60s)"}
+        return {"success": False, "error": f"Wallet script '{command}' timed out (>{timeout}s). Check Node.js, RPC endpoint, or network connectivity."}
     except FileNotFoundError:
         return {"success": False, "error": "Node.js not found. Install from nodejs.org"}
     except Exception as e:
