@@ -27,15 +27,17 @@ def _call_js(command: str, args: dict = None) -> dict:
     if args:
         cmd.append(json.dumps(args))
 
-    env = {**os.environ}  # passes PRIVATE_KEY and AVALANCHE_FUJI_RPC from .env
+    # Passes PRIVATE_KEY, SEPOLIA_RPC, and ZeroDev configuration from .env.
+    env = {**os.environ}
 
     # Command-specific timeouts: add_whitelist is fast (file I/O only),
-    # send_userop needs more time for blockchain interaction
+    # Swap preflight and execution need RPC/bundler time.
     timeout_map = {
         "add_whitelist": 5,     # Now instant - just file I/O (no heavy deps)
         "check_session": 5,     # File I/O + validation (no heavy deps)
-        "create_wallet": 30,    # First time loads deps, then RPC calls
-        "send_userop": 120      # Full blockchain interaction (30-60s typical)
+        "create_wallet": 120,   # First load plus Sepolia/ZeroDev RPC calls
+        "prepare_swap": 120,    # Read-only balance/allowance/quote checks
+        "send_swap": 180        # Quote plus sponsored UserOperation receipt
     }
     timeout = timeout_map.get(command, 60)
 
@@ -84,9 +86,9 @@ def add_to_whitelist(address: str) -> dict:
     return _call_js("add_whitelist", {"address": address})
 
 
-def execute(verified_address: str, amount_eth: float, action: str) -> dict:
+def _legacy_execute(verified_address: str, amount_eth: float, action: str) -> dict:
     """
-    Send a UserOperation via ZeroDev on Avalanche Fuji.
+    Send a UserOperation via ZeroDev on Ethereum Sepolia.
 
     Args:
         verified_address: address resolved from graph (NOT from LLM)
@@ -99,13 +101,43 @@ def execute(verified_address: str, amount_eth: float, action: str) -> dict:
         blocked_by (str) if blocked
         reason (str) if blocked
         latency_ms (int)
-        explorer (str) — Snowtrace link if executed
+        explorer (str) — Sepolia Etherscan link if executed
     """
-    return _call_js("send_userop", {
-        "to":        verified_address,
-        "value_eth": amount_eth,
-        "action":    action
+    return {
+        "success": False,
+        "executed": False,
+        "reason": "Legacy empty-calldata execution is disabled",
+    }
+
+
+def prepare_swap(routes: list[dict], amount: str, slippage_bps: int = 100) -> dict:
+    """Validate and quote a graph-derived Uniswap swap without broadcasting."""
+    return _call_js("prepare_swap", {
+        "routes": routes,
+        "amount": str(amount),
+        "slippage_bps": slippage_bps,
     })
+
+
+def execute_swap(routes: list[dict], amount: str, slippage_bps: int = 100) -> dict:
+    """Quote and submit a graph-derived Uniswap V3 ERC-20 swap."""
+    return _call_js("send_swap", {
+        "routes": routes,
+        "amount": str(amount),
+        "slippage_bps": slippage_bps,
+    })
+
+
+def execute(*_args, **_kwargs) -> dict:
+    """Reject the removed empty-calldata ETH-transfer execution path."""
+    return {
+        "success": False,
+        "executed": False,
+        "reason": (
+            "Legacy execution is disabled because it was not a protocol call. "
+            "Use execute_swap() with graph-derived routes."
+        ),
+    }
 
 
 # ── Quick test ────────────────────────────────────────────

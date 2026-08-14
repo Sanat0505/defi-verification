@@ -1,7 +1,43 @@
 import sys
+import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from db.connection import get_session
+
+CONSTRAINTS = (
+    "CREATE CONSTRAINT chain_id IF NOT EXISTS FOR (n:Chain) REQUIRE n.chain_id IS UNIQUE",
+    "CREATE CONSTRAINT protocol_key IF NOT EXISTS FOR (n:Protocol) REQUIRE n.key IS UNIQUE",
+    "CREATE CONSTRAINT contract_identity IF NOT EXISTS FOR (n:Contract) REQUIRE (n.chain_id, n.address) IS UNIQUE",
+    "CREATE CONSTRAINT token_identity IF NOT EXISTS FOR (n:Token) REQUIRE (n.chain_id, n.address) IS UNIQUE",
+    "CREATE CONSTRAINT action_name IF NOT EXISTS FOR (n:Action) REQUIRE n.name IS UNIQUE",
+)
+
+
+def ensure_schema():
+    """Create uniqueness constraints shared by the official-data loaders."""
+    with get_session() as session:
+        for statement in CONSTRAINTS:
+            session.run(statement).consume()
+
+
+def graph_summary():
+    with get_session() as session:
+        nodes = session.run(
+            "MATCH (n) UNWIND labels(n) AS label "
+            "RETURN label, count(*) AS count ORDER BY label"
+        ).data()
+        relationships = session.run(
+            "MATCH ()-[r]->() RETURN type(r) AS type, count(*) AS count ORDER BY type"
+        ).data()
+    return {"nodes": nodes, "relationships": relationships}
+
+
+def sync_official_sources():
+    """Build the canonical v2 Mainnet/Sepolia thesis graph."""
+    from db.graph_v2 import sync_v2
+
+    ensure_schema()
+    return sync_v2()
 
 def create_protocol(name):
     with get_session() as s:
@@ -79,4 +115,5 @@ def seed_graph():
     print("Graph seeded successfully.")
 
 if __name__ == "__main__":
-    seed_graph()
+    import json
+    print(json.dumps(sync_official_sources(), indent=2))

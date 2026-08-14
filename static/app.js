@@ -155,6 +155,10 @@ async function connectWallet() {
 
   label.textContent = "Connecting…";
   try {
+    await window.ethereum.request({
+      method: "wallet_switchEthereumChain",
+      params: [{ chainId: "0xaa36a7" }],
+    });
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
@@ -578,8 +582,16 @@ function renderExecution(data) {
       lastVerified && lastVerified.intent ? lastVerified.intent : {};
     const proto = esc((lastVerified && lastVerified.protocol) || "—");
     const action = esc(intent.action || "—");
-    const token = esc(intent.token || intent.from_token || "—");
+    const tokenIn = ex.token_in || intent.token_in || "—";
+    const tokenOut = ex.token_out || intent.token_out;
+    const token = esc(tokenOut ? `${tokenIn} → ${tokenOut}` : tokenIn);
     const amount = esc(String(intent.amount || "—"));
+    const quotedOutput = ex.quoted_amount_out
+      ? esc(`${ex.quoted_amount_out} ${ex.token_out || ""}`)
+      : null;
+    const minimumOutput = ex.minimum_amount_out
+      ? esc(`${ex.minimum_amount_out} ${ex.token_out || ""}`)
+      : null;
     const hash = esc(ex.tx_hash || "—");
     const wallet = esc(ex.smart_wallet || "—");
     const explorerUrl = ex.explorer ? esc(ex.explorer) : null;
@@ -612,6 +624,8 @@ function renderExecution(data) {
             <div class="success-item"><label>Action</label><span>${action}</span></div>
             <div class="success-item"><label>Token</label><span>${token}</span></div>
             <div class="success-item"><label>Amount</label><span>${amount}</span></div>
+            ${quotedOutput ? `<div class="success-item"><label>Quoted output</label><span>${quotedOutput}</span></div>` : ""}
+            ${minimumOutput ? `<div class="success-item"><label>Minimum output</label><span>${minimumOutput}</span></div>` : ""}
             <div class="success-item full">
               <label>Smart Wallet</label>
               <span style="font-family:'SF Mono','Fira Code',monospace;font-size:12px;">${wallet}</span>

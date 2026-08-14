@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from db.verifier import verify_intent
-from wallet.erc4337 import add_to_whitelist, execute
+from wallet.erc4337 import add_to_whitelist, prepare_swap
 
 async def test_full_pipeline():
     print("\n=== FULL PIPELINE TEST ===\n")
@@ -42,15 +42,16 @@ async def test_full_pipeline():
     wl = add_to_whitelist(verified_address)
     print(f"\nWhitelisted: {wl}")
 
+    for route in graph_result.get("routes", []):
+        add_to_whitelist(route["token_in_address"])
+
     # Step 4 — send UserOperation
-    print("\nSending UserOperation to Avalanche Fuji...")
-    result = execute(verified_address, intent["amount"], intent["action"])
+    print("\nPreparing Sepolia swap without broadcasting...")
+    result = prepare_swap(graph_result.get("routes", []), str(intent["amount"]))
     print(f"\nWallet result: {result}")
 
-    if result.get("executed"):
-        print(f"\nSUCCESS")
-        print(f"tx_hash : {result['tx_hash']}")
-        print(f"explorer: {result['explorer']}")
+    if result.get("prepared"):
+        print("\nPREFLIGHT PASSED (no transaction broadcast)")
     else:
         print(f"\nBLOCKED by {result.get('blocked_by')}: {result.get('reason')}")
 

@@ -17,13 +17,15 @@ Required format:
   "token_in":  string (e.g. "USDC", "WETH", "DAI"),
   "token_out": string or null,
   "amount":    number or null,
-  "chain":     "Ethereum"
+  "chain":     "Ethereum Sepolia"
 }
 
 Rules:
 - NEVER include a contract address or wallet address
 - Use standard token symbols (USDC, WETH, DAI, WBTC)
 - Use full protocol names (Uniswap V3, Aave V3)
+- The only supported chain is Ethereum Sepolia
+- If the user explicitly requests any other chain, return {"error": "Only Ethereum Sepolia is supported"}
 - If action is supply/deposit/borrow/repay, token_out is null
 - If intent is unclear, return {"error": "Could not parse intent"}
 """
