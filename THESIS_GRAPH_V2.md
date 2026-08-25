@@ -12,6 +12,9 @@ ProtocolFamily
                           ├─ DEPLOYED_ON → Chain
 Chain ─ HOSTS ────────────┘
                           ├─ DEPLOYED_CONTRACT → Contract
+                          │                       └─ EXPOSES_FUNCTION → Function
+                          │                                                  └─ IMPLEMENTS_ACTION → Action
+                          ├─ SUPPORTS_ASSET → Token
                           ├─ SUPPORTS_ACTION → Action
                           ├─ HAS_POOL → Pool
                           └─ HAS_RESERVE → Reserve
@@ -19,14 +22,18 @@ Chain ─ HOSTS ────────────┘
 Pool
   ├─ TOKEN0 → Token
   ├─ TOKEN1 → Token
+  ├─ USES_FEE_TIER → FeeTier
+  ├─ SUPPORTS_ACTION → Action
   └─ Factory ─ CREATED_POOL → Pool
 
 Reserve
   ├─ UNDERLYING_ASSET → Token
   ├─ HAS_A_TOKEN → Contract
   ├─ HAS_VARIABLE_DEBT_TOKEN → Contract
+  ├─ HAS_STABLE_DEBT_TOKEN → Contract
   ├─ HAS_STATIC_A_TOKEN → Contract
   ├─ USES_ORACLE → Contract
+  ├─ USES_INTEREST_RATE_STRATEGY → Contract
   └─ SUPPORTS_ACTION → Action
 ```
 
@@ -49,10 +56,32 @@ visualization queries are in `db/V2_QUERIES.cypher`.
 
 ## Mainnet pool ingestion
 
-Official Mainnet Aave contracts and all 28 address-book reserves load without
-an RPC. Uniswap core contracts and two curated real pools also load. Set
-`MAINNET_RPC` to scan every `PoolCreated` event from the official Mainnet V3
-factory. `SEPOLIA_RPC` performs the equivalent complete Sepolia scan.
+The Aave loader reads every current core contract constant and every reserve
+from the official Aave address book. This includes mixed-case symbols such as
+`wstETH` and related aToken, variable/stable debt token, oracle, static aToken,
+and interest-rate-strategy contracts when the address book publishes them.
+
+Uniswap V3 is permissionless, so "every Uniswap asset" is not a safe allowlist:
+anyone can deploy a token and create a pool. The canonical graph stores every
+factory-discovered pool, token endpoint, fee tier, and relationship as the
+discovery layer. A pool becomes verification-eligible only when both endpoint
+assets are independently trusted by the active Aave reserve list (canonical
+WETH is also admitted). The deployment stores discovered, accepted, and
+rejected pool counts so this boundary is auditable.
+
+Set both `MAINNET_RPC` and `SEPOLIA_RPC` for complete factory scans. Without a
+Mainnet RPC, only the two curated real Mainnet pools are available and the
+deployment is explicitly marked `pool_discovery_complete=false`; it must not be
+described as complete in the evaluation.
+
+Each synchronization marks old reserve, pool, and deployment-contract
+relationships inactive before reactivating current official data. The verifier
+uses only active relationships and also requires an authorized ABI function and
+selector, not merely a trusted contract address.
+
+After loading, run `python -m db.validate_graph_v2`. It prints the per-deployment
+asset/contract/pool/function inventory and exits non-zero if a required
+relationship is missing.
 
 The legacy nodes remain available for comparison, but application verification
 now queries only `ProtocolFamily` and `ProtocolDeployment` from the v2 model.

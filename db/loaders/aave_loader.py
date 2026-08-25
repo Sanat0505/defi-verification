@@ -34,13 +34,20 @@ CORE_ROLES = {
 }
 
 ASSET_PATTERN = re.compile(
-    r"address\s+internal\s+constant\s+([A-Z0-9]+)_"
-    r"(UNDERLYING|A_TOKEN|V_TOKEN|ORACLE|STATIC_A_TOKEN)\s*=\s*"
+    r"address\s+internal\s+constant\s+([A-Za-z0-9_]+?)_"
+    r"(INTEREST_RATE_STRATEGY|STATIC_A_TOKEN|UNDERLYING|A_TOKEN|V_TOKEN|S_TOKEN|ORACLE)\s*=\s*"
     r"(0x[a-fA-F0-9]{40})\s*;",
     re.MULTILINE,
 )
 DECIMALS_PATTERN = re.compile(
-    r"uint8\s+internal\s+constant\s+([A-Z0-9]+)_DECIMALS\s*=\s*(\d+)\s*;"
+    r"uint8\s+internal\s+constant\s+([A-Za-z0-9_]+)_DECIMALS\s*=\s*(\d+)\s*;"
+)
+CORE_ADDRESS_PATTERN = re.compile(
+    r"(?:address|I[A-Za-z0-9_]*)\s+internal\s+constant\s+"
+    r"([A-Z][A-Z0-9_]*)\s*=\s*"
+    r"(?:[A-Za-z0-9_]+\s*\(\s*)?"
+    r"(0x[a-fA-F0-9]{40})\s*\)?\s*;",
+    re.MULTILINE,
 )
 
 
@@ -50,19 +57,14 @@ def _parse_address_book(source: str):
         raise ValueError("Aave V3 assets library was not found in address book")
     core_source = source[:match.start()]
     assets_source = source[match.end():]
-    core = []
-    for constant, role in CORE_ROLES.items():
-        match = re.search(
-            rf"\b{constant}\s*=.*?(0x[a-fA-F0-9]{{40}})\s*\)?\s*;",
-            core_source,
-            re.DOTALL,
-        )
-        if match:
-            core.append({
-                "name": constant,
-                "role": role,
-                "address": normalize_address(match.group(1)),
-            })
+    core = [
+        {
+            "name": constant,
+            "role": CORE_ROLES.get(constant, constant.lower()),
+            "address": normalize_address(address),
+        }
+        for constant, address in CORE_ADDRESS_PATTERN.findall(core_source)
+    ]
 
     decimals = {symbol: int(value) for symbol, value in DECIMALS_PATTERN.findall(assets_source)}
     assets = {}

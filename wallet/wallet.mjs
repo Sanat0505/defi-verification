@@ -43,6 +43,9 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 const SESSION_LIMIT_ETH = 0.005;
 const SESSION_DURATION_MS = 24 * 60 * 60 * 1000;
+const APPROVED_SWAP_SIGNATURE =
+  "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))";
+const APPROVED_SWAP_SELECTOR = "0x04e45aaf";
 
 const WHITELIST_FILE = resolve(__dirname, "session-whitelist.json");
 
@@ -409,6 +412,12 @@ async function createWallet() {
 }
 
 function validateRoute(route) {
+  if (route?.function_signature !== APPROVED_SWAP_SIGNATURE) {
+    throw new Error("Knowledge graph did not authorize exactInputSingle");
+  }
+  if (String(route?.function_selector || "").toLowerCase() !== APPROVED_SWAP_SELECTOR) {
+    throw new Error("Knowledge graph returned an unauthorized swap selector");
+  }
   const addressFields = [
     "router_address",
     "quoter_address",

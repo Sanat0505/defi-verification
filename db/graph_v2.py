@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from dotenv import load_dotenv
 
 from db.connection import get_session
-from db.loaders.aave_loader import CORE_ROLES, _parse_address_book
+from db.loaders.aave_loader import _parse_address_book
 from db.loaders.common import RpcClient, decode_abi_string, fetch_json, fetch_text
 from db.loaders.uniswap_loader import POOL_CREATED_TOPIC, _parse_pool, _role
 
@@ -39,6 +39,70 @@ NETWORKS = {
         "factory_start_block": 11124455,
         "weth": "0xfff9976782d46cc05630d1f6ebab18b2324d6b14",
     },
+}
+
+FEATURED_ASSET_SYMBOLS = {
+    "AAVE", "DAI", "GHO", "LINK", "USDC", "USDT", "WBTC", "WETH"
+}
+FEATURED_SWAP_PAIRS = {
+    frozenset(pair)
+    for pair in (
+        ("USDC", "WETH"),
+        ("USDT", "WETH"),
+        ("DAI", "WETH"),
+        ("GHO", "WETH"),
+        ("WBTC", "WETH"),
+        ("LINK", "WETH"),
+        ("AAVE", "WETH"),
+    )
+}
+
+# Function selectors are part of the authorization path. A verified contract
+# address alone is not enough: the graph must also authorize the intended
+# function on the contract role that executes it.
+PROTOCOL_FUNCTIONS = {
+    "aave-v3": (
+        {
+            "contract_role": "pool", "action": "supply", "purpose": "execute",
+            "name": "supply", "signature": "supply(address,uint256,address,uint16)",
+            "selector": "0x617ba037",
+            "source_url": "https://github.com/aave/aave-v3-core/blob/master/contracts/interfaces/IPool.sol",
+        },
+        {
+            "contract_role": "pool", "action": "withdraw", "purpose": "execute",
+            "name": "withdraw", "signature": "withdraw(address,uint256,address)",
+            "selector": "0x69328dec",
+            "source_url": "https://github.com/aave/aave-v3-core/blob/master/contracts/interfaces/IPool.sol",
+        },
+        {
+            "contract_role": "pool", "action": "borrow", "purpose": "execute",
+            "name": "borrow", "signature": "borrow(address,uint256,uint256,uint16,address)",
+            "selector": "0xa415bcad",
+            "source_url": "https://github.com/aave/aave-v3-core/blob/master/contracts/interfaces/IPool.sol",
+        },
+        {
+            "contract_role": "pool", "action": "repay", "purpose": "execute",
+            "name": "repay", "signature": "repay(address,uint256,uint256,address)",
+            "selector": "0x573ade81",
+            "source_url": "https://github.com/aave/aave-v3-core/blob/master/contracts/interfaces/IPool.sol",
+        },
+    ),
+    "uniswap-v3": (
+        {
+            "contract_role": "swap_router", "action": "swap", "purpose": "execute",
+            "name": "exactInputSingle",
+            "signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "selector": "0x04e45aaf",
+            "source_url": "https://github.com/Uniswap/swap-router-contracts/blob/main/contracts/interfaces/IV3SwapRouter.sol",
+        },
+        {
+            "contract_role": "quoter", "action": "swap", "purpose": "preflight",
+            "name": "quoteExactInputSingle",
+            "signature": "quoteExactInputSingle((address,address,uint256,uint24,uint160))",
+            "selector": "0xc6a5026a",
+            "source_url": "https://github.com/Uniswap/v3-periphery/blob/main/contracts/interfaces/IQuoterV2.sol",
+        },
+    ),
 }
 
 # A small, real Mainnet projection remains available even when MAINNET_RPC is
@@ -76,6 +140,8 @@ V2_CONSTRAINTS = (
     "CREATE CONSTRAINT reserve_key IF NOT EXISTS FOR (n:Reserve) REQUIRE n.key IS UNIQUE",
     "CREATE CONSTRAINT graph_view_key IF NOT EXISTS FOR (n:GraphView) REQUIRE n.key IS UNIQUE",
     "CREATE CONSTRAINT fixture_node_key IF NOT EXISTS FOR (n:FixtureNode) REQUIRE n.key IS UNIQUE",
+    "CREATE CONSTRAINT function_key IF NOT EXISTS FOR (n:Function) REQUIRE n.key IS UNIQUE",
+    "CREATE CONSTRAINT fee_tier_key IF NOT EXISTS FOR (n:FeeTier) REQUIRE n.key IS UNIQUE",
 )
 
 
@@ -83,6 +149,26 @@ def ensure_v2_schema():
     with get_session() as session:
         for statement in V2_CONSTRAINTS:
             session.run(statement).consume()
+
+
+def _cleanup_orphan_asset_support_nodes():
+    """Remove unlabeled nodes created by the pre-v2.1 SUPPORTS_ASSET scope bug."""
+    with get_session() as session:
+        record = session.run(
+            """
+            MATCH (orphan)-[:SUPPORTS_ASSET]->(:Token)
+            WHERE labels(orphan)=[]
+              AND NOT EXISTS { MATCH ()-[]->(orphan) }
+              AND NOT EXISTS {
+                MATCH (orphan)-[other]->()
+                WHERE type(other) <> 'SUPPORTS_ASSET'
+              }
+            WITH DISTINCT orphan
+            DETACH DELETE orphan
+            RETURN count(*) AS removed
+            """
+        ).single()
+    return record["removed"] if record else 0
 
 
 def _now():
@@ -138,6 +224,34 @@ def _add_actions(session, deployment_key, actions):
     ).consume()
 
 
+def _add_functions(session, deployment_key, protocol_key):
+    """Attach the approved ABI surface to each active execution contract."""
+    functions = []
+    for item in PROTOCOL_FUNCTIONS[protocol_key]:
+        functions.append({**item, "key": f"{protocol_key}:{item['signature']}"})
+    session.run(
+        """
+        MATCH (deployment:ProtocolDeployment {key:$deployment_key})
+              -[deployed:DEPLOYED_CONTRACT]->(contract:Contract {verified:true})
+        WHERE deployed.active=true
+        UNWIND $functions AS item
+        WITH deployment, deployed, contract, item
+        WHERE deployed.role=item.contract_role
+        MATCH (deployment)-[:SUPPORTS_ACTION]->(action:Action {name:item.action})
+        MERGE (fn:Function {key:item.key})
+        SET fn.name=item.name, fn.signature=item.signature,
+            fn.selector=item.selector, fn.purpose=item.purpose,
+            fn.verified=true, fn.source_url=item.source_url,
+            fn.graph_version=$graph_version
+        MERGE (contract)-[:EXPOSES_FUNCTION]->(fn)
+        MERGE (fn)-[:IMPLEMENTS_ACTION]->(action)
+        """,
+        deployment_key=deployment_key,
+        functions=functions,
+        graph_version=GRAPH_VERSION,
+    ).consume()
+
+
 def load_aave_v2(chain_id):
     source_url = AAVE_SOURCES[chain_id]
     contracts, assets = _parse_address_book(fetch_text(source_url))
@@ -149,12 +263,25 @@ def load_aave_v2(chain_id):
         session.run(
             """
             MATCH (deployment:ProtocolDeployment {key:$deployment_key})
+            OPTIONAL MATCH (deployment)-[contract_rel:DEPLOYED_CONTRACT]->()
+            SET contract_rel.active=false
+            WITH deployment
+            OPTIONAL MATCH (deployment)-[reserve_rel:HAS_RESERVE]->(reserve:Reserve)
+            SET reserve_rel.active=false, reserve.active=false
+            """,
+            deployment_key=deployment_key,
+        ).consume()
+        session.run(
+            """
+            MATCH (deployment:ProtocolDeployment {key:$deployment_key})
             UNWIND $contracts AS item
             MERGE (contract:Contract {chain_id:$chain_id, address:item.address})
-            SET contract.name=item.name, contract.role=item.role, contract.verified=true,
+            SET contract.name=coalesce(contract.name, item.name),
+                contract.role=coalesce(contract.role, item.role), contract.verified=true,
                 contract.source='aave-address-book', contract.graph_version=$graph_version,
                 contract.last_synced_at=$synced_at
-            MERGE (deployment)-[:DEPLOYED_CONTRACT {role:item.role}]->(contract)
+            MERGE (deployment)-[rel:DEPLOYED_CONTRACT {role:item.role}]->(contract)
+            SET rel.active=true, rel.last_synced_at=$synced_at
             """,
             deployment_key=deployment_key,
             chain_id=chain_id,
@@ -165,19 +292,26 @@ def load_aave_v2(chain_id):
 
         for asset in assets:
             reserve_key = f"aave-v3:{chain_id}:{asset['underlying']}"
+            reserve_actions = ["supply", "withdraw"]
+            if asset.get("v_token"):
+                reserve_actions.extend(("borrow", "repay"))
             session.run(
                 """
                 MATCH (deployment:ProtocolDeployment {key:$deployment_key})
                 MERGE (token:Token {chain_id:$chain_id, address:$underlying})
                 SET token.symbol=$symbol, token.decimals=$decimals, token.verified=true,
                     token.source='aave-address-book', token.graph_version=$graph_version,
-                    token.last_synced_at=$synced_at
+                    token.trust_source='aave-address-book',
+                    token.verification_eligible=true, token.last_synced_at=$synced_at
                 MERGE (reserve:Reserve {key:$reserve_key})
                 SET reserve.symbol=$symbol, reserve.chain_id=$chain_id,
                     reserve.verified=true, reserve.source='aave-address-book',
                     reserve.graph_version=$graph_version, reserve.featured=$featured,
                     reserve.last_synced_at=$synced_at
-                MERGE (deployment)-[:HAS_RESERVE]->(reserve)
+                SET reserve.active=true
+                MERGE (deployment)-[reserve_rel:HAS_RESERVE]->(reserve)
+                SET reserve_rel.active=true, reserve_rel.last_synced_at=$synced_at
+                MERGE (deployment)-[:SUPPORTS_ASSET]->(token)
                 MERGE (reserve)-[:UNDERLYING_ASSET]->(token)
                 WITH reserve
                 UNWIND $actions AS action_name
@@ -187,34 +321,55 @@ def load_aave_v2(chain_id):
                 deployment_key=deployment_key,
                 chain_id=chain_id,
                 reserve_key=reserve_key,
-                actions=["supply", "withdraw", "borrow", "repay"],
-                featured=asset["symbol"] in ("USDC", "WETH"),
+                actions=reserve_actions,
+                featured=asset["symbol"] in FEATURED_ASSET_SYMBOLS,
                 graph_version=GRAPH_VERSION,
                 synced_at=synced_at,
                 **asset,
             ).consume()
+            session.run(
+                """
+                MATCH (deployment:ProtocolDeployment {key:$deployment_key})
+                      -[pool_rel:DEPLOYED_CONTRACT {role:'pool'}]->(pool:Contract)
+                MATCH (reserve:Reserve {key:$reserve_key})-[:UNDERLYING_ASSET]->(token:Token)
+                WHERE pool_rel.active=true
+                MERGE (pool)-[:SUPPORTS_TOKEN]->(token)
+                """,
+                deployment_key=deployment_key,
+                reserve_key=reserve_key,
+            ).consume()
 
             links = (
-                ("a_token", "aToken", "HAS_A_TOKEN"),
-                ("v_token", "variableDebtToken", "HAS_VARIABLE_DEBT_TOKEN"),
-                ("oracle", "oracle", "USES_ORACLE"),
-                ("static_a_token", "staticAToken", "HAS_STATIC_A_TOKEN"),
+                ("a_token", "aToken", "HAS_A_TOKEN", "REPRESENTS_ASSET"),
+                ("v_token", "variableDebtToken", "HAS_VARIABLE_DEBT_TOKEN", "DEBT_FOR"),
+                ("s_token", "stableDebtToken", "HAS_STABLE_DEBT_TOKEN", "DEBT_FOR"),
+                ("oracle", "oracle", "USES_ORACLE", "PRICES"),
+                ("static_a_token", "staticAToken", "HAS_STATIC_A_TOKEN", "REPRESENTS_ASSET"),
+                (
+                    "interest_rate_strategy", "interestRateStrategy",
+                    "USES_INTEREST_RATE_STRATEGY", "CONFIGURES_RATES_FOR"
+                ),
             )
-            for field, role, relationship in links:
+            for field, role, relationship, token_relationship in links:
                 address = asset.get(field)
                 if not address:
                     continue
                 session.run(
                     f"""
-                    MATCH (reserve:Reserve {{key:$reserve_key}})
+                    MATCH (deployment:ProtocolDeployment {{key:$deployment_key}})
+                    MATCH (reserve:Reserve {{key:$reserve_key}})-[:UNDERLYING_ASSET]->(token:Token)
                     MERGE (contract:Contract {{chain_id:$chain_id, address:$address}})
                     SET contract.name=$symbol + ' ' + $role, contract.role=$role,
                         contract.verified=true, contract.source='aave-address-book',
                         contract.graph_version=$graph_version,
                         contract.last_synced_at=$synced_at
                     MERGE (reserve)-[:{relationship}]->(contract)
+                    MERGE (contract)-[:{token_relationship}]->(token)
+                    MERGE (deployment)-[contract_rel:DEPLOYED_CONTRACT {{role:$role}}]->(contract)
+                    SET contract_rel.active=true, contract_rel.last_synced_at=$synced_at
                     """,
                     reserve_key=reserve_key,
+                    deployment_key=deployment_key,
                     chain_id=chain_id,
                     address=address,
                     symbol=asset["symbol"],
@@ -222,6 +377,16 @@ def load_aave_v2(chain_id):
                     graph_version=GRAPH_VERSION,
                     synced_at=synced_at,
                 ).consume()
+        _add_functions(session, deployment_key, "aave-v3")
+        session.run(
+            """
+            MATCH (deployment:ProtocolDeployment {key:$deployment_key})
+            SET deployment.asset_coverage='official-address-book-complete',
+                deployment.asset_count=$asset_count
+            """,
+            deployment_key=deployment_key,
+            asset_count=len(assets),
+        ).consume()
     return {"chain_id": chain_id, "contracts": len(contracts), "reserves": len(assets)}
 
 
@@ -274,18 +439,45 @@ def _erc20_metadata(rpc, address):
     return symbol, decimals
 
 
+def _filter_trusted_pools(pools, trusted_addresses):
+    """Keep only pools whose two endpoints have independent provenance."""
+    return [
+        pool for pool in pools
+        if pool["token0"] in trusted_addresses and pool["token1"] in trusted_addresses
+    ]
+
+
 def _upsert_uniswap_pools(session, deployment_key, chain_id, factory, pools, rpc=None):
     synced_at = _now()
-    token_addresses = sorted({a for pool in pools for a in (pool["token0"], pool["token1"])})
+    discovered_pools = list(pools)
     trusted = {
         row["address"]
         for row in session.run(
-            "MATCH (t:Token {chain_id:$chain_id, verified:true}) RETURN t.address AS address",
+            """
+            MATCH (:ProtocolDeployment {key:$aave_key})-[rel:HAS_RESERVE]->
+                  (:Reserve {verified:true, active:true})-[:UNDERLYING_ASSET]->
+                  (t:Token {chain_id:$chain_id, verified:true})
+            WHERE rel.active=true
+            RETURN DISTINCT t.address AS address
+            """,
             chain_id=chain_id,
+            aave_key=_deployment_key("aave-v3", chain_id),
         )
         if row["address"]
     }
     trusted.add(NETWORKS[chain_id]["weth"])
+    accepted_pools = _filter_trusted_pools(discovered_pools, trusted)
+    pools = [
+        {
+            **pool,
+            "trusted": pool["token0"] in trusted and pool["token1"] in trusted,
+        }
+        for pool in discovered_pools
+    ]
+    token_addresses = sorted({
+        address for pool in discovered_pools
+        for address in (pool["token0"], pool["token1"])
+    })
     tokens = []
     for address in token_addresses:
         symbol = decimals = None
@@ -295,6 +487,11 @@ def _upsert_uniswap_pools(session, deployment_key, chain_id, factory, pools, rpc
             "address": address,
             "symbol": symbol,
             "decimals": decimals,
+            "source": (
+                "canonical-weth" if address == NETWORKS[chain_id]["weth"]
+                else "aave-address-book" if address in trusted
+                else "uniswap-v3-factory-discovery"
+            ),
             "trusted": address in trusted,
         })
     session.run(
@@ -304,11 +501,15 @@ def _upsert_uniswap_pools(session, deployment_key, chain_id, factory, pools, rpc
         SET token.symbol=coalesce(item.symbol, token.symbol, 'UNKNOWN'),
             token.decimals=coalesce(item.decimals, token.decimals),
             token.verified=CASE WHEN item.trusted THEN true ELSE coalesce(token.verified,false) END,
-            token.graph_version=$graph_version
+            token.trust_source=CASE WHEN item.trusted THEN item.source ELSE token.trust_source END,
+            token.discovery_source=CASE WHEN item.trusted THEN token.discovery_source ELSE item.source END,
+            token.verification_eligible=item.trusted,
+            token.graph_version=$graph_version, token.last_synced_at=$synced_at
         """,
         tokens=tokens,
         chain_id=chain_id,
         graph_version=GRAPH_VERSION,
+        synced_at=synced_at,
     ).consume()
     session.run(
         """
@@ -316,22 +517,35 @@ def _upsert_uniswap_pools(session, deployment_key, chain_id, factory, pools, rpc
         MATCH (factory:Contract {chain_id:$chain_id, address:$factory})
         UNWIND $pools AS item
         MERGE (pool:Contract:Pool {chain_id:$chain_id, address:item.address})
-        SET pool.protocol='Uniswap V3', pool.verified=coalesce(item.verified, true), pool.fee=item.fee,
+        SET pool.protocol='Uniswap V3', pool.verified=item.trusted,
+            pool.verification_eligible=item.trusted, pool.fee=item.fee,
             pool.tick_spacing=item.tick_spacing, pool.created_block=item.created_block,
             pool.creation_tx=item.creation_tx,
             pool.source=coalesce(item.source, 'uniswap-v3-factory'),
             pool.graph_version=$graph_version,
             pool.featured=coalesce(item.featured, pool.featured, false),
             pool.last_synced_at=$synced_at
-        MERGE (deployment)-[:HAS_POOL]->(pool)
+        SET pool.active=true, pool.trust_policy='both-assets-officially-verified'
+        MERGE (deployment)-[pool_rel:HAS_POOL]->(pool)
+        SET pool_rel.active=true, pool_rel.last_synced_at=$synced_at
         MERGE (factory)-[:CREATED_POOL]->(pool)
-        WITH pool, item
+        WITH deployment, pool, item
         MATCH (token0:Token {chain_id:$chain_id, address:item.token0})
         MATCH (token1:Token {chain_id:$chain_id, address:item.token1})
         MERGE (pool)-[:TOKEN0]->(token0)
         MERGE (pool)-[:TOKEN1]->(token1)
         MERGE (pool)-[:SUPPORTS_TOKEN]->(token0)
         MERGE (pool)-[:SUPPORTS_TOKEN]->(token1)
+        MERGE (deployment)-[:DISCOVERED_ASSET]->(token0)
+        MERGE (deployment)-[:DISCOVERED_ASSET]->(token1)
+        WITH deployment, pool, item
+        MERGE (fee:FeeTier {key:toString($chain_id) + ':' + toString(item.fee)})
+        SET fee.fee=item.fee, fee.percent=item.fee / 10000.0,
+            fee.tick_spacing=item.tick_spacing, fee.graph_version=$graph_version
+        MERGE (pool)-[:USES_FEE_TIER]->(fee)
+        WITH pool
+        MATCH (action:Action {name:'swap'})
+        MERGE (pool)-[:SUPPORTS_ACTION]->(action)
         """,
         deployment_key=deployment_key,
         chain_id=chain_id,
@@ -340,6 +554,30 @@ def _upsert_uniswap_pools(session, deployment_key, chain_id, factory, pools, rpc
         graph_version=GRAPH_VERSION,
         synced_at=synced_at,
     ).consume()
+    session.run(
+        """
+        MATCH (deployment:ProtocolDeployment {key:$deployment_key})
+        UNWIND $trusted_tokens AS address
+        MATCH (token:Token {chain_id:$chain_id, address:address})
+        MERGE (deployment)-[:SUPPORTS_ASSET]->(token)
+        """,
+        deployment_key=deployment_key,
+        chain_id=chain_id,
+        trusted_tokens=sorted({
+            address for pool in accepted_pools
+            for address in (pool["token0"], pool["token1"])
+        }),
+    ).consume()
+    return {
+        "discovered": len(discovered_pools),
+        "accepted": len(accepted_pools),
+        "rejected_untrusted": len(discovered_pools) - len(accepted_pools),
+        "discovered_assets": len(token_addresses),
+        "trusted_assets": len({
+            address for pool in accepted_pools
+            for address in (pool["token0"], pool["token1"])
+        }),
+    }
 
 
 def load_uniswap_v2(chain_id, feed=None):
@@ -357,19 +595,33 @@ def load_uniswap_v2(chain_id, feed=None):
         session.run(
             """
             MATCH (deployment:ProtocolDeployment {key:$deployment_key})
+            OPTIONAL MATCH (deployment)-[contract_rel:DEPLOYED_CONTRACT]->()
+            SET contract_rel.active=false
+            WITH deployment
+            OPTIONAL MATCH (deployment)-[pool_rel:HAS_POOL]->(pool:Pool)
+            SET pool_rel.active=false, pool.active=false, pool.featured=false
+            """,
+            deployment_key=deployment_key,
+        ).consume()
+        session.run(
+            """
+            MATCH (deployment:ProtocolDeployment {key:$deployment_key})
             UNWIND $records AS item
             MERGE (contract:Contract {chain_id:$chain_id, address:item.address})
             SET contract.name=item.name, contract.role=item.role, contract.tier=item.tier,
                 contract.verified=true, contract.source='uniswap-deployments-feed',
                 contract.source_repo=item.source_repo, contract.source_ref=item.source_ref,
                 contract.explorer_url=item.explorer_url, contract.graph_version=$graph_version
-            MERGE (deployment)-[:DEPLOYED_CONTRACT {role:item.role}]->(contract)
+            MERGE (deployment)-[rel:DEPLOYED_CONTRACT {role:item.role}]->(contract)
+            SET rel.active=true, rel.last_synced_at=$synced_at
             """,
             deployment_key=deployment_key,
             chain_id=chain_id,
             records=records,
             graph_version=GRAPH_VERSION,
+            synced_at=_now(),
         ).consume()
+        _add_functions(session, deployment_key, "uniswap-v3")
 
         rpc_url = os.getenv(NETWORKS[chain_id]["rpc_env"])
         pools = list(CURATED_MAINNET_POOLS) if chain_id == 1 else []
@@ -385,30 +637,61 @@ def load_uniswap_v2(chain_id, feed=None):
             by_address = {pool["address"]: pool for pool in pools}
             by_address.update({pool["address"]: pool for pool in discovered})
             pools = list(by_address.values())
+        coverage = _upsert_uniswap_pools(
+            session, deployment_key, chain_id, factory, pools, rpc
+        )
         session.run(
             """
-            MATCH (:ProtocolDeployment {key:$deployment_key})-[:HAS_POOL]->(pool:Pool)
-            SET pool.featured=false
-            """,
-            deployment_key=deployment_key,
-        ).consume()
-        _upsert_uniswap_pools(session, deployment_key, chain_id, factory, pools, rpc)
-        session.run(
-            """
-            MATCH (deployment:ProtocolDeployment {key:$deployment_key})-[:HAS_POOL]->(pool:Pool)
-            MATCH (pool)-[:SUPPORTS_TOKEN]->(token0:Token {verified:true})
-            MATCH (pool)-[:SUPPORTS_TOKEN]->(token1:Token {verified:true})
-            WHERE token0.symbol='USDC' AND token1.symbol='WETH'
-               OR token0.symbol='WETH' AND token1.symbol='USDC'
-            WITH DISTINCT pool LIMIT 2
+            UNWIND $pairs AS pair
+            MATCH (deployment:ProtocolDeployment {key:$deployment_key})
+                  -[rel:HAS_POOL]->(pool:Pool {active:true, verification_eligible:true})
+            WHERE rel.active=true
+            MATCH (pool)-[:TOKEN0]->(token0:Token {verified:true})
+            MATCH (pool)-[:TOKEN1]->(token1:Token {verified:true})
+            WHERE (token0.symbol=pair.left AND token1.symbol=pair.right)
+               OR (token0.symbol=pair.right AND token1.symbol=pair.left)
+            WITH pair, pool ORDER BY pool.fee ASC
+            WITH pair, collect(DISTINCT pool)[0..2] AS selected
+            UNWIND selected AS pool
             SET pool.featured=true
             """,
             deployment_key=deployment_key,
+            pairs=[
+                {"left": sorted(pair)[0], "right": sorted(pair)[1]}
+                for pair in sorted(FEATURED_SWAP_PAIRS, key=lambda p: sorted(p))
+            ],
+        ).consume()
+        session.run(
+            """
+            MATCH (deployment:ProtocolDeployment {key:$deployment_key})
+            SET deployment.pool_discovery_complete=$complete,
+                deployment.pool_discovery_mode=$mode,
+                deployment.factory_scanned_to_block=$latest_block,
+                deployment.discovered_pool_count=$discovered,
+                deployment.accepted_pool_count=$accepted,
+                deployment.rejected_untrusted_pool_count=$rejected,
+                deployment.discovered_asset_count=$discovered_assets,
+                deployment.trusted_asset_count=$trusted_assets,
+                deployment.asset_trust_scope='active Aave V3 reserves plus canonical WETH'
+            """,
+            deployment_key=deployment_key,
+            complete=bool(rpc_url),
+            mode="full-rpc" if rpc_url else "curated-no-rpc",
+            latest_block=latest,
+            discovered=coverage["discovered"],
+            accepted=coverage["accepted"],
+            rejected=coverage["rejected_untrusted"],
+            discovered_assets=coverage["discovered_assets"],
+            trusted_assets=coverage["trusted_assets"],
         ).consume()
     return {
         "chain_id": chain_id,
         "contracts": len(records),
-        "pools": len(pools),
+        "pools": coverage["accepted"],
+        "discovered_pools": coverage["discovered"],
+        "rejected_untrusted_pools": coverage["rejected_untrusted"],
+        "discovered_assets": coverage["discovered_assets"],
+        "trusted_assets_in_pools": coverage["trusted_assets"],
         "latest_block": latest,
         "mode": "full-rpc" if rpc_url else "curated-no-rpc",
     }
@@ -445,9 +728,11 @@ def build_demo_view():
             MATCH (view)-[:INCLUDES]->(parent)-[r]->(child)
             WHERE child:Action
                OR (parent:ProtocolDeployment AND child:Contract
-                   AND child.role IN ['factory', 'swap_router', 'pool'])
+                   AND child.role IN ['factory', 'swap_router', 'quoter', 'pool'])
                OR ((parent:Reserve OR parent:Pool)
                    AND (child:Token OR child:Contract))
+               OR child:Function
+               OR child:FeeTier
             MERGE (view)-[:INCLUDES]->(child)
             """
         ).consume()
@@ -539,11 +824,37 @@ def v2_summary():
         hierarchy = session.run(
             """
             MATCH (chain:Chain)-[:HOSTS]->(deployment:ProtocolDeployment)
-            OPTIONAL MATCH (deployment)-[:HAS_POOL]->(pool:Pool)
-            OPTIONAL MATCH (deployment)-[:HAS_RESERVE]->(reserve:Reserve)
+            CALL (deployment) {
+              OPTIONAL MATCH (deployment)-[rel:HAS_POOL]->(pool:Pool {active:true})
+              WHERE rel.active=true
+              RETURN count(DISTINCT pool) AS pools,
+                     count(DISTINCT CASE WHEN pool.verification_eligible=true THEN pool END)
+                       AS eligible_pools
+            }
+            CALL (deployment) {
+              OPTIONAL MATCH (deployment)-[rel:HAS_RESERVE]->(reserve:Reserve {active:true})
+              WHERE rel.active=true
+              RETURN count(DISTINCT reserve) AS reserves
+            }
+            CALL (deployment) {
+              OPTIONAL MATCH (deployment)-[:SUPPORTS_ASSET]->(token:Token {verified:true})
+              RETURN count(DISTINCT token) AS assets
+            }
+            CALL (deployment) {
+              OPTIONAL MATCH (deployment)-[:DISCOVERED_ASSET]->(token:Token)
+              RETURN count(DISTINCT token) AS discovered_assets
+            }
+            CALL (deployment) {
+              OPTIONAL MATCH (deployment)-[rel:DEPLOYED_CONTRACT]->
+                             (:Contract)-[:EXPOSES_FUNCTION]->(fn:Function)
+              WHERE rel.active=true
+              RETURN count(DISTINCT fn) AS functions
+            }
             RETURN chain.name AS chain, chain.chain_id AS chain_id,
                    deployment.name AS deployment,
-                   count(DISTINCT pool) AS pools, count(DISTINCT reserve) AS reserves
+                   pools, eligible_pools, reserves, assets, discovered_assets, functions,
+                   deployment.pool_discovery_complete AS pool_discovery_complete,
+                   deployment.pool_discovery_mode AS pool_discovery_mode
             ORDER BY chain_id, deployment
             """
         ).data()
@@ -552,8 +863,12 @@ def v2_summary():
 
 def sync_v2():
     ensure_v2_schema()
+    removed_orphans = _cleanup_orphan_asset_support_nodes()
     feed = fetch_json(UNISWAP_DEPLOYMENTS_URL)
-    result = {"aave": [], "uniswap": []}
+    result = {
+        "aave": [], "uniswap": [],
+        "migration": {"removed_orphan_asset_support_nodes": removed_orphans},
+    }
     for chain_id in (1, 11155111):
         result["aave"].append(load_aave_v2(chain_id))
         result["uniswap"].append(load_uniswap_v2(chain_id, feed=feed))

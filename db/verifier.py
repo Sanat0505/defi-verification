@@ -8,13 +8,19 @@ CYPHER_SWAP = """
     MATCH (family:ProtocolFamily)-[:HAS_DEPLOYMENT]->
           (deployment:ProtocolDeployment {verified:true, chain_id:$chain_id})
     WHERE toLower(family.name) = toLower($protocol)
-    MATCH (deployment)-[:SUPPORTS_ACTION]->(:Action {name:'swap'})
-    MATCH (deployment)-[:HAS_POOL]->(pool:Pool {verified:true, chain_id:$chain_id})
-    MATCH (pool)-[:SUPPORTS_TOKEN]->(t1:Token {symbol:$token_in, verified:true, chain_id:$chain_id})
-    MATCH (pool)-[:SUPPORTS_TOKEN]->(t2:Token {symbol:$token_out, verified:true, chain_id:$chain_id})
-    MATCH (deployment)-[:DEPLOYED_CONTRACT {role:'swap_router'}]->(router:Contract {verified:true})
-    MATCH (deployment)-[:DEPLOYED_CONTRACT {role:'quoter'}]->(quoter:Contract {verified:true})
-    WHERE t1.address <> t2.address
+    MATCH (deployment)-[:SUPPORTS_ACTION]->(action:Action {name:'swap'})
+    MATCH (deployment)-[pool_rel:HAS_POOL]->
+          (pool:Pool {verified:true, verification_eligible:true, active:true, chain_id:$chain_id})
+    MATCH (pool)-[:SUPPORTS_TOKEN]->(t1:Token {symbol:$token_in, verified:true, verification_eligible:true, chain_id:$chain_id})
+    MATCH (pool)-[:SUPPORTS_TOKEN]->(t2:Token {symbol:$token_out, verified:true, verification_eligible:true, chain_id:$chain_id})
+    MATCH (deployment)-[router_rel:DEPLOYED_CONTRACT {role:'swap_router'}]->
+          (router:Contract {verified:true})-[:EXPOSES_FUNCTION]->
+          (fn:Function {verified:true, purpose:'execute'})-[:IMPLEMENTS_ACTION]->(action)
+    MATCH (deployment)-[quoter_rel:DEPLOYED_CONTRACT {role:'quoter'}]->
+          (quoter:Contract {verified:true})-[:EXPOSES_FUNCTION]->
+          (:Function {verified:true, purpose:'preflight'})-[:IMPLEMENTS_ACTION]->(action)
+    WHERE pool_rel.active=true AND router_rel.active=true AND quoter_rel.active=true
+      AND t1.address <> t2.address
       AND t1.decimals IS NOT NULL
       AND t2.decimals IS NOT NULL
       AND pool.fee IS NOT NULL
@@ -25,6 +31,8 @@ CYPHER_SWAP = """
            t1.decimals AS token_in_decimals,
            t2.address AS token_out_address, t2.symbol AS token_out_symbol,
            t2.decimals AS token_out_decimals,
+           fn.name AS function_name, fn.signature AS function_signature,
+           fn.selector AS function_selector,
            family.name AS protocol, $chain_id AS chain_id
     ORDER BY featured DESC, pool.fee ASC, pool.address ASC
     LIMIT 20
@@ -34,12 +42,19 @@ CYPHER_LENDING = """
     MATCH (family:ProtocolFamily)-[:HAS_DEPLOYMENT]->
           (deployment:ProtocolDeployment {verified:true, chain_id:$chain_id})
     WHERE toLower(family.name) = toLower($protocol)
-    MATCH (deployment)-[:SUPPORTS_ACTION]->(:Action {name:$action})
-    MATCH (deployment)-[:HAS_RESERVE]->(reserve:Reserve {verified:true})
+    MATCH (deployment)-[:SUPPORTS_ACTION]->(action:Action {name:$action})
+    MATCH (deployment)-[reserve_rel:HAS_RESERVE]->
+          (reserve:Reserve {verified:true, active:true})
     MATCH (reserve)-[:UNDERLYING_ASSET]->(token:Token {symbol:$token_in, chain_id:$chain_id, verified:true})
-    MATCH (reserve)-[:SUPPORTS_ACTION]->(:Action {name:$action})
-    MATCH (deployment)-[:DEPLOYED_CONTRACT {role:'pool'}]->(pool:Contract {verified:true})
+    MATCH (reserve)-[:SUPPORTS_ACTION]->(action)
+    MATCH (deployment)-[pool_rel:DEPLOYED_CONTRACT {role:'pool'}]->
+          (pool:Contract {verified:true})-[:EXPOSES_FUNCTION]->
+          (fn:Function {verified:true, purpose:'execute'})-[:IMPLEMENTS_ACTION]->(action)
+    WHERE reserve_rel.active=true AND pool_rel.active=true
     RETURN pool.address AS address, null AS pool_address,
+           token.address AS token_address, token.decimals AS token_decimals,
+           fn.name AS function_name, fn.signature AS function_signature,
+           fn.selector AS function_selector,
            family.name AS protocol, $chain_id AS chain_id
     LIMIT 1
 """
@@ -70,6 +85,9 @@ def verify_intent(protocol, token_in, token_out=None, action="swap", chain_id=11
                         "token_out_address": record["token_out_address"],
                         "token_out_symbol": record["token_out_symbol"],
                         "token_out_decimals": record["token_out_decimals"],
+                        "function_name": record["function_name"],
+                        "function_signature": record["function_signature"],
+                        "function_selector": record["function_selector"],
                     }
                     for record in records
                 ]
@@ -78,6 +96,8 @@ def verify_intent(protocol, token_in, token_out=None, action="swap", chain_id=11
                     "decision":         "APPROVED",
                     "verified_address": first["address"],
                     "verified_pool":    first["pool_address"],
+                    "verified_function": first["function_signature"],
+                    "verified_selector": first["function_selector"],
                     "protocol":         first["protocol"],
                     "action":           action,
                     "chain_id":         first["chain_id"],
@@ -108,6 +128,9 @@ def verify_intent(protocol, token_in, token_out=None, action="swap", chain_id=11
                 "decision":         "APPROVED",
                 "verified_address": record["address"],
                 "verified_pool":    record["pool_address"],
+                "verified_asset":   record["token_address"],
+                "verified_function": record["function_signature"],
+                "verified_selector": record["function_selector"],
                 "protocol":         record["protocol"],
                 "action":           action,
                 "chain_id":         record["chain_id"],
