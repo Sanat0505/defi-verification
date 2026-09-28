@@ -1,0 +1,533 @@
+% Figure 3.4: original layout retained; verification-only scope.
+% Requires \usepackage{tikz}. Request Controller receives the decision.
+% Execution is deliberately outside the scope of this sequence.
+\begin{tikzpicture}[x=1cm,y=1cm,>=stealth]
+
+% ---------------------------------------------------------
+% Bounding box
+% ---------------------------------------------------------
+\path[use as bounding box] (0.05,2.70) rectangle (11.35,14.65);
+
+% ---------------------------------------------------------
+% Colours
+% ---------------------------------------------------------
+\definecolor{seqtext}{HTML}{1E293B}
+\definecolor{seqborder}{HTML}{475569}
+\definecolor{seqarrow}{HTML}{64748B}
+
+% Single fill colour for all components
+\definecolor{seqfill}{HTML}{DBEAFE}
+
+% ---------------------------------------------------------
+% Fonts
+% ---------------------------------------------------------
+\newcommand{\participantfont}{\fontsize{8.2}{9.2}\selectfont}
+\newcommand{\subtitlefont}{\fontsize{7.0}{8.0}\selectfont}
+\newcommand{\messagefont}{\fontsize{7.3}{8.2}\selectfont}
+\newcommand{\guardfont}{\fontsize{6.7}{7.6}\selectfont}
+
+% ---------------------------------------------------------
+% Lifeline x-coordinates
+% ---------------------------------------------------------
+\def\xIntent{1.30}
+\def\xVerify{4.10}
+\def\xGraph{7.10}
+\def\xController{10.05}
+
+
+% =========================================================
+% LIFELINES
+% =========================================================
+
+\draw[
+    seqarrow,
+    line width=0.65pt,
+    dashed
+]
+(\xIntent,13.45) -- (\xIntent,2.88);
+
+\draw[
+    seqarrow,
+    line width=0.65pt,
+    dashed
+]
+(\xVerify,13.45) -- (\xVerify,2.88);
+
+\draw[
+    seqarrow,
+    line width=0.65pt,
+    dashed
+]
+(\xGraph,13.45) -- (\xGraph,2.88);
+
+\draw[
+    seqarrow,
+    line width=0.65pt,
+    dashed
+]
+(\xController,13.45) -- (\xController,2.88);
+
+
+% =========================================================
+% PARTICIPANT HEADERS
+% =========================================================
+
+% Intent Validation
+\node[
+    draw=seqborder,
+    fill=seqfill,
+    line width=0.75pt,
+    rounded corners=2.5pt,
+    minimum width=2.20cm,
+    minimum height=0.96cm,
+    align=center,
+    text=seqtext,
+    font=\participantfont
+] at (\xIntent,13.95)
+{
+    \textbf{Intent}\\[-1pt]
+    \textbf{Validation}
+};
+
+
+% Relationship Verification & Decision
+\node[
+    draw=seqborder,
+    fill=seqfill,
+    line width=0.75pt,
+    rounded corners=2.5pt,
+    minimum width=2.42cm,
+    minimum height=1.05cm,
+    align=center,
+    text=seqtext,
+    font=\participantfont
+] at (\xVerify,13.95)
+{
+    \textbf{Relationship}\\[-1pt]
+    \textbf{Verification \&}\\[-1pt]
+    \textbf{Decision}
+};
+
+
+% Authoritative Verification Knowledge
+\node[
+    draw=seqborder,
+    fill=seqfill,
+    line width=0.75pt,
+    rounded corners=2.5pt,
+    minimum width=2.64cm,
+    minimum height=1.05cm,
+    align=center,
+    text=seqtext,
+    font=\participantfont
+] at (\xGraph,13.95)
+{
+    \textbf{Authoritative}\\[-1pt]
+    \textbf{Verification Knowledge}\\[-1pt]
+    {\subtitlefont Property Graph}
+};
+
+
+% Request Controller (receives the verification result)
+\node[
+    draw=seqborder,
+    fill=seqfill,
+    line width=0.75pt,
+    rounded corners=2.5pt,
+    minimum width=2.10cm,
+    minimum height=0.96cm,
+    align=center,
+    text=seqtext,
+    font=\participantfont
+] at (\xController,13.95)
+{
+    \textbf{Request}\\[-1pt]
+    \textbf{Controller}
+};
+
+
+% =========================================================
+% STEP 1 — VALIDATED INTENT
+% =========================================================
+
+% Intent activation
+\draw[
+    draw=seqborder,
+    fill=seqfill,
+    line width=0.65pt
+]
+(\xIntent-0.09,12.70)
+rectangle
+(\xIntent+0.09,12.03);
+
+
+% Verification activation
+\draw[
+    draw=seqborder,
+    fill=seqfill,
+    line width=0.65pt
+]
+(\xVerify-0.10,12.58)
+rectangle
+(\xVerify+0.10,10.92);
+
+
+% Message
+\draw[
+    ->,
+    seqarrow,
+    line width=0.80pt
+]
+(\xIntent+0.09,12.48)
+--
+(\xVerify-0.10,12.48)
+node[
+    midway,
+    above=3pt,
+    text=seqtext,
+    fill=white,
+    inner sep=2pt,
+    font=\messagefont
+]
+{\textbf{Validated Intent}};
+
+
+% =========================================================
+% STEP 2 — DETERMINE REQUIRED RELATIONSHIP PATTERN
+% =========================================================
+
+\draw[
+    seqarrow,
+    line width=0.75pt
+]
+(\xVerify+0.10,11.95)
+--
+(4.78,11.95)
+--
+(4.78,11.42);
+
+\draw[
+    ->,
+    seqarrow,
+    line width=0.75pt
+]
+(4.78,11.42)
+--
+(\xVerify+0.10,11.42);
+
+
+\node[
+    anchor=west,
+    align=left,
+    text=seqtext,
+    fill=white,
+    inner sep=2pt,
+    font=\messagefont
+] at (4.93,11.68)
+{
+    Determine required\\[-1pt]
+    relationship pattern
+};
+
+
+% =========================================================
+% STEP 3 — RESOLVE REQUIRED RELATIONSHIPS
+% =========================================================
+
+% Verification activation
+\draw[
+    draw=seqborder,
+    fill=seqfill,
+    line width=0.65pt
+]
+(\xVerify-0.10,10.45)
+rectangle
+(\xVerify+0.10,9.12);
+
+
+% Knowledge activation
+\draw[
+    draw=seqborder,
+    fill=seqfill,
+    line width=0.65pt
+]
+(\xGraph-0.10,10.42)
+rectangle
+(\xGraph+0.10,9.36);
+
+
+% Request
+\draw[
+    ->,
+    seqarrow,
+    line width=0.80pt
+]
+(\xVerify+0.10,10.30)
+--
+(\xGraph-0.10,10.30)
+node[
+    midway,
+    above=3pt,
+    align=center,
+    text=seqtext,
+    fill=white,
+    inner sep=2pt,
+    font=\messagefont
+]
+{
+    Resolve required\\[-1pt]
+    relationships
+};
+
+
+% =========================================================
+% STEP 4 — VERIFICATION EVIDENCE
+% =========================================================
+
+\draw[
+    ->,
+    seqarrow,
+    line width=0.75pt,
+    dashed
+]
+(\xGraph-0.10,9.48)
+--
+(\xVerify+0.10,9.48)
+node[
+    midway,
+    above=3pt,
+    text=seqtext,
+    fill=white,
+    inner sep=2pt,
+    font=\messagefont
+]
+{\textbf{Evidence / Failure Status}};
+
+
+% =========================================================
+% STEP 5 — EVALUATE MANDATORY RELATIONSHIPS
+% =========================================================
+
+% Verification activation
+\draw[
+    draw=seqborder,
+    fill=seqfill,
+    line width=0.65pt
+]
+(\xVerify-0.10,8.83)
+rectangle
+(\xVerify+0.10,7.98);
+
+
+% Self-message
+\draw[
+    seqarrow,
+    line width=0.75pt
+]
+(\xVerify+0.10,8.58)
+--
+(4.78,8.58)
+--
+(4.78,8.15);
+
+\draw[
+    ->,
+    seqarrow,
+    line width=0.75pt
+]
+(4.78,8.15)
+--
+(\xVerify+0.10,8.15);
+
+
+\node[
+    anchor=west,
+    align=left,
+    text=seqtext,
+    fill=white,
+    inner sep=2pt,
+    font=\messagefont
+] at (4.93,8.37)
+{
+    Evaluate relationships\\[-1pt]
+    and evidence validity
+};
+
+
+% =========================================================
+% UML ALT COMBINED FRAGMENT
+% =========================================================
+
+% Main fragment
+\draw[
+    draw=seqborder,
+    line width=0.75pt
+]
+(3.52,7.63)
+rectangle
+(10.92,3.12);
+
+
+% ---------------------------------------------------------
+% ALT label
+% ---------------------------------------------------------
+\fill[seqfill]
+(3.52,7.63)
+rectangle
+(4.30,7.20);
+
+\draw[
+    draw=seqborder,
+    line width=0.75pt
+]
+(3.52,7.63)
+--
+(4.30,7.63)
+--
+(4.30,7.20)
+--
+(3.52,7.20);
+
+\node[
+    text=seqtext,
+    font=\messagefont
+] at (3.88,7.40)
+{\textbf{alt}};
+
+
+% =========================================================
+% APPROVE BRANCH
+% =========================================================
+
+\node[
+    anchor=west,
+    text=seqtext,
+    fill=white,
+    inner sep=2pt,
+    align=left,
+    text width=6.0cm,
+    font=\guardfont
+] at (4.32,7.01)
+{
+    [All mandatory checks pass; evidence is valid]
+};
+
+
+% Verification activation
+\draw[
+    draw=seqborder,
+    fill=seqfill,
+    line width=0.65pt
+]
+(\xVerify-0.10,6.66)
+rectangle
+(\xVerify+0.10,5.72);
+
+
+% Controller activation
+\draw[
+    draw=seqborder,
+    fill=seqfill,
+    line width=0.65pt
+]
+(\xController-0.10,6.40)
+rectangle
+(\xController+0.10,5.78);
+
+
+% Approve message
+\draw[
+    ->,
+    seqarrow,
+    line width=0.85pt
+]
+(\xVerify+0.10,6.05)
+--
+(\xController-0.10,6.05)
+node[
+    midway,
+    above=3pt,
+    text=seqtext,
+    fill=white,
+    inner sep=2pt,
+    font=\messagefont
+]
+{\shortstack{\textbf{APPROVE}\\Verified Execution Information}};
+
+
+% =========================================================
+% BRANCH SEPARATOR
+% =========================================================
+
+\draw[
+    seqarrow,
+    line width=0.65pt,
+    dashed
+]
+(3.52,5.18)
+--
+(10.92,5.18);
+
+
+% =========================================================
+% REJECT BRANCH
+% =========================================================
+
+\node[
+    anchor=west,
+    text=seqtext,
+    fill=white,
+    inner sep=2pt,
+    align=left,
+    text width=6.0cm,
+    font=\guardfont
+] at (4.32,4.85)
+{
+    [Otherwise: evidence missing, inconsistent, stale,\\
+    untrusted, or unavailable]
+};
+
+
+% Verification activation
+\draw[
+    draw=seqborder,
+    fill=seqfill,
+    line width=0.65pt
+]
+(\xVerify-0.10,4.55)
+rectangle
+(\xVerify+0.10,3.40);
+
+
+% Controller activation
+\draw[
+    draw=seqborder,
+    fill=seqfill,
+    line width=0.65pt
+]
+(\xController-0.10,4.31)
+rectangle
+(\xController+0.10,3.40);
+
+
+% Reject message
+\draw[
+    ->,
+    seqarrow,
+    line width=0.85pt
+]
+(\xVerify+0.10,3.60)
+--
+(\xController-0.10,3.60)
+node[
+    midway,
+    above=3pt,
+    text=seqtext,
+    fill=white,
+    inner sep=2pt,
+    font=\messagefont
+]
+{\shortstack{\textbf{REJECT / Verification Failure}\\Reason}};
+
+
+\end{tikzpicture}

@@ -874,6 +874,8 @@ def sync_v2():
         result["uniswap"].append(load_uniswap_v2(chain_id, feed=feed))
     build_demo_view()
     build_fixture_graph()
+    from db.presentation_views import build_presentation_views
+    result["presentation_views"] = build_presentation_views()
     result["summary"] = v2_summary()
     return result
 
