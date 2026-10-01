@@ -33,8 +33,8 @@ def _call_js(command: str, args: dict = None) -> dict:
     # Command-specific timeouts: add_whitelist is fast (file I/O only),
     # Swap preflight and execution need RPC/bundler time.
     timeout_map = {
-        "add_whitelist": 5,     # Now instant - just file I/O (no heavy deps)
-        "check_session": 5,     # File I/O + validation (no heavy deps)
+        "add_whitelist": 15,    # Local I/O; allow for slow Windows cold starts
+        "check_session": 15,    # Local I/O; allow for slow Windows cold starts
         "create_wallet": 120,   # First load plus Sepolia/ZeroDev RPC calls
         "prepare_swap": 120,    # Read-only balance/allowance/quote checks
         "send_swap": 180        # Quote plus sponsored UserOperation receipt

@@ -13,21 +13,30 @@
  *   node wallet.mjs send_swap '{"amount":"0.001","routes":[...]}'
  */
 
-import dotenv from "dotenv";
 import fs from "fs";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
-import { isAddress } from "viem"; // Lightweight util-only import
 
 // ── Load .env from project root ───────────────────────────
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-dotenv.config({
-  path: resolve(__dirname, "../.env"),
-  quiet: true,
-});
+// Whitelist commands only validate addresses and access a local JSON file.
+// Avoid loading external packages for those commands so their cold start stays
+// well below the Python subprocess timeout.
+const startupCommand = process.argv[2];
+if (!new Set(["add_whitelist", "check_session"]).has(startupCommand)) {
+  const dotenv = await import("dotenv");
+  dotenv.config({
+    path: resolve(__dirname, "../.env"),
+    quiet: true,
+  });
+}
+
+function isAddress(value) {
+  return typeof value === "string" && /^0x[0-9a-fA-F]{40}$/.test(value);
+}
 
 // ── Config ────────────────────────────────────────────────
 

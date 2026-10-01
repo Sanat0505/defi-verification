@@ -33,13 +33,16 @@ Rules:
 async def parse_intent(prompt: str) -> dict:
     try:
         response = client.chat.completions.create(
-            model    = "llama-3.1-8b-instant",
+            model    = "openai/gpt-oss-20b",
             messages = [
                 {"role": "system",  "content": SYSTEM_PROMPT},
                 {"role": "user",    "content": prompt}
             ],
+            response_format = {"type": "json_object"},
+            reasoning_effort = "low",
+            reasoning_format = "hidden",
             temperature = 0,
-            max_tokens  = 200
+            max_completion_tokens = 1024
         )
         text = response.choices[0].message.content.strip()
         text = text.replace("```json","").replace("```","").strip()
