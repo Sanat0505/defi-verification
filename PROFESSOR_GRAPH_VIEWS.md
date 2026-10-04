@@ -1,4 +1,4 @@
-# Two separate professor presentation views
+# Two separate presentation views
 
 Both views select nodes from the same canonical Neo4j database. They are named
 presentation selections, not database copies. Rebuilding changes only their
