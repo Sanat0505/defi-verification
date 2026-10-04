@@ -4,12 +4,8 @@ Both views select nodes from the same canonical Neo4j database. They are named
 presentation selections, not database copies. Rebuilding changes only their
 membership links. Legacy seeded nodes and fixture scenarios are not selected.
 
-The stored view keys are `small-verification` and `large-graph`.
-Changing a key in a query or Python constant does not rename an existing
-Neo4j node. For a database built with the former `professor-` keys, run
-`db/RENAME_PRESENTATION_VIEWS.cypher` once in Neo4j Query. It preserves all
-memberships and domain data and skips a rename if the target key already exists.
-To check the actual stored keys and memberships (including empty views):
+The stored view keys are `small-verification` and `large-graph`. To check the
+actual stored keys and memberships, including empty views:
 
 ```cypher
 MATCH (view:GraphView)

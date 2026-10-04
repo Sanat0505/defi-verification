@@ -176,7 +176,7 @@ The current graph models structural support. In particular, its reserve action
 mappings do not establish live paused/frozen status. Freshness enforcement should
 not be claimed unless a defined validity policy is implemented and tested.
 
-### 8. Professor demonstration and deliverables
+### 8. Demonstration and deliverables
 
 Before the full experiment, demonstrate six development-set requests: two valid,
 one invalid combination, one unknown entity, one wrong-network request and one
