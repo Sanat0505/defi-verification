@@ -1,0 +1,306 @@
+{
+  "version": "1.0.0",
+  "description": "Deterministic, non-broadcasting wallet-policy and execution-boundary evaluation.",
+  "cases": [
+    {
+      "id": "W01",
+      "category": "destination_policy",
+      "mode": "wallet_policy",
+      "whitelist_state": "allowed",
+      "input": {"kind": "session", "to": "0x1111111111111111111111111111111111111111", "value_eth": 0},
+      "expected_outcome": "PASS",
+      "expected_reason_code": "DESTINATION_ALLOWED"
+    },
+    {
+      "id": "W02",
+      "category": "destination_policy",
+      "mode": "wallet_policy",
+      "whitelist_state": "missing",
+      "input": {"kind": "session", "to": "0x1111111111111111111111111111111111111111", "value_eth": 0},
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "DESTINATION_NOT_ALLOWED"
+    },
+    {
+      "id": "W03",
+      "category": "destination_policy",
+      "mode": "wallet_policy",
+      "whitelist_state": "expired",
+      "input": {"kind": "session", "to": "0x1111111111111111111111111111111111111111", "value_eth": 0},
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "POLICY_EXPIRED"
+    },
+    {
+      "id": "W05",
+      "category": "destination_policy",
+      "mode": "wallet_policy",
+      "whitelist_state": "allowed",
+      "input": {"kind": "session", "to": "0x1111111111111111111111111111111111111111", "value_eth": 0.006},
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "NATIVE_VALUE_LIMIT_EXCEEDED"
+    },
+    {
+      "id": "H01",
+      "category": "approved_handover",
+      "mode": "request_mutation",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "REQUEST_SCHEMA_REJECTED"
+    },
+    {
+      "id": "H02_REPLAY",
+      "category": "approved_handover",
+      "mode": "capability_replay",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "VERIFICATION_REUSED"
+    },
+    {
+      "id": "H02_EXPIRED",
+      "category": "approved_handover",
+      "mode": "capability_expired",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "VERIFICATION_EXPIRED"
+    },
+    {
+      "id": "P01_AAVE",
+      "category": "transaction_data",
+      "mode": "wallet_policy",
+      "input": {
+        "kind": "aave_operation",
+        "operation": {
+          "action": "withdraw",
+          "pool_address": "0x1111111111111111111111111111111111111111",
+          "asset_address": "0x2222222222222222222222222222222222222222",
+          "asset_decimals": 6,
+          "amount": "10",
+          "function_signature": "withdraw(address,uint256,address)",
+          "function_selector": "0xdeadbeef"
+        }
+      },
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "INVALID_EXECUTION_DATA"
+    },
+    {
+      "id": "P01_SWAP",
+      "category": "transaction_data",
+      "mode": "wallet_policy",
+      "input": {
+        "kind": "swap_route",
+        "route": {
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf",
+          "router_address": "invalid",
+          "quoter_address": "0x2222222222222222222222222222222222222222",
+          "pool_address": "0x3333333333333333333333333333333333333333",
+          "token_in_address": "0x4444444444444444444444444444444444444444",
+          "token_out_address": "0x5555555555555555555555555555555555555555",
+          "pool_fee": 3000,
+          "token_in_decimals": 6,
+          "token_out_decimals": 18
+        }
+      },
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "INVALID_EXECUTION_DATA"
+    },
+    {
+      "id": "P02_AAVE_VALID",
+      "category": "transaction_data",
+      "mode": "wallet_policy",
+      "input": {
+        "kind": "aave_operation",
+        "operation": {
+          "action": "withdraw",
+          "pool_address": "0x1111111111111111111111111111111111111111",
+          "asset_address": "0x2222222222222222222222222222222222222222",
+          "asset_decimals": 6,
+          "amount": "10",
+          "function_signature": "withdraw(address,uint256,address)",
+          "function_selector": "0x69328dec"
+        }
+      },
+      "expected_outcome": "PASS",
+      "expected_reason_code": "EXECUTION_DATA_VALID"
+    },
+    {
+      "id": "P07_SLIPPAGE",
+      "category": "transaction_data",
+      "mode": "wallet_policy",
+      "input": {
+        "kind": "swap_request",
+        "request": {
+          "amount": "10",
+          "slippage_bps": 501,
+          "routes": [{
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf",
+            "router_address": "0x1111111111111111111111111111111111111111",
+            "quoter_address": "0x2222222222222222222222222222222222222222",
+            "pool_address": "0x3333333333333333333333333333333333333333",
+            "token_in_address": "0x4444444444444444444444444444444444444444",
+            "token_out_address": "0x5555555555555555555555555555555555555555",
+            "pool_fee": 3000,
+            "token_in_decimals": 6,
+            "token_out_decimals": 18
+          }]
+        }
+      },
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "INVALID_EXECUTION_DATA"
+    },
+    {
+      "id": "P03_SWAP",
+      "category": "funding_preflight",
+      "mode": "wallet_policy",
+      "input": {"kind": "funding", "action": "swap", "amount_base_units": "100", "balance_base_units": "99", "allowance_base_units": "100"},
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "INSUFFICIENT_TOKEN_BALANCE"
+    },
+    {
+      "id": "P03_AAVE_SUPPLY",
+      "category": "funding_preflight",
+      "mode": "wallet_policy",
+      "input": {"kind": "funding", "action": "supply", "amount_base_units": "100", "balance_base_units": "99", "allowance_base_units": "100"},
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "INSUFFICIENT_TOKEN_BALANCE"
+    },
+    {
+      "id": "P04_SWAP",
+      "category": "funding_preflight",
+      "mode": "wallet_policy",
+      "input": {"kind": "funding", "action": "swap", "amount_base_units": "100", "balance_base_units": "100", "allowance_base_units": "99"},
+      "expected_outcome": "PASS",
+      "expected_reason_code": "ALLOWANCE_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "P04_AAVE_REPAY",
+      "category": "funding_preflight",
+      "mode": "wallet_policy",
+      "input": {"kind": "funding", "action": "repay", "amount_base_units": "100", "balance_base_units": "100", "allowance_base_units": "0"},
+      "expected_outcome": "PASS",
+      "expected_reason_code": "ALLOWANCE_APPROVAL_REQUIRED"
+    },
+    {
+      "id": "P05",
+      "category": "funding_preflight",
+      "mode": "wallet_policy",
+      "input": {"kind": "funding", "action": "swap", "amount_base_units": "100", "balance_base_units": "100", "allowance_base_units": "100"},
+      "expected_outcome": "PASS",
+      "expected_reason_code": "PREFLIGHT_READY"
+    },
+    {
+      "id": "A01",
+      "category": "api_execution_gate",
+      "mode": "api_authority_changed",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "APPROVAL_MISMATCH"
+    },
+    {
+      "id": "A02",
+      "category": "api_execution_gate",
+      "mode": "api_whitelist_failure",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "DESTINATION_NOT_ALLOWED"
+    },
+    {
+      "id": "P10",
+      "category": "simulation_and_submission",
+      "mode": "api_wallet_failure",
+      "wallet_reason_code": "SIMULATION_REVERTED",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "SIMULATION_REVERTED"
+    },
+    {
+      "id": "P06",
+      "category": "simulation_and_submission",
+      "mode": "api_wallet_failure",
+      "wallet_reason_code": "NO_USABLE_QUOTE",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "NO_USABLE_QUOTE"
+    },
+    {
+      "id": "P08",
+      "category": "simulation_and_submission",
+      "mode": "api_wallet_failure",
+      "wallet_reason_code": "OUTPUT_TOO_SMALL",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "OUTPUT_TOO_SMALL"
+    },
+    {
+      "id": "AAVE_WITHDRAW_POSITION",
+      "category": "aave_protocol_state",
+      "mode": "api_wallet_failure",
+      "wallet_reason_code": "AAVE_POSITION_UNAVAILABLE",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "AAVE_POSITION_UNAVAILABLE"
+    },
+    {
+      "id": "AAVE_BORROW_COLLATERAL",
+      "category": "aave_protocol_state",
+      "mode": "api_wallet_failure",
+      "wallet_reason_code": "COLLATERAL_INSUFFICIENT",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "COLLATERAL_INSUFFICIENT"
+    },
+    {
+      "id": "AAVE_REPAY_DEBT",
+      "category": "aave_protocol_state",
+      "mode": "api_wallet_failure",
+      "wallet_reason_code": "AAVE_DEBT_UNAVAILABLE",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "AAVE_DEBT_UNAVAILABLE"
+    },
+    {
+      "id": "E01",
+      "category": "simulation_and_submission",
+      "mode": "api_wallet_failure",
+      "wallet_reason_code": "SPONSORSHIP_DENIED",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "SPONSORSHIP_DENIED"
+    },
+    {
+      "id": "E02",
+      "category": "simulation_and_submission",
+      "mode": "api_wallet_failure",
+      "wallet_reason_code": "INVALID_SIGNATURE",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "INVALID_SIGNATURE"
+    },
+    {
+      "id": "E04",
+      "category": "simulation_and_submission",
+      "mode": "api_wallet_failure",
+      "wallet_reason_code": "EXECUTION_REVERTED",
+      "expected_outcome": "BLOCKED",
+      "expected_reason_code": "EXECUTION_REVERTED"
+    },
+    {
+      "id": "E05",
+      "category": "simulation_and_submission",
+      "mode": "api_wallet_success",
+      "expected_outcome": "EXECUTED",
+      "expected_reason_code": "TRANSACTION_SUBMITTED"
+    },
+    {
+      "id": "W04",
+      "category": "documented_gap",
+      "mode": "not_implemented",
+      "requirement": "Bind the connected user wallet to the backend execution signer.",
+      "expected_outcome": "NOT_IMPLEMENTED",
+      "expected_reason_code": "SIGNER_BINDING_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "W06",
+      "category": "documented_gap",
+      "mode": "not_implemented",
+      "requirement": "Enforce a cumulative ERC-20 spending budget.",
+      "expected_outcome": "NOT_IMPLEMENTED",
+      "expected_reason_code": "TOKEN_BUDGET_NOT_IMPLEMENTED"
+    },
+    {
+      "id": "E03",
+      "category": "documented_gap",
+      "mode": "not_implemented",
+      "requirement": "Persist pending submissions and reconcile transaction receipts.",
+      "expected_outcome": "NOT_IMPLEMENTED",
+      "expected_reason_code": "RECEIPT_RECONCILIATION_NOT_IMPLEMENTED"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ load_dotenv()
 from db.verifier import verify_intent
 from wallet.erc4337 import add_to_whitelist, prepare_swap
 
-async def test_full_pipeline():
+async def run_full_pipeline():
     print("\n=== FULL PIPELINE TEST ===\n")
 
     # Step 1 — simulate user prompt already parsed by LLM
@@ -55,4 +55,5 @@ async def test_full_pipeline():
     else:
         print(f"\nBLOCKED by {result.get('blocked_by')}: {result.get('reason')}")
 
-asyncio.run(test_full_pipeline())
+if __name__ == "__main__":
+    asyncio.run(run_full_pipeline())

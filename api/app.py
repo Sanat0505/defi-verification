@@ -1,169 +1,246 @@
+"""FastAPI surface for interpretation, graph verification, and safe execution."""
+
+from __future__ import annotations
+
+import asyncio
+import logging
 import os
+import re
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from pydantic import BaseModel
-from dotenv import load_dotenv
 
-from llm.intent_parser import parse_intent
+from core.config import settings
+from core.models import Decision, ExecuteRequest, PromptRequest
+from core.state import capability_store, conversation_store
+from db.connection import close_driver
 from db.verifier import verify_intent
-from wallet.erc4337 import execute_swap, add_to_whitelist
+from services.pipeline import process_prompt
+from wallet.erc4337 import add_to_whitelist, execute_aave, execute_swap
 
-load_dotenv()
 
-app = FastAPI()
+logging.basicConfig(
+    level=os.getenv("LOG_LEVEL", "INFO").upper(),
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+)
+logger = logging.getLogger(__name__)
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    yield
+    close_driver()
+
+
+app = FastAPI(
+    title="DeFi Relationship Verification Prototype",
+    lifespan=lifespan,
+)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-class PromptRequest(BaseModel):
-    prompt: str
-    wallet_address: str | None = None
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     return templates.TemplateResponse(request=request, name="index.html")
 
-@app.post("/api/verify")
-async def verify(req: PromptRequest):
-    intent = await parse_intent(req.prompt)
-    if "error" in intent:
-        return {"decision": "ERROR", "message": intent["error"]}
 
-    result = verify_intent(
-        protocol  = intent.get("protocol"),
-        token_in  = intent.get("token_in"),
-        token_out = intent.get("token_out"),
-        action    = intent.get("action", "swap"),
-        chain_id  = 11155111
-    )
-    result["intent"] = intent
-    result["wallet"] = req.wallet_address
-    return result
+@app.post("/api/verify")
+async def verify(request: PromptRequest):
+    logger.info("Verification request received conversation_id=%s", request.conversation_id)
+    return await process_prompt(request)
+
+
+@app.post("/api/conversation/reset")
+async def reset_conversation(request: dict):
+    conversation_id = request.get("conversation_id")
+    if isinstance(conversation_id, str):
+        conversation_store.clear(conversation_id)
+    return {"status": "reset", "conversation_id": conversation_id}
+
+
+def _same_authority(saved, current: dict) -> bool:
+    """Ensure current graph authority still resolves the saved structured operation."""
+    if current.get("decision") != Decision.APPROVED.value:
+        return False
+    if str(current.get("verified_address", "")).lower() != saved.verified_address.lower():
+        return False
+    if str(current.get("verified_selector", "")).lower() != saved.verified_selector.lower():
+        return False
+    if saved.action != "swap":
+        return (
+            str(current.get("verified_asset", "")).lower()
+            == str(saved.verified_asset or "").lower()
+            and current.get("verified_asset_decimals") == saved.verified_asset_decimals
+        )
+    current_routes = {
+        (
+            str(route.get("router_address", "")).lower(),
+            str(route.get("pool_address", "")).lower(),
+            int(route.get("pool_fee", 0)),
+            str(route.get("token_in_address", "")).lower(),
+            str(route.get("token_out_address", "")).lower(),
+        )
+        for route in current.get("routes") or []
+    }
+    saved_routes = {
+        (
+            str(route.get("router_address", "")).lower(),
+            str(route.get("pool_address", "")).lower(),
+            int(route.get("pool_fee", 0)),
+            str(route.get("token_in_address", "")).lower(),
+            str(route.get("token_out_address", "")).lower(),
+        )
+        for route in saved.routes
+    }
+    return bool(current_routes) and bool(current_routes & saved_routes)
 
 
 @app.post("/api/execute")
-async def execute(req: PromptRequest):
-    """Execute a verified transaction via ERC-4337 smart wallet."""
-    if not req.wallet_address:
-        return {
-            "decision": "FAILED",
-            "execution": {"reason": "Wallet not connected"}
-        }
-
-    intent = await parse_intent(req.prompt)
-    if "error" in intent:
-        return {"decision": "FAILED", "execution": {"reason": intent["error"]}}
-
-    # Verify the intent again (security check)
-    result = verify_intent(
-        protocol  = intent.get("protocol"),
-        token_in  = intent.get("token_in"),
-        token_out = intent.get("token_out"),
-        action    = intent.get("action", "swap"),
-        chain_id  = 11155111
-    )
-
-    # If verification failed, don't execute
-    if result["decision"] != "APPROVED":
-        return {
-            "decision": "FAILED",
-            "execution": {"reason": result.get("reason", "Verification failed")}
-        }
-
-    action = intent.get("action", "swap").lower()
-    if action != "swap":
+async def execute(request: ExecuteRequest):
+    """Execute only a live server-held approved structured verification result."""
+    if not re.fullmatch(r"0x[a-fA-F0-9]{40}", request.wallet_address):
         return {
             "decision": "FAILED",
             "execution": {
-                "reason": (
-                    f"Real {action} execution is not implemented yet. "
-                    "The current execution layer supports Uniswap V3 ERC-20 swaps only."
-                )
+                "reason_code": "INVALID_WALLET_ADDRESS",
+                "reason": "Wallet address is invalid",
             },
         }
 
-    amount = intent.get("amount")
-    if amount is None:
+    operation, claim_status = capability_store.claim_with_status(
+        request.verification_id
+    )
+    if not operation:
         return {
             "decision": "FAILED",
-            "execution": {"reason": "A swap amount is required"},
+            "execution": {
+                "reason_code": claim_status,
+                "reason": "Verification is missing, expired, or already used",
+            },
         }
-
-    routes = result.get("routes") or []
-    if not routes:
+    if operation.decision != Decision.APPROVED:
         return {
             "decision": "FAILED",
-            "execution": {"reason": "The graph returned no executable Uniswap routes"},
+            "execution": {
+                "reason_code": "VERIFICATION_NOT_APPROVED",
+                "reason": "Execution requires an APPROVED verification",
+            },
+        }
+    intent = operation.intent
+    current = await asyncio.to_thread(
+        verify_intent,
+        intent.protocol,
+        intent.token_in,
+        intent.token_out,
+        intent.action,
+        intent.chain_id,
+    )
+    if not _same_authority(operation, current):
+        return {
+            "decision": "FAILED",
+            "execution": {
+                "reason_code": "APPROVAL_MISMATCH",
+                "reason": "The authoritative graph result changed or is no longer current; verify again"
+            },
         }
 
-    verified_address = result.get("verified_address")
-    # The ERC-4337 batch calls the input token for approve() and then the
-    # router for exactInputSingle(). Both destinations must originate in the
-    # graph result; no client- or LLM-provided address is accepted.
-    try:
+    routes = current.get("routes") or []
+    amount_text = format(intent.amount, "f")
+    if operation.action == "swap":
         trusted_destinations = {
-            verified_address,
+            current.get("verified_address"),
             *(route.get("token_in_address") for route in routes),
         }
+    else:
+        trusted_destinations = {current.get("verified_address")}
+        if operation.action in {"supply", "repay"}:
+            trusted_destinations.add(current.get("verified_asset"))
+    try:
         for destination in trusted_destinations:
-            whitelist_result = add_to_whitelist(destination)
-            if not whitelist_result.get("success"):
-                error_msg = whitelist_result.get("error", "Unknown whitelist error")
+            if not destination:
                 return {
                     "decision": "FAILED",
-                    "execution": {"reason": f"Whitelist failed: {error_msg}"}
+                    "execution": {
+                        "reason_code": "INVALID_EXECUTION_DATA",
+                        "reason": "Verified execution data is incomplete",
+                    },
                 }
-    except Exception as e:
-        return {
-            "decision": "FAILED",
-            "execution": {"reason": f"Whitelist exception: {str(e)}"}
-        }
-
-    # Quote, apply slippage protection, and submit an atomic approve+swap
-    # UserOperation. ZeroDev simulates it before sponsorship/broadcast.
-    try:
-        slippage_bps = int(os.getenv("SWAP_SLIPPAGE_BPS", "100"))
-        exec_result = execute_swap(
-            routes=routes,
-            amount=str(amount),
-            slippage_bps=slippage_bps,
-        )
-
-        # Success
-        if exec_result.get("executed"):
-            return {
-                "decision": "EXECUTED",
-                "execution": {
-                    "tx_hash": exec_result.get("tx_hash"),
-                    "smart_wallet": exec_result.get("smart_wallet"),
-                    "verified_address": verified_address,
-                    "pool": exec_result.get("pool"),
-                    "pool_fee": exec_result.get("pool_fee"),
-                    "amount_in": exec_result.get("amount_in"),
-                    "quoted_amount_out": exec_result.get("quoted_amount_out"),
-                    "minimum_amount_out": exec_result.get("minimum_amount_out"),
-                    "token_in": exec_result.get("token_in"),
-                    "token_out": exec_result.get("token_out"),
-                    "slippage_bps": exec_result.get("slippage_bps"),
-                    "explorer": exec_result.get("explorer"),
-                    "latency_ms": exec_result.get("latency_ms", 0)
+            whitelist_result = await asyncio.to_thread(add_to_whitelist, destination)
+            if not whitelist_result.get("success"):
+                return {
+                    "decision": "FAILED",
+                    "execution": {
+                        "reason_code": whitelist_result.get(
+                            "reason_code", "DESTINATION_POLICY_ERROR"
+                        ),
+                        "reason": f"Whitelist failed: {whitelist_result.get('error', 'unknown error')}"
+                    },
                 }
-            }
 
-        # Failed
+        if operation.action == "swap":
+            exec_result = await asyncio.to_thread(
+                execute_swap,
+                routes,
+                amount_text,
+                int(os.getenv("SWAP_SLIPPAGE_BPS", "100")),
+            )
+        else:
+            exec_result = await asyncio.to_thread(execute_aave, {
+                "action": operation.action,
+                "pool_address": current["verified_address"],
+                "asset_address": current["verified_asset"],
+                "asset_symbol": operation.verified_asset_symbol,
+                "asset_decimals": current["verified_asset_decimals"],
+                "amount": amount_text,
+                "function_signature": current["verified_function"],
+                "function_selector": current["verified_selector"],
+                "interest_rate_mode": operation.interest_rate_mode,
+                "referral_code": operation.referral_code,
+            })
+    except Exception:
+        logger.exception("Structured execution failed")
         return {
             "decision": "FAILED",
-            "execution": {"reason": exec_result.get("reason", "Execution failed")}
+            "execution": {
+                "reason_code": "EXECUTION_ERROR",
+                "reason": "Transaction execution failed",
+            },
         }
-    except Exception as e:
+
+    if not exec_result.get("executed"):
         return {
             "decision": "FAILED",
-            "execution": {"reason": f"Execution error: {str(e)}"}
+            "execution": {
+                "reason_code": exec_result.get("reason_code", "EXECUTION_FAILED"),
+                "reason": exec_result.get("reason", "Execution failed"),
+            },
         }
+    return {
+        "decision": "EXECUTED",
+        "execution": {
+            "reason_code": "TRANSACTION_SUBMITTED",
+            **{
+                key: exec_result.get(key)
+                for key in (
+                    "tx_hash", "smart_wallet", "verified_address", "pool", "pool_fee",
+                    "amount_in", "quoted_amount_out", "minimum_amount_out", "token_in",
+                    "token_out", "slippage_bps", "asset_address", "action",
+                    "interest_rate_mode", "referral_code", "explorer", "latency_ms",
+                )
+            },
+        },
+    }
 
 
 @app.get("/api/health")
 async def health():
-    return {"status": "ok", "network": "Ethereum Sepolia", "chain_id": 11155111}
+    return {
+        "status": "ok",
+        "network": settings.supported_network,
+        "chain_id": settings.supported_chain_id,
+        "model": settings.llm_model,
+    }

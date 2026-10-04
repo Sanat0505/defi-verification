@@ -28,7 +28,8 @@ Show the network, protocol family, deployment, supply action, Pool contract,
 supply function, USDC reserve and token. Explain how the function and reserve
 connect to the same deployment and action. This is structural relationship
 verification; amount validation and live reserve configuration are separate.
-The application currently implements swap execution, not Aave supply execution.
+After approval, the application can construct and submit Aave V3 `supply`,
+`withdraw`, `borrow`, and `repay` calls through the Sepolia ERC-4337 wallet.
 
 ## Large: show the populated knowledge graph
 

@@ -142,6 +142,7 @@ V2_CONSTRAINTS = (
     "CREATE CONSTRAINT fixture_node_key IF NOT EXISTS FOR (n:FixtureNode) REQUIRE n.key IS UNIQUE",
     "CREATE CONSTRAINT function_key IF NOT EXISTS FOR (n:Function) REQUIRE n.key IS UNIQUE",
     "CREATE CONSTRAINT fee_tier_key IF NOT EXISTS FOR (n:FeeTier) REQUIRE n.key IS UNIQUE",
+    "CREATE CONSTRAINT knowledge_source_key IF NOT EXISTS FOR (n:KnowledgeSource) REQUIRE n.key IS UNIQUE",
 )
 
 
@@ -252,9 +253,11 @@ def _add_functions(session, deployment_key, protocol_key):
     ).consume()
 
 
-def load_aave_v2(chain_id):
+def load_aave_v2(chain_id, source=None):
     source_url = AAVE_SOURCES[chain_id]
-    contracts, assets = _parse_address_book(fetch_text(source_url))
+    # Acquisition and validation may be performed by db.sync before any graph
+    # mutation. Direct callers retain the previous behavior.
+    contracts, assets = _parse_address_book(source if source is not None else fetch_text(source_url))
     deployment_key = _deployment_key("aave-v3", chain_id)
     synced_at = _now()
     with get_session() as session:
@@ -587,6 +590,22 @@ def load_uniswap_v2(chain_id, feed=None):
         raise ValueError(f"No active Uniswap V3 deployments for chain {chain_id}")
     factory = next(item["address"] for item in records if item["role"] == "factory")
     deployment_key = _deployment_key("uniswap-v3", chain_id)
+    # Complete all fallible external acquisition before deactivating current
+    # graph relationships. A temporary RPC failure must preserve admitted data.
+    rpc_url = os.getenv(NETWORKS[chain_id]["rpc_env"])
+    pools = list(CURATED_MAINNET_POOLS) if chain_id == 1 else []
+    latest = None
+    rpc = None
+    if rpc_url:
+        rpc = RpcClient(rpc_url)
+        if rpc.chain_id() != chain_id:
+            raise ValueError(f"{NETWORKS[chain_id]['rpc_env']} is on the wrong chain")
+        latest, discovered = _scan_factory(
+            rpc, factory, NETWORKS[chain_id]["factory_start_block"]
+        )
+        by_address = {pool["address"]: pool for pool in pools}
+        by_address.update({pool["address"]: pool for pool in discovered})
+        pools = list(by_address.values())
     with get_session() as session:
         _upsert_deployment(
             session, "uniswap-v3", "Uniswap V3", chain_id, UNISWAP_DEPLOYMENTS_URL
@@ -623,20 +642,6 @@ def load_uniswap_v2(chain_id, feed=None):
         ).consume()
         _add_functions(session, deployment_key, "uniswap-v3")
 
-        rpc_url = os.getenv(NETWORKS[chain_id]["rpc_env"])
-        pools = list(CURATED_MAINNET_POOLS) if chain_id == 1 else []
-        latest = None
-        rpc = None
-        if rpc_url:
-            rpc = RpcClient(rpc_url)
-            if rpc.chain_id() != chain_id:
-                raise ValueError(f"{NETWORKS[chain_id]['rpc_env']} is on the wrong chain")
-            latest, discovered = _scan_factory(
-                rpc, factory, NETWORKS[chain_id]["factory_start_block"]
-            )
-            by_address = {pool["address"]: pool for pool in pools}
-            by_address.update({pool["address"]: pool for pool in discovered})
-            pools = list(by_address.values())
         coverage = _upsert_uniswap_pools(
             session, deployment_key, chain_id, factory, pools, rpc
         )

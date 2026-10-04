@@ -51,7 +51,7 @@ The four deployment keys are:
 3. `FixtureGraph {key: 'fixture-root'}` contains deterministic approved and
    blocked security scenarios without influencing the main verifier.
 
-Run `python -m db.graph_builder` to synchronize all three layers. Useful Neo4j
+Run `python -m db.sync` to synchronize all three layers. Useful Neo4j
 visualization queries are in `db/V2_QUERIES.cypher`.
 
 ## Mainnet pool ingestion

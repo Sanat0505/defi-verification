@@ -9,16 +9,16 @@ def process(intent):
         action    = intent.get("action", "swap")
     )
     if result["decision"] == "APPROVED":
-        print(f"  APPROVED")
+        print("  APPROVED")
         print(f"  Verified address : {result['verified_address']}")
         print(f"  Protocol         : {result['protocol']}")
         print(f"  Latency          : {result['latency_ms']}ms")
-        print(f"  Next step        : build payload → send to ERC-4337 wallet")
+        print("  Next step        : build payload -> send to ERC-4337 wallet")
     else:
-        print(f"  BLOCKED")
+        print("  BLOCKED")
         print(f"  Reason           : {result['reason']}")
         print(f"  Latency          : {result['latency_ms']}ms")
-        print(f"  No payload built. Funds safe.")
+        print("  No payload built. Funds safe.")
     return result
 
 if __name__ == "__main__":

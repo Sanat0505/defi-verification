@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "timestamp_utc": "2026-10-03T14:24:55.286512+00:00",
+    "dataset": "G:\\TU_Chemnitz\\Thesis\\defi-verification\\evaluation\\datasets\\wallet_cases.json",
+    "dataset_version": "1.0.0",
+    "python": "3.13.1",
+    "node": "C:\\Program Files\\nodejs\\node.EXE",
+    "broadcasting_enabled": false
+  },
+  "metrics": {
+    "total_scenarios": 1,
+    "implemented_scenarios": 1,
+    "documented_gaps": 0,
+    "passed_implemented": 1,
+    "failed_implemented": 0,
+    "implemented_conformance": 1.0,
+    "transactions_broadcast": 0,
+    "average_latency_ms": 186.91,
+    "by_category": {
+      "destination_policy": {
+        "scenarios": 1,
+        "passed": 1,
+        "gaps": 0
+      }
+    },
+    "gap_ids": []
+  },
+  "results": [
+    {
+      "id": "W02",
+      "category": "destination_policy",
+      "mode": "wallet_policy",
+      "expected_outcome": "BLOCKED",
+      "actual_outcome": "BLOCKED",
+      "expected_reason_code": "DESTINATION_NOT_ALLOWED",
+      "actual_reason_code": "DESTINATION_NOT_ALLOWED",
+      "passed": true,
+      "implemented": true,
+      "transaction_broadcast": false,
+      "latency_ms": 186.91,
+      "evidence": {
+        "wallet_result": {
+          "success": true,
+          "allowed": false,
+          "ok": false,
+          "reason_code": "DESTINATION_NOT_ALLOWED",
+          "reason": "Address 0x11111111... not whitelisted by graph layer"
+        }
+      }
+    }
+  ]
+}

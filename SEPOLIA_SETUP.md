@@ -90,10 +90,21 @@ Run a non-broadcasting preflight with:
 python tests/test_swap_preflight.py
 ```
 
+## Aave execution
+
+Aave V3 `supply`, `withdraw`, `borrow`, and `repay` operations use the
+graph-derived Pool and reserve asset. Supply and repay batch any required
+ERC-20 approval with the Pool call. Borrow and repay use Aave's variable-rate
+mode (`2`). ZeroDev simulates the ERC-4337 UserOperation before broadcast.
+
+Balances, supplied positions, collateral, debt, and health factor belong to
+the Kernel smart wallet, not the connected MetaMask account. A verified request
+can therefore still fail simulation when that smart wallet lacks the required
+balance, position, collateral, or debt.
+
 ## Prototype boundary
 
-Real Aave supply/withdraw/borrow/repay calldata is not implemented yet.
-Uniswap execution is single-pool V3 routing on Sepolia and should use test
-tokens only. The graph and simulation establish provenance and executable
-consistency; they do not guarantee profit, liquidity, or protection from all
-protocol and market risks.
+Aave and Uniswap execution on Sepolia should use test tokens only. Uniswap
+execution remains single-pool V3 routing. The graph and simulation establish
+provenance and executable consistency; they do not guarantee profit, liquidity,
+position solvency, or protection from all protocol and market risks.

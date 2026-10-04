@@ -1,24 +1,12 @@
-"""
-wallet/erc4337.py
+"""Python wrapper for the ZeroDev/ERC-4337 wallet subprocess."""
 
-Python wrapper around wallet.mjs (ZeroDev JS SDK).
-Called from FastAPI after graph verification APPROVES a transaction.
-
-Architecture:
-    Graph layer APPROVED
-        → add_to_whitelist(verified_address)   ← registers address in JS session
-        → execute(verified_address, ...)        ← sends UserOperation via ZeroDev
-"""
-
-import os
 import json
-import time
+import os
 import subprocess
 from pathlib import Path
 
-# Path to the JS wallet script — sits in wallet/ folder
 WALLET_JS = Path(__file__).parent / "wallet.mjs"
-NODE_CMD  = "node"
+NODE_CMD = os.getenv("NODE_CMD", "node")
 
 
 def _call_js(command: str, args: dict = None) -> dict:
@@ -27,17 +15,15 @@ def _call_js(command: str, args: dict = None) -> dict:
     if args:
         cmd.append(json.dumps(args))
 
-    # Passes PRIVATE_KEY, SEPOLIA_RPC, and ZeroDev configuration from .env.
-    env = {**os.environ}
-
-    # Command-specific timeouts: add_whitelist is fast (file I/O only),
-    # Swap preflight and execution need RPC/bundler time.
     timeout_map = {
         "add_whitelist": 15,    # Local I/O; allow for slow Windows cold starts
         "check_session": 15,    # Local I/O; allow for slow Windows cold starts
+        "evaluate_policy": 15,  # Deterministic local wallet-policy evaluation
         "create_wallet": 120,   # First load plus Sepolia/ZeroDev RPC calls
         "prepare_swap": 120,    # Read-only balance/allowance/quote checks
-        "send_swap": 180        # Quote plus sponsored UserOperation receipt
+        "send_swap": 180,       # Quote plus sponsored UserOperation receipt
+        "prepare_aave": 120,    # Validate Aave calldata and wallet state
+        "send_aave": 180,       # Sponsored Aave V3 UserOperation
     }
     timeout = timeout_map.get(command, 60)
 
@@ -47,14 +33,12 @@ def _call_js(command: str, args: dict = None) -> dict:
             capture_output=True,
             text=True,
             timeout=timeout,
-            env=env
         )
         if result.returncode != 0:
             return {
                 "success": False,
                 "error": result.stderr.strip() or "JS script failed"
             }
-        # Parse the last JSON line from stdout
         lines = [l.strip() for l in result.stdout.strip().split("\n") if l.strip()]
         for line in reversed(lines):
             try:
@@ -86,28 +70,14 @@ def add_to_whitelist(address: str) -> dict:
     return _call_js("add_whitelist", {"address": address})
 
 
-def _legacy_execute(verified_address: str, amount_eth: float, action: str) -> dict:
-    """
-    Send a UserOperation via ZeroDev on Ethereum Sepolia.
+def check_session(address: str, value_eth: float = 0) -> dict:
+    """Evaluate the local destination/value policy without broadcasting."""
+    return _call_js("check_session", {"to": address, "value_eth": value_eth})
 
-    Args:
-        verified_address: address resolved from graph (NOT from LLM)
-        amount_eth:       transaction value in ETH
-        action:           swap / supply / transfer etc.
 
-    Returns dict with:
-        executed (bool)
-        tx_hash (str) if executed
-        blocked_by (str) if blocked
-        reason (str) if blocked
-        latency_ms (int)
-        explorer (str) — Sepolia Etherscan link if executed
-    """
-    return {
-        "success": False,
-        "executed": False,
-        "reason": "Legacy empty-calldata execution is disabled",
-    }
+def evaluate_policy(case: dict) -> dict:
+    """Run a deterministic policy or transaction-data check in wallet.mjs."""
+    return _call_js("evaluate_policy", case)
 
 
 def prepare_swap(routes: list[dict], amount: str, slippage_bps: int = 100) -> dict:
@@ -128,6 +98,16 @@ def execute_swap(routes: list[dict], amount: str, slippage_bps: int = 100) -> di
     })
 
 
+def prepare_aave(operation: dict) -> dict:
+    """Build and validate an approved graph-derived Aave V3 call without sending."""
+    return _call_js("prepare_aave", operation)
+
+
+def execute_aave(operation: dict) -> dict:
+    """Submit an approved graph-derived Aave V3 operation."""
+    return _call_js("send_aave", operation)
+
+
 def execute(*_args, **_kwargs) -> dict:
     """Reject the removed empty-calldata ETH-transfer execution path."""
     return {
@@ -138,29 +118,3 @@ def execute(*_args, **_kwargs) -> dict:
             "Use execute_swap() with graph-derived routes."
         ),
     }
-
-
-# ── Quick test ────────────────────────────────────────────
-if __name__ == "__main__":
-    from dotenv import load_dotenv
-    load_dotenv()
-
-    print("Step 1: Creating ERC-4337 smart wallet...")
-    wallet = create_wallet()
-    print(json.dumps(wallet, indent=2))
-
-    if wallet.get("success"):
-        test_addr = "0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640"
-
-        print("\nStep 2: Adding address to whitelist...")
-        wl = add_to_whitelist(test_addr)
-        print(json.dumps(wl, indent=2))
-
-        print("\nStep 3: Sending UserOperation...")
-        result = execute(test_addr, 0.0001, "swap")
-        print(json.dumps(result, indent=2))
-
-        if result.get("executed"):
-            print(f"\nSUCCESS — view on explorer: {result.get('explorer')}")
-        else:
-            print(f"\nBLOCKED by {result.get('blocked_by')}: {result.get('reason')}")

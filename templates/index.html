@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
   <style>
-    /* ─── Design Tokens ───────────────────────────────────────────────── */
+    /* Design tokens */
     :root {
       --bg:          #F7F8FC;
       --surface:     #FFFFFF;
@@ -43,7 +43,7 @@
       --r-xs:  8px;
     }
 
-    /* ─── Reset ───────────────────────────────────────────────────────── */
+    /* Reset */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -54,7 +54,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ─── Animations ──────────────────────────────────────────────────── */
+    /* Animations */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0);    }
@@ -75,7 +75,7 @@
       100% { box-shadow: var(--sh-lg); }
     }
 
-    /* ─── Navbar ──────────────────────────────────────────────────────── */
+    /* Navigation */
     .navbar {
       position: sticky; top: 0; z-index: 200;
       height: 64px; padding: 0 28px;
@@ -123,13 +123,13 @@
       animation: pulse 2.2s ease infinite;
     }
 
-    /* ─── Main wrapper ────────────────────────────────────────────────── */
+    /* Main layout */
     .main {
       flex: 1; max-width: 760px; width: 100%; margin: 0 auto;
       padding: 0 20px; display: flex; flex-direction: column;
     }
 
-    /* ─── Welcome Screen ──────────────────────────────────────────────── */
+    /* Welcome screen */
     #welcome-screen {
       flex: 1; display: flex; flex-direction: column;
       align-items: center; justify-content: center;
@@ -177,7 +177,7 @@
     .ex-card-hint  { font-size: 11px; color: var(--blue); margin-top: 8px; font-weight: 600; opacity: 0; transition: opacity .2s; }
     .ex-card:hover .ex-card-hint { opacity: 1; }
 
-    /* ─── Chat container ──────────────────────────────────────────────── */
+    /* Chat */
     #chat-container {
       display: none; flex-direction: column; gap: 0;
       padding: 32px 0 0;
@@ -204,7 +204,7 @@
       color: var(--navy); box-shadow: var(--sh-sm);
     }
 
-    /* ─── Processing Card ─────────────────────────────────────────────── */
+    /* Processing card */
     .proc-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--r); padding: 22px 22px 16px; box-shadow: var(--sh);
@@ -249,7 +249,7 @@
     .exec-loading .spin { width: 18px; height: 18px; border-width: 2.5px; }
     .exec-loading-label { font-size: 14px; color: var(--gray-5); font-weight: 500; }
 
-    /* ─── Verification Card ───────────────────────────────────────────── */
+    /* Verification card */
     .verif-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--r); overflow: hidden;
@@ -292,6 +292,12 @@
       border-radius: var(--r-xs);
       font-size: 14px; color: #7F1D1D; line-height: 1.6;
     }
+    .info-msg {
+      padding: 14px 16px;
+      background: #EFF6FF; border: 1px solid #BFDBFE;
+      border-radius: var(--r-xs);
+      font-size: 14px; color: #1E40AF; line-height: 1.6;
+    }
     .exec-cta {
       width: 100%; padding: 14px 20px;
       background: linear-gradient(135deg,#0052FF 0%,#0A35FF 100%);
@@ -306,7 +312,7 @@
     .exec-cta:active { transform: translateY(0); }
     .exec-cta:disabled { background: var(--gray-2); box-shadow: none; cursor: default; transform: none; }
 
-    /* ─── Success Card ────────────────────────────────────────────────── */
+    /* Success card */
     .success-card {
       background: var(--surface); border: 1px solid var(--green-border);
       border-radius: var(--r); overflow: hidden;
@@ -358,7 +364,7 @@
     }
     .view-btn:hover { background: var(--navy-2); transform: translateY(-1px); }
 
-    /* ─── Input Area ──────────────────────────────────────────────────── */
+    /* Input */
     .input-area {
       position: sticky; bottom: 0;
       padding: 14px 0 26px;
@@ -392,7 +398,7 @@
     .send-btn:active { transform: scale(.97); }
     .send-btn:disabled { background: var(--gray-2); box-shadow: none; cursor: default; transform: none; }
 
-    /* ─── Responsive ──────────────────────────────────────────────────── */
+    /* Responsive layout */
     @media (max-width: 600px) {
       .navbar { padding: 0 16px; }
       .main   { padding: 0 14px; }
@@ -406,7 +412,7 @@
 </head>
 <body>
 
-<!-- ══════════════ NAVBAR ══════════════ -->
+<!-- Navigation -->
 <nav class="navbar">
   <a class="nav-logo" href="#" aria-label="DeFi Agent home">
     <div class="nav-logo-icon">
@@ -429,10 +435,9 @@
   </button>
 </nav>
 
-<!-- ══════════════ MAIN ══════════════ -->
+<!-- Main -->
 <main class="main">
 
-  <!-- Welcome screen -->
   <div id="welcome-screen">
     <div class="welcome-orb" aria-hidden="true">
       <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
@@ -477,11 +482,14 @@
     </div>
   </div>
 
-  <!-- Chat messages -->
   <div id="chat-container"></div>
 
-  <!-- Input -->
   <div class="input-area">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:6px;">
+      <button type="button" onclick="newOperation()" style="border:0;background:transparent;color:#6B7280;cursor:pointer;font-size:12px;">
+        New operation
+      </button>
+    </div>
     <div class="input-shell">
       <div class="input-spark" aria-hidden="true">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
@@ -503,6 +511,6 @@
 
 </main>
 
-<script src="/static/app.js?v=20260709-fix-handlers"></script>
+<script src="/static/app.js?v=20261003-aave-execution"></script>
 </body>
 </html>

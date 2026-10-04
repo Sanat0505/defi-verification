@@ -1,11 +1,13 @@
-/* ─── State ────────────────────────────────────────────────────────────── */
+/* State */
 let walletAddress = null;
-let lastPrompt = null;
 let lastVerified = null;
+let verificationId = null;
+let conversationId = localStorage.getItem("conversationId") || null;
+let requestInFlight = false;
 let stepTimers = [];
 let currentProcCard = null;
 
-/* ─── Init ─────────────────────────────────────────────────────────────── */
+/* Initialization */
 document.addEventListener("DOMContentLoaded", function () {
   initEventListeners();
   restoreWalletState();
@@ -31,7 +33,6 @@ function initEventListeners() {
   );
 }
 
-// Restore wallet connection from localStorage
 function restoreWalletState() {
   const savedAddress = localStorage.getItem("walletAddress");
   if (savedAddress && window.ethereum) {
@@ -43,7 +44,6 @@ function restoreWalletState() {
   }
 }
 
-// Restore chat history from localStorage
 function restoreChatHistory() {
   const saved = localStorage.getItem("chatHistory");
   if (saved) {
@@ -60,7 +60,7 @@ function restoreChatHistory() {
     </div>`,
               true,
             );
-          } else {
+          } else if (msg.text) {
             appendRow(
               `
     <div class="ai-avatar" aria-hidden="true">
@@ -69,7 +69,7 @@ function restoreChatHistory() {
       </svg>
     </div>
     <div class="bubble-wrap ai">
-      <div class="bubble">${msg.html}</div>
+      <div class="bubble">${esc(msg.text)}</div>
     </div>`,
               false,
             );
@@ -82,15 +82,15 @@ function restoreChatHistory() {
   }
 }
 
-// Save chat message to localStorage
 function saveChatMessage(type, content) {
   const saved = localStorage.getItem("chatHistory") || "[]";
   try {
     const messages = JSON.parse(saved);
+    const holder = document.createElement("div");
+    holder.innerHTML = content;
     messages.push({
       type,
-      text: type === "user" ? content : undefined,
-      html: type === "ai" ? content : undefined,
+      text: type === "user" ? content : (holder.textContent || "").trim().slice(0, 2000),
     });
     // Keep only last 50 messages
     if (messages.length > 50) {
@@ -102,7 +102,6 @@ function saveChatMessage(type, content) {
   }
 }
 
-// Clear chat history
 function clearChatHistory() {
   localStorage.setItem("chatHistory", "[]");
   const cc = document.getElementById("chat-container");
@@ -111,25 +110,17 @@ function clearChatHistory() {
   }
 }
 
-// Update example cards state based on wallet connection
 function updateExampleCardsState() {
   const cards = document.querySelectorAll(".ex-card");
   cards.forEach((card) => {
-    if (walletAddress) {
-      card.style.opacity = "1";
-      card.style.cursor = "pointer";
-      card.style.pointerEvents = "auto";
-      card.classList.remove("disabled");
-    } else {
-      card.style.opacity = "0.5";
-      card.style.cursor = "not-allowed";
-      card.style.pointerEvents = "none";
-      card.classList.add("disabled");
-    }
+    card.style.opacity = "1";
+    card.style.cursor = "pointer";
+    card.style.pointerEvents = "auto";
+    card.classList.remove("disabled");
   });
 }
 
-/* ─── Wallet ───────────────────────────────────────────────────────────── */
+/* Wallet */
 async function connectWallet() {
   if (!window.ethereum) {
     showErrToast("🦊 MetaMask not found — please install it from metamask.io");
@@ -138,7 +129,6 @@ async function connectWallet() {
   const btn = document.getElementById("wallet-btn");
   const label = document.getElementById("wallet-label");
 
-  // Toggle disconnect
   if (walletAddress) {
     walletAddress = null;
     localStorage.removeItem("walletAddress");
@@ -174,7 +164,7 @@ async function connectWallet() {
   }
 }
 
-/* ─── Input helpers ────────────────────────────────────────────────────── */
+/* Input */
 function handleInputKey(e) {
   if (e.key === "Enter" && !e.shiftKey) {
     e.preventDefault();
@@ -189,11 +179,6 @@ function autoResize(el) {
 }
 
 function quick(text) {
-  if (!walletAddress) {
-    // Show browser alert for wallet check - visible immediately
-    alert("💼 Please connect your wallet first");
-    return;
-  }
   const el = document.getElementById("prompt-input");
   if (!el) {
     alert("⚠️ Input field is not ready yet. Please try again in a moment.");
@@ -205,18 +190,16 @@ function quick(text) {
   setTimeout(() => send(), 100);
 }
 
-/* ─── Chat display helpers ─────────────────────────────────────────────── */
+/* Chat display */
 function showChat() {
   const ws = document.getElementById("welcome-screen");
   const cc = document.getElementById("chat-container");
 
-  // Fade out welcome screen
   ws.style.animation = "fadeUp 0.4s ease reverse backwards";
   setTimeout(() => {
     ws.style.display = "none";
   }, 150);
 
-  // Show chat container
   cc.style.display = "flex";
   cc.style.flexDirection = "column";
   cc.style.opacity = "0";
@@ -234,7 +217,6 @@ function appendRow(innerHtml, isUser) {
   row.style.animation = "fadeUp 0.3s ease forwards";
   cc.appendChild(row);
 
-  // Smooth scroll to bottom
   requestAnimationFrame(() => {
     cc.scrollTop = cc.scrollHeight;
   });
@@ -278,7 +260,7 @@ function showErrToast(msg) {
     </svg><span>${esc(msg)}</span></div>`);
 }
 
-/* ─── Processing card ──────────────────────────────────────────────────── */
+/* Processing */
 const STEPS = [
   {
     label: "Understanding intent",
@@ -305,7 +287,6 @@ const STEP_ICONS = [
 const CHECK_SVG = `<svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00C48C" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>`;
 
 function buildProcessingCard(count) {
-  /* count = how many steps to render (default all 4) */
   const n = count || STEPS.length;
   const rows = STEPS.slice(0, n)
     .map((s, i) => {
@@ -350,7 +331,6 @@ function completeStep(i) {
 }
 
 function startStepAnimation(upTo) {
-  /* Animate steps 0 … upTo-1 with staggered timing */
   clearStepTimers();
   activateStep(0);
 
@@ -364,7 +344,6 @@ function startStepAnimation(upTo) {
     );
   }
 
-  /* Complete all steps at the end */
   stepTimers.push(
     setTimeout(
       () => {
@@ -389,7 +368,7 @@ function clearStepTimers() {
   stepTimers = [];
 }
 
-/* ─── Utility ──────────────────────────────────────────────────────────── */
+/* Utilities */
 function setSendDisabled(val) {
   const btn = document.getElementById("send-btn");
   const inp = document.getElementById("prompt-input");
@@ -397,7 +376,7 @@ function setSendDisabled(val) {
   if (inp) inp.disabled = val;
 }
 
-/* ─── Main send ────────────────────────────────────────────────────────── */
+/* Verification request */
 async function send() {
   const inputEl = document.getElementById("prompt-input");
   if (!inputEl) {
@@ -406,31 +385,34 @@ async function send() {
   }
   const prompt = inputEl.value.trim();
 
-  if (!prompt) return;
+  if (!prompt || requestInFlight) return;
 
-  if (!walletAddress) {
-    showErrToast("💼 Please connect your wallet first to use the DeFi Agent");
-    return;
-  }
-
-  lastPrompt = prompt;
+  requestInFlight = true;
+  verificationId = null;
   inputEl.value = "";
   inputEl.style.height = "auto";
 
   showChat();
   addUserMsg(prompt);
 
-  /* Show processing card with 3 animated steps (verify phase) */
   const procRow = addAIMsg(buildProcessingCard(3));
   startStepAnimation(3);
   setSendDisabled(true);
 
   try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 45000);
     const res = await fetch("/api/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt, wallet_address: walletAddress }),
+      body: JSON.stringify({
+        prompt,
+        wallet_address: walletAddress,
+        conversation_id: conversationId,
+      }),
+      signal: controller.signal,
     });
+    clearTimeout(timeout);
 
     if (!res.ok) {
       throw new Error(`Server error: ${res.statusText}`);
@@ -438,6 +420,9 @@ async function send() {
 
     const data = await res.json();
     lastVerified = data;
+    conversationId = data.conversation_id || conversationId;
+    if (conversationId) localStorage.setItem("conversationId", conversationId);
+    verificationId = data.verification_id || null;
 
     finishStepAnimation(3);
 
@@ -445,23 +430,24 @@ async function send() {
       procRow.remove();
       renderVerification(data);
       setSendDisabled(false);
+      requestInFlight = false;
     }, 800);
   } catch (e) {
     clearStepTimers();
     procRow.remove();
     showErrToast("⚠️ Error: " + e.message);
     setSendDisabled(false);
+    requestInFlight = false;
   }
 }
 
-/* ─── Verification result ──────────────────────────────────────────────── */
+/* Verification result */
 function renderVerification(data) {
   if (data.decision === "APPROVED") {
     const intent = data.intent || {};
     const protocol = esc(data.protocol || intent.protocol || "—");
     const action = esc(intent.action || "—");
 
-    // Handle token_in and token_out: show "USDC → WETH" or just "USDC" if no token_out
     let token = "—";
     const tokenIn = intent.token_in ? esc(intent.token_in) : null;
     const tokenOut = intent.token_out ? esc(intent.token_out) : null;
@@ -482,8 +468,8 @@ function renderVerification(data) {
             </svg>
           </div>
           <div>
-            <div class="verif-head-title ok">Intent Verified ✓</div>
-            <div class="verif-head-sub ok">Ready to execute on Sepolia testnet</div>
+            <div class="verif-head-title ok">Relationship Verified ✓</div>
+            <div class="verif-head-sub ok">${data.executable ? "Ready to execute on Sepolia testnet" : "Verification complete — no transaction submitted"}</div>
           </div>
         </div>
         <div class="verif-body">
@@ -500,15 +486,15 @@ function renderVerification(data) {
             </svg>
             Verified relationship found in the protocol knowledge graph
           </div>
-          <button class="exec-cta" onclick="executeTransaction(this)">
+          ${data.executable && data.verification_id ? `<button class="exec-cta" onclick="executeTransaction(this)">
             Execute Transaction
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
               <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
             </svg>
-          </button>
+          </button>` : `<div class="info-msg">${esc(data.execution_note || "Graph verification is complete. Transaction execution is not enabled for this operation.")}</div>`}
         </div>
       </div>`);
-  } else if (data.decision === "BLOCKED") {
+  } else if (["REJECTED", "UNSUPPORTED", "INSUFFICIENT_EVIDENCE", "BLOCKED"].includes(data.decision)) {
     addAIMsg(`
       <div class="verif-card">
         <div class="verif-head bad">
@@ -518,32 +504,38 @@ function renderVerification(data) {
             </svg>
           </div>
           <div>
-            <div class="verif-head-title bad">Transaction Rejected</div>
-            <div class="verif-head-sub bad">Verification failed</div>
+            <div class="verif-head-title bad">${esc(data.decision.replaceAll("_", " "))}</div>
+            <div class="verif-head-sub bad">No execution capability was issued</div>
           </div>
         </div>
         <div class="verif-body">
           <div class="reject-msg">
-            The requested protocol, token, or action relationship could not be verified in the knowledge graph.
-            ${data.reason ? "<br><br>" + esc(data.reason) : ""}
+            ${esc(data.reason || data.message || "The request could not be verified.")}
           </div>
         </div>
       </div>`);
+  } else if (data.decision === "NEEDS_CLARIFICATION") {
+    addAIMsg(`<div class="reject-msg">${esc(data.message || "Please provide more information.")}</div>`);
   } else {
     showErrToast(data.message || "Unexpected response from the server.");
   }
 }
 
-/* ─── Execute transaction ──────────────────────────────────────────────── */
+/* Transaction execution */
 async function executeTransaction(btn) {
-  if (!lastPrompt) return;
+  if (!verificationId) {
+    showErrToast("Verify the operation again before execution.");
+    return;
+  }
+  if (!walletAddress) {
+    showErrToast("Please connect a Sepolia wallet before execution.");
+    return;
+  }
 
-  /* Disable all pending execute buttons */
   document.querySelectorAll(".exec-cta").forEach((b) => {
     b.disabled = true;
   });
 
-  /* Show executing state */
   const execRow = addAIMsg(`
     <div class="proc-card">
       <div class="proc-title">Executing Transaction</div>
@@ -558,7 +550,7 @@ async function executeTransaction(btn) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        prompt: lastPrompt,
+        verification_id: verificationId,
         wallet_address: walletAddress,
       }),
     });
@@ -574,7 +566,7 @@ async function executeTransaction(btn) {
   }
 }
 
-/* ─── Execution result ─────────────────────────────────────────────────── */
+/* Execution result */
 function renderExecution(data) {
   if (data.decision === "EXECUTED" && data.execution) {
     const ex = data.execution;
@@ -679,9 +671,29 @@ function renderExecution(data) {
   }
 }
 
+async function newOperation() {
+  if (conversationId) {
+    fetch("/api/conversation/reset", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ conversation_id: conversationId }),
+    }).catch(() => {});
+  }
+  conversationId = null;
+  verificationId = null;
+  lastVerified = null;
+  localStorage.removeItem("conversationId");
+  clearChatHistory();
+  const welcome = document.getElementById("welcome-screen");
+  const chat = document.getElementById("chat-container");
+  if (welcome) welcome.style.display = "flex";
+  if (chat) chat.style.display = "none";
+}
+
 window.connectWallet = connectWallet;
 window.handleInputKey = handleInputKey;
 window.autoResize = autoResize;
 window.quick = quick;
 window.send = send;
 window.executeTransaction = executeTransaction;
+window.newOperation = newOperation;

@@ -1,5 +1,4 @@
 import sys
-import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from db.connection import get_session
@@ -34,10 +33,10 @@ def graph_summary():
 
 def sync_official_sources():
     """Build the canonical v2 Mainnet/Sepolia thesis graph."""
-    from db.graph_v2 import sync_v2
+    from db.sync import synchronize
 
     ensure_schema()
-    return sync_v2()
+    return synchronize()
 
 def create_protocol(name):
     with get_session() as s:

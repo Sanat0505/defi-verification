@@ -1,0 +1,2 @@
+id,category,mode,expected_outcome,actual_outcome,expected_reason_code,actual_reason_code,passed,implemented,transaction_broadcast,latency_ms
+W02,destination_policy,wallet_policy,BLOCKED,BLOCKED,DESTINATION_NOT_ALLOWED,DESTINATION_NOT_ALLOWED,True,True,False,186.91
