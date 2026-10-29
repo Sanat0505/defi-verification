@@ -1,13 +1,11 @@
 # Environment variables
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
 
 # Python
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
 .Python
 venv/
 env/
@@ -29,6 +27,10 @@ pnpm-debug.log*
 .idea/
 *.swp
 *.swo
+*~
+*.bak
+*.tmp
+*.temp
 
 # OS files
 .DS_Store
@@ -40,8 +42,11 @@ logs/
 
 # Testing / coverage
 .coverage
+.coverage.*
 htmlcov/
 .pytest_cache/
+.tox/
+.nox/
 coverage/
 coverage.xml
 
@@ -64,8 +69,16 @@ secrets.json
 *.sqlite3
 
 # Neo4j local data
-data/
-plugins/
-import/
-logs/
-run/
+/data/
+/plugins/
+/import/
+/run/
+
+# Local document builds and Office lock files
+/tmp/
+/evaluation/local-runs/
+~$*
+*.aux
+*.fls
+*.fdb_latexmk
+*.synctex.gz

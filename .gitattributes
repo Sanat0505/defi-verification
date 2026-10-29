@@ -1,0 +1,8 @@
+# Frozen evidence and hashed datasets must retain their exact bytes on checkout.
+/evaluation/400_prompts/** -text
+/evaluation/600_prompts/** -text
+/evaluation/graph/** -text
+/evaluation/wallet/** -text
+/evaluation/sources/** -text
+/evaluation/datasets/*.json -text
+/evaluation/MANIFEST.sha256 -text
