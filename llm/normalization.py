@@ -87,6 +87,27 @@ def _amount(value: Any) -> tuple[Decimal | None, str | None]:
     return parsed.normalize(), None
 
 
+def _unsupported_action_message(action: Any) -> str:
+    if _key(action) in {"stake", "staking"}:
+        return (
+            "Staking is not implemented by this prototype. Aave's staking mechanisms "
+            "are separate from the Aave V3 lending operations supported here: supply, "
+            "withdraw, borrow and repay on Ethereum Sepolia. Staking cannot be "
+            "treated as supplying tokens to a lending pool."
+        )
+    if _key(action) in {
+        "transfer", "transferring", "send", "sending", "wallet transfer",
+        "wallet to wallet transfer", "token transfer", "erc20 transfer", "erc 20 transfer",
+    }:
+        return (
+            "Wallet transfers send tokens to another address; Aave supply deposits "
+            "tokens into a lending pool. This prototype does not implement recipient "
+            "verification or standalone wallet transfers. It supports Uniswap V3 "
+            "swaps and Aave V3 supply, withdraw, borrow and repay on Ethereum Sepolia."
+        )
+    return f"The requested action '{action}' is not supported by this prototype."
+
+
 def normalize_candidate(raw: dict[str, Any]) -> IntentResolution:
     """Normalize untrusted semantic extraction without inventing graph facts."""
     unhandled = constraint_labels(raw.get("unhandled_constraints"))
@@ -104,7 +125,7 @@ def normalize_candidate(raw: dict[str, Any]) -> IntentResolution:
     if unsupported_action and _key(unsupported_action) not in ACTION_ALIASES:
         return IntentResolution(
             status=Decision.UNSUPPORTED,
-            message=f"The requested action '{unsupported_action}' is not supported by this prototype.",
+            message=_unsupported_action_message(unsupported_action),
             error_code="unsupported_action",
         )
     action_raw = _field(raw, "action", "operation")
@@ -121,7 +142,7 @@ def normalize_candidate(raw: dict[str, Any]) -> IntentResolution:
     if action_raw and not action:
         return IntentResolution(
             status=Decision.UNSUPPORTED,
-            message=f"The requested action '{action_raw}' is not supported by this prototype.",
+            message=_unsupported_action_message(action_raw),
             error_code="unsupported_action",
         )
     if protocol_raw and not protocol:
