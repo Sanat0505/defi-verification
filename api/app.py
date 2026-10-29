@@ -16,7 +16,7 @@ from fastapi.templating import Jinja2Templates
 from core.config import settings
 from core.models import Decision, ExecuteRequest, PromptRequest
 from core.state import capability_store, conversation_store
-from db.connection import close_driver
+from db.connection import check_connection, close_driver
 from db.verifier import verify_intent
 from services.pipeline import process_prompt
 from llm.normalization import validate_candidate
@@ -32,8 +32,20 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
-    yield
-    close_driver()
+    try:
+        logger.info("Waiting for Neo4j to accept database queries")
+        try:
+            await asyncio.to_thread(check_connection)
+        except Exception as exc:
+            raise RuntimeError(
+                "Neo4j is not ready. Wait for the instance to finish starting, "
+                "check NEO4J_URI, NEO4J_USER and NEO4J_PASSWORD, then run "
+                "'python -m db.connection' before restarting the API."
+            ) from exc
+        logger.info("Neo4j is ready")
+        yield
+    finally:
+        close_driver()
 
 
 app = FastAPI(

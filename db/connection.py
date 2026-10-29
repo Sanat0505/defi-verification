@@ -26,6 +26,16 @@ def get_session():
     return get_driver().session()
 
 
+def check_connection():
+    """Read from the default database, retrying transient startup failures.
+
+    Managed reads use the Neo4j driver's bounded retry policy. Creating a
+    driver or session alone does not establish a connection to the server.
+    """
+    with get_session() as session:
+        session.execute_read(lambda tx: tx.run("RETURN 1 AS ready").consume())
+
+
 def close_driver():
     global _driver
     if _driver is not None:
