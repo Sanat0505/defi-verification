@@ -1,9 +1,5 @@
 /**
- * wallet.mjs — ZeroDev ERC-4337 wallet for Ethereum Sepolia
- * Called from Python as a subprocess.
- *
- * OPTIMIZATION: Lazy-loads heavy dependencies (viem, ZeroDev) only for blockchain commands.
- * File I/O commands (add_whitelist, check_session) start instantly.
+ * ZeroDev ERC-4337 wallet commands for Ethereum Sepolia, called from Python.
  *
  * Usage:
  *   node wallet.mjs create_wallet
@@ -19,14 +15,10 @@ import fs from "fs";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
 
-// Environment
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Whitelist commands only validate addresses and access a local JSON file.
-// Avoid loading external packages for those commands so their cold start stays
-// well below the Python subprocess timeout.
+// Local policy commands avoid SDK startup and read configuration from the process.
 const startupCommand = process.argv[2];
 if (!new Set(["add_whitelist", "check_session", "evaluate_policy"]).has(startupCommand)) {
   const dotenv = await import("dotenv");
@@ -39,8 +31,6 @@ if (!new Set(["add_whitelist", "check_session", "evaluate_policy"]).has(startupC
 function isAddress(value) {
   return typeof value === "string" && /^0x[0-9a-fA-F]{40}$/.test(value);
 }
-
-// Configuration
 
 const CHAIN_RPC = process.env.SEPOLIA_RPC;
 const ZERODEV_PROJECT_ID = process.env.ZERODEV_PROJECT_ID;
@@ -216,8 +206,6 @@ const AAVE_POOL_ABI = [
   },
 ];
 
-// JSON responses
-
 function respond(obj, exitCode = 0) {
   console.log(JSON.stringify(obj));
   process.exit(exitCode);
@@ -233,8 +221,6 @@ function fail(message, extra = {}) {
     1,
   );
 }
-
-// Dependency loading
 
 let zerodevImportsLoaded = false;
 let ENTRY_POINT, KERNEL_VER, CHAIN;
@@ -342,8 +328,6 @@ function addToWhitelist(args) {
     expires_at: new Date(data.expires_at).toISOString(),
   });
 }
-
-// Session policy
 
 function checkSession(to, valueEth) {
   if (!to || !isAddress(to)) {
@@ -497,8 +481,6 @@ function evaluatePolicyCommand(args) {
   }
 }
 
-// ZeroDev client
-
 async function buildClients() {
   await loadZeroDevDependencies();
 
@@ -567,8 +549,6 @@ async function buildClients() {
     publicClient,
   };
 }
-
-// Commands
 
 async function createWallet() {
   await loadZeroDevDependencies();
@@ -1114,8 +1094,6 @@ async function sendAave(args) {
     });
   }
 }
-
-// Entry point
 
 async function main() {
   const [, , command, rawArgs] = process.argv;

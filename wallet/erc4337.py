@@ -9,8 +9,7 @@ WALLET_JS = Path(__file__).parent / "wallet.mjs"
 NODE_CMD = os.getenv("NODE_CMD", "node")
 
 
-def _call_js(command: str, args: dict = None) -> dict:
-    """Call wallet.mjs with a command and JSON args, return parsed response."""
+def _call_js(command: str, args: dict | None = None) -> dict:
     cmd = [NODE_CMD, str(WALLET_JS), command]
     if args:
         cmd.append(json.dumps(args))
@@ -39,7 +38,7 @@ def _call_js(command: str, args: dict = None) -> dict:
                 "success": False,
                 "error": result.stderr.strip() or "JS script failed"
             }
-        lines = [l.strip() for l in result.stdout.strip().split("\n") if l.strip()]
+        lines = [line.strip() for line in result.stdout.strip().split("\n") if line.strip()]
         for line in reversed(lines):
             try:
                 return json.loads(line)
@@ -55,18 +54,12 @@ def _call_js(command: str, args: dict = None) -> dict:
 
 
 def create_wallet() -> dict:
-    """
-    Create and return the ERC-4337 smart wallet address.
-    Call this once on startup to confirm the wallet is reachable.
-    """
+    """Initialize the ERC-4337 client and return its smart-wallet address."""
     return _call_js("create_wallet")
 
 
 def add_to_whitelist(address: str) -> dict:
-    """
-    Add a graph-verified address to the ERC-4337 session key whitelist.
-    Must be called BEFORE execute() — otherwise ERC-4337 will block the tx.
-    """
+    """Add a destination to the local wallet policy; may renew an expired policy."""
     return _call_js("add_whitelist", {"address": address})
 
 
