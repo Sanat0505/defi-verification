@@ -1,0 +1,1510 @@
+{
+  "version": "constraint-regression-1.0.0-draft",
+  "requires_sourced_runner": true,
+  "purpose": "Targeted development regression after alias, constraint and slippage changes; not a replacement for the frozen baseline or final holdout.",
+  "reference_policy": "Assistant-authored expected outcomes fixed before live model calls; independent researcher review remains required.",
+  "cases": [
+    {
+      "id": "CONSTRAINT-V1-001",
+      "category": "network_alias",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Sepolia.",
+      "family_id": "constraint-v1-network_alias",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An explicit Ethereum Sepolia alias maps to chain 11155111; omitted slippage remains null in the intent.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-002",
+      "category": "network_alias",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia.",
+      "family_id": "constraint-v1-network_alias",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An explicit Ethereum Sepolia alias maps to chain 11155111; omitted slippage remains null in the intent.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-003",
+      "category": "network_alias",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Sepolia testnet.",
+      "family_id": "constraint-v1-network_alias",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An explicit Ethereum Sepolia alias maps to chain 11155111; omitted slippage remains null in the intent.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-004",
+      "category": "network_alias",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Sepolia test network.",
+      "family_id": "constraint-v1-network_alias",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An explicit Ethereum Sepolia alias maps to chain 11155111; omitted slippage remains null in the intent.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-005",
+      "category": "network_alias",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia testnet.",
+      "family_id": "constraint-v1-network_alias",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An explicit Ethereum Sepolia alias maps to chain 11155111; omitted slippage remains null in the intent.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-006",
+      "category": "network_alias",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia test network.",
+      "family_id": "constraint-v1-network_alias",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An explicit Ethereum Sepolia alias maps to chain 11155111; omitted slippage remains null in the intent.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-007",
+      "category": "network_alias",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Sepolia (Ethereum testnet).",
+      "family_id": "constraint-v1-network_alias",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An explicit Ethereum Sepolia alias maps to chain 11155111; omitted slippage remains null in the intent.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-008",
+      "category": "network_alias",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on ETHEREUM-SEPOLIA.",
+      "family_id": "constraint-v1-network_alias",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An explicit Ethereum Sepolia alias maps to chain 11155111; omitted slippage remains null in the intent.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-009",
+      "category": "aave_core",
+      "query": "Supply 10 USDT to Aave V3 on Sepolia test network.",
+      "family_id": "constraint-v1-aave_core",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "10",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "A supported exact-amount Aave operation; wallet position/balance is not evaluated at interpretation.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-010",
+      "category": "aave_core",
+      "query": "Withdraw 10 USDT from Aave V3 on Sepolia test network.",
+      "family_id": "constraint-v1-aave_core",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "10",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "A supported exact-amount Aave operation; wallet position/balance is not evaluated at interpretation.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-011",
+      "category": "aave_core",
+      "query": "Borrow 10 USDT from Aave V3 on Sepolia test network.",
+      "family_id": "constraint-v1-aave_core",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "10",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "A supported exact-amount Aave operation; wallet position/balance is not evaluated at interpretation.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-012",
+      "category": "aave_core",
+      "query": "Repay 10 USDT on Aave V3 on Sepolia test network.",
+      "family_id": "constraint-v1-aave_core",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "10",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "A supported exact-amount Aave operation; wallet position/balance is not evaluated at interpretation.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-013",
+      "category": "supported_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, maximum slippage 0.25%.",
+      "family_id": "constraint-v1-supported_slippage",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An inclusive maximum in percent/bps is exactly representable as 1..500 whole basis points. Preserve it end to end.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-014",
+      "category": "supported_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, at most 0.25% slippage.",
+      "family_id": "constraint-v1-supported_slippage",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An inclusive maximum in percent/bps is exactly representable as 1..500 whole basis points. Preserve it end to end.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-015",
+      "category": "supported_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage tolerance of 0.25 percent.",
+      "family_id": "constraint-v1-supported_slippage",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An inclusive maximum in percent/bps is exactly representable as 1..500 whole basis points. Preserve it end to end.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-016",
+      "category": "supported_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, 25 bps slippage.",
+      "family_id": "constraint-v1-supported_slippage",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An inclusive maximum in percent/bps is exactly representable as 1..500 whole basis points. Preserve it end to end.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-017",
+      "category": "supported_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage at most 25 basis points.",
+      "family_id": "constraint-v1-supported_slippage",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An inclusive maximum in percent/bps is exactly representable as 1..500 whole basis points. Preserve it end to end.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-018",
+      "category": "supported_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage <=0.25%.",
+      "family_id": "constraint-v1-supported_slippage",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An inclusive maximum in percent/bps is exactly representable as 1..500 whole basis points. Preserve it end to end.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-019",
+      "category": "supported_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 0.01%.",
+      "family_id": "constraint-v1-supported_slippage",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 1
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An inclusive maximum in percent/bps is exactly representable as 1..500 whole basis points. Preserve it end to end.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-020",
+      "category": "supported_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 5%.",
+      "family_id": "constraint-v1-supported_slippage",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 500
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An inclusive maximum in percent/bps is exactly representable as 1..500 whole basis points. Preserve it end to end.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-021",
+      "category": "supported_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, 100 basis points slippage.",
+      "family_id": "constraint-v1-supported_slippage",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 100
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An inclusive maximum in percent/bps is exactly representable as 1..500 whole basis points. Preserve it end to end.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-022",
+      "category": "supported_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 25.0 bps.",
+      "family_id": "constraint-v1-supported_slippage",
+      "split": "development",
+      "expected_intent_status": "APPROVED",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "An inclusive maximum in percent/bps is exactly representable as 1..500 whole basis points. Preserve it end to end.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-023",
+      "category": "invalid_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 0%.",
+      "family_id": "constraint-v1-invalid_slippage",
+      "split": "development",
+      "expected_intent_status": "REJECTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Explicit tolerance is outside the 1..500 bps policy or cannot be represented without rounding. Do not default it.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-024",
+      "category": "invalid_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage -0.25%.",
+      "family_id": "constraint-v1-invalid_slippage",
+      "split": "development",
+      "expected_intent_status": "REJECTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Explicit tolerance is outside the 1..500 bps policy or cannot be represented without rounding. Do not default it.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-025",
+      "category": "invalid_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 5.01%.",
+      "family_id": "constraint-v1-invalid_slippage",
+      "split": "development",
+      "expected_intent_status": "REJECTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Explicit tolerance is outside the 1..500 bps policy or cannot be represented without rounding. Do not default it.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-026",
+      "category": "invalid_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 0.255%.",
+      "family_id": "constraint-v1-invalid_slippage",
+      "split": "development",
+      "expected_intent_status": "REJECTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Explicit tolerance is outside the 1..500 bps policy or cannot be represented without rounding. Do not default it.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-027",
+      "category": "invalid_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 2.5 bps.",
+      "family_id": "constraint-v1-invalid_slippage",
+      "split": "development",
+      "expected_intent_status": "REJECTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Explicit tolerance is outside the 1..500 bps policy or cannot be represented without rounding. Do not default it.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-028",
+      "category": "invalid_slippage",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 501 bps.",
+      "family_id": "constraint-v1-invalid_slippage",
+      "split": "development",
+      "expected_intent_status": "REJECTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Explicit tolerance is outside the 1..500 bps policy or cannot be represented without rounding. Do not default it.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-029",
+      "category": "unsupported_condition",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, finish within one minute.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The requested additional condition is unsupported, ambiguous, conflicting or strictly bounded; a basic-action approval would lose user meaning.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-030",
+      "category": "unsupported_condition",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, complete before 2030-01-01.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The requested additional condition is unsupported, ambiguous, conflicting or strictly bounded; a basic-action approval would lose user meaning.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-031",
+      "category": "unsupported_condition",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, send the output to 0x1111111111111111111111111111111111111111.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The requested additional condition is unsupported, ambiguous, conflicting or strictly bounded; a basic-action approval would lose user meaning.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-032",
+      "category": "unsupported_condition",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, keep gas below 0.001 ETH.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The requested additional condition is unsupported, ambiguous, conflicting or strictly bounded; a basic-action approval would lose user meaning.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-033",
+      "category": "unsupported_condition",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, receive at least 0.002 WETH.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The requested additional condition is unsupported, ambiguous, conflicting or strictly bounded; a basic-action approval would lose user meaning.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-034",
+      "category": "unsupported_condition",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, only if my health factor stays above 2.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The requested additional condition is unsupported, ambiguous, conflicting or strictly bounded; a basic-action approval would lose user meaning.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-035",
+      "category": "unsupported_condition",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, then supply 5 USDT to Aave V3.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The requested additional condition is unsupported, ambiguous, conflicting or strictly bounded; a basic-action approval would lose user meaning.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-036",
+      "category": "unsupported_condition",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, price impact at most 1%.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The requested additional condition is unsupported, ambiguous, conflicting or strictly bounded; a basic-action approval would lose user meaning.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-037",
+      "category": "unsupported_condition",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage must be low.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The requested additional condition is unsupported, ambiguous, conflicting or strictly bounded; a basic-action approval would lose user meaning.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-038",
+      "category": "unsupported_condition",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 0.25.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The requested additional condition is unsupported, ambiguous, conflicting or strictly bounded; a basic-action approval would lose user meaning.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-039",
+      "category": "unsupported_condition",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, less than 0.25% slippage.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The requested additional condition is unsupported, ambiguous, conflicting or strictly bounded; a basic-action approval would lose user meaning.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-040",
+      "category": "unsupported_condition",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 0.25% and slippage 1%.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The requested additional condition is unsupported, ambiguous, conflicting or strictly bounded; a basic-action approval would lose user meaning.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-041",
+      "category": "unsupported_condition",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 0.25% and finish within one minute.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The requested additional condition is unsupported, ambiguous, conflicting or strictly bounded; a basic-action approval would lose user meaning.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-042",
+      "category": "unsupported_condition",
+      "query": "Swap $100 worth of ETH for USDC using Uniswap V3 on Sepolia.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Fiat/relative quantity, fixed-rate lending or slippage on lending is outside the implemented scope.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-043",
+      "category": "unsupported_condition",
+      "query": "Withdraw all my USDT from Aave V3 on Sepolia.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Fiat/relative quantity, fixed-rate lending or slippage on lending is outside the implemented scope.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-044",
+      "category": "unsupported_condition",
+      "query": "Repay my entire USDT debt on Aave V3 on Sepolia.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Fiat/relative quantity, fixed-rate lending or slippage on lending is outside the implemented scope.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-045",
+      "category": "unsupported_condition",
+      "query": "Borrow 5 USDT from Aave V3 on Sepolia at a fixed interest rate.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Fiat/relative quantity, fixed-rate lending or slippage on lending is outside the implemented scope.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-046",
+      "category": "unsupported_condition",
+      "query": "Supply 10 USDT to Aave V3 on Sepolia with 1% slippage.",
+      "family_id": "constraint-v1-unsupported_condition",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Fiat/relative quantity, fixed-rate lending or slippage on lending is outside the implemented scope.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-047",
+      "category": "unsupported_scope",
+      "query": "Swap 10 USDC for WETH on Uniswap V2 on Sepolia.",
+      "family_id": "constraint-v1-unsupported_scope",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Preserve the explicit unsupported protocol version or network; do not replace it with the configured default.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-048",
+      "category": "unsupported_scope",
+      "query": "Swap 10 USDC for WETH on Uniswap V4 on Sepolia.",
+      "family_id": "constraint-v1-unsupported_scope",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Preserve the explicit unsupported protocol version or network; do not replace it with the configured default.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-049",
+      "category": "unsupported_scope",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Base Sepolia.",
+      "family_id": "constraint-v1-unsupported_scope",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Preserve the explicit unsupported protocol version or network; do not replace it with the configured default.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-050",
+      "category": "unsupported_scope",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Arbitrum Sepolia.",
+      "family_id": "constraint-v1-unsupported_scope",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Preserve the explicit unsupported protocol version or network; do not replace it with the configured default.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-051",
+      "category": "unsupported_scope",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum mainnet.",
+      "family_id": "constraint-v1-unsupported_scope",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Preserve the explicit unsupported protocol version or network; do not replace it with the configured default.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-052",
+      "category": "unsupported_scope",
+      "query": "Supply 10 USDT to Compound V2 on Sepolia.",
+      "family_id": "constraint-v1-unsupported_scope",
+      "split": "development",
+      "expected_intent_status": "UNSUPPORTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "Preserve the explicit unsupported protocol version or network; do not replace it with the configured default.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-053",
+      "category": "missing_fields",
+      "query": "Swap USDC for WETH on Uniswap V3 on Sepolia.",
+      "family_id": "constraint-v1-missing_fields",
+      "split": "development",
+      "expected_intent_status": "NEEDS_CLARIFICATION",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": null,
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "A required semantic field is not stated; ask for it instead of guessing.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": [
+        "amount"
+      ]
+    },
+    {
+      "id": "CONSTRAINT-V1-054",
+      "category": "missing_fields",
+      "query": "Swap 10 USDC on Uniswap V3 on Sepolia.",
+      "family_id": "constraint-v1-missing_fields",
+      "split": "development",
+      "expected_intent_status": "NEEDS_CLARIFICATION",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "A required semantic field is not stated; ask for it instead of guessing.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": [
+        "token_out"
+      ]
+    },
+    {
+      "id": "CONSTRAINT-V1-055",
+      "category": "missing_fields",
+      "query": "Swap 10 USDC for WETH on Sepolia.",
+      "family_id": "constraint-v1-missing_fields",
+      "split": "development",
+      "expected_intent_status": "NEEDS_CLARIFICATION",
+      "expected_intent": {
+        "action": "swap",
+        "protocol": null,
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "A required semantic field is not stated; ask for it instead of guessing.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": [
+        "protocol"
+      ]
+    },
+    {
+      "id": "CONSTRAINT-V1-056",
+      "category": "missing_fields",
+      "query": "Use Aave V3 with 10 USDT on Sepolia.",
+      "family_id": "constraint-v1-missing_fields",
+      "split": "development",
+      "expected_intent_status": "NEEDS_CLARIFICATION",
+      "expected_intent": {
+        "action": null,
+        "protocol": "Aave V3",
+        "amount": "10",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "expected_graph_outcome": null,
+      "reference_rationale": "A required semantic field is not stated; ask for it instead of guessing.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": [
+        "action"
+      ]
+    },
+    {
+      "id": "CONSTRAINT-V1-057",
+      "category": "invalid_amount",
+      "query": "Swap 0 USDC for WETH on Uniswap V3 on Sepolia.",
+      "family_id": "constraint-v1-invalid_amount",
+      "split": "development",
+      "expected_intent_status": "REJECTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The exact-input amount is zero, negative, non-numeric, or more precise than the 18-decimal application boundary.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-058",
+      "category": "invalid_amount",
+      "query": "Swap -1 USDC for WETH on Uniswap V3 on Sepolia.",
+      "family_id": "constraint-v1-invalid_amount",
+      "split": "development",
+      "expected_intent_status": "REJECTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The exact-input amount is zero, negative, non-numeric, or more precise than the 18-decimal application boundary.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-059",
+      "category": "invalid_amount",
+      "query": "Swap many USDC for WETH on Uniswap V3 on Sepolia.",
+      "family_id": "constraint-v1-invalid_amount",
+      "split": "development",
+      "expected_intent_status": "REJECTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The exact-input amount is zero, negative, non-numeric, or more precise than the 18-decimal application boundary.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    },
+    {
+      "id": "CONSTRAINT-V1-060",
+      "category": "invalid_amount",
+      "query": "Swap 0.0000000000000000001 USDC for WETH on Uniswap V3 on Sepolia.",
+      "family_id": "constraint-v1-invalid_amount",
+      "split": "development",
+      "expected_intent_status": "REJECTED",
+      "expected_intent": null,
+      "expected_graph_outcome": null,
+      "reference_rationale": "The exact-input amount is zero, negative, non-numeric, or more precise than the 18-decimal application boundary.",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "authorship": "assistant-curated; not independently human-reviewed",
+      "origin": "implementation_based_synthetic",
+      "sources": [
+        {
+          "source_id": "constraint_policy_v1",
+          "path": "evaluation/CONSTRAINT_HANDLING.md"
+        }
+      ],
+      "expected_missing_fields": []
+    }
+  ]
+}
