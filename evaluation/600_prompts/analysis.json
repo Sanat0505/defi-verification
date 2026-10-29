@@ -1,0 +1,212 @@
+{
+  "status": "complete",
+  "checkpoint_utc": "2026-10-24T08:14:49.876711+00:00",
+  "planned_prompts": 600,
+  "attempted": 600,
+  "unattempted": 0,
+  "all_attempted": {
+    "attempted": 600,
+    "exact_status_matches": 534,
+    "exact_status_agreement": 0.89,
+    "joint_matches": 529,
+    "binary": {
+      "TP": 181,
+      "FP": 1,
+      "FN": 18,
+      "TN": 396,
+      "operational_errors": 4,
+      "abstentions": 0,
+      "decision_denominator": 596,
+      "decision_coverage": 0.9933333333333333,
+      "precision": 0.9945054945054945,
+      "recall": 0.9095477386934674,
+      "specificity": 0.9974811083123426,
+      "false_positive_rate": 0.0025188916876574307,
+      "false_negative_rate": 0.09045226130653267,
+      "f1": 0.9501312335958005,
+      "binary_accuracy": 0.9681208053691275
+    }
+  },
+  "primary_formulations": {
+    "attempted": 300,
+    "exact_status_matches": 274,
+    "exact_status_agreement": 0.9133333333333333,
+    "joint_matches": 273,
+    "binary": {
+      "TP": 100,
+      "FP": 1,
+      "FN": 0,
+      "TN": 197,
+      "operational_errors": 2,
+      "abstentions": 0,
+      "decision_denominator": 298,
+      "decision_coverage": 0.9933333333333333,
+      "precision": 0.9900990099009901,
+      "recall": 1.0,
+      "specificity": 0.9949494949494949,
+      "false_positive_rate": 0.005050505050505051,
+      "false_negative_rate": 0.0,
+      "f1": 0.9950248756218906,
+      "binary_accuracy": 0.9966442953020134
+    }
+  },
+  "by_category": {
+    "incomplete_or_ambiguous": {
+      "attempted": 100,
+      "exact_status_matches": 57,
+      "exact_status_agreement": 0.57,
+      "joint_matches": 52,
+      "binary": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 99,
+        "operational_errors": 1,
+        "abstentions": 0,
+        "decision_denominator": 99,
+        "decision_coverage": 0.99,
+        "precision": null,
+        "recall": null,
+        "specificity": 1.0,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": null,
+        "f1": null,
+        "binary_accuracy": 1.0
+      }
+    },
+    "invalid_parameters_or_conditions": {
+      "attempted": 100,
+      "exact_status_matches": 97,
+      "exact_status_agreement": 0.97,
+      "joint_matches": 97,
+      "binary": {
+        "TP": 0,
+        "FP": 1,
+        "FN": 0,
+        "TN": 98,
+        "operational_errors": 1,
+        "abstentions": 0,
+        "decision_denominator": 99,
+        "decision_coverage": 0.99,
+        "precision": 0.0,
+        "recall": null,
+        "specificity": 0.98989898989899,
+        "false_positive_rate": 0.010101010101010102,
+        "false_negative_rate": null,
+        "f1": 0.0,
+        "binary_accuracy": 0.98989898989899
+      }
+    },
+    "known_entities_invalid_relationship": {
+      "attempted": 100,
+      "exact_status_matches": 100,
+      "exact_status_agreement": 1.0,
+      "joint_matches": 100,
+      "binary": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 100,
+        "operational_errors": 0,
+        "abstentions": 0,
+        "decision_denominator": 100,
+        "decision_coverage": 1.0,
+        "precision": null,
+        "recall": null,
+        "specificity": 1.0,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": null,
+        "f1": null,
+        "binary_accuracy": 1.0
+      }
+    },
+    "supported_aave": {
+      "attempted": 100,
+      "exact_status_matches": 99,
+      "exact_status_agreement": 0.99,
+      "joint_matches": 99,
+      "binary": {
+        "TP": 99,
+        "FP": 0,
+        "FN": 0,
+        "TN": 0,
+        "operational_errors": 1,
+        "abstentions": 0,
+        "decision_denominator": 99,
+        "decision_coverage": 0.99,
+        "precision": 1.0,
+        "recall": 1.0,
+        "specificity": null,
+        "false_positive_rate": null,
+        "false_negative_rate": 0.0,
+        "f1": 1.0,
+        "binary_accuracy": 1.0
+      }
+    },
+    "supported_uniswap": {
+      "attempted": 100,
+      "exact_status_matches": 82,
+      "exact_status_agreement": 0.82,
+      "joint_matches": 82,
+      "binary": {
+        "TP": 82,
+        "FP": 0,
+        "FN": 18,
+        "TN": 0,
+        "operational_errors": 0,
+        "abstentions": 0,
+        "decision_denominator": 100,
+        "decision_coverage": 1.0,
+        "precision": 1.0,
+        "recall": 0.82,
+        "specificity": null,
+        "false_positive_rate": null,
+        "false_negative_rate": 0.18,
+        "f1": 0.9010989010989011,
+        "binary_accuracy": 0.82
+      }
+    },
+    "unknown_or_unsupported": {
+      "attempted": 100,
+      "exact_status_matches": 99,
+      "exact_status_agreement": 0.99,
+      "joint_matches": 99,
+      "binary": {
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "TN": 99,
+        "operational_errors": 1,
+        "abstentions": 0,
+        "decision_denominator": 99,
+        "decision_coverage": 0.99,
+        "precision": null,
+        "recall": null,
+        "specificity": 1.0,
+        "false_positive_rate": 0.0,
+        "false_negative_rate": null,
+        "f1": null,
+        "binary_accuracy": 1.0
+      }
+    }
+  },
+  "graph_all": {
+    "calls": 340,
+    "decision_matches": 340,
+    "evidence_matches": 340,
+    "operational_failures": 0,
+    "within_two_seconds": 338,
+    "max_ms": 12327.911
+  },
+  "graph_first_distinct": {
+    "calls": 112,
+    "decision_matches": 112,
+    "evidence_matches": 112,
+    "operational_failures": 0,
+    "within_two_seconds": 110,
+    "max_ms": 12327.911
+  },
+  "reference_review": "User accepted execution; item-level human review is not documented.",
+  "limitation": "Agreement with assistant-drafted references, not independent protocol truth. Shared inputs and paraphrases are not independent samples.",
+  "joint_definition": "Validation and final dispositions match; specified normalized fields and missing fields match for APPROVED/NEEDS_CLARIFICATION references. For other dispositions, this is disposition conformance only, not exhaustive semantic correctness."
+}

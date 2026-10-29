@@ -1,0 +1,87 @@
+{
+  "checks": {
+    "unique_case_ids": true,
+    "all_scheduled_prompts_recorded": true,
+    "dataset_sha256_matches": true,
+    "run_order_matches": true,
+    "original_labels_preserved": true,
+    "code_hashes_match": true,
+    "protected_file_hashes_match": true,
+    "graph_snapshot_unchanged": true,
+    "all_previous_segments_preserved": true
+  },
+  "preserved_segments": [
+    {
+      "file": "results-before-resume-20261023-102359.json",
+      "cases": 252,
+      "preserved": true
+    },
+    {
+      "file": "results-before-resume-20261023-142301.json",
+      "cases": 413,
+      "preserved": true
+    },
+    {
+      "file": "results-before-resume-20261023-153556.json",
+      "cases": 439,
+      "preserved": true
+    },
+    {
+      "file": "results-before-resume-20261024-095113.json",
+      "cases": 449,
+      "preserved": true
+    }
+  ],
+  "successful_responses": 596,
+  "recorded_error_cases": [
+    {
+      "id": "BAL600-223-A",
+      "status": "ERROR",
+      "scopes": [
+        [
+          "tokens_per_day"
+        ],
+        [
+          "tokens_per_day"
+        ]
+      ]
+    },
+    {
+      "id": "BAL600-090-B",
+      "status": "ERROR",
+      "scopes": [
+        [
+          "tokens_per_day"
+        ],
+        [
+          "tokens_per_day"
+        ]
+      ]
+    },
+    {
+      "id": "BAL600-183-B",
+      "status": "ERROR",
+      "scopes": [
+        [
+          "tokens_per_day"
+        ],
+        [
+          "tokens_per_day"
+        ]
+      ]
+    },
+    {
+      "id": "BAL600-288-A",
+      "status": "ERROR",
+      "scopes": [
+        [
+          "tokens_per_day"
+        ],
+        [
+          "tokens_per_day"
+        ]
+      ]
+    }
+  ],
+  "completed_at_utc": "2026-10-24T08:14:55.162389+00:00"
+}

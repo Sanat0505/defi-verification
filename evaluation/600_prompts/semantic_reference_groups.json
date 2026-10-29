@@ -1,0 +1,796 @@
+{
+  "swap|AAVE|WBTC|None": [
+    "BAL600-001",
+    "BAL600-049"
+  ],
+  "swap|LINK|USDT|None": [
+    "BAL600-002",
+    "BAL600-050"
+  ],
+  "swap|USDC|WETH|None": [
+    "BAL600-003"
+  ],
+  "swap|USDT|LINK|None": [
+    "BAL600-004"
+  ],
+  "swap|WBTC|AAVE|None": [
+    "BAL600-005"
+  ],
+  "swap|WETH|USDC|None": [
+    "BAL600-006"
+  ],
+  "swap|AAVE|WBTC|1": [
+    "BAL600-007"
+  ],
+  "swap|LINK|USDT|1": [
+    "BAL600-008"
+  ],
+  "swap|USDC|WETH|1": [
+    "BAL600-009"
+  ],
+  "swap|USDT|LINK|1": [
+    "BAL600-010"
+  ],
+  "swap|WBTC|AAVE|1": [
+    "BAL600-011"
+  ],
+  "swap|WETH|USDC|1": [
+    "BAL600-012"
+  ],
+  "swap|AAVE|WBTC|25": [
+    "BAL600-013"
+  ],
+  "swap|LINK|USDT|25": [
+    "BAL600-014"
+  ],
+  "swap|USDC|WETH|25": [
+    "BAL600-015"
+  ],
+  "swap|USDT|LINK|25": [
+    "BAL600-016"
+  ],
+  "swap|WBTC|AAVE|25": [
+    "BAL600-017"
+  ],
+  "swap|WETH|USDC|25": [
+    "BAL600-018"
+  ],
+  "swap|AAVE|WBTC|50": [
+    "BAL600-019"
+  ],
+  "swap|LINK|USDT|50": [
+    "BAL600-020"
+  ],
+  "swap|USDC|WETH|50": [
+    "BAL600-021"
+  ],
+  "swap|USDT|LINK|50": [
+    "BAL600-022"
+  ],
+  "swap|WBTC|AAVE|50": [
+    "BAL600-023"
+  ],
+  "swap|WETH|USDC|50": [
+    "BAL600-024"
+  ],
+  "swap|AAVE|WBTC|100": [
+    "BAL600-025"
+  ],
+  "swap|LINK|USDT|100": [
+    "BAL600-026"
+  ],
+  "swap|USDC|WETH|100": [
+    "BAL600-027"
+  ],
+  "swap|USDT|LINK|100": [
+    "BAL600-028"
+  ],
+  "swap|WBTC|AAVE|100": [
+    "BAL600-029"
+  ],
+  "swap|WETH|USDC|100": [
+    "BAL600-030"
+  ],
+  "swap|AAVE|WBTC|500": [
+    "BAL600-031"
+  ],
+  "swap|LINK|USDT|500": [
+    "BAL600-032"
+  ],
+  "swap|USDC|WETH|500": [
+    "BAL600-033"
+  ],
+  "swap|USDT|LINK|500": [
+    "BAL600-034"
+  ],
+  "swap|WBTC|AAVE|500": [
+    "BAL600-035"
+  ],
+  "swap|WETH|USDC|500": [
+    "BAL600-036"
+  ],
+  "swap|AAVE|WBTC|network_alias": [
+    "BAL600-037"
+  ],
+  "swap|LINK|USDT|network_alias": [
+    "BAL600-038"
+  ],
+  "swap|USDC|WETH|network_alias": [
+    "BAL600-039"
+  ],
+  "swap|USDT|LINK|network_alias": [
+    "BAL600-040"
+  ],
+  "swap|WBTC|AAVE|network_alias": [
+    "BAL600-041"
+  ],
+  "swap|WETH|USDC|network_alias": [
+    "BAL600-042"
+  ],
+  "swap|AAVE|WBTC|network_default": [
+    "BAL600-043"
+  ],
+  "swap|LINK|USDT|network_default": [
+    "BAL600-044"
+  ],
+  "swap|USDC|WETH|network_default": [
+    "BAL600-045"
+  ],
+  "swap|USDT|LINK|network_default": [
+    "BAL600-046"
+  ],
+  "swap|WBTC|AAVE|network_default": [
+    "BAL600-047"
+  ],
+  "swap|WETH|USDC|network_default": [
+    "BAL600-048"
+  ],
+  "aave|supply|AAVE": [
+    "BAL600-051",
+    "BAL600-087"
+  ],
+  "aave|withdraw|AAVE": [
+    "BAL600-052",
+    "BAL600-088"
+  ],
+  "aave|borrow|AAVE": [
+    "BAL600-053",
+    "BAL600-089"
+  ],
+  "aave|repay|AAVE": [
+    "BAL600-054",
+    "BAL600-090"
+  ],
+  "aave|supply|DAI": [
+    "BAL600-055",
+    "BAL600-091"
+  ],
+  "aave|withdraw|DAI": [
+    "BAL600-056",
+    "BAL600-092"
+  ],
+  "aave|borrow|DAI": [
+    "BAL600-057",
+    "BAL600-093"
+  ],
+  "aave|repay|DAI": [
+    "BAL600-058",
+    "BAL600-094"
+  ],
+  "aave|supply|EURS": [
+    "BAL600-059",
+    "BAL600-095"
+  ],
+  "aave|withdraw|EURS": [
+    "BAL600-060",
+    "BAL600-096"
+  ],
+  "aave|borrow|EURS": [
+    "BAL600-061",
+    "BAL600-097"
+  ],
+  "aave|repay|EURS": [
+    "BAL600-062",
+    "BAL600-098"
+  ],
+  "aave|supply|GHO": [
+    "BAL600-063",
+    "BAL600-099"
+  ],
+  "aave|withdraw|GHO": [
+    "BAL600-064",
+    "BAL600-100"
+  ],
+  "aave|borrow|GHO": [
+    "BAL600-065"
+  ],
+  "aave|repay|GHO": [
+    "BAL600-066"
+  ],
+  "aave|supply|LINK": [
+    "BAL600-067"
+  ],
+  "aave|withdraw|LINK": [
+    "BAL600-068"
+  ],
+  "aave|borrow|LINK": [
+    "BAL600-069"
+  ],
+  "aave|repay|LINK": [
+    "BAL600-070"
+  ],
+  "aave|supply|USDC": [
+    "BAL600-071"
+  ],
+  "aave|withdraw|USDC": [
+    "BAL600-072"
+  ],
+  "aave|borrow|USDC": [
+    "BAL600-073"
+  ],
+  "aave|repay|USDC": [
+    "BAL600-074"
+  ],
+  "aave|supply|USDT": [
+    "BAL600-075"
+  ],
+  "aave|withdraw|USDT": [
+    "BAL600-076"
+  ],
+  "aave|borrow|USDT": [
+    "BAL600-077"
+  ],
+  "aave|repay|USDT": [
+    "BAL600-078"
+  ],
+  "aave|supply|WBTC": [
+    "BAL600-079"
+  ],
+  "aave|withdraw|WBTC": [
+    "BAL600-080"
+  ],
+  "aave|borrow|WBTC": [
+    "BAL600-081"
+  ],
+  "aave|repay|WBTC": [
+    "BAL600-082"
+  ],
+  "aave|supply|WETH": [
+    "BAL600-083"
+  ],
+  "aave|withdraw|WETH": [
+    "BAL600-084"
+  ],
+  "aave|borrow|WETH": [
+    "BAL600-085"
+  ],
+  "aave|repay|WETH": [
+    "BAL600-086"
+  ],
+  "missing_unordered_pair|AAVE|DAI": [
+    "BAL600-101",
+    "BAL600-134"
+  ],
+  "missing_unordered_pair|AAVE|EURS": [
+    "BAL600-102",
+    "BAL600-135"
+  ],
+  "missing_unordered_pair|AAVE|GHO": [
+    "BAL600-103",
+    "BAL600-136"
+  ],
+  "missing_unordered_pair|AAVE|LINK": [
+    "BAL600-104",
+    "BAL600-137"
+  ],
+  "missing_unordered_pair|AAVE|USDC": [
+    "BAL600-105",
+    "BAL600-138"
+  ],
+  "missing_unordered_pair|AAVE|USDT": [
+    "BAL600-106",
+    "BAL600-139"
+  ],
+  "missing_unordered_pair|AAVE|WETH": [
+    "BAL600-107",
+    "BAL600-140"
+  ],
+  "missing_unordered_pair|DAI|EURS": [
+    "BAL600-108",
+    "BAL600-141"
+  ],
+  "missing_unordered_pair|DAI|GHO": [
+    "BAL600-109",
+    "BAL600-142"
+  ],
+  "missing_unordered_pair|DAI|LINK": [
+    "BAL600-110",
+    "BAL600-143"
+  ],
+  "missing_unordered_pair|DAI|USDC": [
+    "BAL600-111",
+    "BAL600-144"
+  ],
+  "missing_unordered_pair|DAI|USDT": [
+    "BAL600-112",
+    "BAL600-145"
+  ],
+  "missing_unordered_pair|DAI|WBTC": [
+    "BAL600-113",
+    "BAL600-146"
+  ],
+  "missing_unordered_pair|DAI|WETH": [
+    "BAL600-114",
+    "BAL600-147"
+  ],
+  "missing_unordered_pair|EURS|GHO": [
+    "BAL600-115",
+    "BAL600-148"
+  ],
+  "missing_unordered_pair|EURS|LINK": [
+    "BAL600-116",
+    "BAL600-149"
+  ],
+  "missing_unordered_pair|EURS|USDC": [
+    "BAL600-117",
+    "BAL600-150"
+  ],
+  "missing_unordered_pair|EURS|USDT": [
+    "BAL600-118"
+  ],
+  "missing_unordered_pair|EURS|WBTC": [
+    "BAL600-119"
+  ],
+  "missing_unordered_pair|EURS|WETH": [
+    "BAL600-120"
+  ],
+  "missing_unordered_pair|GHO|LINK": [
+    "BAL600-121"
+  ],
+  "missing_unordered_pair|GHO|USDC": [
+    "BAL600-122"
+  ],
+  "missing_unordered_pair|GHO|USDT": [
+    "BAL600-123"
+  ],
+  "missing_unordered_pair|GHO|WBTC": [
+    "BAL600-124"
+  ],
+  "missing_unordered_pair|GHO|WETH": [
+    "BAL600-125"
+  ],
+  "missing_unordered_pair|LINK|USDC": [
+    "BAL600-126"
+  ],
+  "missing_unordered_pair|LINK|WBTC": [
+    "BAL600-127"
+  ],
+  "missing_unordered_pair|LINK|WETH": [
+    "BAL600-128"
+  ],
+  "missing_unordered_pair|USDC|USDT": [
+    "BAL600-129"
+  ],
+  "missing_unordered_pair|USDC|WBTC": [
+    "BAL600-130"
+  ],
+  "missing_unordered_pair|USDT|WBTC": [
+    "BAL600-131"
+  ],
+  "missing_unordered_pair|USDT|WETH": [
+    "BAL600-132"
+  ],
+  "missing_unordered_pair|WBTC|WETH": [
+    "BAL600-133"
+  ],
+  "Uniswap V2|swap|USDC|WETH|11155111|unsupported_protocol": [
+    "BAL600-151"
+  ],
+  "Uniswap V4|swap|USDC|WETH|11155111|unsupported_protocol": [
+    "BAL600-152"
+  ],
+  "Curve|swap|USDC|WETH|11155111|unsupported_protocol": [
+    "BAL600-153"
+  ],
+  "Balancer|swap|USDC|WETH|11155111|unsupported_protocol": [
+    "BAL600-154"
+  ],
+  "SushiSwap|swap|USDC|WETH|11155111|unsupported_protocol": [
+    "BAL600-155"
+  ],
+  "PancakeSwap|swap|USDC|WETH|11155111|unsupported_protocol": [
+    "BAL600-156"
+  ],
+  "CoW Protocol|swap|USDC|WETH|11155111|unsupported_protocol": [
+    "BAL600-157"
+  ],
+  "Trader Joe|swap|USDC|WETH|11155111|unsupported_protocol": [
+    "BAL600-158"
+  ],
+  "KyberSwap|swap|USDC|WETH|11155111|unsupported_protocol": [
+    "BAL600-159"
+  ],
+  "DODO|swap|USDC|WETH|11155111|unsupported_protocol": [
+    "BAL600-160"
+  ],
+  "Aave V3|supply|USDC|None|None|unsupported_network": [
+    "BAL600-161",
+    "BAL600-162",
+    "BAL600-163",
+    "BAL600-164",
+    "BAL600-165",
+    "BAL600-166",
+    "BAL600-167",
+    "BAL600-168",
+    "BAL600-169",
+    "BAL600-170"
+  ],
+  "Aave V3|stake|USDC|None|11155111|unsupported_action": [
+    "BAL600-171"
+  ],
+  "Aave V3|bridge|USDC|None|11155111|unsupported_action": [
+    "BAL600-172"
+  ],
+  "Aave V3|transfer|USDC|None|11155111|unsupported_action": [
+    "BAL600-173"
+  ],
+  "Aave V3|liquidate|USDC|None|11155111|unsupported_action": [
+    "BAL600-174"
+  ],
+  "Aave V3|flash borrow|USDC|None|11155111|unsupported_action": [
+    "BAL600-175"
+  ],
+  "Aave V3|delegate borrowing power for|USDC|None|11155111|unsupported_action": [
+    "BAL600-176"
+  ],
+  "Aave V3|claim rewards for|USDC|None|11155111|unsupported_action": [
+    "BAL600-177"
+  ],
+  "Aave V3|toggle collateral use for|USDC|None|11155111|unsupported_action": [
+    "BAL600-178"
+  ],
+  "Aave V3|switch the interest-rate mode for|USDC|None|11155111|unsupported_action": [
+    "BAL600-179"
+  ],
+  "Aave V3|rebalance|USDC|None|11155111|unsupported_action": [
+    "BAL600-180"
+  ],
+  "Aave V3|supply|ETH|None|11155111|native_asset_boundary": [
+    "BAL600-181"
+  ],
+  "Aave V3|supply|BTC|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-182"
+  ],
+  "Aave V3|supply|SOL|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-183"
+  ],
+  "Aave V3|supply|USDS|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-184"
+  ],
+  "Aave V3|supply|FRAX|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-185"
+  ],
+  "Aave V3|supply|EURC|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-186"
+  ],
+  "Aave V3|supply|CRV|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-187"
+  ],
+  "Aave V3|supply|UNI|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-188"
+  ],
+  "Aave V3|supply|MKR|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-189"
+  ],
+  "Aave V3|supply|ARB|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-190"
+  ],
+  "Aave V3|supply|OP|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-191"
+  ],
+  "Aave V3|supply|LUSD|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-192"
+  ],
+  "Aave V3|supply|RETH|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-193"
+  ],
+  "Aave V3|supply|CBETH|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-194"
+  ],
+  "Aave V3|supply|STETH|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-195"
+  ],
+  "Aave V3|supply|WSTETH|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-196"
+  ],
+  "Aave V3|supply|RUSD|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-197"
+  ],
+  "Aave V3|supply|BUSD|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-198"
+  ],
+  "Aave V3|supply|PENDLE|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-199"
+  ],
+  "Aave V3|supply|BAL|None|11155111|asset_absent_from_saved_reserves": [
+    "BAL600-200"
+  ],
+  "incomplete|Uniswap V3|swap|USDC|WETH|11155111|amount": [
+    "BAL600-201",
+    "BAL600-205"
+  ],
+  "incomplete|Uniswap V3|swap|None|WETH|11155111|token_in": [
+    "BAL600-202",
+    "BAL600-206"
+  ],
+  "incomplete|None|swap|USDC|WETH|11155111|protocol": [
+    "BAL600-203"
+  ],
+  "incomplete|Uniswap V3|None|USDC|None|11155111|action": [
+    "BAL600-204"
+  ],
+  "incomplete|Uniswap V3|swap|None|WETH|11155111|amount,token_in": [
+    "BAL600-207"
+  ],
+  "incomplete|None|swap|USDC|WETH|11155111|amount,protocol": [
+    "BAL600-208"
+  ],
+  "incomplete|Uniswap V3|swap|USDC|None|11155111|token_out": [
+    "BAL600-209",
+    "BAL600-210"
+  ],
+  "incomplete|Aave V3|supply|DAI|None|11155111|amount": [
+    "BAL600-211",
+    "BAL600-215"
+  ],
+  "incomplete|Aave V3|supply|None|None|11155111|token_in": [
+    "BAL600-212",
+    "BAL600-216"
+  ],
+  "incomplete|None|supply|DAI|None|11155111|protocol": [
+    "BAL600-213"
+  ],
+  "incomplete|Aave V3|None|DAI|None|11155111|action": [
+    "BAL600-214"
+  ],
+  "incomplete|Aave V3|supply|None|None|11155111|amount,token_in": [
+    "BAL600-217"
+  ],
+  "incomplete|None|supply|DAI|None|11155111|amount,protocol": [
+    "BAL600-218"
+  ],
+  "incomplete|Aave V3|None|DAI|None|11155111|action,amount": [
+    "BAL600-219"
+  ],
+  "incomplete|None|None|DAI|None|11155111|action,protocol": [
+    "BAL600-220"
+  ],
+  "incomplete|Aave V3|withdraw|GHO|None|11155111|amount": [
+    "BAL600-221",
+    "BAL600-225"
+  ],
+  "incomplete|Aave V3|withdraw|None|None|11155111|token_in": [
+    "BAL600-222",
+    "BAL600-226"
+  ],
+  "incomplete|None|withdraw|GHO|None|11155111|protocol": [
+    "BAL600-223"
+  ],
+  "incomplete|Aave V3|None|GHO|None|11155111|action": [
+    "BAL600-224"
+  ],
+  "incomplete|Aave V3|withdraw|None|None|11155111|amount,token_in": [
+    "BAL600-227"
+  ],
+  "incomplete|None|withdraw|GHO|None|11155111|amount,protocol": [
+    "BAL600-228"
+  ],
+  "incomplete|Aave V3|None|GHO|None|11155111|action,amount": [
+    "BAL600-229"
+  ],
+  "incomplete|None|None|GHO|None|11155111|action,protocol": [
+    "BAL600-230"
+  ],
+  "incomplete|Aave V3|borrow|WBTC|None|11155111|amount": [
+    "BAL600-231",
+    "BAL600-235"
+  ],
+  "incomplete|Aave V3|borrow|None|None|11155111|token_in": [
+    "BAL600-232",
+    "BAL600-236"
+  ],
+  "incomplete|None|borrow|WBTC|None|11155111|protocol": [
+    "BAL600-233"
+  ],
+  "incomplete|Aave V3|None|WBTC|None|11155111|action": [
+    "BAL600-234"
+  ],
+  "incomplete|Aave V3|borrow|None|None|11155111|amount,token_in": [
+    "BAL600-237"
+  ],
+  "incomplete|None|borrow|WBTC|None|11155111|amount,protocol": [
+    "BAL600-238"
+  ],
+  "incomplete|Aave V3|None|WBTC|None|11155111|action,amount": [
+    "BAL600-239"
+  ],
+  "incomplete|None|None|WBTC|None|11155111|action,protocol": [
+    "BAL600-240"
+  ],
+  "incomplete|Aave V3|repay|USDT|None|11155111|amount": [
+    "BAL600-241",
+    "BAL600-245"
+  ],
+  "incomplete|Aave V3|repay|None|None|11155111|token_in": [
+    "BAL600-242",
+    "BAL600-246"
+  ],
+  "incomplete|None|repay|USDT|None|11155111|protocol": [
+    "BAL600-243"
+  ],
+  "incomplete|Aave V3|None|USDT|None|11155111|action": [
+    "BAL600-244"
+  ],
+  "incomplete|Aave V3|repay|None|None|11155111|amount,token_in": [
+    "BAL600-247"
+  ],
+  "incomplete|None|repay|USDT|None|11155111|amount,protocol": [
+    "BAL600-248"
+  ],
+  "incomplete|Aave V3|None|USDT|None|11155111|action,amount": [
+    "BAL600-249"
+  ],
+  "incomplete|None|None|USDT|None|11155111|action,protocol": [
+    "BAL600-250"
+  ],
+  "Uniswap V3|swap|USDC|WETH|11155111|zero_amount": [
+    "BAL600-251"
+  ],
+  "Uniswap V3|swap|USDC|WETH|11155111|negative_amount": [
+    "BAL600-252"
+  ],
+  "Aave V3|supply|USDC|None|11155111|zero_amount": [
+    "BAL600-253"
+  ],
+  "Aave V3|supply|USDC|None|11155111|negative_amount": [
+    "BAL600-254"
+  ],
+  "Aave V3|withdraw|USDC|None|11155111|zero_amount": [
+    "BAL600-255"
+  ],
+  "Aave V3|withdraw|USDC|None|11155111|negative_amount": [
+    "BAL600-256"
+  ],
+  "Aave V3|borrow|USDC|None|11155111|zero_amount": [
+    "BAL600-257"
+  ],
+  "Aave V3|borrow|USDC|None|11155111|negative_amount": [
+    "BAL600-258"
+  ],
+  "Aave V3|repay|USDC|None|11155111|zero_amount": [
+    "BAL600-259"
+  ],
+  "Aave V3|repay|USDC|None|11155111|negative_amount": [
+    "BAL600-260"
+  ],
+  "invalid_slippage|0 percent": [
+    "BAL600-261"
+  ],
+  "invalid_slippage|-0.01 percent": [
+    "BAL600-262"
+  ],
+  "invalid_slippage|5.01 percent": [
+    "BAL600-263"
+  ],
+  "invalid_slippage|501 basis points": [
+    "BAL600-264"
+  ],
+  "invalid_slippage|0.5 basis points": [
+    "BAL600-265"
+  ],
+  "invalid_slippage|0.001 percent": [
+    "BAL600-266"
+  ],
+  "invalid_slippage|10 percent": [
+    "BAL600-267"
+  ],
+  "invalid_slippage|999 basis points": [
+    "BAL600-268"
+  ],
+  "unsupported_condition|deadline": [
+    "BAL600-269"
+  ],
+  "unsupported_condition|recipient": [
+    "BAL600-270"
+  ],
+  "unsupported_condition|gas_budget": [
+    "BAL600-271"
+  ],
+  "unsupported_condition|minimum_output": [
+    "BAL600-272"
+  ],
+  "unsupported_condition|price_trigger": [
+    "BAL600-273"
+  ],
+  "unsupported_condition|price_impact": [
+    "BAL600-274"
+  ],
+  "unsupported_condition|multihop": [
+    "BAL600-275"
+  ],
+  "unsupported_condition|pool_selection": [
+    "BAL600-276"
+  ],
+  "unsupported_condition|schedule": [
+    "BAL600-277"
+  ],
+  "unsupported_condition|recurrence": [
+    "BAL600-278"
+  ],
+  "unsupported_condition|relative_balance": [
+    "BAL600-279"
+  ],
+  "unsupported_condition|exact_output": [
+    "BAL600-280"
+  ],
+  "unsupported_condition|private_relay": [
+    "BAL600-281"
+  ],
+  "unsupported_condition|liquidity_threshold": [
+    "BAL600-282"
+  ],
+  "unsupported_condition|multiple_operations": [
+    "BAL600-283"
+  ],
+  "unsupported_condition|total_fee_budget": [
+    "BAL600-284"
+  ],
+  "unsupported_condition|pending_dependency": [
+    "BAL600-285"
+  ],
+  "unsupported_condition|gas_price_trigger": [
+    "BAL600-286"
+  ],
+  "unsupported_condition|price_limit": [
+    "BAL600-287"
+  ],
+  "unsupported_condition|custom_deadline": [
+    "BAL600-288"
+  ],
+  "unsupported_condition|partial_fill": [
+    "BAL600-289"
+  ],
+  "unsupported_condition|split_route": [
+    "BAL600-290"
+  ],
+  "unsupported_condition|simulation_condition": [
+    "BAL600-291"
+  ],
+  "unsupported_condition|oracle_condition": [
+    "BAL600-292"
+  ],
+  "unsupported_condition|mev_condition": [
+    "BAL600-293"
+  ],
+  "unsupported_condition|delegated_wallet": [
+    "BAL600-294"
+  ],
+  "unsupported_condition|cross_chain_delivery": [
+    "BAL600-295"
+  ],
+  "unsupported_condition|fiat_input": [
+    "BAL600-296"
+  ],
+  "unsupported_condition|revert_condition": [
+    "BAL600-297"
+  ],
+  "unsupported_condition|conditional_retry": [
+    "BAL600-298"
+  ],
+  "unsupported_condition|cancel_condition": [
+    "BAL600-299"
+  ],
+  "unsupported_condition|refund_recipient": [
+    "BAL600-300"
+  ]
+}

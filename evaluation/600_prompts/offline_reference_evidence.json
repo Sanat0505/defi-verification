@@ -1,0 +1,2534 @@
+[
+  {
+    "scenario_id": "BAL600-001",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_out_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_in_decimals": 18,
+          "token_out_decimals": 8,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-002",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_out_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-003",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-004",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_out_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-005",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_out_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_in_decimals": 8,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-006",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-007",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_out_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_in_decimals": 18,
+          "token_out_decimals": 8,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-008",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_out_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-009",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-010",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_out_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-011",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_out_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_in_decimals": 8,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-012",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-013",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_out_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_in_decimals": 18,
+          "token_out_decimals": 8,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-014",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_out_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-015",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-016",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_out_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-017",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_out_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_in_decimals": 8,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-018",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-019",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_out_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_in_decimals": 18,
+          "token_out_decimals": 8,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-020",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_out_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-021",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-022",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_out_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-023",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_out_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_in_decimals": 8,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-024",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-025",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_out_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_in_decimals": 18,
+          "token_out_decimals": 8,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-026",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_out_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-027",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-028",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_out_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-029",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_out_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_in_decimals": 8,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-030",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-031",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_out_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_in_decimals": 18,
+          "token_out_decimals": 8,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-032",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_out_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-033",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-034",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_out_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-035",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_out_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_in_decimals": 8,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-036",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-037",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_out_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_in_decimals": 18,
+          "token_out_decimals": 8,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-038",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_out_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-039",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-040",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_out_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-041",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_out_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_in_decimals": 8,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-042",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-043",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_out_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_in_decimals": 18,
+          "token_out_decimals": 8,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-044",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_out_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-045",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-046",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_out_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_in_decimals": 6,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-047",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_out_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_in_decimals": 8,
+          "token_out_decimals": 18,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-048",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+          "pool_fee": 10000,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        },
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+          "pool_fee": 100,
+          "token_in_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "token_out_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-049",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+          "pool_fee": 500,
+          "token_in_address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "token_out_address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "token_in_decimals": 18,
+          "token_out_decimals": 8,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-050",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+          "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+          "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+          "pool_fee": 500,
+          "token_in_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "token_out_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "token_in_decimals": 18,
+          "token_out_decimals": 6,
+          "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+          "function_selector": "0x04e45aaf"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-051",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "verified_asset_decimals": 18,
+          "verified_function": "supply(address,uint256,address,uint16)",
+          "verified_selector": "0x617ba037"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-052",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "verified_asset_decimals": 18,
+          "verified_function": "withdraw(address,uint256,address)",
+          "verified_selector": "0x69328dec"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-053",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "verified_asset_decimals": 18,
+          "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+          "verified_selector": "0xa415bcad"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-054",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "verified_asset_decimals": 18,
+          "verified_function": "repay(address,uint256,uint256,address)",
+          "verified_selector": "0x573ade81"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-055",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xff34b3d4aee8ddcd6f9afffb6fe49bd371b8a357",
+          "verified_asset_decimals": 18,
+          "verified_function": "supply(address,uint256,address,uint16)",
+          "verified_selector": "0x617ba037"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-056",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xff34b3d4aee8ddcd6f9afffb6fe49bd371b8a357",
+          "verified_asset_decimals": 18,
+          "verified_function": "withdraw(address,uint256,address)",
+          "verified_selector": "0x69328dec"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-057",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xff34b3d4aee8ddcd6f9afffb6fe49bd371b8a357",
+          "verified_asset_decimals": 18,
+          "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+          "verified_selector": "0xa415bcad"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-058",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xff34b3d4aee8ddcd6f9afffb6fe49bd371b8a357",
+          "verified_asset_decimals": 18,
+          "verified_function": "repay(address,uint256,uint256,address)",
+          "verified_selector": "0x573ade81"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-059",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x6d906e526a4e2ca02097ba9d0caa3c382f52278e",
+          "verified_asset_decimals": 2,
+          "verified_function": "supply(address,uint256,address,uint16)",
+          "verified_selector": "0x617ba037"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-060",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x6d906e526a4e2ca02097ba9d0caa3c382f52278e",
+          "verified_asset_decimals": 2,
+          "verified_function": "withdraw(address,uint256,address)",
+          "verified_selector": "0x69328dec"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-061",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x6d906e526a4e2ca02097ba9d0caa3c382f52278e",
+          "verified_asset_decimals": 2,
+          "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+          "verified_selector": "0xa415bcad"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-062",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x6d906e526a4e2ca02097ba9d0caa3c382f52278e",
+          "verified_asset_decimals": 2,
+          "verified_function": "repay(address,uint256,uint256,address)",
+          "verified_selector": "0x573ade81"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-063",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xc4bf5cbdabe595361438f8c6a187bdc330539c60",
+          "verified_asset_decimals": 18,
+          "verified_function": "supply(address,uint256,address,uint16)",
+          "verified_selector": "0x617ba037"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-064",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xc4bf5cbdabe595361438f8c6a187bdc330539c60",
+          "verified_asset_decimals": 18,
+          "verified_function": "withdraw(address,uint256,address)",
+          "verified_selector": "0x69328dec"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-065",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xc4bf5cbdabe595361438f8c6a187bdc330539c60",
+          "verified_asset_decimals": 18,
+          "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+          "verified_selector": "0xa415bcad"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-066",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xc4bf5cbdabe595361438f8c6a187bdc330539c60",
+          "verified_asset_decimals": 18,
+          "verified_function": "repay(address,uint256,uint256,address)",
+          "verified_selector": "0x573ade81"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-067",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "verified_asset_decimals": 18,
+          "verified_function": "supply(address,uint256,address,uint16)",
+          "verified_selector": "0x617ba037"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-068",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "verified_asset_decimals": 18,
+          "verified_function": "withdraw(address,uint256,address)",
+          "verified_selector": "0x69328dec"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-069",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "verified_asset_decimals": 18,
+          "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+          "verified_selector": "0xa415bcad"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-070",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "verified_asset_decimals": 18,
+          "verified_function": "repay(address,uint256,uint256,address)",
+          "verified_selector": "0x573ade81"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-071",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "verified_asset_decimals": 6,
+          "verified_function": "supply(address,uint256,address,uint16)",
+          "verified_selector": "0x617ba037"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-072",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "verified_asset_decimals": 6,
+          "verified_function": "withdraw(address,uint256,address)",
+          "verified_selector": "0x69328dec"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-073",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "verified_asset_decimals": 6,
+          "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+          "verified_selector": "0xa415bcad"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-074",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "verified_asset_decimals": 6,
+          "verified_function": "repay(address,uint256,uint256,address)",
+          "verified_selector": "0x573ade81"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-075",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "verified_asset_decimals": 6,
+          "verified_function": "supply(address,uint256,address,uint16)",
+          "verified_selector": "0x617ba037"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-076",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "verified_asset_decimals": 6,
+          "verified_function": "withdraw(address,uint256,address)",
+          "verified_selector": "0x69328dec"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-077",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "verified_asset_decimals": 6,
+          "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+          "verified_selector": "0xa415bcad"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-078",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "verified_asset_decimals": 6,
+          "verified_function": "repay(address,uint256,uint256,address)",
+          "verified_selector": "0x573ade81"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-079",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "verified_asset_decimals": 8,
+          "verified_function": "supply(address,uint256,address,uint16)",
+          "verified_selector": "0x617ba037"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-080",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "verified_asset_decimals": 8,
+          "verified_function": "withdraw(address,uint256,address)",
+          "verified_selector": "0x69328dec"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-081",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "verified_asset_decimals": 8,
+          "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+          "verified_selector": "0xa415bcad"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-082",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "verified_asset_decimals": 8,
+          "verified_function": "repay(address,uint256,uint256,address)",
+          "verified_selector": "0x573ade81"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-083",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "verified_asset_decimals": 18,
+          "verified_function": "supply(address,uint256,address,uint16)",
+          "verified_selector": "0x617ba037"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-084",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "verified_asset_decimals": 18,
+          "verified_function": "withdraw(address,uint256,address)",
+          "verified_selector": "0x69328dec"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-085",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "verified_asset_decimals": 18,
+          "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+          "verified_selector": "0xa415bcad"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-086",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "verified_asset_decimals": 18,
+          "verified_function": "repay(address,uint256,uint256,address)",
+          "verified_selector": "0x573ade81"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-087",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "verified_asset_decimals": 18,
+          "verified_function": "supply(address,uint256,address,uint16)",
+          "verified_selector": "0x617ba037"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-088",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "verified_asset_decimals": 18,
+          "verified_function": "withdraw(address,uint256,address)",
+          "verified_selector": "0x69328dec"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-089",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "verified_asset_decimals": 18,
+          "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+          "verified_selector": "0xa415bcad"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-090",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "verified_asset_decimals": 18,
+          "verified_function": "repay(address,uint256,uint256,address)",
+          "verified_selector": "0x573ade81"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-091",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xff34b3d4aee8ddcd6f9afffb6fe49bd371b8a357",
+          "verified_asset_decimals": 18,
+          "verified_function": "supply(address,uint256,address,uint16)",
+          "verified_selector": "0x617ba037"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-092",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xff34b3d4aee8ddcd6f9afffb6fe49bd371b8a357",
+          "verified_asset_decimals": 18,
+          "verified_function": "withdraw(address,uint256,address)",
+          "verified_selector": "0x69328dec"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-093",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xff34b3d4aee8ddcd6f9afffb6fe49bd371b8a357",
+          "verified_asset_decimals": 18,
+          "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+          "verified_selector": "0xa415bcad"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-094",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xff34b3d4aee8ddcd6f9afffb6fe49bd371b8a357",
+          "verified_asset_decimals": 18,
+          "verified_function": "repay(address,uint256,uint256,address)",
+          "verified_selector": "0x573ade81"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-095",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x6d906e526a4e2ca02097ba9d0caa3c382f52278e",
+          "verified_asset_decimals": 2,
+          "verified_function": "supply(address,uint256,address,uint16)",
+          "verified_selector": "0x617ba037"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-096",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x6d906e526a4e2ca02097ba9d0caa3c382f52278e",
+          "verified_asset_decimals": 2,
+          "verified_function": "withdraw(address,uint256,address)",
+          "verified_selector": "0x69328dec"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-097",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x6d906e526a4e2ca02097ba9d0caa3c382f52278e",
+          "verified_asset_decimals": 2,
+          "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+          "verified_selector": "0xa415bcad"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-098",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0x6d906e526a4e2ca02097ba9d0caa3c382f52278e",
+          "verified_asset_decimals": 2,
+          "verified_function": "repay(address,uint256,uint256,address)",
+          "verified_selector": "0x573ade81"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-099",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xc4bf5cbdabe595361438f8c6a187bdc330539c60",
+          "verified_asset_decimals": 18,
+          "verified_function": "supply(address,uint256,address,uint16)",
+          "verified_selector": "0x617ba037"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-100",
+    "snapshot_reference": {
+      "decision": "APPROVED",
+      "paths": [
+        {
+          "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+          "verified_asset": "0xc4bf5cbdabe595361438f8c6a187bdc330539c60",
+          "verified_asset_decimals": 18,
+          "verified_function": "withdraw(address,uint256,address)",
+          "verified_selector": "0x69328dec"
+        }
+      ],
+      "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+    }
+  },
+  {
+    "scenario_id": "BAL600-101",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-102",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-103",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-104",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-105",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-106",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-107",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-108",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-109",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-110",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-111",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-112",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-113",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-114",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-115",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-116",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-117",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-118",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-119",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-120",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-121",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-122",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-123",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-124",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-125",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-126",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-127",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-128",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-129",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-130",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-131",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-132",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-133",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-134",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-135",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-136",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-137",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-138",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-139",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-140",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-141",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-142",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-143",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-144",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-145",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-146",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-147",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-148",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-149",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-150",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-181",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-182",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-183",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-184",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-185",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-186",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-187",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-188",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-189",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-190",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-191",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-192",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-193",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-194",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-195",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-196",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-197",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-198",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-199",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  },
+  {
+    "scenario_id": "BAL600-200",
+    "snapshot_reference": {
+      "decision": "REJECTED",
+      "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+    }
+  }
+]

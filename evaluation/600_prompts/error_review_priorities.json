@@ -1,0 +1,110 @@
+{
+  "approval_flags": [
+    {
+      "id": "BAL600-275-A",
+      "query": "On Ethereum Sepolia, use Uniswap V3 to swap an input of 23.8125 USDC for WETH; route through USDT as an intermediate token.",
+      "raw_extraction": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "amount": "23.8125",
+        "chain": "Ethereum Sepolia",
+        "unsupported_action": null,
+        "slippage": null,
+        "unhandled_constraints": []
+      },
+      "validation": {
+        "status": "APPROVED",
+        "intent": {
+          "action": "swap",
+          "protocol": "Uniswap V3",
+          "token_in": "USDC",
+          "token_out": "WETH",
+          "amount": "23.8125",
+          "chain": "Ethereum Sepolia",
+          "chain_id": 11155111,
+          "slippage_bps": null,
+          "unhandled_constraints": []
+        },
+        "message": "Intent is complete and ready for graph verification.",
+        "missing_fields": [],
+        "error_code": null,
+        "unhandled_constraints": []
+      },
+      "final": {
+        "decision": "APPROVED",
+        "verified_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "verified_pool": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+        "verified_function": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "verified_selector": "0x04e45aaf",
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "chain_id": 11155111,
+        "network": "Ethereum Sepolia",
+        "routes": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_in_symbol": "USDC",
+            "token_in_decimals": 6,
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_out_symbol": "WETH",
+            "token_out_decimals": 18,
+            "function_name": "exactInputSingle",
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_in_symbol": "USDC",
+            "token_in_decimals": 6,
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_out_symbol": "WETH",
+            "token_out_decimals": 18,
+            "function_name": "exactInputSingle",
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "knowledge": {
+          "fresh": true,
+          "complete": true
+        },
+        "latency_ms": 71.83,
+        "intent": {
+          "action": "swap",
+          "protocol": "Uniswap V3",
+          "token_in": "USDC",
+          "token_out": "WETH",
+          "amount": "23.8125",
+          "chain": "Ethereum Sepolia",
+          "chain_id": 11155111,
+          "unhandled_constraints": []
+        },
+        "executable": true,
+        "verification_expires_in": 600,
+        "execution_parameters": {
+          "slippage_bps": 100,
+          "slippage_source": "configured_default"
+        }
+      }
+    }
+  ],
+  "false_negative_error_codes": {
+    "unsupported_constraints": 18
+  },
+  "incomplete_mismatch_codes": {
+    "unsupported_constraints": 38,
+    "invalid_amount": 4,
+    "llm_unavailable": 1
+  },
+  "review_status": "Observed outputs and diagnostic codes; semantic reference and root-cause review still required."
+}
