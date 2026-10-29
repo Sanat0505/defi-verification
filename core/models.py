@@ -56,6 +56,8 @@ class IntentCandidate(BaseModel):
     amount: Decimal | None = None
     chain: str | None = None
     chain_id: int | None = None
+    slippage_bps: int | None = Field(default=None, strict=True, ge=1, le=500)
+    unhandled_constraints: list[str] = Field(default_factory=list, max_length=20)
 
     @field_serializer("amount")
     def serialize_amount(self, value: Decimal | None) -> str | None:
@@ -72,6 +74,7 @@ class IntentResolution(BaseModel):
     message: str
     missing_fields: list[str] = Field(default_factory=list)
     error_code: str | None = None
+    unhandled_constraints: list[str] = Field(default_factory=list)
 
 
 class PromptRequest(BaseModel):
@@ -111,3 +114,7 @@ class ApprovedOperation(BaseModel):
     verified_asset_decimals: int | None = None
     interest_rate_mode: int | None = None
     referral_code: int = 0
+    # Effective execution setting, frozen when the capability is issued. The
+    # intent field above remains null when the user did not specify slippage.
+    slippage_bps: int | None = Field(default=None, strict=True, ge=1, le=500)
+    slippage_source: str | None = None

@@ -1,4 +1,4 @@
-"""FastAPI surface for interpretation, graph verification, and safe execution."""
+"""HTTP endpoints for intent verification and approved-operation submission."""
 
 from __future__ import annotations
 
@@ -19,6 +19,7 @@ from core.state import capability_store, conversation_store
 from db.connection import close_driver
 from db.verifier import verify_intent
 from services.pipeline import process_prompt
+from llm.normalization import validate_candidate
 from wallet.erc4337 import add_to_whitelist, execute_aave, execute_swap
 
 
@@ -62,6 +63,16 @@ async def reset_conversation(request: dict):
     return {"status": "reset", "conversation_id": conversation_id}
 
 
+def _route_signature(route: dict) -> tuple:
+    return (
+        str(route.get("router_address", "")).lower(),
+        str(route.get("pool_address", "")).lower(),
+        int(route.get("pool_fee", 0)),
+        str(route.get("token_in_address", "")).lower(),
+        str(route.get("token_out_address", "")).lower(),
+    )
+
+
 def _same_authority(saved, current: dict) -> bool:
     """Ensure current graph authority still resolves the saved structured operation."""
     if current.get("decision") != Decision.APPROVED.value:
@@ -77,25 +88,10 @@ def _same_authority(saved, current: dict) -> bool:
             and current.get("verified_asset_decimals") == saved.verified_asset_decimals
         )
     current_routes = {
-        (
-            str(route.get("router_address", "")).lower(),
-            str(route.get("pool_address", "")).lower(),
-            int(route.get("pool_fee", 0)),
-            str(route.get("token_in_address", "")).lower(),
-            str(route.get("token_out_address", "")).lower(),
-        )
+        _route_signature(route)
         for route in current.get("routes") or []
     }
-    saved_routes = {
-        (
-            str(route.get("router_address", "")).lower(),
-            str(route.get("pool_address", "")).lower(),
-            int(route.get("pool_fee", 0)),
-            str(route.get("token_in_address", "")).lower(),
-            str(route.get("token_out_address", "")).lower(),
-        )
-        for route in saved.routes
-    }
+    saved_routes = {_route_signature(route) for route in saved.routes}
     return bool(current_routes) and bool(current_routes & saved_routes)
 
 
@@ -131,6 +127,16 @@ async def execute(request: ExecuteRequest):
             },
         }
     intent = operation.intent
+    checked = validate_candidate(intent)
+    if checked.status != Decision.APPROVED:
+        return {"decision": "FAILED", "execution": {
+            "reason_code": "INVALID_APPROVED_INTENT", "reason": "The saved operation contains unsupported or incomplete intent parameters."}}
+    if operation.action == "swap" and (
+        type(operation.slippage_bps) is not int or not 1 <= operation.slippage_bps <= 500
+        or (intent.slippage_bps is not None and intent.slippage_bps != operation.slippage_bps)
+    ):
+        return {"decision": "FAILED", "execution": {
+            "reason_code": "INVALID_APPROVED_SLIPPAGE", "reason": "The saved slippage is missing or inconsistent; verify the operation again."}}
     current = await asyncio.to_thread(
         verify_intent,
         intent.protocol,
@@ -186,7 +192,7 @@ async def execute(request: ExecuteRequest):
                 execute_swap,
                 routes,
                 amount_text,
-                int(os.getenv("SWAP_SLIPPAGE_BPS", "100")),
+                operation.slippage_bps,
             )
         else:
             exec_result = await asyncio.to_thread(execute_aave, {

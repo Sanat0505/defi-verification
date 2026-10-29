@@ -8,6 +8,8 @@ from typing import Any
 
 from core.config import settings
 from core.models import Decision, IntentCandidate, IntentResolution
+from core.slippage import parse_slippage
+from llm.request_constraints import constraint_labels
 
 
 def _key(value: Any) -> str:
@@ -83,6 +85,17 @@ def _amount(value: Any) -> tuple[Decimal | None, str | None]:
 
 def normalize_candidate(raw: dict[str, Any]) -> IntentResolution:
     """Normalize untrusted semantic extraction without inventing graph facts."""
+    unhandled = constraint_labels(raw.get("unhandled_constraints"))
+    if unhandled:
+        return IntentResolution(
+            status=Decision.UNSUPPORTED,
+            message="This prototype cannot safely honor these conditions: " + "; ".join(unhandled) + ". No execution capability was issued.",
+            error_code="unsupported_constraints", unhandled_constraints=unhandled,
+        )
+    try:
+        slippage_bps = parse_slippage(raw.get("slippage"))
+    except ValueError as exc:
+        return IntentResolution(status=Decision.REJECTED, message=str(exc), error_code="invalid_slippage")
     unsupported_action = _field(raw, "unsupported_action")
     if unsupported_action and _key(unsupported_action) not in ACTION_ALIASES:
         return IntentResolution(
@@ -143,11 +156,24 @@ def normalize_candidate(raw: dict[str, Any]) -> IntentResolution:
         amount=amount,
         chain=chain,
         chain_id=chain_id,
+        slippage_bps=slippage_bps,
     )
     return validate_candidate(candidate)
 
 
 def validate_candidate(candidate: IntentCandidate) -> IntentResolution:
+    if candidate.unhandled_constraints:
+        return IntentResolution(
+            status=Decision.UNSUPPORTED, intent=candidate,
+            message="Unsupported conditions: " + "; ".join(candidate.unhandled_constraints),
+            error_code="unsupported_constraints", unhandled_constraints=candidate.unhandled_constraints,
+        )
+    if candidate.slippage_bps is not None and candidate.action and candidate.action != "swap":
+        return IntentResolution(
+            status=Decision.UNSUPPORTED, intent=candidate,
+            message="Slippage tolerance is supported only for Uniswap V3 swaps, not Aave lending operations.",
+            error_code="unsupported_slippage_action",
+        )
     if candidate.action == "swap" and candidate.protocol and candidate.protocol != "Uniswap V3":
         return IntentResolution(
             status=Decision.UNSUPPORTED,
@@ -208,6 +234,12 @@ def merge_clarification(
     therefore never merged into stale state.
     """
     if update.action or update.protocol:
+        return None
+    # Never discard new conditions or silently change a previously specified
+    # slippage bound while filling an unrelated missing field.
+    if update.unhandled_constraints or (
+        update.slippage_bps is not None and update.slippage_bps != pending.slippage_bps
+    ):
         return None
     update_data = update.model_dump()
     if not any(update_data.get(name) is not None for name in missing_fields):
