@@ -1,8 +1,6 @@
-"""Small explicit in-memory state for clarification and execution capabilities.
+"""Process-local clarification state and one-time execution capabilities.
 
-The stores are intentionally process-local for this thesis prototype. They avoid
-sending full chat history to the LLM and, critically, keep approved operations
-server-side so clients cannot mutate transaction parameters after verification.
+Approved operations stay on the server; clients receive only a capability ID.
 """
 
 from __future__ import annotations
@@ -69,7 +67,7 @@ class VerificationCapabilityStore:
         capability_id = secrets.token_urlsafe(32)
         with self._lock:
             self._items[capability_id] = Capability(
-                operation=operation,
+                operation=operation.model_copy(deep=True),
                 expires_at=time.time() + self.ttl_seconds,
             )
         return capability_id

@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "started_at_utc": "2026-10-19T14:00:31.304972+00:00",
+    "database": "thesis-eval-20261019",
+    "live_database": "neo4j",
+    "live_before": {
+      "nodes": {
+        "count": 3574,
+        "sha256": "7ac47271a303817e8002ecda418410cbe5e4db77d009616209f3848c3efaad5a"
+      },
+      "relationships": {
+        "count": 20014,
+        "sha256": "47c57760cd03b3fbaa41c969db2ea388616b1e2756669af6a36dcab108f4429b"
+      }
+    },
+    "production_verifier_sha256": "c6014a33f819e5911ff94665dc180fcb52e5567800008975c70cecb996da81f9",
+    "runner_sha256": "384853261dcaccfc2a9aa0f073e61d13a2ef94d8a170691c507677f7a07bdbd0",
+    "reference_review": "assistant_authored_controlled_fixtures_pending_researcher_review",
+    "LLM_calls": 0,
+    "transaction_broadcast": false,
+    "concurrency": 1,
+    "freshness_hours": 168,
+    "database_unavailable_injected": true,
+    "source_failure_injected": true,
+    "fixture_nodes_after_cleanup": 0,
+    "live_after": {
+      "nodes": {
+        "count": 3574,
+        "sha256": "7ac47271a303817e8002ecda418410cbe5e4db77d009616209f3848c3efaad5a"
+      },
+      "relationships": {
+        "count": 20014,
+        "sha256": "47c57760cd03b3fbaa41c969db2ea388616b1e2756669af6a36dcab108f4429b"
+      }
+    },
+    "live_unchanged": true,
+    "completed_at_utc": "2026-10-19T14:00:34.730694+00:00",
+    "completed": false
+  },
+  "D": [],
+  "E": []
+}

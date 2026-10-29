@@ -1,0 +1,1068 @@
+[
+  {
+    "phase": "graph",
+    "id": "BAL600-115-B",
+    "input": {
+      "protocol": "Uniswap V3",
+      "token_in": "EURS",
+      "token_out": "GHO",
+      "action": "swap",
+      "chain_id": 11155111
+    },
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / EURS -> GHO",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.PATH.NO_QUALIFYING_PATH",
+            "subject": {
+              "protocol": "Uniswap V3",
+              "action": "swap",
+              "token_in": "EURS",
+              "token_out": "GHO",
+              "chain_id": 11155111
+            },
+            "expected": {
+              "qualifying_path_present": true
+            },
+            "observed": {
+              "qualifying_path_present": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "not_localized",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "https://developers.uniswap.org/deployments.json",
+          "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+          "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": null,
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization.",
+          "No single-edge witness was established; node properties, metadata or multiple failures may be involved."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 2397.92
+    }
+  },
+  {
+    "phase": "graph",
+    "id": "BAL600-115-A",
+    "input": {
+      "protocol": "Uniswap V3",
+      "token_in": "EURS",
+      "token_out": "GHO",
+      "action": "swap",
+      "chain_id": 11155111
+    },
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / EURS -> GHO",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.PATH.NO_QUALIFYING_PATH",
+            "subject": {
+              "protocol": "Uniswap V3",
+              "action": "swap",
+              "token_in": "EURS",
+              "token_out": "GHO",
+              "chain_id": 11155111
+            },
+            "expected": {
+              "qualifying_path_present": true
+            },
+            "observed": {
+              "qualifying_path_present": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "not_localized",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "https://developers.uniswap.org/deployments.json",
+          "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+          "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": null,
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization.",
+          "No single-edge witness was established; node properties, metadata or multiple failures may be involved."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 49.88
+    }
+  },
+  {
+    "phase": "graph",
+    "id": "BAL600-108-B",
+    "input": {
+      "protocol": "Uniswap V3",
+      "token_in": "DAI",
+      "token_out": "EURS",
+      "action": "swap",
+      "chain_id": 11155111
+    },
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / DAI -> EURS",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.PATH.NO_QUALIFYING_PATH",
+            "subject": {
+              "protocol": "Uniswap V3",
+              "action": "swap",
+              "token_in": "DAI",
+              "token_out": "EURS",
+              "chain_id": 11155111
+            },
+            "expected": {
+              "qualifying_path_present": true
+            },
+            "observed": {
+              "qualifying_path_present": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "not_localized",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "https://developers.uniswap.org/deployments.json",
+          "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+          "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": null,
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization.",
+          "No single-edge witness was established; node properties, metadata or multiple failures may be involved."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 234.53
+    }
+  },
+  {
+    "phase": "graph",
+    "id": "BAL600-108-A",
+    "input": {
+      "protocol": "Uniswap V3",
+      "token_in": "DAI",
+      "token_out": "EURS",
+      "action": "swap",
+      "chain_id": 11155111
+    },
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / DAI -> EURS",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.PATH.NO_QUALIFYING_PATH",
+            "subject": {
+              "protocol": "Uniswap V3",
+              "action": "swap",
+              "token_in": "DAI",
+              "token_out": "EURS",
+              "chain_id": 11155111
+            },
+            "expected": {
+              "qualifying_path_present": true
+            },
+            "observed": {
+              "qualifying_path_present": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "not_localized",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "https://developers.uniswap.org/deployments.json",
+          "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+          "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": null,
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization.",
+          "No single-edge witness was established; node properties, metadata or multiple failures may be involved."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 53.98
+    }
+  },
+  {
+    "phase": "graph",
+    "id": "BAL600-142-A",
+    "input": {
+      "protocol": "Uniswap V3",
+      "token_in": "GHO",
+      "token_out": "DAI",
+      "action": "swap",
+      "chain_id": 11155111
+    },
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / GHO -> DAI",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.PATH.NO_QUALIFYING_PATH",
+            "subject": {
+              "protocol": "Uniswap V3",
+              "action": "swap",
+              "token_in": "GHO",
+              "token_out": "DAI",
+              "chain_id": 11155111
+            },
+            "expected": {
+              "qualifying_path_present": true
+            },
+            "observed": {
+              "qualifying_path_present": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "not_localized",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "https://developers.uniswap.org/deployments.json",
+          "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+          "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": null,
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization.",
+          "No single-edge witness was established; node properties, metadata or multiple failures may be involved."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 43.88
+    }
+  },
+  {
+    "phase": "graph",
+    "id": "BAL600-142-B",
+    "input": {
+      "protocol": "Uniswap V3",
+      "token_in": "GHO",
+      "token_out": "DAI",
+      "action": "swap",
+      "chain_id": 11155111
+    },
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / GHO -> DAI",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.PATH.NO_QUALIFYING_PATH",
+            "subject": {
+              "protocol": "Uniswap V3",
+              "action": "swap",
+              "token_in": "GHO",
+              "token_out": "DAI",
+              "chain_id": 11155111
+            },
+            "expected": {
+              "qualifying_path_present": true
+            },
+            "observed": {
+              "qualifying_path_present": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "not_localized",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "https://developers.uniswap.org/deployments.json",
+          "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+          "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": null,
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization.",
+          "No single-edge witness was established; node properties, metadata or multiple failures may be involved."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 49.22
+    }
+  },
+  {
+    "phase": "graph",
+    "id": "BAL600-109-B",
+    "input": {
+      "protocol": "Uniswap V3",
+      "token_in": "DAI",
+      "token_out": "GHO",
+      "action": "swap",
+      "chain_id": 11155111
+    },
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / DAI -> GHO",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.PATH.NO_QUALIFYING_PATH",
+            "subject": {
+              "protocol": "Uniswap V3",
+              "action": "swap",
+              "token_in": "DAI",
+              "token_out": "GHO",
+              "chain_id": 11155111
+            },
+            "expected": {
+              "qualifying_path_present": true
+            },
+            "observed": {
+              "qualifying_path_present": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "not_localized",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "https://developers.uniswap.org/deployments.json",
+          "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+          "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": null,
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization.",
+          "No single-edge witness was established; node properties, metadata or multiple failures may be involved."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 47.69
+    }
+  },
+  {
+    "phase": "graph",
+    "id": "BAL600-109-A",
+    "input": {
+      "protocol": "Uniswap V3",
+      "token_in": "DAI",
+      "token_out": "GHO",
+      "action": "swap",
+      "chain_id": 11155111
+    },
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / DAI -> GHO",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.PATH.NO_QUALIFYING_PATH",
+            "subject": {
+              "protocol": "Uniswap V3",
+              "action": "swap",
+              "token_in": "DAI",
+              "token_out": "GHO",
+              "chain_id": 11155111
+            },
+            "expected": {
+              "qualifying_path_present": true
+            },
+            "observed": {
+              "qualifying_path_present": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "not_localized",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "https://developers.uniswap.org/deployments.json",
+          "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+          "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": null,
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization.",
+          "No single-edge witness was established; node properties, metadata or multiple failures may be involved."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 62.69
+    }
+  },
+  {
+    "phase": "graph",
+    "id": "BAL600-141-B",
+    "input": {
+      "protocol": "Uniswap V3",
+      "token_in": "EURS",
+      "token_out": "DAI",
+      "action": "swap",
+      "chain_id": 11155111
+    },
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / EURS -> DAI",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.PATH.NO_QUALIFYING_PATH",
+            "subject": {
+              "protocol": "Uniswap V3",
+              "action": "swap",
+              "token_in": "EURS",
+              "token_out": "DAI",
+              "chain_id": 11155111
+            },
+            "expected": {
+              "qualifying_path_present": true
+            },
+            "observed": {
+              "qualifying_path_present": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "not_localized",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "https://developers.uniswap.org/deployments.json",
+          "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+          "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": null,
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization.",
+          "No single-edge witness was established; node properties, metadata or multiple failures may be involved."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 58.41
+    }
+  },
+  {
+    "phase": "graph",
+    "id": "BAL600-141-A",
+    "input": {
+      "protocol": "Uniswap V3",
+      "token_in": "EURS",
+      "token_out": "DAI",
+      "action": "swap",
+      "chain_id": 11155111
+    },
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / EURS -> DAI",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.PATH.NO_QUALIFYING_PATH",
+            "subject": {
+              "protocol": "Uniswap V3",
+              "action": "swap",
+              "token_in": "EURS",
+              "token_out": "DAI",
+              "chain_id": 11155111
+            },
+            "expected": {
+              "qualifying_path_present": true
+            },
+            "observed": {
+              "qualifying_path_present": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "not_localized",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "https://developers.uniswap.org/deployments.json",
+          "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+          "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": null,
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization.",
+          "No single-edge witness was established; node properties, metadata or multiple failures may be involved."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 57.14
+    }
+  },
+  {
+    "phase": "graph",
+    "id": "BAL600-148-A",
+    "input": {
+      "protocol": "Uniswap V3",
+      "token_in": "GHO",
+      "token_out": "EURS",
+      "action": "swap",
+      "chain_id": 11155111
+    },
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / GHO -> EURS",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.PATH.NO_QUALIFYING_PATH",
+            "subject": {
+              "protocol": "Uniswap V3",
+              "action": "swap",
+              "token_in": "GHO",
+              "token_out": "EURS",
+              "chain_id": 11155111
+            },
+            "expected": {
+              "qualifying_path_present": true
+            },
+            "observed": {
+              "qualifying_path_present": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "not_localized",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "https://developers.uniswap.org/deployments.json",
+          "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+          "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": null,
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization.",
+          "No single-edge witness was established; node properties, metadata or multiple failures may be involved."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 937.03
+    }
+  },
+  {
+    "phase": "graph",
+    "id": "BAL600-148-B",
+    "input": {
+      "protocol": "Uniswap V3",
+      "token_in": "GHO",
+      "token_out": "EURS",
+      "action": "swap",
+      "chain_id": 11155111
+    },
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / GHO -> EURS",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.PATH.NO_QUALIFYING_PATH",
+            "subject": {
+              "protocol": "Uniswap V3",
+              "action": "swap",
+              "token_in": "GHO",
+              "token_out": "EURS",
+              "chain_id": 11155111
+            },
+            "expected": {
+              "qualifying_path_present": true
+            },
+            "observed": {
+              "qualifying_path_present": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "not_localized",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "https://developers.uniswap.org/deployments.json",
+          "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+          "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": null,
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization.",
+          "No single-edge witness was established; node properties, metadata or multiple failures may be involved."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 51.94
+    }
+  },
+  {
+    "phase": "boundaries",
+    "id": "GRAPH-CONTROL-04",
+    "input": {
+      "protocol": "Uniswap V3",
+      "token_in": "USDC",
+      "token_out": "USDC",
+      "action": "swap",
+      "chain_id": 11155111
+    },
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / USDC -> USDC",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.PATH.NO_QUALIFYING_PATH",
+            "subject": {
+              "protocol": "Uniswap V3",
+              "action": "swap",
+              "token_in": "USDC",
+              "token_out": "USDC",
+              "chain_id": 11155111
+            },
+            "expected": {
+              "qualifying_path_present": true
+            },
+            "observed": {
+              "qualifying_path_present": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "not_localized",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "https://developers.uniswap.org/deployments.json",
+          "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+          "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": null,
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization.",
+          "No single-edge witness was established; node properties, metadata or multiple failures may be involved."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 57.79
+    }
+  }
+]

@@ -6,6 +6,34 @@ from core.models import Decision, IntentCandidate
 from llm.normalization import merge_clarification, normalize_candidate
 
 
+@pytest.mark.parametrize("chain", [
+    "Sepolia", "Ethereum Sepolia", "Sepolia testnet", "Sepolia test network",
+    "Ethereum Sepolia testnet", "Ethereum Sepolia test network",
+    "Sepolia (Ethereum testnet)", "SEPOLIA TESTNET",
+])
+def test_sepolia_network_aliases(chain):
+    result = normalize_candidate({
+        "action": "swap", "protocol": "Uniswap V3", "token_in": "USDC",
+        "token_out": "WETH", "amount": "3.75", "chain": chain,
+    })
+    assert result.status == Decision.APPROVED
+    assert result.intent.chain == "Ethereum Sepolia"
+    assert result.intent.chain_id == 11155111
+
+
+@pytest.mark.parametrize("chain", [
+    "Base Sepolia", "Arbitrum Sepolia", "Optimism Sepolia", "Ethereum mainnet",
+    "Ethereum testnet", "Sepolia or mainnet",
+])
+def test_explicit_other_or_ambiguous_networks_are_not_aliases(chain):
+    result = normalize_candidate({
+        "action": "swap", "protocol": "Uniswap V3", "token_in": "USDC",
+        "token_out": "WETH", "amount": "3.75", "chain": chain,
+    })
+    assert result.status == Decision.UNSUPPORTED
+    assert result.error_code == "unsupported_network"
+
+
 @pytest.mark.parametrize("protocol", ["uniswap", "Uniswap", "UNISWAP V3", "Uni v3"])
 def test_protocol_aliases_normalize(protocol):
     result = normalize_candidate({
@@ -64,6 +92,43 @@ def test_supported_action_is_not_misclassified_by_model_flag():
         "token_in": None, "token_out": None, "amount": None,
     })
     assert result.status == Decision.NEEDS_CLARIFICATION
+
+
+@pytest.mark.parametrize("action,protocol", [
+    ("borrow", "Uniswap V3"), ("supply", "Uniswap V3"),
+    ("withdraw", "Uniswap V3"), ("repay", "Uniswap V3"),
+    ("swap", "Aave V3"),
+])
+def test_misplaced_supported_verb_reports_protocol_mismatch(action, protocol):
+    result = normalize_candidate({
+        "action": None, "unsupported_action": action, "protocol": protocol,
+        "token_in": "USDT", "amount": "5",
+    })
+    assert result.status == Decision.UNSUPPORTED
+    assert result.error_code == "unsupported_action_protocol_pair"
+    assert result.intent.action == action
+    assert result.intent.protocol == protocol
+    assert not result.missing_fields
+
+
+def test_recovered_action_still_requires_missing_amount():
+    result = normalize_candidate({
+        "action": None, "unsupported_action": "borrow", "protocol": "Aave V3",
+        "token_in": "USDT",
+    })
+    assert result.status == Decision.NEEDS_CLARIFICATION
+    assert result.intent.action == "borrow"
+    assert result.missing_fields == ["amount"]
+
+
+def test_unsupported_staking_is_not_recovered_as_supply():
+    result = normalize_candidate({
+        "action": None, "unsupported_action": "stake", "protocol": "Aave V3",
+        "token_in": "WETH", "amount": "2",
+    })
+    assert result.status == Decision.UNSUPPORTED
+    assert result.error_code == "unsupported_action"
+    assert result.intent is None
 
 
 def test_clarification_merges_only_missing_fields():

@@ -1,0 +1,8 @@
+{
+  "evaluation/datasets/cases.json": "181aeac10aec079eab955ce70825ae6b97b9e959d200ae7cb51849b2cb35989d",
+  "evaluation/datasets/constraint_regression_v1.json": "c86de11f211eb32a217a8c2996aae1451c12b3875282ac9a8db2be5e424178a7",
+  "evaluation/datasets/expanded_500_cases.json": "97fcf441ae7b732fc551b6cd5ff411101bde2bc941a27643c8501ec660db033c",
+  "evaluation/datasets/sourced_cases.json": "09b1b7e8cf12a7dd03fe8623edb7f8c004bb726b974e5dbc3c6aded949e7cbf3",
+  "evaluation/datasets/wallet_cases.json": "940234730d6ec0dadfed8669bb95edd34e385a5b8c828e134705680c8d12a977",
+  "evaluation/thesis_final_report/data/draft_400_requests.json": "db0e1f103d446124d9aa853870526c25398bb1541bd5f32183bf101461bb9ffd"
+}

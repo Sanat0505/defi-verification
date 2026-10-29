@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "protected_files": 346,
+  "authorized_changed_files": [
+    "db/verifier.py",
+    "core/models.py"
+  ],
+  "journal_calls": 924,
+  "unique_calls": 924,
+  "approval_queries_unchanged": true,
+  "freshness_logic_unchanged": true,
+  "approval_payloads_unchanged": true,
+  "historical_results_unchanged": true,
+  "live_graph_unchanged": true,
+  "fixture_database_empty": true
+}

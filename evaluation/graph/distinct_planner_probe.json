@@ -1,0 +1,534 @@
+{
+  "note": "Development probe with in-memory query staging change; separate from final evaluation.",
+  "results": [
+    {
+      "mutation": "control",
+      "result": {
+        "decision": "APPROVED",
+        "verified_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "verified_pool": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+        "verified_function": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "verified_selector": "0x04e45aaf",
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "chain_id": 11155111,
+        "network": "Ethereum Sepolia",
+        "routes": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_in_symbol": "USDC",
+            "token_in_decimals": 6,
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_out_symbol": "WETH",
+            "token_out_decimals": 18,
+            "function_name": "exactInputSingle",
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "knowledge": {
+          "fresh": true,
+          "complete": true
+        },
+        "latency_ms": 7.65
+      },
+      "wall_latency_ms": 7.711
+    },
+    {
+      "mutation": "action_function",
+      "result": {
+        "decision": "REJECTED",
+        "verified_address": null,
+        "reason": "No authoritative relationship path exists for Uniswap V3 / swap / USDC -> WETH",
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "chain_id": 11155111,
+        "network": "Ethereum Sepolia",
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "trace": {
+          "version": 1,
+          "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+          "failures": [
+            {
+              "rule_id": "GRAPH.RELATIONSHIP.IMPLEMENTS_ACTION",
+              "subject": {
+                "relationship": "IMPLEMENTS_ACTION",
+                "source": {
+                  "symbol": null,
+                  "address": null,
+                  "chain_id": null,
+                  "signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+                  "name": "exactInputSingle",
+                  "selector": "0x04e45aaf",
+                  "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:12",
+                  "key": null,
+                  "labels": [
+                    "Function"
+                  ]
+                },
+                "target": {
+                  "symbol": null,
+                  "address": null,
+                  "chain_id": null,
+                  "signature": null,
+                  "name": "swap",
+                  "selector": null,
+                  "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:26",
+                  "key": null,
+                  "labels": [
+                    "Action"
+                  ]
+                }
+              },
+              "expected": {
+                "present": true,
+                "properties": {}
+              },
+              "observed": {
+                "present": false,
+                "properties": {}
+              },
+              "evidence_scope": "admitted_local_snapshot"
+            }
+          ],
+          "diagnostic_status": "observed",
+          "diagnostic_error_code": null,
+          "knowledge": {
+            "scope": "admitted_local_snapshot",
+            "deployment_key": "uniswap-v3:11155111",
+            "source_url": "fixture:admitted-snapshot-projection",
+            "last_successful_sync_at": "2026-10-24T20:05:37.584295+00:00",
+            "last_synced_at": null,
+            "last_sync_status": "SUCCESS",
+            "asset_coverage": "official-address-book-complete",
+            "pool_discovery_complete": true,
+            "fresh": true,
+            "complete": true,
+            "max_age_hours": 168,
+            "absence_interpretation": "confirmed_under_declared_local_coverage"
+          },
+          "limitations": [
+            "Observations describe admitted local knowledge, not independent protocol truth.",
+            "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+            "Diagnostic reads follow the decision query; concurrent graph changes can limit localization."
+          ]
+        },
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "fixture:admitted-snapshot-projection",
+          "last_successful_sync_at": "2026-10-24T20:05:37.584295+00:00",
+          "last_synced_at": null,
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": "official-address-book-complete",
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "latency_ms": 3663.33
+      },
+      "wall_latency_ms": 3663.377
+    },
+    {
+      "mutation": "contract_function",
+      "result": {
+        "decision": "REJECTED",
+        "verified_address": null,
+        "reason": "No authoritative relationship path exists for Uniswap V3 / swap / USDC -> WETH",
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "chain_id": 11155111,
+        "network": "Ethereum Sepolia",
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "trace": {
+          "version": 1,
+          "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+          "failures": [
+            {
+              "rule_id": "GRAPH.RELATIONSHIP.EXPOSES_FUNCTION",
+              "subject": {
+                "relationship": "EXPOSES_FUNCTION",
+                "source": {
+                  "symbol": null,
+                  "address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+                  "chain_id": 11155111,
+                  "signature": null,
+                  "name": null,
+                  "selector": null,
+                  "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:14",
+                  "key": null,
+                  "labels": [
+                    "Contract"
+                  ]
+                },
+                "target": {
+                  "symbol": null,
+                  "address": null,
+                  "chain_id": null,
+                  "signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+                  "name": "exactInputSingle",
+                  "selector": "0x04e45aaf",
+                  "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:0",
+                  "key": null,
+                  "labels": [
+                    "Function"
+                  ]
+                }
+              },
+              "expected": {
+                "present": true,
+                "properties": {}
+              },
+              "observed": {
+                "present": false,
+                "properties": {}
+              },
+              "evidence_scope": "admitted_local_snapshot"
+            }
+          ],
+          "diagnostic_status": "observed",
+          "diagnostic_error_code": null,
+          "knowledge": {
+            "scope": "admitted_local_snapshot",
+            "deployment_key": "uniswap-v3:11155111",
+            "source_url": "fixture:admitted-snapshot-projection",
+            "last_successful_sync_at": "2026-10-24T20:05:41.391170+00:00",
+            "last_synced_at": null,
+            "last_sync_status": "SUCCESS",
+            "asset_coverage": "official-address-book-complete",
+            "pool_discovery_complete": true,
+            "fresh": true,
+            "complete": true,
+            "max_age_hours": 168,
+            "absence_interpretation": "confirmed_under_declared_local_coverage"
+          },
+          "limitations": [
+            "Observations describe admitted local knowledge, not independent protocol truth.",
+            "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+            "Diagnostic reads follow the decision query; concurrent graph changes can limit localization."
+          ]
+        },
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "fixture:admitted-snapshot-projection",
+          "last_successful_sync_at": "2026-10-24T20:05:41.391170+00:00",
+          "last_synced_at": null,
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": "official-address-book-complete",
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "latency_ms": 30.82
+      },
+      "wall_latency_ms": 30.854
+    },
+    {
+      "mutation": "deployment_contract",
+      "result": {
+        "decision": "REJECTED",
+        "verified_address": null,
+        "reason": "No authoritative relationship path exists for Uniswap V3 / swap / USDC -> WETH",
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "chain_id": 11155111,
+        "network": "Ethereum Sepolia",
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "trace": {
+          "version": 1,
+          "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+          "failures": [
+            {
+              "rule_id": "GRAPH.RELATIONSHIP.DEPLOYED_CONTRACT",
+              "subject": {
+                "relationship": "DEPLOYED_CONTRACT",
+                "source": {
+                  "symbol": null,
+                  "address": null,
+                  "chain_id": 11155111,
+                  "signature": null,
+                  "name": null,
+                  "selector": null,
+                  "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:47",
+                  "key": "uniswap-v3:11155111",
+                  "labels": [
+                    "ProtocolDeployment"
+                  ]
+                },
+                "target": {
+                  "symbol": null,
+                  "address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+                  "chain_id": 11155111,
+                  "signature": null,
+                  "name": null,
+                  "selector": null,
+                  "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:2",
+                  "key": null,
+                  "labels": [
+                    "Contract"
+                  ]
+                }
+              },
+              "expected": {
+                "present": true,
+                "properties": {
+                  "role": "swap_router",
+                  "active": true
+                }
+              },
+              "observed": {
+                "present": false,
+                "properties": {}
+              },
+              "evidence_scope": "admitted_local_snapshot"
+            }
+          ],
+          "diagnostic_status": "observed",
+          "diagnostic_error_code": null,
+          "knowledge": {
+            "scope": "admitted_local_snapshot",
+            "deployment_key": "uniswap-v3:11155111",
+            "source_url": "fixture:admitted-snapshot-projection",
+            "last_successful_sync_at": "2026-10-24T20:05:41.547896+00:00",
+            "last_synced_at": null,
+            "last_sync_status": "SUCCESS",
+            "asset_coverage": "official-address-book-complete",
+            "pool_discovery_complete": true,
+            "fresh": true,
+            "complete": true,
+            "max_age_hours": 168,
+            "absence_interpretation": "confirmed_under_declared_local_coverage"
+          },
+          "limitations": [
+            "Observations describe admitted local knowledge, not independent protocol truth.",
+            "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+            "Diagnostic reads follow the decision query; concurrent graph changes can limit localization."
+          ]
+        },
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "fixture:admitted-snapshot-projection",
+          "last_successful_sync_at": "2026-10-24T20:05:41.547896+00:00",
+          "last_synced_at": null,
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": "official-address-book-complete",
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "latency_ms": 25.63
+      },
+      "wall_latency_ms": 25.665
+    },
+    {
+      "mutation": "resource_membership",
+      "result": {
+        "decision": "REJECTED",
+        "verified_address": null,
+        "reason": "No authoritative relationship path exists for Uniswap V3 / swap / USDC -> WETH",
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "chain_id": 11155111,
+        "network": "Ethereum Sepolia",
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "trace": {
+          "version": 1,
+          "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+          "failures": [
+            {
+              "rule_id": "GRAPH.RELATIONSHIP.HAS_POOL",
+              "subject": {
+                "relationship": "HAS_POOL",
+                "source": {
+                  "symbol": null,
+                  "address": null,
+                  "chain_id": 11155111,
+                  "signature": null,
+                  "name": null,
+                  "selector": null,
+                  "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:51",
+                  "key": "uniswap-v3:11155111",
+                  "labels": [
+                    "ProtocolDeployment"
+                  ]
+                },
+                "target": {
+                  "symbol": null,
+                  "address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+                  "chain_id": 11155111,
+                  "signature": null,
+                  "name": null,
+                  "selector": null,
+                  "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:31",
+                  "key": null,
+                  "labels": [
+                    "Pool"
+                  ]
+                }
+              },
+              "expected": {
+                "present": true,
+                "properties": {
+                  "active": true
+                }
+              },
+              "observed": {
+                "present": false,
+                "properties": {}
+              },
+              "evidence_scope": "admitted_local_snapshot"
+            }
+          ],
+          "diagnostic_status": "observed",
+          "diagnostic_error_code": null,
+          "knowledge": {
+            "scope": "admitted_local_snapshot",
+            "deployment_key": "uniswap-v3:11155111",
+            "source_url": "fixture:admitted-snapshot-projection",
+            "last_successful_sync_at": "2026-10-24T20:05:41.703078+00:00",
+            "last_synced_at": null,
+            "last_sync_status": "SUCCESS",
+            "asset_coverage": "official-address-book-complete",
+            "pool_discovery_complete": true,
+            "fresh": true,
+            "complete": true,
+            "max_age_hours": 168,
+            "absence_interpretation": "confirmed_under_declared_local_coverage"
+          },
+          "limitations": [
+            "Observations describe admitted local knowledge, not independent protocol truth.",
+            "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+            "Diagnostic reads follow the decision query; concurrent graph changes can limit localization."
+          ]
+        },
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "fixture:admitted-snapshot-projection",
+          "last_successful_sync_at": "2026-10-24T20:05:41.703078+00:00",
+          "last_synced_at": null,
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": "official-address-book-complete",
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "latency_ms": 29.41
+      },
+      "wall_latency_ms": 29.464
+    },
+    {
+      "mutation": "resource_asset",
+      "result": {
+        "decision": "REJECTED",
+        "verified_address": null,
+        "reason": "No authoritative relationship path exists for Uniswap V3 / swap / USDC -> WETH",
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "chain_id": 11155111,
+        "network": "Ethereum Sepolia",
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "trace": {
+          "version": 1,
+          "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+          "failures": [
+            {
+              "rule_id": "GRAPH.RELATIONSHIP.SUPPORTS_TOKEN",
+              "subject": {
+                "relationship": "SUPPORTS_TOKEN",
+                "source": {
+                  "symbol": null,
+                  "address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+                  "chain_id": 11155111,
+                  "signature": null,
+                  "name": null,
+                  "selector": null,
+                  "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:36",
+                  "key": null,
+                  "labels": [
+                    "Pool"
+                  ]
+                },
+                "target": {
+                  "symbol": "USDC",
+                  "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+                  "chain_id": 11155111,
+                  "signature": null,
+                  "name": null,
+                  "selector": null,
+                  "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:3",
+                  "key": null,
+                  "labels": [
+                    "Token"
+                  ]
+                }
+              },
+              "expected": {
+                "present": true,
+                "properties": {}
+              },
+              "observed": {
+                "present": false,
+                "properties": {}
+              },
+              "evidence_scope": "admitted_local_snapshot"
+            }
+          ],
+          "diagnostic_status": "observed",
+          "diagnostic_error_code": null,
+          "knowledge": {
+            "scope": "admitted_local_snapshot",
+            "deployment_key": "uniswap-v3:11155111",
+            "source_url": "fixture:admitted-snapshot-projection",
+            "last_successful_sync_at": "2026-10-24T20:05:41.885063+00:00",
+            "last_synced_at": null,
+            "last_sync_status": "SUCCESS",
+            "asset_coverage": "official-address-book-complete",
+            "pool_discovery_complete": true,
+            "fresh": true,
+            "complete": true,
+            "max_age_hours": 168,
+            "absence_interpretation": "confirmed_under_declared_local_coverage"
+          },
+          "limitations": [
+            "Observations describe admitted local knowledge, not independent protocol truth.",
+            "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+            "Diagnostic reads follow the decision query; concurrent graph changes can limit localization."
+          ]
+        },
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "fixture:admitted-snapshot-projection",
+          "last_successful_sync_at": "2026-10-24T20:05:41.885063+00:00",
+          "last_synced_at": null,
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": "official-address-book-complete",
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "latency_ms": 18.19
+      },
+      "wall_latency_ms": 18.222
+    }
+  ],
+  "live_unchanged": true,
+  "fixture_empty": true
+}

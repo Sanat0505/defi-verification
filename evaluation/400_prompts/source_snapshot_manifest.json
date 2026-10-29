@@ -1,0 +1,126 @@
+[
+  {
+    "path": "core/__init__.py",
+    "sha256": "568dc119f0d6bd6b6e1b194e3699bbcc84122a62c4546ab358dc63d4a5084e48"
+  },
+  {
+    "path": "core/config.py",
+    "sha256": "9a9b00c9654a40dfe18bc0bdc50291f85ada618198a2057bb38e0b7d80aea8b4"
+  },
+  {
+    "path": "core/models.py",
+    "sha256": "da642eccbf4baa885ab3f933613e932c85cf95d14869b154c02c400fdc1dad6c"
+  },
+  {
+    "path": "core/slippage.py",
+    "sha256": "8ccc2da56228043a537720c9399145d1dab03ef52cf5ff89584fe98a6b20720c"
+  },
+  {
+    "path": "core/state.py",
+    "sha256": "4e357f7d9d725a35f885eac38692664549df6f4f0f6250151c7bd59ebb167ab8"
+  },
+  {
+    "path": "db/connection.py",
+    "sha256": "a856acf7ef2e1e0f66593ab6855a9e41ee6c4211454a740f73511b5b6b156fb6"
+  },
+  {
+    "path": "db/graph_builder.py",
+    "sha256": "c4cb891a021a1f8eb48ae4ca0124076bd01738bc683e1c3025420a56caa54e9f"
+  },
+  {
+    "path": "db/graph_v2.py",
+    "sha256": "eefdde493ed56918e6337cba5d281e75efeba6e31966d3dfa6742385c2cde5a5"
+  },
+  {
+    "path": "db/loaders/__init__.py",
+    "sha256": "e8d0f891865b7397cb5fbf0390a911e77dcffa729d2095866fb50804eaa3a44e"
+  },
+  {
+    "path": "db/loaders/aave_loader.py",
+    "sha256": "d7748215c6b30be039f6cf1fe090d54b5191c1c2e72621fc7c731c7be40d74bc"
+  },
+  {
+    "path": "db/loaders/common.py",
+    "sha256": "fcc1167050a99eed9fdd4e6670418322f2baa99436de26cc6c112304b49b6c83"
+  },
+  {
+    "path": "db/loaders/uniswap_loader.py",
+    "sha256": "680e0219f980714d3b37c7c988276dc8842fa69195748a3f36305381889f2449"
+  },
+  {
+    "path": "db/presentation_views.py",
+    "sha256": "5e2e54584bdd4da3fedf4f911d453d75a657ac11c650c7b572449fd6e9d7f536"
+  },
+  {
+    "path": "db/sync.py",
+    "sha256": "8f77c31045b40f5f8ce4ac4107097922d65f40bc16785f4ea214fac09462f075"
+  },
+  {
+    "path": "db/validate_graph_v2.py",
+    "sha256": "c06bc1b7f99928fc57ae3fb53bee4e4dd5fc1fb9b369a5dc641834d1e6d6424f"
+  },
+  {
+    "path": "db/verifier.py",
+    "sha256": "c6014a33f819e5911ff94665dc180fcb52e5567800008975c70cecb996da81f9"
+  },
+  {
+    "path": "db/verify_sync.py",
+    "sha256": "8d2017ca18e7ff7e66e6f2671557a9e0058388b76cead4f4e89a18809d9e03c3"
+  },
+  {
+    "path": "evaluation/__init__.py",
+    "sha256": "a19060044179d79b4352a48593cd4ad943d791278d81b1aecf05e8d896257d20"
+  },
+  {
+    "path": "evaluation/analyse_exploratory_400.py",
+    "sha256": "b9a1a031786232aa9894e7f828ee2dfe83058e71c2de5f07a8173e02fe02bf3a"
+  },
+  {
+    "path": "evaluation/exploratory_400_runner.py",
+    "sha256": "5101ced5a32bdddeec89dffd8ea821a9e35cd878f34bbbed7a646b5fce5a55ad"
+  },
+  {
+    "path": "evaluation/graph_runner.py",
+    "sha256": "fb1a8a44e275fd884042c1417065ba20d837fa2c049bd04f73c89530f0f97089"
+  },
+  {
+    "path": "evaluation/graph_stage.py",
+    "sha256": "40682a5acbe7ab4da3c231e44bece0248c443cf69698ed840c1eec3a22c34943"
+  },
+  {
+    "path": "evaluation/snapshot_check.py",
+    "sha256": "a9594212ea4debd5cd5ecc7471add300a6b4b53eeee39d7949050c37f6d5a1fa"
+  },
+  {
+    "path": "evaluation/thesis_final_report/scripts/requirements-analysis.txt",
+    "sha256": "13f081434cc5e85c798b621e5cbf7c8ffb2e69a38a6a5e7eb5894b61181f6948"
+  },
+  {
+    "path": "llm/intent_parser.py",
+    "sha256": "8da57771cbef5c3d33cfacc8ca475c5fb19752d5a23abeb86e3867e650dcc80a"
+  },
+  {
+    "path": "llm/normalization.py",
+    "sha256": "7863eabc4706d670f10b91df01dd9a21d392da2d0cdc5e3c3b6023adef2a591e"
+  },
+  {
+    "path": "llm/request_constraints.py",
+    "sha256": "7d40d04f61d0200436aca645dd8d5f2a1aaff18402a6a64bca5de27c529612c4"
+  },
+  {
+    "path": "requirements.txt",
+    "sha256": "f9636cd41524478ffda86696fc67c5ec590008aaac03cb72d428812fb273fbdd"
+  },
+  {
+    "path": "services/__init__.py",
+    "sha256": "b9dd3e61cbcf2f953387bb5611490782303b79eac9216624770aecc24d6a2cb5"
+  },
+  {
+    "path": "services/pipeline.py",
+    "sha256": "d946c1c163bb63b29bba30969877dbdb3ee19a80b8569b3357de1357186521ed"
+  },
+  {
+    "path": "tests/test_exploratory_400_runner.py",
+    "sha256": "dbca926592b4c994cc15965e72db1ba6806f229f4f1e184bbea87355f1a7de66"
+  }
+]

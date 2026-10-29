@@ -1,0 +1,116 @@
+{
+  "retrieved_at_utc": "2026-10-11T16:55:49.031157+00:00",
+  "sources": [
+    {
+      "name": "uniswap",
+      "repository": "https://github.com/duanyiyao/intent-tx-18k",
+      "commit": "37bd0f345efb166e3cebc6839e75481e57ce3c90",
+      "path": "dataset/eg_uniswap_samples.json",
+      "url": "https://raw.githubusercontent.com/duanyiyao/intent-tx-18k/37bd0f345efb166e3cebc6839e75481e57ce3c90/dataset/eg_uniswap_samples.json",
+      "sha256": "6930c416aabc24e2316ec3fdc0cbfcb6b70dfe54effccc673f474b79a1b74e30",
+      "bytes": 15636017,
+      "local_path": ".cache\\intent-tx-18k\\37bd0f345efb166e3cebc6839e75481e57ce3c90\\eg_uniswap_samples.json",
+      "audit": {
+        "records": 6000,
+        "unique_intent_texts": 2911,
+        "explicit_v3_intent_texts": 0,
+        "unique_source_families": 1461,
+        "proposed_transaction_protocols_not_query_labels": {
+          "Uniswap V2": 6000
+        },
+        "proposed_transaction_chain_ids_not_query_labels": {
+          "1": 6000
+        },
+        "upstream_labels_not_reference_outcomes": {
+          "PASS": 1461,
+          "REJECT": 4539
+        },
+        "heuristic_text_flags_nonexclusive_not_gold_labels": {
+          "slippage": 5983,
+          "minimum_output": 4757,
+          "deadline": 4968,
+          "fiat_denominated_amount": 5855,
+          "exact_output_or_budget": 357,
+          "recipient": 3
+        },
+        "note": "Text flags are a screening aid, not exhaustive semantic annotation. Transaction metadata must not fill unstated query fields."
+      }
+    },
+    {
+      "name": "compound",
+      "repository": "https://github.com/duanyiyao/intent-tx-18k",
+      "commit": "37bd0f345efb166e3cebc6839e75481e57ce3c90",
+      "path": "dataset/compound_samples_20251112_085506.json",
+      "url": "https://raw.githubusercontent.com/duanyiyao/intent-tx-18k/37bd0f345efb166e3cebc6839e75481e57ce3c90/dataset/compound_samples_20251112_085506.json",
+      "sha256": "e3d8d7d95dc867bb94c7cd8a978e2828f497063ca88e6f91479fc6495a7396cd",
+      "bytes": 11592021,
+      "local_path": ".cache\\intent-tx-18k\\37bd0f345efb166e3cebc6839e75481e57ce3c90\\compound_samples_20251112_085506.json",
+      "audit": {
+        "records": 7000,
+        "unique_intent_texts": 2831,
+        "explicit_v3_intent_texts": 0,
+        "unique_source_families": 1630,
+        "proposed_transaction_protocols_not_query_labels": {
+          "Compound V2": 7000
+        },
+        "proposed_transaction_chain_ids_not_query_labels": {
+          "None": 7000
+        },
+        "upstream_labels_not_reference_outcomes": {
+          "PASS": 1710,
+          "REJECT": 5290
+        },
+        "heuristic_text_flags_nonexclusive_not_gold_labels": {
+          "deadline": 5994,
+          "fee_limit": 6996,
+          "slippage": 713
+        },
+        "note": "Text flags are a screening aid, not exhaustive semantic annotation. Transaction metadata must not fill unstated query fields."
+      }
+    },
+    {
+      "name": "cow",
+      "repository": "https://github.com/duanyiyao/intent-tx-18k",
+      "commit": "37bd0f345efb166e3cebc6839e75481e57ce3c90",
+      "path": "dataset/cow_samples_20251110_171339.json",
+      "url": "https://raw.githubusercontent.com/duanyiyao/intent-tx-18k/37bd0f345efb166e3cebc6839e75481e57ce3c90/dataset/cow_samples_20251110_171339.json",
+      "sha256": "d2613a92b1eddfe4b1b9b6af28e99b9ac3bfa96cca1873e2798ebfbba84a8423",
+      "bytes": 15620950,
+      "local_path": ".cache\\intent-tx-18k\\37bd0f345efb166e3cebc6839e75481e57ce3c90\\cow_samples_20251110_171339.json",
+      "audit": {
+        "records": 7000,
+        "unique_intent_texts": 2549,
+        "explicit_v3_intent_texts": 0,
+        "unique_source_families": 1006,
+        "proposed_transaction_protocols_not_query_labels": {
+          "CoW Protocol v2": 7000
+        },
+        "proposed_transaction_chain_ids_not_query_labels": {
+          "1": 7000
+        },
+        "upstream_labels_not_reference_outcomes": {
+          "PASS": 1710,
+          "REJECT": 5290
+        },
+        "heuristic_text_flags_nonexclusive_not_gold_labels": {
+          "slippage": 6963,
+          "deadline": 4685,
+          "fiat_denominated_amount": 6997,
+          "exact_output_or_budget": 482,
+          "fee_limit": 7
+        },
+        "note": "Text flags are a screening aid, not exhaustive semantic annotation. Transaction metadata must not fill unstated query fields."
+      }
+    },
+    {
+      "name": "license",
+      "repository": "https://github.com/duanyiyao/intent-tx-18k",
+      "commit": "37bd0f345efb166e3cebc6839e75481e57ce3c90",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/duanyiyao/intent-tx-18k/37bd0f345efb166e3cebc6839e75481e57ce3c90/LICENSE",
+      "sha256": "1142c0ef577ea422fef58058b5ef386d34ca72b491f17465798c96486401462b",
+      "bytes": 1067,
+      "local_path": ".cache\\intent-tx-18k\\37bd0f345efb166e3cebc6839e75481e57ce3c90\\LICENSE"
+    }
+  ]
+}

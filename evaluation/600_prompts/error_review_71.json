@@ -1,0 +1,5161 @@
+[
+  {
+    "id": "BAL600-227-A",
+    "scenario": "BAL600-227",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "amount_and_asset",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to withdraw an unspecified amount of an unspecified asset using Aave V3. The amount is not specified; the input asset is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount",
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "withdraw",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "withdraw",
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "unspecified amount",
+        "unspecified asset"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unspecified amount; unspecified asset. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unspecified amount",
+        "unspecified asset"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-221-A",
+    "scenario": "BAL600-221",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "amount",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to withdraw an unspecified amount of GHO using Aave V3. The amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "withdraw",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "GHO",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "withdraw",
+      "protocol": "Aave V3",
+      "token_in": "GHO",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "unspecified amount"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unspecified amount. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unspecified amount"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-021-B",
+    "scenario": "BAL600-021",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 51.0625 USDC to WETH through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 0.5 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDC",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "51.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 50,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "USDC",
+      "token_out": "WETH",
+      "amount": "51.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "0.5",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-235-A",
+    "scenario": "BAL600-235",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_amount",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to borrow an unspecified amount of WBTC using Aave V3. The amount is undecided between 37.42 and 52.84.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "borrow",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "borrow",
+      "protocol": "Aave V3",
+      "token_in": "WBTC",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "amount between 37.42 and 52.84"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: amount between 37.42 and 52.84. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "amount between 37.42 and 52.84"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-235-B",
+    "scenario": "BAL600-235",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_amount",
+    "primary": false,
+    "query": "Using Aave V3 on Ethereum Sepolia, my request is to borrow an unspecified amount of WBTC; the amount is undecided between 37.42 and 52.84.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "borrow",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "borrow",
+      "protocol": "Aave V3",
+      "token_in": "WBTC",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "amount between 37.42 and 52.84"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: amount between 37.42 and 52.84. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "amount between 37.42 and 52.84"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-011-B",
+    "scenario": "BAL600-011",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 41.0625 WBTC to AAVE through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 0.01 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "AAVE",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "41.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 1,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "WBTC",
+      "token_out": "AAVE",
+      "amount": "41.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "0.01",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-247-A",
+    "scenario": "BAL600-247",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "amount_and_asset",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to repay an unspecified amount of an unspecified asset using Aave V3. The amount is not specified; the input asset is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount",
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "repay",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "repay",
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "unspecified amount",
+        "unspecified asset"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unspecified amount; unspecified asset. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unspecified amount",
+        "unspecified asset"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-206-B",
+    "scenario": "BAL600-206",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_asset",
+    "primary": false,
+    "query": "Using Uniswap V3 on Ethereum Sepolia, my request is to swap 37.42 an unspecified asset into WETH; the input asset is undecided between USDC and LINK.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": null,
+      "token_out": "WETH",
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "input asset undecided between USDC and LINK"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: input asset undecided between USDC and LINK. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "input asset undecided between USDC and LINK"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-206-A",
+    "scenario": "BAL600-206",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_asset",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to swap 37.42 an unspecified asset into WETH using Uniswap V3. The input asset is undecided between usdc and link.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": null,
+      "token_out": "WETH",
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "input asset undecided between usdc and link"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: input asset undecided between usdc and link. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "input asset undecided between usdc and link"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-201-A",
+    "scenario": "BAL600-201",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "amount",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to swap an unspecified amount of USDC into WETH using Uniswap V3. The amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDC",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "USDC",
+      "token_out": "WETH",
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "unspecified amount"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unspecified amount. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unspecified amount"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-246-B",
+    "scenario": "BAL600-246",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_asset",
+    "primary": false,
+    "query": "Using Aave V3 on Ethereum Sepolia, my request is to repay 37.42 an unspecified asset; the input asset is undecided between USDT and LINK.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "repay",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "repay",
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "unspecified asset",
+        "input asset undecided between USDT and LINK"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unspecified asset; input asset undecided between USDT and LINK. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unspecified asset",
+        "input asset undecided between USDT and LINK"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-246-A",
+    "scenario": "BAL600-246",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_asset",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to repay 37.42 an unspecified asset using Aave V3. The input asset is undecided between usdt and link.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "repay",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "repay",
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "input asset undecided between usdt and link"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: input asset undecided between usdt and link. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "input asset undecided between usdt and link"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-226-B",
+    "scenario": "BAL600-226",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_asset",
+    "primary": false,
+    "query": "Using Aave V3 on Ethereum Sepolia, my request is to withdraw 37.42 an unspecified asset; the input asset is undecided between GHO and LINK.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "withdraw",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "withdraw",
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "input asset is undecided between GHO and LINK"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: input asset is undecided between GHO and LINK. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "input asset is undecided between GHO and LINK"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-226-A",
+    "scenario": "BAL600-226",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_asset",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to withdraw 37.42 an unspecified asset using Aave V3. The input asset is undecided between gho and link.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "withdraw",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "withdraw",
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "unspecified asset",
+        "input asset undecided between gho and link"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unspecified asset; input asset undecided between gho and link. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unspecified asset",
+        "input asset undecided between gho and link"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-024-B",
+    "scenario": "BAL600-024",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 54.0625 WETH to USDC through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 0.5 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "USDC",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "54.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 50,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "WETH",
+      "token_out": "USDC",
+      "amount": "54.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "0.5",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-240-B",
+    "scenario": "BAL600-240",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "action_and_protocol",
+    "primary": false,
+    "query": "Using a protocol I have not selected on Ethereum Sepolia, my request is to perform an operation 37.42 WBTC; I have not decided which operation to request; the protocol is undecided; do not choose it for me.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "NEEDS_CLARIFICATION",
+    "exact": true,
+    "joint": false,
+    "error_class": "clarification_field_loss",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "action",
+      "protocol"
+    ],
+    "actual_missing_fields": [
+      "action",
+      "protocol",
+      "amount",
+      "token_in"
+    ],
+    "field_mismatches": {
+      "token_in": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": null,
+      "protocol": null,
+      "token_in": null,
+      "token_out": null,
+      "amount": null,
+      "chain": null,
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "NEEDS_CLARIFICATION",
+      "intent": {
+        "action": null,
+        "protocol": null,
+        "token_in": null,
+        "token_out": null,
+        "amount": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null,
+        "unhandled_constraints": []
+      },
+      "message": "Please provide the operation, protocol, amount, input asset.",
+      "missing_fields": [
+        "action",
+        "protocol",
+        "amount",
+        "token_in"
+      ],
+      "error_code": "missing_fields",
+      "unhandled_constraints": []
+    },
+    "diagnosis": "Clarification status matches, but explicit fields are lost and the requested missing-field set is too broad.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-032-B",
+    "scenario": "BAL600-032",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 62.0625 LINK to USDT through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 5 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "LINK",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "USDT",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "62.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 500,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "LINK",
+      "token_out": "USDT",
+      "amount": "62.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "5",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-210-A",
+    "scenario": "BAL600-210",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_output",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to swap 37.42 USDC into an unspecified output asset using Uniswap V3. The output asset is undecided between weth and link.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "token_out"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDC",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "USDC",
+      "token_out": null,
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "output asset undecided between weth and link"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: output asset undecided between weth and link. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "output asset undecided between weth and link"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-033-B",
+    "scenario": "BAL600-033",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 63.0625 USDC to WETH through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 5 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDC",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "63.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 500,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "USDC",
+      "token_out": "WETH",
+      "amount": "63.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "5",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-031-B",
+    "scenario": "BAL600-031",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 61.0625 AAVE to WBTC through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 5 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "AAVE",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "61.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 500,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "AAVE",
+      "token_out": "WBTC",
+      "amount": "61.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "5",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-229-B",
+    "scenario": "BAL600-229",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "action_and_amount",
+    "primary": false,
+    "query": "Using Aave V3 on Ethereum Sepolia, my request is to perform an operation an unspecified amount of GHO; I have not decided which operation to request; the amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "REJECTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "ambiguous_amount_literal",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "action",
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "GHO",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": null,
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": "unspecified amount of GHO",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "REJECTED",
+      "intent": null,
+      "message": "Amount must be a plain positive decimal number.",
+      "missing_fields": [],
+      "error_code": "invalid_amount",
+      "unhandled_constraints": []
+    },
+    "diagnosis": "Raw amount contains prose or an unresolved range instead of null; positive-decimal validation rejects it.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-229-A",
+    "scenario": "BAL600-229",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "action_and_amount",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to perform an operation an unspecified amount of GHO using Aave V3. I have not decided which operation to request; the amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "REJECTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "ambiguous_amount_literal",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "action",
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "GHO",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": null,
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": "unspecified amount of GHO",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "REJECTED",
+      "intent": null,
+      "message": "Amount must be a plain positive decimal number.",
+      "missing_fields": [],
+      "error_code": "invalid_amount",
+      "unhandled_constraints": []
+    },
+    "diagnosis": "Raw amount contains prose or an unresolved range instead of null; positive-decimal validation rejects it.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-236-B",
+    "scenario": "BAL600-236",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_asset",
+    "primary": false,
+    "query": "Using Aave V3 on Ethereum Sepolia, my request is to borrow 37.42 an unspecified asset; the input asset is undecided between WBTC and LINK.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "borrow",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "borrow",
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "input asset undecided between WBTC and LINK"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: input asset undecided between WBTC and LINK. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "input asset undecided between WBTC and LINK"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-236-A",
+    "scenario": "BAL600-236",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_asset",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to borrow 37.42 an unspecified asset using Aave V3. The input asset is undecided between wbtc and link.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "borrow",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "borrow",
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "input asset undecided between wbtc and link"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: input asset undecided between wbtc and link. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "input asset undecided between wbtc and link"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-008-B",
+    "scenario": "BAL600-008",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 38.0625 LINK to USDT through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 0.01 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "LINK",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "USDT",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "38.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 1,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "LINK",
+      "token_out": "USDT",
+      "amount": "38.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "0.01",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-022-B",
+    "scenario": "BAL600-022",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 52.0625 USDT to LINK through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 0.5 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDT",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "LINK",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "52.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 50,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "USDT",
+      "token_out": "LINK",
+      "amount": "52.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "0.5",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-238-A",
+    "scenario": "BAL600-238",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "protocol_and_amount",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to borrow an unspecified amount of WBTC using a protocol I have not selected. The protocol is undecided; do not choose it for me; the amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "protocol",
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "borrow",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "borrow",
+      "protocol": null,
+      "token_in": "WBTC",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "protocol undecided",
+        "amount unspecified"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: protocol undecided; amount unspecified. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "protocol undecided",
+        "amount unspecified"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-238-B",
+    "scenario": "BAL600-238",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "protocol_and_amount",
+    "primary": false,
+    "query": "Using a protocol I have not selected on Ethereum Sepolia, my request is to borrow an unspecified amount of WBTC; the protocol is undecided; do not choose it for me; the amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "NEEDS_CLARIFICATION",
+    "exact": true,
+    "joint": false,
+    "error_class": "clarification_field_loss",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "protocol",
+      "amount"
+    ],
+    "actual_missing_fields": [
+      "action",
+      "protocol",
+      "amount",
+      "token_in"
+    ],
+    "field_mismatches": {
+      "action": {
+        "expected": "borrow",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": null,
+      "protocol": null,
+      "token_in": null,
+      "token_out": null,
+      "amount": null,
+      "chain": null,
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "NEEDS_CLARIFICATION",
+      "intent": {
+        "action": null,
+        "protocol": null,
+        "token_in": null,
+        "token_out": null,
+        "amount": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null,
+        "unhandled_constraints": []
+      },
+      "message": "Please provide the operation, protocol, amount, input asset.",
+      "missing_fields": [
+        "action",
+        "protocol",
+        "amount",
+        "token_in"
+      ],
+      "error_code": "missing_fields",
+      "unhandled_constraints": []
+    },
+    "diagnosis": "Clarification status matches, but explicit fields are lost and the requested missing-field set is too broad.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-228-A",
+    "scenario": "BAL600-228",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "protocol_and_amount",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to withdraw an unspecified amount of GHO using a protocol I have not selected. The protocol is undecided; do not choose it for me; the amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "protocol",
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "withdraw",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "GHO",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "withdraw",
+      "protocol": null,
+      "token_in": "GHO",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "protocol undecided"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: protocol undecided. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "protocol undecided"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-228-B",
+    "scenario": "BAL600-228",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "protocol_and_amount",
+    "primary": false,
+    "query": "Using a protocol I have not selected on Ethereum Sepolia, my request is to withdraw an unspecified amount of GHO; the protocol is undecided; do not choose it for me; the amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "protocol",
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "withdraw",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "GHO",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "withdraw",
+      "protocol": null,
+      "token_in": "GHO",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "protocol is undecided"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: protocol is undecided. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "protocol is undecided"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-223-B",
+    "scenario": "BAL600-223",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "protocol",
+    "primary": false,
+    "query": "Using a protocol I have not selected on Ethereum Sepolia, my request is to withdraw 37.42 GHO; the protocol is undecided; do not choose it for me.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "protocol"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "withdraw",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "GHO",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "withdraw",
+      "protocol": null,
+      "token_in": "GHO",
+      "token_out": null,
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "protocol undecided"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: protocol undecided. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "protocol undecided"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-223-A",
+    "scenario": "BAL600-223",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "protocol",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to withdraw 37.42 GHO using a protocol I have not selected. The protocol is undecided; do not choose it for me.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "ERROR",
+    "exact": false,
+    "joint": false,
+    "error_class": "provider_quota",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "protocol"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "withdraw",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "GHO",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": null,
+    "interpretation": {
+      "status": "ERROR",
+      "intent": null,
+      "message": "Intent generation is temporarily unavailable.",
+      "missing_fields": [],
+      "error_code": "llm_unavailable",
+      "unhandled_constraints": []
+    },
+    "diagnosis": "No successful model response; recorded llm_unavailable quota error. Not a semantic rejection.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-275-A",
+    "scenario": "BAL600-275",
+    "category": "invalid_parameters_or_conditions",
+    "subtype": "multihop",
+    "primary": true,
+    "query": "On Ethereum Sepolia, use Uniswap V3 to swap an input of 23.8125 USDC for WETH; route through USDT as an intermediate token.",
+    "expected": "UNSUPPORTED",
+    "actual": "APPROVED",
+    "exact": false,
+    "joint": false,
+    "error_class": "omitted_intermediate_token",
+    "graph_calls": 1,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {},
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "USDC",
+      "token_out": "WETH",
+      "amount": "23.8125",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "APPROVED",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "amount": "23.8125",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null,
+        "unhandled_constraints": []
+      },
+      "message": "Intent is complete and ready for graph verification.",
+      "missing_fields": [],
+      "error_code": null,
+      "unhandled_constraints": []
+    },
+    "diagnosis": "Raw extraction omits the required intermediate token. The direct swap path is verified for the reduced intent.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-205-B",
+    "scenario": "BAL600-205",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_amount",
+    "primary": false,
+    "query": "Using Uniswap V3 on Ethereum Sepolia, my request is to swap an unspecified amount of USDC into WETH; the amount is undecided between 37.42 and 52.84.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDC",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "USDC",
+      "token_out": "WETH",
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "amount is undecided between 37.42 and 52.84"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: amount is undecided between 37.42 and 52.84. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "amount is undecided between 37.42 and 52.84"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-205-A",
+    "scenario": "BAL600-205",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_amount",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to swap an unspecified amount of USDC into WETH using Uniswap V3. The amount is undecided between 37.42 and 52.84.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "REJECTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "ambiguous_amount_literal",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDC",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "USDC",
+      "token_out": "WETH",
+      "amount": "between 37.42 and 52.84",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "REJECTED",
+      "intent": null,
+      "message": "Amount must be a plain positive decimal number.",
+      "missing_fields": [],
+      "error_code": "invalid_amount",
+      "unhandled_constraints": []
+    },
+    "diagnosis": "Raw amount contains prose or an unresolved range instead of null; positive-decimal validation rejects it.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-218-B",
+    "scenario": "BAL600-218",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "protocol_and_amount",
+    "primary": false,
+    "query": "Using a protocol I have not selected on Ethereum Sepolia, my request is to supply an unspecified amount of DAI; the protocol is undecided; do not choose it for me; the amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "protocol",
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "supply",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "DAI",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "supply",
+      "protocol": null,
+      "token_in": "DAI",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "protocol undecided"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: protocol undecided. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "protocol undecided"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-208-B",
+    "scenario": "BAL600-208",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "protocol_and_amount",
+    "primary": false,
+    "query": "Using a protocol I have not selected on Ethereum Sepolia, my request is to swap an unspecified amount of USDC into WETH; the protocol is undecided; do not choose it for me; the amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "protocol",
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDC",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": null,
+      "token_in": "USDC",
+      "token_out": "WETH",
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "protocol undecided"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: protocol undecided. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "protocol undecided"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-245-A",
+    "scenario": "BAL600-245",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_amount",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to repay an unspecified amount of USDT using Aave V3. The amount is undecided between 37.42 and 52.84.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "repay",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDT",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "repay",
+      "protocol": "Aave V3",
+      "token_in": "USDT",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "amount between 37.42 and 52.84"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: amount between 37.42 and 52.84. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "amount between 37.42 and 52.84"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-245-B",
+    "scenario": "BAL600-245",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_amount",
+    "primary": false,
+    "query": "Using Aave V3 on Ethereum Sepolia, my request is to repay an unspecified amount of USDT; the amount is undecided between 37.42 and 52.84.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "repay",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDT",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "repay",
+      "protocol": "Aave V3",
+      "token_in": "USDT",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "amount between 37.42 and 52.84"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: amount between 37.42 and 52.84. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "amount between 37.42 and 52.84"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-202-B",
+    "scenario": "BAL600-202",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "token_in",
+    "primary": false,
+    "query": "Using Uniswap V3 on Ethereum Sepolia, my request is to swap 37.42 an unspecified asset into WETH; the input asset is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": null,
+      "token_out": "WETH",
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "input asset is not specified"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: input asset is not specified. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "input asset is not specified"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-202-A",
+    "scenario": "BAL600-202",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "token_in",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to swap 37.42 an unspecified asset into WETH using Uniswap V3. The input asset is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": null,
+      "token_out": "WETH",
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "input asset unspecified"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: input asset unspecified. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "input asset unspecified"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-233-B",
+    "scenario": "BAL600-233",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "protocol",
+    "primary": false,
+    "query": "Using a protocol I have not selected on Ethereum Sepolia, my request is to borrow 37.42 WBTC; the protocol is undecided; do not choose it for me.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "protocol"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "borrow",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "borrow",
+      "protocol": null,
+      "token_in": "WBTC",
+      "token_out": null,
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "protocol undecided"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: protocol undecided. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "protocol undecided"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-034-B",
+    "scenario": "BAL600-034",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 64.0625 USDT to LINK through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 5 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDT",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "LINK",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "64.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 500,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "USDT",
+      "token_out": "LINK",
+      "amount": "64.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "5",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-216-A",
+    "scenario": "BAL600-216",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_asset",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to supply 37.42 an unspecified asset using Aave V3. The input asset is undecided between dai and link.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "supply",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "supply",
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "input asset undecided between dai and link"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: input asset undecided between dai and link. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "input asset undecided between dai and link"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-216-B",
+    "scenario": "BAL600-216",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_asset",
+    "primary": false,
+    "query": "Using Aave V3 on Ethereum Sepolia, my request is to supply 37.42 an unspecified asset; the input asset is undecided between DAI and LINK.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "supply",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "supply",
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "unspecified asset",
+        "input asset undecided between DAI and LINK"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unspecified asset; input asset undecided between DAI and LINK. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unspecified asset",
+        "input asset undecided between DAI and LINK"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-237-A",
+    "scenario": "BAL600-237",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "amount_and_asset",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to borrow an unspecified amount of an unspecified asset using Aave V3. The amount is not specified; the input asset is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount",
+      "token_in"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "borrow",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "borrow",
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "unspecified amount",
+        "unspecified asset"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unspecified amount; unspecified asset. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unspecified amount",
+        "unspecified asset"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-010-B",
+    "scenario": "BAL600-010",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 40.0625 USDT to LINK through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 0.01 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDT",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "LINK",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "40.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 1,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "USDT",
+      "token_out": "LINK",
+      "amount": "40.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "0.01",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-036-B",
+    "scenario": "BAL600-036",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 66.0625 WETH to USDC through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 5 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "USDC",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "66.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 500,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "WETH",
+      "token_out": "USDC",
+      "amount": "66.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "5",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-007-B",
+    "scenario": "BAL600-007",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 37.0625 AAVE to WBTC through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 0.01 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "AAVE",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 1,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "AAVE",
+      "token_out": "WBTC",
+      "amount": "37.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "0.01",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-219-B",
+    "scenario": "BAL600-219",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "action_and_amount",
+    "primary": false,
+    "query": "Using Aave V3 on Ethereum Sepolia, my request is to perform an operation an unspecified amount of DAI; I have not decided which operation to request; the amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "NEEDS_CLARIFICATION",
+    "exact": true,
+    "joint": false,
+    "error_class": "clarification_field_loss",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "action",
+      "amount"
+    ],
+    "actual_missing_fields": [
+      "action",
+      "amount",
+      "token_in"
+    ],
+    "field_mismatches": {
+      "token_in": {
+        "expected": "DAI",
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": null,
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "NEEDS_CLARIFICATION",
+      "intent": {
+        "action": null,
+        "protocol": "Aave V3",
+        "token_in": null,
+        "token_out": null,
+        "amount": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null,
+        "unhandled_constraints": []
+      },
+      "message": "Please provide the operation, amount, input asset.",
+      "missing_fields": [
+        "action",
+        "amount",
+        "token_in"
+      ],
+      "error_code": "missing_fields",
+      "unhandled_constraints": []
+    },
+    "diagnosis": "Clarification status matches, but explicit fields are lost and the requested missing-field set is too broad.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-090-B",
+    "scenario": "BAL600-090",
+    "category": "supported_aave",
+    "subtype": "explicit_network",
+    "primary": false,
+    "query": "Pay back 82.03125 AAVE of the loan I have on Aave V3 on Ethereum Sepolia.",
+    "expected": "APPROVED",
+    "actual": "ERROR",
+    "exact": false,
+    "joint": false,
+    "error_class": "provider_quota",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "repay",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "AAVE",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "82.03125",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": null,
+    "interpretation": {
+      "status": "ERROR",
+      "intent": null,
+      "message": "Intent generation is temporarily unavailable.",
+      "missing_fields": [],
+      "error_code": "llm_unavailable",
+      "unhandled_constraints": []
+    },
+    "diagnosis": "No successful model response; recorded llm_unavailable quota error. Not a semantic rejection.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-254-A",
+    "scenario": "BAL600-254",
+    "category": "invalid_parameters_or_conditions",
+    "subtype": "negative_amount",
+    "primary": true,
+    "query": "Please supply exactly -3.125 USDC using Aave V3 on Ethereum Sepolia.",
+    "expected": "REJECTED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "negative_amount_priority",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "supply",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDC",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "-3.125",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "supply",
+      "protocol": "Aave V3",
+      "token_in": "USDC",
+      "token_out": null,
+      "amount": "-3.125",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "negative amount"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: negative amount. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "negative amount"
+      ]
+    },
+    "diagnosis": "Raw negative amount is also labelled an unhandled constraint; UNSUPPORTED takes precedence over the reference REJECTED.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-020-B",
+    "scenario": "BAL600-020",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 50.0625 LINK to USDT through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 0.5 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "LINK",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "USDT",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "50.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 50,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "LINK",
+      "token_out": "USDT",
+      "amount": "50.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "0.5",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-183-B",
+    "scenario": "BAL600-183",
+    "category": "unknown_or_unsupported",
+    "subtype": "asset_absent_from_saved_reserves",
+    "primary": false,
+    "query": "I want to deposit 135.125 SOL into the Ethereum Sepolia Aave V3 market.",
+    "expected": "REJECTED",
+    "actual": "ERROR",
+    "exact": false,
+    "joint": false,
+    "error_class": "provider_quota",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "supply",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "SOL",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "135.125",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": null,
+    "interpretation": {
+      "status": "ERROR",
+      "intent": null,
+      "message": "Intent generation is temporarily unavailable.",
+      "missing_fields": [],
+      "error_code": "llm_unavailable",
+      "unhandled_constraints": []
+    },
+    "diagnosis": "No successful model response; recorded llm_unavailable quota error. Not a semantic rejection.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-215-A",
+    "scenario": "BAL600-215",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_amount",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to supply an unspecified amount of DAI using Aave V3. The amount is undecided between 37.42 and 52.84.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "REJECTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "ambiguous_amount_literal",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "supply",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "DAI",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "supply",
+      "protocol": "Aave V3",
+      "token_in": "DAI",
+      "token_out": null,
+      "amount": "between 37.42 and 52.84",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "REJECTED",
+      "intent": null,
+      "message": "Amount must be a plain positive decimal number.",
+      "missing_fields": [],
+      "error_code": "invalid_amount",
+      "unhandled_constraints": []
+    },
+    "diagnosis": "Raw amount contains prose or an unresolved range instead of null; positive-decimal validation rejects it.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-215-B",
+    "scenario": "BAL600-215",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_amount",
+    "primary": false,
+    "query": "Using Aave V3 on Ethereum Sepolia, my request is to supply an unspecified amount of DAI; the amount is undecided between 37.42 and 52.84.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "supply",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "DAI",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "supply",
+      "protocol": "Aave V3",
+      "token_in": "DAI",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "amount between 37.42 and 52.84"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: amount between 37.42 and 52.84. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "amount between 37.42 and 52.84"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-288-A",
+    "scenario": "BAL600-288",
+    "category": "invalid_parameters_or_conditions",
+    "subtype": "custom_deadline",
+    "primary": true,
+    "query": "On Ethereum Sepolia, use Uniswap V3 to swap an input of 23.8125 USDC for WETH; set the transaction deadline to Unix timestamp 1793000000.",
+    "expected": "UNSUPPORTED",
+    "actual": "ERROR",
+    "exact": false,
+    "joint": false,
+    "error_class": "provider_quota",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDC",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "23.8125",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": null,
+    "interpretation": {
+      "status": "ERROR",
+      "intent": null,
+      "message": "Intent generation is temporarily unavailable.",
+      "missing_fields": [],
+      "error_code": "llm_unavailable",
+      "unhandled_constraints": []
+    },
+    "diagnosis": "No successful model response; recorded llm_unavailable quota error. Not a semantic rejection.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-009-B",
+    "scenario": "BAL600-009",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 39.0625 USDC to WETH through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 0.01 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDC",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "39.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 1,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "USDC",
+      "token_out": "WETH",
+      "amount": "39.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "0.01",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-234-B",
+    "scenario": "BAL600-234",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "action",
+    "primary": false,
+    "query": "Using Aave V3 on Ethereum Sepolia, my request is to perform an operation 37.42 WBTC; I have not decided which operation to request.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "action"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": null,
+      "protocol": "Aave V3",
+      "token_in": "WBTC",
+      "token_out": null,
+      "amount": "37.42",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "operation not specified"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: operation not specified. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "operation not specified"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-035-B",
+    "scenario": "BAL600-035",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 65.0625 WBTC to AAVE through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 5 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "AAVE",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "65.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 500,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "WBTC",
+      "token_out": "AAVE",
+      "amount": "65.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "5",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-230-B",
+    "scenario": "BAL600-230",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "action_and_protocol",
+    "primary": false,
+    "query": "Using a protocol I have not selected on Ethereum Sepolia, my request is to perform an operation 37.42 GHO; I have not decided which operation to request; the protocol is undecided; do not choose it for me.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "NEEDS_CLARIFICATION",
+    "exact": true,
+    "joint": false,
+    "error_class": "clarification_field_loss",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "action",
+      "protocol"
+    ],
+    "actual_missing_fields": [
+      "action",
+      "protocol",
+      "amount",
+      "token_in"
+    ],
+    "field_mismatches": {
+      "token_in": {
+        "expected": "GHO",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": null,
+      "protocol": null,
+      "token_in": null,
+      "token_out": null,
+      "amount": null,
+      "chain": null,
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "NEEDS_CLARIFICATION",
+      "intent": {
+        "action": null,
+        "protocol": null,
+        "token_in": null,
+        "token_out": null,
+        "amount": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null,
+        "unhandled_constraints": []
+      },
+      "message": "Please provide the operation, protocol, amount, input asset.",
+      "missing_fields": [
+        "action",
+        "protocol",
+        "amount",
+        "token_in"
+      ],
+      "error_code": "missing_fields",
+      "unhandled_constraints": []
+    },
+    "diagnosis": "Clarification status matches, but explicit fields are lost and the requested missing-field set is too broad.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-220-A",
+    "scenario": "BAL600-220",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "action_and_protocol",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to perform an operation 37.42 DAI using a protocol I have not selected. I have not decided which operation to request; the protocol is undecided; do not choose it for me.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "NEEDS_CLARIFICATION",
+    "exact": true,
+    "joint": false,
+    "error_class": "clarification_field_loss",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "action",
+      "protocol"
+    ],
+    "actual_missing_fields": [
+      "action",
+      "protocol",
+      "amount",
+      "token_in"
+    ],
+    "field_mismatches": {
+      "token_in": {
+        "expected": "DAI",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "37.42",
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": null,
+      "protocol": null,
+      "token_in": null,
+      "token_out": null,
+      "amount": null,
+      "chain": null,
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "NEEDS_CLARIFICATION",
+      "intent": {
+        "action": null,
+        "protocol": null,
+        "token_in": null,
+        "token_out": null,
+        "amount": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null,
+        "unhandled_constraints": []
+      },
+      "message": "Please provide the operation, protocol, amount, input asset.",
+      "missing_fields": [
+        "action",
+        "protocol",
+        "amount",
+        "token_in"
+      ],
+      "error_code": "missing_fields",
+      "unhandled_constraints": []
+    },
+    "diagnosis": "Clarification status matches, but explicit fields are lost and the requested missing-field set is too broad.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-239-A",
+    "scenario": "BAL600-239",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "action_and_amount",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to perform an operation an unspecified amount of WBTC using Aave V3. I have not decided which operation to request; the amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "action",
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": null,
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "unspecified amount",
+        "unspecified operation"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unspecified amount; unspecified operation. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unspecified amount",
+        "unspecified operation"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-239-B",
+    "scenario": "BAL600-239",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "action_and_amount",
+    "primary": false,
+    "query": "Using Aave V3 on Ethereum Sepolia, my request is to perform an operation an unspecified amount of WBTC; I have not decided which operation to request; the amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "action",
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": null,
+      "protocol": "Aave V3",
+      "token_in": null,
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "unspecified amount of WBTC",
+        "operation not decided"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unspecified amount of WBTC; operation not decided. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unspecified amount of WBTC",
+        "operation not decided"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-012-B",
+    "scenario": "BAL600-012",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 42.0625 WETH to USDC through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 0.01 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WETH",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "USDC",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "42.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 1,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "WETH",
+      "token_out": "USDC",
+      "amount": "42.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "0.01",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-019-B",
+    "scenario": "BAL600-019",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 49.0625 AAVE to WBTC through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 0.5 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "AAVE",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "49.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 50,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "AAVE",
+      "token_out": "WBTC",
+      "amount": "49.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "0.5",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-225-B",
+    "scenario": "BAL600-225",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_amount",
+    "primary": false,
+    "query": "Using Aave V3 on Ethereum Sepolia, my request is to withdraw an unspecified amount of GHO; the amount is undecided between 37.42 and 52.84.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "withdraw",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "GHO",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "withdraw",
+      "protocol": "Aave V3",
+      "token_in": "GHO",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "amount between 37.42 and 52.84"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: amount between 37.42 and 52.84. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "amount between 37.42 and 52.84"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-225-A",
+    "scenario": "BAL600-225",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "ambiguous_amount",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to withdraw an unspecified amount of GHO using Aave V3. The amount is undecided between 37.42 and 52.84.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "withdraw",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "GHO",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "withdraw",
+      "protocol": "Aave V3",
+      "token_in": "GHO",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "amount undecided between 37.42 and 52.84"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: amount undecided between 37.42 and 52.84. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "amount undecided between 37.42 and 52.84"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-023-B",
+    "scenario": "BAL600-023",
+    "category": "supported_uniswap",
+    "subtype": "explicit_slippage",
+    "primary": false,
+    "query": "Please convert an exact input of 53.0625 WBTC to AAVE through Uniswap V3 on Ethereum Sepolia. Slippage must not exceed 0.5 percent.",
+    "expected": "APPROVED",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "slippage_guard",
+    "graph_calls": 0,
+    "expected_missing_fields": [],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "swap",
+        "actual": null,
+        "matches": false
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "WBTC",
+        "actual": null,
+        "matches": false
+      },
+      "token_out": {
+        "expected": "AAVE",
+        "actual": null,
+        "matches": false
+      },
+      "amount": {
+        "expected": "53.0625",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      },
+      "slippage_bps": {
+        "expected": 50,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "WBTC",
+      "token_out": "AAVE",
+      "amount": "53.0625",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": {
+        "value": "0.5",
+        "unit": "percent"
+      },
+      "unhandled_constraints": []
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unrecognized_slippage_condition. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unrecognized_slippage_condition"
+      ]
+    },
+    "diagnosis": "Raw extraction preserves the numeric slippage; the deterministic text guard flags unrecognized wording before graph verification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-248-B",
+    "scenario": "BAL600-248",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "protocol_and_amount",
+    "primary": false,
+    "query": "Using a protocol I have not selected on Ethereum Sepolia, my request is to repay an unspecified amount of USDT; the protocol is undecided; do not choose it for me; the amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "protocol",
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "repay",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDT",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "repay",
+      "protocol": null,
+      "token_in": "USDT",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "protocol undecided",
+        "amount not specified"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: protocol undecided; amount not specified. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "protocol undecided",
+        "amount not specified"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  },
+  {
+    "id": "BAL600-248-A",
+    "scenario": "BAL600-248",
+    "category": "incomplete_or_ambiguous",
+    "subtype": "protocol_and_amount",
+    "primary": true,
+    "query": "On Ethereum Sepolia, I want to repay an unspecified amount of USDT using a protocol I have not selected. The protocol is undecided; do not choose it for me; the amount is not specified.",
+    "expected": "NEEDS_CLARIFICATION",
+    "actual": "UNSUPPORTED",
+    "exact": false,
+    "joint": false,
+    "error_class": "clarification_as_constraint",
+    "graph_calls": 0,
+    "expected_missing_fields": [
+      "protocol",
+      "amount"
+    ],
+    "actual_missing_fields": [],
+    "field_mismatches": {
+      "action": {
+        "expected": "repay",
+        "actual": null,
+        "matches": false
+      },
+      "token_in": {
+        "expected": "USDT",
+        "actual": null,
+        "matches": false
+      },
+      "chain": {
+        "expected": "Ethereum Sepolia",
+        "actual": null,
+        "matches": false
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "actual": null,
+        "matches": false
+      }
+    },
+    "raw_extraction": {
+      "action": "repay",
+      "protocol": null,
+      "token_in": "USDT",
+      "token_out": null,
+      "amount": null,
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": [
+        "unspecified amount",
+        "protocol undecided"
+      ]
+    },
+    "interpretation": {
+      "status": "UNSUPPORTED",
+      "intent": null,
+      "message": "This prototype cannot safely honor these conditions: unspecified amount; protocol undecided. No execution capability was issued.",
+      "missing_fields": [],
+      "error_code": "unsupported_constraints",
+      "unhandled_constraints": [
+        "unspecified amount",
+        "protocol undecided"
+      ]
+    },
+    "diagnosis": "Raw unhandled_constraints includes missing or ambiguous information; constraint validation returns UNSUPPORTED before clarification.",
+    "review_status": "assistant_retrospective_diagnosis; human_review_pending"
+  }
+]

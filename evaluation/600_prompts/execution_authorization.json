@@ -1,0 +1,12 @@
+{
+  "recorded_at_utc": "2026-10-22T15:33:12.182658+00:00",
+  "user_instruction": "the dataset should be okay for now. run evaluation now",
+  "scope": "600 prompts, one pass, GPT-OSS 20B; independent reference graph phase and actual pipeline; no wallet execution",
+  "dataset_sha256": "7a674933ec63d5eac73b6ea169841436b0556293070bf1e01fdab8912abec665",
+  "order_sha256": "d41d5fac83e031b950190c849a6ca0b1f1109f0acfaf9795edd22317e4c122ad",
+  "user_accepted_for_execution": true,
+  "item_level_human_review_documented": false,
+  "claim_as_untouched_independent_held_out_test": false,
+  "original_reference_labels_preserved": true,
+  "resume_policy": "Preserve completed cases and errors. Stop at daily quota; resume remaining cases without model switching."
+}

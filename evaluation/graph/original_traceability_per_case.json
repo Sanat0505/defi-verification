@@ -1,0 +1,1274 @@
+[
+  {
+    "id": "UNI-01:control",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": true,
+    "C4_expected_and_observed_mismatch_values": null,
+    "human_readable_reason_present": false,
+    "all_applicable": false,
+    "approval_evidence_checks": {
+      "token_in_address": {
+        "expected": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "observed": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "matches": true
+      },
+      "token_out_address": {
+        "expected": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+        "observed": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+        "matches": true
+      },
+      "pool_fee": {
+        "expected": 10000,
+        "observed": 10000,
+        "matches": true
+      },
+      "quoter_address": {
+        "expected": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+        "observed": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+        "matches": true
+      },
+      "verified_address": {
+        "expected": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "observed": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "matches": true
+      },
+      "verified_function": {
+        "expected": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "observed": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "matches": true
+      },
+      "verified_selector": {
+        "expected": "0x04e45aaf",
+        "observed": "0x04e45aaf",
+        "matches": true
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "observed": "Uniswap V3",
+        "matches": true
+      },
+      "action": {
+        "expected": "swap",
+        "observed": "swap",
+        "matches": true
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "observed": 11155111,
+        "matches": true
+      },
+      "verified_pool": {
+        "expected": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+        "observed": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+        "matches": true
+      }
+    }
+  },
+  {
+    "id": "UNI-01:action_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-01:contract_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-01:deployment_contract",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-01:resource_membership",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-01:resource_asset",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-02:control",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": true,
+    "C4_expected_and_observed_mismatch_values": null,
+    "human_readable_reason_present": false,
+    "all_applicable": false,
+    "approval_evidence_checks": {
+      "token_in_address": {
+        "expected": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "observed": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "matches": true
+      },
+      "token_out_address": {
+        "expected": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+        "observed": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+        "matches": true
+      },
+      "pool_fee": {
+        "expected": 100,
+        "observed": 100,
+        "matches": true
+      },
+      "quoter_address": {
+        "expected": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+        "observed": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+        "matches": true
+      },
+      "verified_address": {
+        "expected": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "observed": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "matches": true
+      },
+      "verified_function": {
+        "expected": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "observed": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "matches": true
+      },
+      "verified_selector": {
+        "expected": "0x04e45aaf",
+        "observed": "0x04e45aaf",
+        "matches": true
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "observed": "Uniswap V3",
+        "matches": true
+      },
+      "action": {
+        "expected": "swap",
+        "observed": "swap",
+        "matches": true
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "observed": 11155111,
+        "matches": true
+      },
+      "verified_pool": {
+        "expected": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+        "observed": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+        "matches": true
+      }
+    }
+  },
+  {
+    "id": "UNI-02:action_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-02:contract_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-02:deployment_contract",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-02:resource_membership",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-02:resource_asset",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-03:control",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": true,
+    "C4_expected_and_observed_mismatch_values": null,
+    "human_readable_reason_present": false,
+    "all_applicable": false,
+    "approval_evidence_checks": {
+      "token_in_address": {
+        "expected": "0x29f2d40b0605204364af54ec677bd022da425d03",
+        "observed": "0x29f2d40b0605204364af54ec677bd022da425d03",
+        "matches": true
+      },
+      "token_out_address": {
+        "expected": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+        "observed": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+        "matches": true
+      },
+      "pool_fee": {
+        "expected": 500,
+        "observed": 500,
+        "matches": true
+      },
+      "quoter_address": {
+        "expected": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+        "observed": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+        "matches": true
+      },
+      "verified_address": {
+        "expected": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "observed": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "matches": true
+      },
+      "verified_function": {
+        "expected": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "observed": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "matches": true
+      },
+      "verified_selector": {
+        "expected": "0x04e45aaf",
+        "observed": "0x04e45aaf",
+        "matches": true
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "observed": "Uniswap V3",
+        "matches": true
+      },
+      "action": {
+        "expected": "swap",
+        "observed": "swap",
+        "matches": true
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "observed": 11155111,
+        "matches": true
+      },
+      "verified_pool": {
+        "expected": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+        "observed": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+        "matches": true
+      }
+    }
+  },
+  {
+    "id": "UNI-03:action_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-03:contract_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-03:deployment_contract",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-03:resource_membership",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-03:resource_asset",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-04:control",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": true,
+    "C4_expected_and_observed_mismatch_values": null,
+    "human_readable_reason_present": false,
+    "all_applicable": false,
+    "approval_evidence_checks": {
+      "token_in_address": {
+        "expected": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "observed": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "matches": true
+      },
+      "token_out_address": {
+        "expected": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+        "observed": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+        "matches": true
+      },
+      "pool_fee": {
+        "expected": 500,
+        "observed": 500,
+        "matches": true
+      },
+      "quoter_address": {
+        "expected": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+        "observed": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+        "matches": true
+      },
+      "verified_address": {
+        "expected": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "observed": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "matches": true
+      },
+      "verified_function": {
+        "expected": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "observed": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "matches": true
+      },
+      "verified_selector": {
+        "expected": "0x04e45aaf",
+        "observed": "0x04e45aaf",
+        "matches": true
+      },
+      "protocol": {
+        "expected": "Uniswap V3",
+        "observed": "Uniswap V3",
+        "matches": true
+      },
+      "action": {
+        "expected": "swap",
+        "observed": "swap",
+        "matches": true
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "observed": 11155111,
+        "matches": true
+      },
+      "verified_pool": {
+        "expected": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+        "observed": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+        "matches": true
+      }
+    }
+  },
+  {
+    "id": "UNI-04:action_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-04:contract_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-04:deployment_contract",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-04:resource_membership",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "UNI-04:resource_asset",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-SUPPLY-USDC:control",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": true,
+    "C4_expected_and_observed_mismatch_values": null,
+    "human_readable_reason_present": false,
+    "all_applicable": false,
+    "approval_evidence_checks": {
+      "verified_address": {
+        "expected": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "observed": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "matches": true
+      },
+      "verified_function": {
+        "expected": "supply(address,uint256,address,uint16)",
+        "observed": "supply(address,uint256,address,uint16)",
+        "matches": true
+      },
+      "verified_selector": {
+        "expected": "0x617ba037",
+        "observed": "0x617ba037",
+        "matches": true
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "observed": "Aave V3",
+        "matches": true
+      },
+      "action": {
+        "expected": "supply",
+        "observed": "supply",
+        "matches": true
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "observed": 11155111,
+        "matches": true
+      },
+      "verified_asset": {
+        "expected": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "observed": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "matches": true
+      },
+      "verified_asset_decimals": {
+        "expected": 6,
+        "observed": 6,
+        "matches": true
+      }
+    }
+  },
+  {
+    "id": "AAVE-SUPPLY-USDC:action_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-SUPPLY-USDC:contract_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-SUPPLY-USDC:deployment_contract",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-SUPPLY-USDC:resource_membership",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-SUPPLY-USDC:resource_asset",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-SUPPLY-USDT:control",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": true,
+    "C4_expected_and_observed_mismatch_values": null,
+    "human_readable_reason_present": false,
+    "all_applicable": false,
+    "approval_evidence_checks": {
+      "verified_address": {
+        "expected": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "observed": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "matches": true
+      },
+      "verified_function": {
+        "expected": "supply(address,uint256,address,uint16)",
+        "observed": "supply(address,uint256,address,uint16)",
+        "matches": true
+      },
+      "verified_selector": {
+        "expected": "0x617ba037",
+        "observed": "0x617ba037",
+        "matches": true
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "observed": "Aave V3",
+        "matches": true
+      },
+      "action": {
+        "expected": "supply",
+        "observed": "supply",
+        "matches": true
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "observed": 11155111,
+        "matches": true
+      },
+      "verified_asset": {
+        "expected": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "observed": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "matches": true
+      },
+      "verified_asset_decimals": {
+        "expected": 6,
+        "observed": 6,
+        "matches": true
+      }
+    }
+  },
+  {
+    "id": "AAVE-SUPPLY-USDT:action_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-SUPPLY-USDT:contract_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-SUPPLY-USDT:deployment_contract",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-SUPPLY-USDT:resource_membership",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-SUPPLY-USDT:resource_asset",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-WITHDRAW-USDC:control",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": true,
+    "C4_expected_and_observed_mismatch_values": null,
+    "human_readable_reason_present": false,
+    "all_applicable": false,
+    "approval_evidence_checks": {
+      "verified_address": {
+        "expected": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "observed": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "matches": true
+      },
+      "verified_function": {
+        "expected": "withdraw(address,uint256,address)",
+        "observed": "withdraw(address,uint256,address)",
+        "matches": true
+      },
+      "verified_selector": {
+        "expected": "0x69328dec",
+        "observed": "0x69328dec",
+        "matches": true
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "observed": "Aave V3",
+        "matches": true
+      },
+      "action": {
+        "expected": "withdraw",
+        "observed": "withdraw",
+        "matches": true
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "observed": 11155111,
+        "matches": true
+      },
+      "verified_asset": {
+        "expected": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "observed": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "matches": true
+      },
+      "verified_asset_decimals": {
+        "expected": 6,
+        "observed": 6,
+        "matches": true
+      }
+    }
+  },
+  {
+    "id": "AAVE-WITHDRAW-USDC:action_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-WITHDRAW-USDC:contract_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-WITHDRAW-USDC:deployment_contract",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-WITHDRAW-USDC:resource_membership",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-WITHDRAW-USDC:resource_asset",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-WITHDRAW-USDT:control",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": true,
+    "C4_expected_and_observed_mismatch_values": null,
+    "human_readable_reason_present": false,
+    "all_applicable": false,
+    "approval_evidence_checks": {
+      "verified_address": {
+        "expected": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "observed": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "matches": true
+      },
+      "verified_function": {
+        "expected": "withdraw(address,uint256,address)",
+        "observed": "withdraw(address,uint256,address)",
+        "matches": true
+      },
+      "verified_selector": {
+        "expected": "0x69328dec",
+        "observed": "0x69328dec",
+        "matches": true
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "observed": "Aave V3",
+        "matches": true
+      },
+      "action": {
+        "expected": "withdraw",
+        "observed": "withdraw",
+        "matches": true
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "observed": 11155111,
+        "matches": true
+      },
+      "verified_asset": {
+        "expected": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "observed": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "matches": true
+      },
+      "verified_asset_decimals": {
+        "expected": 6,
+        "observed": 6,
+        "matches": true
+      }
+    }
+  },
+  {
+    "id": "AAVE-WITHDRAW-USDT:action_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-WITHDRAW-USDT:contract_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-WITHDRAW-USDT:deployment_contract",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-WITHDRAW-USDT:resource_membership",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-WITHDRAW-USDT:resource_asset",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-BORROW-USDC:control",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": true,
+    "C4_expected_and_observed_mismatch_values": null,
+    "human_readable_reason_present": false,
+    "all_applicable": false,
+    "approval_evidence_checks": {
+      "verified_address": {
+        "expected": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "observed": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "matches": true
+      },
+      "verified_function": {
+        "expected": "borrow(address,uint256,uint256,uint16,address)",
+        "observed": "borrow(address,uint256,uint256,uint16,address)",
+        "matches": true
+      },
+      "verified_selector": {
+        "expected": "0xa415bcad",
+        "observed": "0xa415bcad",
+        "matches": true
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "observed": "Aave V3",
+        "matches": true
+      },
+      "action": {
+        "expected": "borrow",
+        "observed": "borrow",
+        "matches": true
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "observed": 11155111,
+        "matches": true
+      },
+      "verified_asset": {
+        "expected": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "observed": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "matches": true
+      },
+      "verified_asset_decimals": {
+        "expected": 6,
+        "observed": 6,
+        "matches": true
+      }
+    }
+  },
+  {
+    "id": "AAVE-BORROW-USDC:action_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-BORROW-USDC:contract_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-BORROW-USDC:deployment_contract",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-BORROW-USDC:resource_membership",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-BORROW-USDC:resource_asset",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-BORROW-USDT:control",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": true,
+    "C4_expected_and_observed_mismatch_values": null,
+    "human_readable_reason_present": false,
+    "all_applicable": false,
+    "approval_evidence_checks": {
+      "verified_address": {
+        "expected": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "observed": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "matches": true
+      },
+      "verified_function": {
+        "expected": "borrow(address,uint256,uint256,uint16,address)",
+        "observed": "borrow(address,uint256,uint256,uint16,address)",
+        "matches": true
+      },
+      "verified_selector": {
+        "expected": "0xa415bcad",
+        "observed": "0xa415bcad",
+        "matches": true
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "observed": "Aave V3",
+        "matches": true
+      },
+      "action": {
+        "expected": "borrow",
+        "observed": "borrow",
+        "matches": true
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "observed": 11155111,
+        "matches": true
+      },
+      "verified_asset": {
+        "expected": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "observed": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "matches": true
+      },
+      "verified_asset_decimals": {
+        "expected": 6,
+        "observed": 6,
+        "matches": true
+      }
+    }
+  },
+  {
+    "id": "AAVE-BORROW-USDT:action_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-BORROW-USDT:contract_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-BORROW-USDT:deployment_contract",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-BORROW-USDT:resource_membership",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-BORROW-USDT:resource_asset",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-REPAY-USDC:control",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": true,
+    "C4_expected_and_observed_mismatch_values": null,
+    "human_readable_reason_present": false,
+    "all_applicable": false,
+    "approval_evidence_checks": {
+      "verified_address": {
+        "expected": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "observed": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "matches": true
+      },
+      "verified_function": {
+        "expected": "repay(address,uint256,uint256,address)",
+        "observed": "repay(address,uint256,uint256,address)",
+        "matches": true
+      },
+      "verified_selector": {
+        "expected": "0x573ade81",
+        "observed": "0x573ade81",
+        "matches": true
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "observed": "Aave V3",
+        "matches": true
+      },
+      "action": {
+        "expected": "repay",
+        "observed": "repay",
+        "matches": true
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "observed": 11155111,
+        "matches": true
+      },
+      "verified_asset": {
+        "expected": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "observed": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "matches": true
+      },
+      "verified_asset_decimals": {
+        "expected": 6,
+        "observed": 6,
+        "matches": true
+      }
+    }
+  },
+  {
+    "id": "AAVE-REPAY-USDC:action_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-REPAY-USDC:contract_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-REPAY-USDC:deployment_contract",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-REPAY-USDC:resource_membership",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-REPAY-USDC:resource_asset",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-REPAY-USDT:control",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": true,
+    "C4_expected_and_observed_mismatch_values": null,
+    "human_readable_reason_present": false,
+    "all_applicable": false,
+    "approval_evidence_checks": {
+      "verified_address": {
+        "expected": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "observed": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "matches": true
+      },
+      "verified_function": {
+        "expected": "repay(address,uint256,uint256,address)",
+        "observed": "repay(address,uint256,uint256,address)",
+        "matches": true
+      },
+      "verified_selector": {
+        "expected": "0x573ade81",
+        "observed": "0x573ade81",
+        "matches": true
+      },
+      "protocol": {
+        "expected": "Aave V3",
+        "observed": "Aave V3",
+        "matches": true
+      },
+      "action": {
+        "expected": "repay",
+        "observed": "repay",
+        "matches": true
+      },
+      "chain_id": {
+        "expected": 11155111,
+        "observed": 11155111,
+        "matches": true
+      },
+      "verified_asset": {
+        "expected": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "observed": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "matches": true
+      },
+      "verified_asset_decimals": {
+        "expected": 6,
+        "observed": 6,
+        "matches": true
+      }
+    }
+  },
+  {
+    "id": "AAVE-REPAY-USDT:action_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-REPAY-USDT:contract_function",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-REPAY-USDT:deployment_contract",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-REPAY-USDT:resource_membership",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  },
+  {
+    "id": "AAVE-REPAY-USDT:resource_asset",
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "human_readable_reason_present": true,
+    "all_applicable": false,
+    "approval_evidence_checks": {}
+  }
+]

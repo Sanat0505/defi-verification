@@ -1,0 +1,8 @@
+[
+  {
+    "id": "BAL600-275-A",
+    "query": "On Ethereum Sepolia, use Uniswap V3 to swap an input of 23.8125 USDC for WETH; route through USDT as an intermediate token.",
+    "expected": "UNSUPPORTED",
+    "actual": "APPROVED"
+  }
+]

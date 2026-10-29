@@ -1,0 +1,396 @@
+{
+  "Uniswap V3|swap|AAVE|WBTC|11155111": [
+    "BAL600-001",
+    "BAL600-007",
+    "BAL600-013",
+    "BAL600-019",
+    "BAL600-025",
+    "BAL600-031",
+    "BAL600-037",
+    "BAL600-043",
+    "BAL600-049"
+  ],
+  "Uniswap V3|swap|LINK|USDT|11155111": [
+    "BAL600-002",
+    "BAL600-008",
+    "BAL600-014",
+    "BAL600-020",
+    "BAL600-026",
+    "BAL600-032",
+    "BAL600-038",
+    "BAL600-044",
+    "BAL600-050"
+  ],
+  "Uniswap V3|swap|USDC|WETH|11155111": [
+    "BAL600-003",
+    "BAL600-009",
+    "BAL600-015",
+    "BAL600-021",
+    "BAL600-027",
+    "BAL600-033",
+    "BAL600-039",
+    "BAL600-045"
+  ],
+  "Uniswap V3|swap|USDT|LINK|11155111": [
+    "BAL600-004",
+    "BAL600-010",
+    "BAL600-016",
+    "BAL600-022",
+    "BAL600-028",
+    "BAL600-034",
+    "BAL600-040",
+    "BAL600-046"
+  ],
+  "Uniswap V3|swap|WBTC|AAVE|11155111": [
+    "BAL600-005",
+    "BAL600-011",
+    "BAL600-017",
+    "BAL600-023",
+    "BAL600-029",
+    "BAL600-035",
+    "BAL600-041",
+    "BAL600-047"
+  ],
+  "Uniswap V3|swap|WETH|USDC|11155111": [
+    "BAL600-006",
+    "BAL600-012",
+    "BAL600-018",
+    "BAL600-024",
+    "BAL600-030",
+    "BAL600-036",
+    "BAL600-042",
+    "BAL600-048"
+  ],
+  "Aave V3|supply|AAVE|None|11155111": [
+    "BAL600-051",
+    "BAL600-087"
+  ],
+  "Aave V3|withdraw|AAVE|None|11155111": [
+    "BAL600-052",
+    "BAL600-088"
+  ],
+  "Aave V3|borrow|AAVE|None|11155111": [
+    "BAL600-053",
+    "BAL600-089"
+  ],
+  "Aave V3|repay|AAVE|None|11155111": [
+    "BAL600-054",
+    "BAL600-090"
+  ],
+  "Aave V3|supply|DAI|None|11155111": [
+    "BAL600-055",
+    "BAL600-091"
+  ],
+  "Aave V3|withdraw|DAI|None|11155111": [
+    "BAL600-056",
+    "BAL600-092"
+  ],
+  "Aave V3|borrow|DAI|None|11155111": [
+    "BAL600-057",
+    "BAL600-093"
+  ],
+  "Aave V3|repay|DAI|None|11155111": [
+    "BAL600-058",
+    "BAL600-094"
+  ],
+  "Aave V3|supply|EURS|None|11155111": [
+    "BAL600-059",
+    "BAL600-095"
+  ],
+  "Aave V3|withdraw|EURS|None|11155111": [
+    "BAL600-060",
+    "BAL600-096"
+  ],
+  "Aave V3|borrow|EURS|None|11155111": [
+    "BAL600-061",
+    "BAL600-097"
+  ],
+  "Aave V3|repay|EURS|None|11155111": [
+    "BAL600-062",
+    "BAL600-098"
+  ],
+  "Aave V3|supply|GHO|None|11155111": [
+    "BAL600-063",
+    "BAL600-099"
+  ],
+  "Aave V3|withdraw|GHO|None|11155111": [
+    "BAL600-064",
+    "BAL600-100"
+  ],
+  "Aave V3|borrow|GHO|None|11155111": [
+    "BAL600-065"
+  ],
+  "Aave V3|repay|GHO|None|11155111": [
+    "BAL600-066"
+  ],
+  "Aave V3|supply|LINK|None|11155111": [
+    "BAL600-067"
+  ],
+  "Aave V3|withdraw|LINK|None|11155111": [
+    "BAL600-068"
+  ],
+  "Aave V3|borrow|LINK|None|11155111": [
+    "BAL600-069"
+  ],
+  "Aave V3|repay|LINK|None|11155111": [
+    "BAL600-070"
+  ],
+  "Aave V3|supply|USDC|None|11155111": [
+    "BAL600-071"
+  ],
+  "Aave V3|withdraw|USDC|None|11155111": [
+    "BAL600-072"
+  ],
+  "Aave V3|borrow|USDC|None|11155111": [
+    "BAL600-073"
+  ],
+  "Aave V3|repay|USDC|None|11155111": [
+    "BAL600-074"
+  ],
+  "Aave V3|supply|USDT|None|11155111": [
+    "BAL600-075"
+  ],
+  "Aave V3|withdraw|USDT|None|11155111": [
+    "BAL600-076"
+  ],
+  "Aave V3|borrow|USDT|None|11155111": [
+    "BAL600-077"
+  ],
+  "Aave V3|repay|USDT|None|11155111": [
+    "BAL600-078"
+  ],
+  "Aave V3|supply|WBTC|None|11155111": [
+    "BAL600-079"
+  ],
+  "Aave V3|withdraw|WBTC|None|11155111": [
+    "BAL600-080"
+  ],
+  "Aave V3|borrow|WBTC|None|11155111": [
+    "BAL600-081"
+  ],
+  "Aave V3|repay|WBTC|None|11155111": [
+    "BAL600-082"
+  ],
+  "Aave V3|supply|WETH|None|11155111": [
+    "BAL600-083"
+  ],
+  "Aave V3|withdraw|WETH|None|11155111": [
+    "BAL600-084"
+  ],
+  "Aave V3|borrow|WETH|None|11155111": [
+    "BAL600-085"
+  ],
+  "Aave V3|repay|WETH|None|11155111": [
+    "BAL600-086"
+  ],
+  "Uniswap V3|swap|AAVE|DAI|11155111": [
+    "BAL600-101"
+  ],
+  "Uniswap V3|swap|AAVE|EURS|11155111": [
+    "BAL600-102"
+  ],
+  "Uniswap V3|swap|AAVE|GHO|11155111": [
+    "BAL600-103"
+  ],
+  "Uniswap V3|swap|AAVE|LINK|11155111": [
+    "BAL600-104"
+  ],
+  "Uniswap V3|swap|AAVE|USDC|11155111": [
+    "BAL600-105"
+  ],
+  "Uniswap V3|swap|AAVE|USDT|11155111": [
+    "BAL600-106"
+  ],
+  "Uniswap V3|swap|AAVE|WETH|11155111": [
+    "BAL600-107"
+  ],
+  "Uniswap V3|swap|DAI|EURS|11155111": [
+    "BAL600-108"
+  ],
+  "Uniswap V3|swap|DAI|GHO|11155111": [
+    "BAL600-109"
+  ],
+  "Uniswap V3|swap|DAI|LINK|11155111": [
+    "BAL600-110"
+  ],
+  "Uniswap V3|swap|DAI|USDC|11155111": [
+    "BAL600-111"
+  ],
+  "Uniswap V3|swap|DAI|USDT|11155111": [
+    "BAL600-112"
+  ],
+  "Uniswap V3|swap|DAI|WBTC|11155111": [
+    "BAL600-113"
+  ],
+  "Uniswap V3|swap|DAI|WETH|11155111": [
+    "BAL600-114"
+  ],
+  "Uniswap V3|swap|EURS|GHO|11155111": [
+    "BAL600-115"
+  ],
+  "Uniswap V3|swap|EURS|LINK|11155111": [
+    "BAL600-116"
+  ],
+  "Uniswap V3|swap|EURS|USDC|11155111": [
+    "BAL600-117"
+  ],
+  "Uniswap V3|swap|EURS|USDT|11155111": [
+    "BAL600-118"
+  ],
+  "Uniswap V3|swap|EURS|WBTC|11155111": [
+    "BAL600-119"
+  ],
+  "Uniswap V3|swap|EURS|WETH|11155111": [
+    "BAL600-120"
+  ],
+  "Uniswap V3|swap|GHO|LINK|11155111": [
+    "BAL600-121"
+  ],
+  "Uniswap V3|swap|GHO|USDC|11155111": [
+    "BAL600-122"
+  ],
+  "Uniswap V3|swap|GHO|USDT|11155111": [
+    "BAL600-123"
+  ],
+  "Uniswap V3|swap|GHO|WBTC|11155111": [
+    "BAL600-124"
+  ],
+  "Uniswap V3|swap|GHO|WETH|11155111": [
+    "BAL600-125"
+  ],
+  "Uniswap V3|swap|LINK|USDC|11155111": [
+    "BAL600-126"
+  ],
+  "Uniswap V3|swap|LINK|WBTC|11155111": [
+    "BAL600-127"
+  ],
+  "Uniswap V3|swap|LINK|WETH|11155111": [
+    "BAL600-128"
+  ],
+  "Uniswap V3|swap|USDC|USDT|11155111": [
+    "BAL600-129"
+  ],
+  "Uniswap V3|swap|USDC|WBTC|11155111": [
+    "BAL600-130"
+  ],
+  "Uniswap V3|swap|USDT|WBTC|11155111": [
+    "BAL600-131"
+  ],
+  "Uniswap V3|swap|USDT|WETH|11155111": [
+    "BAL600-132"
+  ],
+  "Uniswap V3|swap|WBTC|WETH|11155111": [
+    "BAL600-133"
+  ],
+  "Uniswap V3|swap|DAI|AAVE|11155111": [
+    "BAL600-134"
+  ],
+  "Uniswap V3|swap|EURS|AAVE|11155111": [
+    "BAL600-135"
+  ],
+  "Uniswap V3|swap|GHO|AAVE|11155111": [
+    "BAL600-136"
+  ],
+  "Uniswap V3|swap|LINK|AAVE|11155111": [
+    "BAL600-137"
+  ],
+  "Uniswap V3|swap|USDC|AAVE|11155111": [
+    "BAL600-138"
+  ],
+  "Uniswap V3|swap|USDT|AAVE|11155111": [
+    "BAL600-139"
+  ],
+  "Uniswap V3|swap|WETH|AAVE|11155111": [
+    "BAL600-140"
+  ],
+  "Uniswap V3|swap|EURS|DAI|11155111": [
+    "BAL600-141"
+  ],
+  "Uniswap V3|swap|GHO|DAI|11155111": [
+    "BAL600-142"
+  ],
+  "Uniswap V3|swap|LINK|DAI|11155111": [
+    "BAL600-143"
+  ],
+  "Uniswap V3|swap|USDC|DAI|11155111": [
+    "BAL600-144"
+  ],
+  "Uniswap V3|swap|USDT|DAI|11155111": [
+    "BAL600-145"
+  ],
+  "Uniswap V3|swap|WBTC|DAI|11155111": [
+    "BAL600-146"
+  ],
+  "Uniswap V3|swap|WETH|DAI|11155111": [
+    "BAL600-147"
+  ],
+  "Uniswap V3|swap|GHO|EURS|11155111": [
+    "BAL600-148"
+  ],
+  "Uniswap V3|swap|LINK|EURS|11155111": [
+    "BAL600-149"
+  ],
+  "Uniswap V3|swap|USDC|EURS|11155111": [
+    "BAL600-150"
+  ],
+  "Aave V3|supply|ETH|None|11155111": [
+    "BAL600-181"
+  ],
+  "Aave V3|supply|BTC|None|11155111": [
+    "BAL600-182"
+  ],
+  "Aave V3|supply|SOL|None|11155111": [
+    "BAL600-183"
+  ],
+  "Aave V3|supply|USDS|None|11155111": [
+    "BAL600-184"
+  ],
+  "Aave V3|supply|FRAX|None|11155111": [
+    "BAL600-185"
+  ],
+  "Aave V3|supply|EURC|None|11155111": [
+    "BAL600-186"
+  ],
+  "Aave V3|supply|CRV|None|11155111": [
+    "BAL600-187"
+  ],
+  "Aave V3|supply|UNI|None|11155111": [
+    "BAL600-188"
+  ],
+  "Aave V3|supply|MKR|None|11155111": [
+    "BAL600-189"
+  ],
+  "Aave V3|supply|ARB|None|11155111": [
+    "BAL600-190"
+  ],
+  "Aave V3|supply|OP|None|11155111": [
+    "BAL600-191"
+  ],
+  "Aave V3|supply|LUSD|None|11155111": [
+    "BAL600-192"
+  ],
+  "Aave V3|supply|RETH|None|11155111": [
+    "BAL600-193"
+  ],
+  "Aave V3|supply|CBETH|None|11155111": [
+    "BAL600-194"
+  ],
+  "Aave V3|supply|STETH|None|11155111": [
+    "BAL600-195"
+  ],
+  "Aave V3|supply|WSTETH|None|11155111": [
+    "BAL600-196"
+  ],
+  "Aave V3|supply|RUSD|None|11155111": [
+    "BAL600-197"
+  ],
+  "Aave V3|supply|BUSD|None|11155111": [
+    "BAL600-198"
+  ],
+  "Aave V3|supply|PENDLE|None|11155111": [
+    "BAL600-199"
+  ],
+  "Aave V3|supply|BAL|None|11155111": [
+    "BAL600-200"
+  ]
+}

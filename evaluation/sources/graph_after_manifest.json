@@ -1,0 +1,7 @@
+{
+  "after/core/models.py": "19c1102738daec6f0ea046e08ba6ff733de51ff3e26f66bdbe28e613d97fc81b",
+  "after/db/verification_trace.py": "0f6f2f4a7b60f21255290459a6311fad238b6917355a067152972d906214b41e",
+  "after/db/verifier.py": "19feb77952a40dd2ba89ccf30a062b82caaed53130184cf061eab7910b1e7cc1",
+  "after/docs/GRAPH_VERIFICATION_TRACE.md": "9ccffb04af6de1e3037d3bc2b0cdf19f7127bfd09ee586062ccb2e7956298bb7",
+  "after/tests/test_verification_trace.py": "952db9d6f7795143cb4d0364b0551da899d3c700d3b9d3e6fba6483e97255b67"
+}

@@ -1,0 +1,495 @@
+{
+  "all_prompts": {
+    "prompts": 400,
+    "validation_status_matches": 344,
+    "validation_errors": 3,
+    "pipeline_status_matches": 344,
+    "joint_reference_matches": 336,
+    "draft_pipeline_improper_approvals": 3,
+    "graph_calls": 198,
+    "json_objects": 397,
+    "prompt_schema_conformant": 397
+  },
+  "primary_formulations": {
+    "prompts": 200,
+    "validation_status_matches": 183,
+    "validation_errors": 0,
+    "pipeline_status_matches": 183,
+    "joint_reference_matches": 180,
+    "draft_pipeline_improper_approvals": 2,
+    "graph_calls": 114,
+    "json_objects": 200,
+    "prompt_schema_conformant": 200
+  },
+  "by_category": {
+    "incomplete_or_ambiguous": {
+      "prompts": 60,
+      "validation_status_matches": 40,
+      "validation_errors": 0,
+      "pipeline_status_matches": 40,
+      "joint_reference_matches": 32,
+      "draft_pipeline_improper_approvals": 0,
+      "graph_calls": 2,
+      "json_objects": 60,
+      "prompt_schema_conformant": 60
+    },
+    "invalid_parameters_or_conditions": {
+      "prompts": 60,
+      "validation_status_matches": 54,
+      "validation_errors": 0,
+      "pipeline_status_matches": 54,
+      "joint_reference_matches": 54,
+      "draft_pipeline_improper_approvals": 0,
+      "graph_calls": 0,
+      "json_objects": 60,
+      "prompt_schema_conformant": 60
+    },
+    "known_entities_invalid_relationship": {
+      "prompts": 80,
+      "validation_status_matches": 77,
+      "validation_errors": 3,
+      "pipeline_status_matches": 77,
+      "joint_reference_matches": 77,
+      "draft_pipeline_improper_approvals": 0,
+      "graph_calls": 77,
+      "json_objects": 77,
+      "prompt_schema_conformant": 77
+    },
+    "supported_aave": {
+      "prompts": 60,
+      "validation_status_matches": 60,
+      "validation_errors": 0,
+      "pipeline_status_matches": 60,
+      "joint_reference_matches": 60,
+      "draft_pipeline_improper_approvals": 0,
+      "graph_calls": 60,
+      "json_objects": 60,
+      "prompt_schema_conformant": 60
+    },
+    "supported_uniswap": {
+      "prompts": 60,
+      "validation_status_matches": 36,
+      "validation_errors": 0,
+      "pipeline_status_matches": 36,
+      "joint_reference_matches": 36,
+      "draft_pipeline_improper_approvals": 0,
+      "graph_calls": 36,
+      "json_objects": 60,
+      "prompt_schema_conformant": 60
+    },
+    "unknown_or_unsupported": {
+      "prompts": 80,
+      "validation_status_matches": 77,
+      "validation_errors": 0,
+      "pipeline_status_matches": 77,
+      "joint_reference_matches": 77,
+      "draft_pipeline_improper_approvals": 3,
+      "graph_calls": 23,
+      "json_objects": 80,
+      "prompt_schema_conformant": 80
+    }
+  },
+  "reference_graph": {
+    "completed": 220,
+    "distinct_inputs": 86,
+    "draft_decision_matches": 220,
+    "snapshot_evidence_matches": 220,
+    "operational_failures": 0,
+    "timing_all": {
+      "requests": 220,
+      "within_2000_ms": 218,
+      "percentage_within_2000_ms": 99.0909090909091,
+      "p50_ms": 19.6,
+      "p95_ms": 59.138,
+      "max_ms": 2532.215
+    },
+    "timing_first_distinct": {
+      "requests": 86,
+      "within_2000_ms": 84,
+      "percentage_within_2000_ms": 97.67441860465117,
+      "p50_ms": 19.44,
+      "p95_ms": 149.339,
+      "max_ms": 2532.215
+    },
+    "primary_eligible_prompts": 110,
+    "primary_timing": {
+      "requests": 110,
+      "within_2000_ms": 108,
+      "percentage_within_2000_ms": 98.18181818181819,
+      "p50_ms": 20.672,
+      "p95_ms": 149.339,
+      "max_ms": 2532.215
+    },
+    "slow_requests": [
+      {
+        "id": "FINAL-DRAFT-001-A",
+        "ms": 2532.215
+      },
+      {
+        "id": "FINAL-DRAFT-131-A",
+        "ms": 2058.115
+      }
+    ]
+  },
+  "independence_warning": "400 prompts form 200 declared families; family independence is unverified. Alternatives are not independent samples.",
+  "joint_reference_match_definition": "Validation and final dispositions match; specified normalized fields and missing fields match for APPROVED/NEEDS_CLARIFICATION references. For other dispositions, this is disposition conformance only, not exhaustive semantic correctness.",
+  "run_status": "complete",
+  "case_count_actual": 400,
+  "case_count_planned": 400,
+  "final_held_out_evaluation": false,
+  "dataset_sha256": "db0e1f103d446124d9aa853870526c25398bb1541bd5f32183bf101461bb9ffd",
+  "validation_confusion": [
+    {
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "cases": 193
+    },
+    {
+      "expected": "UNSUPPORTED",
+      "actual": "UNSUPPORTED",
+      "cases": 93
+    },
+    {
+      "expected": "UNSUPPORTED",
+      "actual": "APPROVED",
+      "cases": 3
+    },
+    {
+      "expected": "NEEDS_CLARIFICATION",
+      "actual": "NEEDS_CLARIFICATION",
+      "cases": 40
+    },
+    {
+      "expected": "NEEDS_CLARIFICATION",
+      "actual": "APPROVED",
+      "cases": 2
+    },
+    {
+      "expected": "NEEDS_CLARIFICATION",
+      "actual": "UNSUPPORTED",
+      "cases": 17
+    },
+    {
+      "expected": "NEEDS_CLARIFICATION",
+      "actual": "REJECTED",
+      "cases": 1
+    },
+    {
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "cases": 18
+    },
+    {
+      "expected": "REJECTED",
+      "actual": "UNSUPPORTED",
+      "cases": 6
+    },
+    {
+      "expected": "APPROVED",
+      "actual": "UNSUPPORTED",
+      "cases": 24
+    },
+    {
+      "expected": "APPROVED",
+      "actual": "ERROR",
+      "cases": 3
+    }
+  ],
+  "pipeline_confusion": [
+    {
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "cases": 96
+    },
+    {
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "cases": 115
+    },
+    {
+      "expected": "UNSUPPORTED",
+      "actual": "UNSUPPORTED",
+      "cases": 93
+    },
+    {
+      "expected": "UNSUPPORTED",
+      "actual": "APPROVED",
+      "cases": 3
+    },
+    {
+      "expected": "NEEDS_CLARIFICATION",
+      "actual": "NEEDS_CLARIFICATION",
+      "cases": 40
+    },
+    {
+      "expected": "NEEDS_CLARIFICATION",
+      "actual": "REJECTED",
+      "cases": 3
+    },
+    {
+      "expected": "NEEDS_CLARIFICATION",
+      "actual": "UNSUPPORTED",
+      "cases": 17
+    },
+    {
+      "expected": "REJECTED",
+      "actual": "UNSUPPORTED",
+      "cases": 6
+    },
+    {
+      "expected": "APPROVED",
+      "actual": "UNSUPPORTED",
+      "cases": 24
+    },
+    {
+      "expected": "REJECTED",
+      "actual": "ERROR",
+      "cases": 3
+    }
+  ],
+  "graph_confusion": [
+    {
+      "expected": "APPROVED",
+      "actual": "APPROVED",
+      "cases": 120
+    },
+    {
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "cases": 100
+    }
+  ],
+  "provider": {
+    "observed_outer_attempts": 403,
+    "successful_responses": 397,
+    "failed_outer_attempts": 6,
+    "usage_tokens": {
+      "prompt_tokens": 422669,
+      "completion_tokens": 47860,
+      "total_tokens": 470529
+    },
+    "http_attempts_in_sdk": "not individually observed",
+    "billing_cost": "not measured"
+  },
+  "interpretation_timing_not_R6": {
+    "requests": 400,
+    "within_2000_ms": 307,
+    "percentage_within_2000_ms": 76.75,
+    "p50_ms": 1789.2,
+    "p95_ms": 3242.654,
+    "max_ms": 56738.094
+  },
+  "returned_candidates": 238,
+  "normalized_field_matches_required_subset": {
+    "action": {
+      "matches": 235,
+      "cases": 280
+    },
+    "protocol": {
+      "matches": 229,
+      "cases": 280
+    },
+    "token_in": {
+      "matches": 232,
+      "cases": 280
+    },
+    "token_out": {
+      "matches": 250,
+      "cases": 280
+    },
+    "amount": {
+      "matches": 240,
+      "cases": 280
+    },
+    "chain": {
+      "matches": 235,
+      "cases": 280
+    },
+    "chain_id": {
+      "matches": 235,
+      "cases": 280
+    },
+    "slippage_bps": {
+      "matches": 256,
+      "cases": 280
+    }
+  },
+  "paired_formulations": {
+    "complete_pairs": 200,
+    "validation_status_same": 163,
+    "normalized_resolution_same": 159,
+    "pipeline_status_same": 163,
+    "both_joint_reference_matches": 149
+  },
+  "diagnostic_categories": {
+    "pipeline_approval_against_nonapproval_draft_reference": 3,
+    "validation_disposition_mismatch_requires_reference_review": 50,
+    "interpreted_field_mismatch": 8,
+    "provider_or_parser_failure": 3
+  },
+  "flagged_interpretation_approvals": 5,
+  "semantic_graph_containment": 2,
+  "daily_quota_failure_cases": [
+    "FINAL-DRAFT-092-B",
+    "FINAL-DRAFT-093-B",
+    "FINAL-DRAFT-094-B"
+  ],
+  "supported_swaps_blocked_by_slippage_wording": [
+    {
+      "id": "FINAL-DRAFT-002-B",
+      "raw_slippage_bps": 15,
+      "reference_slippage_bps": 15,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-003-B",
+      "raw_slippage_bps": 35,
+      "reference_slippage_bps": 35,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-004-B",
+      "raw_slippage_bps": 60,
+      "reference_slippage_bps": 60,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-005-B",
+      "raw_slippage_bps": 125,
+      "reference_slippage_bps": 125,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-007-B",
+      "raw_slippage_bps": 15,
+      "reference_slippage_bps": 15,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-008-B",
+      "raw_slippage_bps": 35,
+      "reference_slippage_bps": 35,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-009-B",
+      "raw_slippage_bps": 60,
+      "reference_slippage_bps": 60,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-010-B",
+      "raw_slippage_bps": 125,
+      "reference_slippage_bps": 125,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-012-B",
+      "raw_slippage_bps": 15,
+      "reference_slippage_bps": 15,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-013-B",
+      "raw_slippage_bps": 35,
+      "reference_slippage_bps": 35,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-014-B",
+      "raw_slippage_bps": 60,
+      "reference_slippage_bps": 60,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-015-B",
+      "raw_slippage_bps": 125,
+      "reference_slippage_bps": 125,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-017-B",
+      "raw_slippage_bps": 15,
+      "reference_slippage_bps": 15,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-018-B",
+      "raw_slippage_bps": 35,
+      "reference_slippage_bps": 35,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-019-B",
+      "raw_slippage_bps": 60,
+      "reference_slippage_bps": 60,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-020-B",
+      "raw_slippage_bps": 125,
+      "reference_slippage_bps": 125,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-022-B",
+      "raw_slippage_bps": 15,
+      "reference_slippage_bps": 15,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-023-B",
+      "raw_slippage_bps": 35,
+      "reference_slippage_bps": 35,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-024-B",
+      "raw_slippage_bps": 60,
+      "reference_slippage_bps": 60,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-025-B",
+      "raw_slippage_bps": 125,
+      "reference_slippage_bps": 125,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-027-B",
+      "raw_slippage_bps": 15,
+      "reference_slippage_bps": 15,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-028-B",
+      "raw_slippage_bps": 35,
+      "reference_slippage_bps": 35,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-029-B",
+      "raw_slippage_bps": 60,
+      "reference_slippage_bps": 60,
+      "raw_slippage_matches": true
+    },
+    {
+      "id": "FINAL-DRAFT-030-B",
+      "raw_slippage_bps": 125,
+      "reference_slippage_bps": 125,
+      "raw_slippage_matches": true
+    }
+  ],
+  "flash_borrow_pipeline_approval_flags": [
+    "FINAL-DRAFT-126-B"
+  ],
+  "run_timestamps": {
+    "started_at_utc": "2026-10-19T15:18:16.555724+00:00",
+    "resumed_at_utc": [
+      "2026-10-19T15:20:19.615591+00:00",
+      "2026-10-20T08:21:41.560852+00:00"
+    ],
+    "last_checkpoint_utc": "2026-10-20T08:41:39.347907+00:00",
+    "completed_at_utc": "2026-10-20T08:41:50.182333+00:00"
+  }
+}

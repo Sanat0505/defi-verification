@@ -1,0 +1,4313 @@
+{
+  "snapshot": "G:\\TU_Chemnitz\\Thesis\\defi-verification\\evaluation\\thesis_final_report\\data\\graph\\snapshot-20261019T135654936964Z.json",
+  "cases": [
+    {
+      "id": "EXP-UNI-CORE-11-2",
+      "query": "Uniswap V3 / Sepolia: swap 0.08 ETH -> USDT.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-04",
+      "query": "I'd like to borrow 6.25 USDT. Use Aave V3 on Ethereum Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-02",
+      "query": "Aave V3, Ethereum Sepolia: borrow 8.5 USDC.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-20-1",
+      "query": "My requested operation is a swap of 3.75 USDC into WETH, on Uniswap V3, Ethereum Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-01-2",
+      "query": "On Sepolia use Uniswap V3 to trade 0.08 ETH into USDT.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-06-2",
+      "query": "Please sell 0.08 ETH for USDT via Uniswap V3 on Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-08",
+      "query": "The asset is USDC, the amount is 8.5; supply it to Aave V3 on Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-12",
+      "query": "Please use Sepolia's Aave V3 to supply 0.04 WETH.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-10-2",
+      "query": "Using Ethereum Sepolia's Uniswap V3, exchange an input of 0.08 ETH for USDT.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-18-2",
+      "query": "Take 0.08 ETH and convert it into USDT; the protocol is Uniswap V3 and the network is Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-12-2",
+      "query": "For my Sepolia trade on Uniswap V3, take 0.08 ETH as input and buy USDT.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-08",
+      "query": "The asset is USDC, the amount is 8.5; withdraw it from Aave V3 on Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-15",
+      "query": "On Ethereum Sepolia with Aave V3, please borrow an amount of 0.04 WETH.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-07",
+      "query": "Use the Aave V3 supply operation for 6.25 USDT on Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-09",
+      "query": "I want to repay exactly 0.04 WETH on Aave V3 on the Sepolia testnet.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-10",
+      "query": "For Aave V3 on Sepolia, my request is: supply 6.25 USDT.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-02",
+      "query": "Aave V3, Ethereum Sepolia: supply 8.5 USDC.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-07-2",
+      "query": "I have decided to swap 0.08 ETH into USDT. Use Sepolia and Uniswap V3.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-14-2",
+      "query": "Could Uniswap V3 on Ethereum Sepolia swap 0.08 ETH into USDT for me?",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-10-1",
+      "query": "Using Ethereum Sepolia's Uniswap V3, exchange an input of 3.75 USDC for WETH.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-07",
+      "query": "Use the Aave V3 borrow operation for 6.25 USDT on Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-01-1",
+      "query": "On Sepolia use Uniswap V3 to trade 3.75 USDC into WETH.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-12",
+      "query": "Please use Sepolia's Aave V3 to borrow 0.04 WETH.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-11",
+      "query": "Can we borrow 8.5 USDC from Aave V3, on Ethereum Sepolia please?",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-01",
+      "query": "On Sepolia, borrow 6.25 USDT from Aave V3.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-02",
+      "query": "Aave V3, Ethereum Sepolia: repay 8.5 USDC.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-18-1",
+      "query": "Take 3.75 USDC and convert it into WETH; the protocol is Uniswap V3 and the network is Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-06",
+      "query": "Network: Ethereum Sepolia. Protocol: Aave V3. Operation: supply 0.04 WETH.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-03-2",
+      "query": "Input: 0.08 ETH. Output asset: USDT. Swap on Uniswap V3, Ethereum Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-11-1",
+      "query": "Uniswap V3 / Sepolia: swap 3.75 USDC -> WETH.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-05",
+      "query": "Could you borrow 8.5 USDC from Aave V3 on Sepolia?",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-04-2",
+      "query": "Can you convert 0.08 ETH to USDT on Ethereum Sepolia with Uniswap V3?",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-01",
+      "query": "On Sepolia, supply 6.25 USDT to Aave V3.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-07",
+      "query": "Use the Aave V3 repay operation for 6.25 USDT on Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-05",
+      "query": "Could you supply 8.5 USDC to Aave V3 on Sepolia?",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-02",
+      "query": "Aave V3, Ethereum Sepolia: withdraw 8.5 USDC.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-15-2",
+      "query": "Buy USDT with 0.08 ETH using Uniswap V3 on Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-09-1",
+      "query": "The amount to spend is 3.75 USDC; swap it for WETH using Uniswap V3 on Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-16-1",
+      "query": "Swap request on Sepolia: use Uniswap V3, spend 3.75 USDC, receive WETH.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-12-1",
+      "query": "For my Sepolia trade on Uniswap V3, take 3.75 USDC as input and buy WETH.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-03",
+      "query": "Please withdraw 0.04 WETH from Aave V3 using Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-09",
+      "query": "I want to supply exactly 0.04 WETH to Aave V3 on the Sepolia testnet.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-13-2",
+      "query": "I want to trade using Uniswap V3 on Sepolia. Exchange 0.08 ETH for USDT.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-20-2",
+      "query": "My requested operation is a swap of 0.08 ETH into USDT, on Uniswap V3, Ethereum Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-06",
+      "query": "Network: Ethereum Sepolia. Protocol: Aave V3. Operation: withdraw 0.04 WETH.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-14",
+      "query": "I have chosen Aave V3 and Sepolia. I would like to withdraw 8.5 USDC.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-17-2",
+      "query": "Please exchange the following on Uniswap V3 (Sepolia): 0.08 ETH for USDT.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-05",
+      "query": "Could you repay 8.5 USDC on Aave V3 on Sepolia?",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-03",
+      "query": "Please deposit 0.04 WETH to Aave V3 using Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-16-2",
+      "query": "Swap request on Sepolia: use Uniswap V3, spend 0.08 ETH, receive USDT.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-12",
+      "query": "Please use Sepolia's Aave V3 to withdraw 0.04 WETH.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-01",
+      "query": "On Sepolia, repay 6.25 USDT on Aave V3.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-01",
+      "query": "On Sepolia, withdraw 6.25 USDT from Aave V3.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-11",
+      "query": "Can we withdraw 8.5 USDC from Aave V3, on Ethereum Sepolia please?",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-10",
+      "query": "For Aave V3 on Sepolia, my request is: repay 6.25 USDT.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-14",
+      "query": "I have chosen Aave V3 and Sepolia. I would like to borrow 8.5 USDC.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-14",
+      "query": "I have chosen Aave V3 and Sepolia. I would like to repay 8.5 USDC.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-13",
+      "query": "withdraw request: amount 6.25, token USDT, protocol Aave V3, network Ethereum Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-11",
+      "query": "Can we deposit 8.5 USDC to Aave V3, on Ethereum Sepolia please?",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-15",
+      "query": "On Ethereum Sepolia with Aave V3, please repay an amount of 0.04 WETH.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-04",
+      "query": "I'd like to repay 6.25 USDT. Use Aave V3 on Ethereum Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-09",
+      "query": "I want to withdraw exactly 0.04 WETH from Aave V3 on the Sepolia testnet.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-14-1",
+      "query": "Could Uniswap V3 on Ethereum Sepolia swap 3.75 USDC into WETH for me?",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-05",
+      "query": "Could you withdraw 8.5 USDC from Aave V3 on Sepolia?",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-04",
+      "query": "I'd like to withdraw 6.25 USDT. Use Aave V3 on Ethereum Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-13",
+      "query": "repay request: amount 6.25, token USDT, protocol Aave V3, network Ethereum Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-04-1",
+      "query": "Can you convert 3.75 USDC to WETH on Ethereum Sepolia with Uniswap V3?",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-19-1",
+      "query": "On the Sepolia testnet, I'd like a Uniswap V3 exchange from USDC to WETH, input amount 3.75.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-03",
+      "query": "Please repay 0.04 WETH on Aave V3 using Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-02-2",
+      "query": "I'd like USDT; exchange my 0.08 ETH through Uniswap V3 on Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-03-1",
+      "query": "Input: 3.75 USDC. Output asset: WETH. Swap on Uniswap V3, Ethereum Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-12",
+      "query": "Please use Sepolia's Aave V3 to repay 0.04 WETH.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-17-1",
+      "query": "Please exchange the following on Uniswap V3 (Sepolia): 3.75 USDC for WETH.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-09",
+      "query": "I want to borrow exactly 0.04 WETH from Aave V3 on the Sepolia testnet.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-08-2",
+      "query": "Network Sepolia; protocol Uniswap V3; exchange 0.08 ETH for USDT.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-06-1",
+      "query": "Please sell 3.75 USDC for WETH via Uniswap V3 on Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-10",
+      "query": "For Aave V3 on Sepolia, my request is: borrow 6.25 USDT.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-05-1",
+      "query": "Use Uniswap V3 on Sepolia for a swap: 3.75 USDC in, WETH out.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-14",
+      "query": "I have chosen Aave V3 and Sepolia. I would like to supply 8.5 USDC.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-08",
+      "query": "The asset is USDC, the amount is 8.5; borrow it from Aave V3 on Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-13-1",
+      "query": "I want to trade using Uniswap V3 on Sepolia. Exchange 3.75 USDC for WETH.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-08-1",
+      "query": "Network Sepolia; protocol Uniswap V3; exchange 3.75 USDC for WETH.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-08",
+      "query": "The asset is USDC, the amount is 8.5; repay it on Aave V3 on Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-03",
+      "query": "Please borrow 0.04 WETH from Aave V3 using Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-02-1",
+      "query": "I'd like WETH; exchange my 3.75 USDC through Uniswap V3 on Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-13",
+      "query": "borrow request: amount 6.25, token USDT, protocol Aave V3, network Ethereum Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-15-1",
+      "query": "Buy WETH with 3.75 USDC using Uniswap V3 on Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-09-2",
+      "query": "The amount to spend is 0.08 ETH; swap it for USDT using Uniswap V3 on Sepolia.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-15",
+      "query": "On Ethereum Sepolia with Aave V3, please withdraw an amount of 0.04 WETH.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-BORROW-CORE-06",
+      "query": "Network: Ethereum Sepolia. Protocol: Aave V3. Operation: borrow 0.04 WETH.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-11",
+      "query": "Can we repay 8.5 USDC on Aave V3, on Ethereum Sepolia please?",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "8.5",
+        "token_in": "USDC",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "verified_asset_decimals": 6,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-15",
+      "query": "On Ethereum Sepolia with Aave V3, please supply an amount of 0.04 WETH.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-07-1",
+      "query": "I have decided to swap 3.75 USDC into WETH. Use Sepolia and Uniswap V3.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "3.75",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-10",
+      "query": "For Aave V3 on Sepolia, my request is: withdraw 6.25 USDT.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-05-2",
+      "query": "Use Uniswap V3 on Sepolia for a swap: 0.08 ETH in, USDT out.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-UNI-CORE-19-2",
+      "query": "On the Sepolia testnet, I'd like a Uniswap V3 exchange from ETH to USDT, input amount 0.08.",
+      "category": "expanded_uniswap_core",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "0.08",
+        "token_in": "ETH",
+        "token_out": "USDT",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-04",
+      "query": "I'd like to supply 6.25 USDT. Use Aave V3 on Ethereum Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-REPAY-CORE-06",
+      "query": "Network: Ethereum Sepolia. Protocol: Aave V3. Operation: repay 0.04 WETH.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "0.04",
+        "token_in": "WETH",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "verified_asset_decimals": 18,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-WITHDRAW-CORE-07",
+      "query": "Use the Aave V3 withdraw operation for 6.25 USDT on Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "EXP-AAVE-SUPPLY-CORE-13",
+      "query": "supply request: amount 6.25, token USDT, protocol Aave V3, network Ethereum Sepolia.",
+      "category": "expanded_aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "6.25",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "source_dataset": "evaluation\\datasets\\expanded_500_cases.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-001",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Sepolia.",
+      "category": "network_alias",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-002",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia.",
+      "category": "network_alias",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-003",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Sepolia testnet.",
+      "category": "network_alias",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-004",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Sepolia test network.",
+      "category": "network_alias",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-005",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia testnet.",
+      "category": "network_alias",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-006",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia test network.",
+      "category": "network_alias",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-007",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Sepolia (Ethereum testnet).",
+      "category": "network_alias",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-008",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on ETHEREUM-SEPOLIA.",
+      "category": "network_alias",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-009",
+      "query": "Supply 10 USDT to Aave V3 on Sepolia test network.",
+      "category": "aave_core",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "amount": "10",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "supply(address,uint256,address,uint16)",
+            "verified_selector": "0x617ba037"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-010",
+      "query": "Withdraw 10 USDT from Aave V3 on Sepolia test network.",
+      "category": "aave_core",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "amount": "10",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "withdraw(address,uint256,address)",
+            "verified_selector": "0x69328dec"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-011",
+      "query": "Borrow 10 USDT from Aave V3 on Sepolia test network.",
+      "category": "aave_core",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "amount": "10",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+            "verified_selector": "0xa415bcad"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-012",
+      "query": "Repay 10 USDT on Aave V3 on Sepolia test network.",
+      "category": "aave_core",
+      "intent": {
+        "action": "repay",
+        "protocol": "Aave V3",
+        "amount": "10",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+            "verified_asset": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "verified_asset_decimals": 6,
+            "verified_function": "repay(address,uint256,uint256,address)",
+            "verified_selector": "0x573ade81"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-013",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, maximum slippage 0.25%.",
+      "category": "supported_slippage",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-014",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, at most 0.25% slippage.",
+      "category": "supported_slippage",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-015",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage tolerance of 0.25 percent.",
+      "category": "supported_slippage",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-016",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, 25 bps slippage.",
+      "category": "supported_slippage",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-017",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage at most 25 basis points.",
+      "category": "supported_slippage",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-018",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage <=0.25%.",
+      "category": "supported_slippage",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-019",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 0.01%.",
+      "category": "supported_slippage",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 1
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-020",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 5%.",
+      "category": "supported_slippage",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 500
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-021",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, 100 basis points slippage.",
+      "category": "supported_slippage",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 100
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "CONSTRAINT-V1-022",
+      "query": "Swap 10 USDC for WETH on Uniswap V3 on Ethereum Sepolia, slippage 25.0 bps.",
+      "category": "supported_slippage",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "amount": "10",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": 25
+      },
+      "source_dataset": "evaluation\\datasets\\constraint_regression_v1.json",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+            "pool_fee": 10000,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          },
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+            "pool_fee": 100,
+            "token_in_address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "token_out_address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "token_in_decimals": 6,
+            "token_out_decimals": 18,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-01",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "token_in": "RUGTOKEN",
+        "token_out": "WETH",
+        "chain_id": 11155111,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-02",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "token_in": "AAVE",
+        "token_out": "USDT",
+        "chain_id": 11155111,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-03",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "token_in": "WBTC",
+        "token_out": "GHO",
+        "chain_id": 11155111,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-04",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "token_in": "USDC",
+        "token_out": "USDC",
+        "chain_id": 11155111,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-05",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Aave V3",
+        "action": "supply",
+        "token_in": "RUGTOKEN",
+        "token_out": null,
+        "chain_id": 11155111,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-06",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Aave V3",
+        "action": "borrow",
+        "token_in": "FAKECOIN",
+        "token_out": null,
+        "chain_id": 11155111,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-07",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Aave V3",
+        "action": "supply",
+        "token_in": "ETH",
+        "token_out": null,
+        "chain_id": 11155111,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "REJECTED",
+        "rationale": "No admitted path; rejection requires declared complete deployment coverage."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-08",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "token_in": "LINK",
+        "token_out": "USDT",
+        "chain_id": 11155111,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "APPROVED",
+        "paths": [
+          {
+            "router_address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+            "quoter_address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+            "pool_address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+            "pool_fee": 500,
+            "token_in_address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+            "token_out_address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "token_in_decimals": 18,
+            "token_out_decimals": 6,
+            "function_signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+            "function_selector": "0x04e45aaf"
+          }
+        ],
+        "rationale": "Active, trusted, action-specific path in the exported fresh snapshot."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-09",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain_id": 1,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "UNSUPPORTED",
+        "rationale": "Explicit graph-boundary scope mismatch."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-10",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Uniswap V3",
+        "action": "swap",
+        "token_in": "USDC",
+        "token_out": "WETH",
+        "chain_id": 84532,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "UNSUPPORTED",
+        "rationale": "Explicit graph-boundary scope mismatch."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-11",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Compound V2",
+        "action": "supply",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain_id": 11155111,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "UNSUPPORTED",
+        "rationale": "Explicit graph-boundary scope mismatch."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-12",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Curve",
+        "action": "swap",
+        "token_in": "USDC",
+        "token_out": "USDT",
+        "chain_id": 11155111,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "UNSUPPORTED",
+        "rationale": "Explicit graph-boundary scope mismatch."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-13",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Uniswap V3",
+        "action": "borrow",
+        "token_in": "USDT",
+        "token_out": null,
+        "chain_id": 11155111,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "UNSUPPORTED",
+        "rationale": "Explicit graph-boundary scope mismatch."
+      }
+    },
+    {
+      "id": "GRAPH-CONTROL-14",
+      "query": null,
+      "category": "structured_graph_boundary_control",
+      "intent": {
+        "protocol": "Aave V3",
+        "action": "swap",
+        "token_in": "USDT",
+        "token_out": "WETH",
+        "chain_id": 11155111,
+        "amount": "1"
+      },
+      "source_dataset": "assistant-authored structured graph controls",
+      "review_status": "assistant_draft_pending_researcher_review",
+      "expected": {
+        "decision": "UNSUPPORTED",
+        "rationale": "Explicit graph-boundary scope mismatch."
+      }
+    }
+  ],
+  "review_status": "assistant_draft_pending_researcher_review",
+  "assigned_before_verifier_execution": true
+}

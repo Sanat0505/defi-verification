@@ -1,0 +1,19 @@
+{
+  "completed_prompts": 400,
+  "unique_prompts": 400,
+  "interpretation_records": 400,
+  "original_294_records_unchanged": true,
+  "reference_graph_records_unchanged": true,
+  "dataset_byte_identical": true,
+  "production_and_harness_hashes_match": true,
+  "protected_files_match_original_hashes": true,
+  "snapshot_content_unchanged_across_segments": true,
+  "historical_report_zip_unchanged": true,
+  "offline_harness_tests": "4 passed in 4.01s",
+  "graph_calls_reference": 220,
+  "graph_calls_pipeline": 198,
+  "run_completion_utc": "2026-10-20T08:41:50.182333+00:00",
+  "analysis_counts_and_csv_rows_verified": true,
+  "source_archive_matches_files": true,
+  "figure_visual_review": "Validation and pipeline confusion matrices and graph latency plot inspected; labels and counts readable."
+}

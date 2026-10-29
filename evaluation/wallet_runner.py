@@ -37,7 +37,7 @@ from wallet import erc4337
 
 
 DEFAULT_DATASET = Path(__file__).parent / "datasets" / "wallet_cases.json"
-DEFAULT_REPORTS = Path(__file__).parent / "wallet_reports"
+DEFAULT_REPORTS = ROOT / '.cache/evaluation-runs/wallet'
 TEST_ADDRESS = "0x" + "1" * 40
 OTHER_ADDRESS = "0x" + "9" * 40
 

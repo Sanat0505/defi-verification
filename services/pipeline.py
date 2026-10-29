@@ -26,6 +26,18 @@ async def process_prompt(request: PromptRequest) -> dict:
     resolution = await parse_intent(request.prompt)
 
     if pending and resolution.status == Decision.NEEDS_CLARIFICATION and resolution.intent:
+        update = resolution.intent
+        if not update.action and not update.protocol and (
+            update.slippage_bps is not None and update.slippage_bps != pending.intent.slippage_bps
+        ):
+            return {
+                "decision": "NEEDS_CLARIFICATION", "executable": False,
+                "message": "To add or change slippage, submit the complete operation with that limit. The pending operation has not been executed.",
+                "error_code": "clarification_changes_constraints",
+                "conversation_id": conversation_id,
+                "intent": pending.intent.model_dump(mode="json", exclude_none=True),
+                "missing_fields": pending.missing_fields,
+            }
         merged = merge_clarification(
             pending.intent, pending.missing_fields, resolution.intent
         )
@@ -37,27 +49,19 @@ async def process_prompt(request: PromptRequest) -> dict:
                 pending.intent.model_dump(mode="json", exclude_none=True),
                 pending.missing_fields,
             )
-            if contextual.intent:
-                merged_data = pending.intent.model_dump()
-                contextual_data = contextual.intent.model_dump()
-                for field in pending.missing_fields:
-                    if contextual_data.get(field) is not None:
-                        merged_data[field] = contextual_data[field]
-                if any(
-                    contextual_data.get(field) is not None
-                    for field in pending.missing_fields
-                ):
-                    merged = type(pending.intent).model_validate(merged_data)
-            if merged:
-                resolution = validate_candidate(merged)
-            elif contextual.status in {Decision.UNSUPPORTED, Decision.REJECTED}:
+            if contextual.status in {Decision.UNSUPPORTED, Decision.REJECTED, Decision.ERROR}:
                 resolution = contextual
             else:
-                resolution = validate_candidate(pending.intent)
-                resolution.message = (
-                    "That message did not answer the pending clarification. "
-                    + resolution.message
-                )
+                if contextual.intent:
+                    merged = merge_clarification(pending.intent, pending.missing_fields, contextual.intent)
+                if merged:
+                    resolution = validate_candidate(merged)
+                else:
+                    resolution = validate_candidate(pending.intent)
+                    resolution.message = (
+                        "That answer did not safely fill the missing fields. Resubmit the full operation to change any conditions. "
+                        + resolution.message
+                    )
 
     if resolution.status == Decision.NEEDS_CLARIFICATION and resolution.intent:
         conversation_store.put(
@@ -76,11 +80,28 @@ async def process_prompt(request: PromptRequest) -> dict:
                 if resolution.intent else None
             ),
             "error_code": resolution.error_code,
+            "unhandled_constraints": resolution.unhandled_constraints,
             "conversation_id": conversation_id,
             "executable": False,
         }
 
     intent = resolution.intent
+    # Recheck the candidate before issuing an execution capability.
+    validation = validate_candidate(intent)
+    if validation.status != Decision.APPROVED:
+        return {
+            "decision": validation.status.value, "message": validation.message,
+            "error_code": validation.error_code, "executable": False,
+            "conversation_id": conversation_id, "unhandled_constraints": validation.unhandled_constraints,
+        }
+    slippage_bps, slippage_source = None, None
+    if intent.action == "swap":
+        slippage_bps = intent.slippage_bps if intent.slippage_bps is not None else settings.swap_slippage_bps
+        slippage_source = "user" if intent.slippage_bps is not None else "configured_default"
+        if type(slippage_bps) is not int or not 1 <= slippage_bps <= 500:
+            return {"decision": "ERROR", "executable": False, "error_code": "invalid_slippage_configuration",
+                    "message": "The configured swap slippage must be between 1 and 500 basis points.",
+                    "conversation_id": conversation_id}
     logger.info(
         "Verifying normalized intent action=%s protocol=%s chain_id=%s",
         intent.action, intent.protocol, intent.chain_id,
@@ -113,8 +134,12 @@ async def process_prompt(request: PromptRequest) -> dict:
             verified_selector=graph_result["verified_selector"],
             routes=graph_result.get("routes") or [],
             interest_rate_mode=(2 if intent.action in {"borrow", "repay"} else None),
+            slippage_bps=slippage_bps,
+            slippage_source=slippage_source,
         )
         graph_result["verification_id"] = capability_store.issue(operation)
         graph_result["verification_expires_in"] = settings.verification_ttl_seconds
         graph_result["executable"] = True
+        if slippage_bps is not None:
+            graph_result["execution_parameters"] = {"slippage_bps": slippage_bps, "slippage_source": slippage_source}
     return graph_result

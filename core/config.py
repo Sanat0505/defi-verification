@@ -30,6 +30,7 @@ class Settings:
     verification_ttl_seconds: int = _int_env("VERIFICATION_TTL_SECONDS", 600)
     conversation_ttl_seconds: int = _int_env("CONVERSATION_TTL_SECONDS", 1800)
     api_timeout_seconds: int = _int_env("API_TIMEOUT_SECONDS", 45)
+    swap_slippage_bps: int = _int_env("SWAP_SLIPPAGE_BPS", 100)
 
 
 settings = Settings()

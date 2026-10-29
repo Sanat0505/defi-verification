@@ -1,0 +1,57 @@
+[
+  {
+    "source": "evaluation/balanced_600_completed_2026-10-24.zip",
+    "copy": "evidence/evaluation/balanced_600_completed_2026-10-24.zip",
+    "sha256": "26fecb29cf2465d09c62d13b01f2c0b61c0fc0f59ce1a57f360d62a3d149cf2b"
+  },
+  {
+    "source": "evaluation/exploratory_400_2026-10-20.zip",
+    "copy": "evidence/evaluation/exploratory_400_2026-10-20.zip",
+    "sha256": "0c43964ef294c097b0e2d16e5c635f1d96702a3a05cedc15c7047082e5da33f3"
+  },
+  {
+    "source": "evaluation/balanced_600_preparation_2026-10-22.zip",
+    "copy": "evidence/evaluation/balanced_600_preparation_2026-10-22.zip",
+    "sha256": "1b7957c755140bc687eb33d537037c99a07c19978925af2ff23bb94dc507e1b8"
+  },
+  {
+    "source": "evaluation/thesis_final_report/02_EXPERIMENTAL_RESULTS.md",
+    "copy": "evidence/evaluation/thesis_final_report/02_EXPERIMENTAL_RESULTS.md",
+    "sha256": "aa15529f2712596adebe478f535c3c5c7b9e9f48799829a9e8d9e282dcd4bd6b"
+  },
+  {
+    "source": "evaluation/thesis_final_report/05_BASELINE_COMPARISON.md",
+    "copy": "evidence/evaluation/thesis_final_report/05_BASELINE_COMPARISON.md",
+    "sha256": "c8e7a4c9205c1593895bc82df555b2d24c31a1bb4549cd6827c289e8b401d394"
+  },
+  {
+    "source": "evaluation/thesis_final_report/data/controlled_D_E.json",
+    "copy": "evidence/evaluation/thesis_final_report/data/controlled_D_E.json",
+    "sha256": "30292faf1f6843d9ee141b5b48205ef51bd89432cc35635144bbddc7f7acbbb3"
+  },
+  {
+    "source": "evaluation/thesis_final_report/data/controlled_references.json",
+    "copy": "evidence/evaluation/thesis_final_report/data/controlled_references.json",
+    "sha256": "929184a5d14ce5b3b4c04e677a801cd6b5ac32534c3afecae3ca9a4616b11190"
+  },
+  {
+    "source": "evaluation/thesis_final_report/data/traceability_per_case.json",
+    "copy": "evidence/evaluation/thesis_final_report/data/traceability_per_case.json",
+    "sha256": "c8f7760238b0cbe4da16be7140e71dd286f9d2bcb157faf845014e666602652b"
+  },
+  {
+    "source": "evaluation/thesis_final_report/data/controlled_D_E_setup_failure_01.json",
+    "copy": "evidence/evaluation/thesis_final_report/data/controlled_D_E_setup_failure_01.json",
+    "sha256": "798cf8f31f8b4c4f7462bac9155d4c8eef9813e6cdeffa107e9bed361f6d9c00"
+  },
+  {
+    "source": "evaluation/thesis_final_report/data/controlled_D_E_cleanup_failure_02.json",
+    "copy": "evidence/evaluation/thesis_final_report/data/controlled_D_E_cleanup_failure_02.json",
+    "sha256": "b9a91db988705e6f4041880fdc2af84baa6a1180914425ef1449181a381f42d0"
+  },
+  {
+    "source": "evaluation/thesis_final_report/data/wallet/wallet-evaluation-20261019T140020Z.json",
+    "copy": "evidence/evaluation/thesis_final_report/data/wallet/wallet-evaluation-20261019T140020Z.json",
+    "sha256": "b150dd7e157c79589f3c2dd73df23f09d4bdac0fa46c388a7691844c06ba1afb"
+  }
+]

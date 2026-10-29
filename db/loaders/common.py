@@ -58,10 +58,6 @@ class RpcClient:
     def latest_block(self) -> int:
         return int(self.call("eth_blockNumber"), 16)
 
-    def code_at(self, address: str, block: int | str = "latest") -> str:
-        tag = hex(block) if isinstance(block, int) else block
-        return self.call("eth_getCode", [address, tag])
-
     def logs(self, address: str, from_block: int, to_block: int, topics=None):
         query = {
             "address": address,
