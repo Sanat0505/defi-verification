@@ -48,6 +48,9 @@ Rules:
   "maximum slippage 0.25%" -> {"value":"0.25","unit":"percent"};
   "25 bps slippage" -> {"value":"25","unit":"bps"}. Code performs conversion
   and range checking. Omitted slippage is null, never an invented default.
+- Preserve ordinary network wording. "Sepolia testnet", "Sepolia test network"
+  and "Ethereum Sepolia" refer to Ethereum Sepolia. "Base Sepolia" and
+  "Arbitrum Sepolia" are different networks and must not become Ethereum Sepolia.
 - Put unsupported conditions in unhandled_constraints: deadlines, custom output
   recipients/beneficiaries, gas/fee budgets, absolute minimum output, exact-output
   swaps, price-impact limits, fixed interest, health-factor conditions, conditional

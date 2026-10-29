@@ -54,7 +54,11 @@ ASSET_ALIASES = {
 NETWORK_ALIASES = {
     "ethereum sepolia": ("Ethereum Sepolia", 11155111),
     "sepolia": ("Ethereum Sepolia", 11155111),
+    "sepolia testnet": ("Ethereum Sepolia", 11155111),
+    "sepolia test network": ("Ethereum Sepolia", 11155111),
     "ethereum sepolia testnet": ("Ethereum Sepolia", 11155111),
+    "ethereum sepolia test network": ("Ethereum Sepolia", 11155111),
+    "sepolia ethereum testnet": ("Ethereum Sepolia", 11155111),
 }
 
 

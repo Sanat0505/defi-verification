@@ -6,6 +6,34 @@ from core.models import Decision, IntentCandidate
 from llm.normalization import merge_clarification, normalize_candidate
 
 
+@pytest.mark.parametrize("chain", [
+    "Sepolia", "Ethereum Sepolia", "Sepolia testnet", "Sepolia test network",
+    "Ethereum Sepolia testnet", "Ethereum Sepolia test network",
+    "Sepolia (Ethereum testnet)", "SEPOLIA TESTNET",
+])
+def test_sepolia_network_aliases(chain):
+    result = normalize_candidate({
+        "action": "swap", "protocol": "Uniswap V3", "token_in": "USDC",
+        "token_out": "WETH", "amount": "3.75", "chain": chain,
+    })
+    assert result.status == Decision.APPROVED
+    assert result.intent.chain == "Ethereum Sepolia"
+    assert result.intent.chain_id == 11155111
+
+
+@pytest.mark.parametrize("chain", [
+    "Base Sepolia", "Arbitrum Sepolia", "Optimism Sepolia", "Ethereum mainnet",
+    "Ethereum testnet", "Sepolia or mainnet",
+])
+def test_explicit_other_or_ambiguous_networks_are_not_aliases(chain):
+    result = normalize_candidate({
+        "action": "swap", "protocol": "Uniswap V3", "token_in": "USDC",
+        "token_out": "WETH", "amount": "3.75", "chain": chain,
+    })
+    assert result.status == Decision.UNSUPPORTED
+    assert result.error_code == "unsupported_network"
+
+
 @pytest.mark.parametrize("protocol", ["uniswap", "Uniswap", "UNISWAP V3", "Uni v3"])
 def test_protocol_aliases_normalize(protocol):
     result = normalize_candidate({
