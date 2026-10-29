@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Protocol knowledge · DeFi verification</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f6f7fb; color: #182034; font: 16px/1.55 system-ui, sans-serif; }
+    main { max-width: 1200px; padding: 36px 24px; margin: auto; }
+    a { color: #244bbb; } h1 { margin: 16px 0 8px; font-size: 32px; }
+    .intro { max-width: 850px; color: #48546c; }
+    .counts, form { display: flex; flex-wrap: wrap; gap: 16px; margin: 24px 0; }
+    .count { background: white; border: 1px solid #dbe0eb; border-radius: 10px; padding: 14px 20px; }
+    .count strong { display: block; font-size: 24px; }
+    label { display: flex; flex-direction: column; font-size: 14px; gap: 5px; }
+    input, select, button { font: inherit; border: 1px solid #bdc7d8; border-radius: 6px; padding: 9px 12px; background: white; }
+    button { background: #244bbb; color: white; align-self: end; cursor: pointer; }
+    .table-wrap { overflow-x: auto; background: white; border: 1px solid #dbe0eb; border-radius: 10px; }
+    table { border-collapse: collapse; width: 100%; text-align: left; }
+    th, td { padding: 16px; border-bottom: 1px solid #e5e9f0; vertical-align: top; }
+    th { background: #edf1f8; font-size: 14px; }
+    td { min-width: 150px; } td:first-child { min-width: 220px; }
+    code { overflow-wrap: anywhere; font-size: 13px; }
+    .meta { font-size: 13px; color: #5d687c; } .badge { display: inline-block; padding: 2px 8px; border-radius: 6px; background: #edf1f8; font-size: 12px; }
+    ul { padding-left: 18px; } summary { cursor: pointer; } pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; max-width: 700px; }
+    nav { display: flex; gap: 24px; margin-top: 20px; }
+  </style>
+</head>
+<body><main>
+  <a href="/">← Verification chat</a>
+  <h1>Protocol knowledge</h1>
+  <p class="intro">Explore Aave V3, Umbrella and Uniswap V3 operations, interfaces and deployment evidence.
+    This catalog explains protocol capabilities. Wallet eligibility is evaluated separately; browsing this data does not approve a transaction.</p>
+  <div class="counts">
+    {% for label in ['Function', 'Operation', 'Contract', 'Reserve', 'StakingVault', 'CoverageGap'] %}
+    <div class="count"><strong>{{ info.counts.get(label, 0) }}</strong>{{ label }}</div>
+    {% endfor %}
+  </div>
+  <form method="get">
+    <label>Show<select name="kind">{% for value in ['operations', 'functions', 'contracts', 'gaps'] %}<option value="{{ value }}" {% if kind == value %}selected{% endif %}>{{ value|title }}</option>{% endfor %}</select></label>
+    <label>Protocol module<select name="module"><option value="">All modules</option>{% for value, title in [('aave-v3', 'Aave V3 lending'), ('aave-umbrella', 'Aave Umbrella'), ('uniswap-v3', 'Uniswap V3')] %}<option value="{{ value }}" {% if module == value %}selected{% endif %}>{{ title }}</option>{% endfor %}</select></label>
+    <label>Search name<input name="name" value="{{ name }}" placeholder="stake, borrow, liquidity…" maxlength="100"></label>
+    <button type="submit">Search</button>
+  </form>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Entry</th><th>Meaning and evidence</th><th>Prototype support</th></tr></thead>
+    <tbody>{% for row in rows %}{% set item = row.item %}
+    <tr>
+      <td><strong>{{ item.action or item.name or item.role or item.code }}</strong><br><span class="meta">{{ item.module or item.scope }}</span>{% if item.chain_id %}<br><span class="meta">Chain {{ item.chain_id }}</span>{% endif %}</td>
+      <td>
+        {% if item.description %}{{ item.description }}{% endif %}
+        {% if item.detail %}{{ item.detail }}{% endif %}
+        {% if item.signature %}<code>{{ item.signature }}</code><br><span class="badge">{{ item.state_mutability }}</span> <span class="badge">{{ item.permission }}</span>{% endif %}
+        {% if item.address %}<code>{{ item.address }}</code><br><span class="meta">{{ item.evidence_status }} · ABI {{ item.abi_compatibility }}</span>{% endif %}
+        {% if item.prerequisites %}<details><summary>Conditions to check</summary><ul>{% for condition in item.prerequisites %}<li>{{ condition }}</li>{% endfor %}</ul></details>{% endif %}
+        {% if item.abi_json %}<details><summary>Parameters and outputs</summary><pre>{{ item.abi_json }}</pre></details>{% endif %}
+        {% for source in row.sources %}<a class="meta" href="{{ source }}" target="_blank" rel="noopener noreferrer">Official source</a> {% endfor %}
+      </td>
+      <td>{% if item.prototype_adapter_implemented %}Existing adapter<br><span class="meta">{{ item.adapter_scope }}</span>{% elif item.prototype_support == 'some_variants' %}Some variants have adapters{% else %}Knowledge only{% endif %}<br><span class="meta">Wallet eligibility not evaluated</span></td>
+    </tr>
+    {% else %}<tr><td colspan="3">No matching entries. Try another module or search term.</td></tr>{% endfor %}</tbody>
+  </table></div>
+  <nav>{% if offset %}<a href="{{ previous_url }}">Previous 100</a>{% endif %}{% if rows|length == 100 %}<a href="{{ next_url }}">Next 100</a>{% endif %}</nav>
+  <p class="meta">Database: {{ info.database }} · Snapshot: <code>{{ info.snapshot_id[:16] }}</code><br>
+    Coverage is bounded to the listed modules and sources. Open gaps document missing interfaces, networks and live observations.</p>
+</main></body></html>

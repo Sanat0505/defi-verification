@@ -21,6 +21,7 @@ from db.verifier import verify_intent
 from services.pipeline import process_prompt
 from llm.normalization import validate_candidate
 from wallet.erc4337 import add_to_whitelist, execute_aave, execute_swap
+from api.knowledge import router as knowledge_router
 
 
 logging.basicConfig(
@@ -52,6 +53,7 @@ app = FastAPI(
     title="DeFi Relationship Verification Prototype",
     lifespan=lifespan,
 )
+app.include_router(knowledge_router)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 

@@ -14,6 +14,13 @@ recipient address; Aave supply deposits them into a lending pool and creates a
 supply position. The prototype has no recipient verification or standalone token
 transfer execution path, so it must not reinterpret a wallet transfer as supply.
 
+The [expanded protocol knowledge catalog](knowledge/README.md) runs in a separate
+`defi-knowledge-expanded` database. It describes Aave V3, Umbrella and Uniswap V3
+interfaces, operations, deployments, reserve assets and source provenance beyond
+the executable subset above. Open `/knowledge` or follow **Protocol knowledge**
+in the app navigation. Coverage gaps and unimplemented adapters are explicit;
+catalog knowledge never issues an execution capability.
+
 ## System Architecture
 
 | Component | Responsibility |
@@ -22,6 +29,7 @@ transfer execution path, so it must not reinterpret a wallet transfer as supply.
 | [llm/](llm/) | Groq extraction, deterministic normalization, validation and request constraints |
 | [core/](core/) | Typed models, configuration, clarification state and verification capabilities |
 | [db/](db/) | Source acquisition, synchronization, graph verification and diagnostics |
+| [knowledge/](knowledge/README.md) | Isolated expanded protocol catalog, pinned sources, coverage and read-only browsing |
 | [services/](services/) | Interpretation, clarification and verification pipeline |
 | [wallet/](wallet/) | Python adapter and Node.js ERC-4337/ZeroDev execution |
 | [static/](static/), [templates/](templates/) | Frontend demonstration interface; no frontend build step |

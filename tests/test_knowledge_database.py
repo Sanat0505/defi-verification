@@ -75,5 +75,3 @@ def test_live_publication_is_idempotent_and_rollback_keeps_active_snapshot():
             session.execute_write(transaction)
         assert session.run("MATCH (s:KnowledgeSnapshot {key:$id}) RETURN count(s) AS n", id=snapshot_id).single()["n"] == 0
     assert summary()["snapshot_id"] == before["snapshot_id"]
-
-
