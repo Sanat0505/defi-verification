@@ -1,0 +1,259 @@
+{
+  "schema_version": "expanded-knowledge-1",
+  "snapshot_id": "effdd2b1b1263c5d7c5be6be04461bf0b52fcd2a36e039e30c2eec2e6399827b",
+  "counts": {
+    "Chain": 2,
+    "Contract": 260,
+    "CoverageGap": 20,
+    "Deployment": 5,
+    "Error": 83,
+    "Event": 142,
+    "Function": 548,
+    "Interface": 23,
+    "Module": 3,
+    "Observation": 123,
+    "Operation": 36,
+    "Parameter": 2123,
+    "Pool": 35,
+    "Reserve": 76,
+    "Source": 37,
+    "StakingVault": 4,
+    "Token": 347
+  },
+  "relationships": 7976,
+  "functions_by_module": {
+    "aave-v3": 281,
+    "aave-umbrella": 148,
+    "uniswap-v3": 119
+  },
+  "function_permissions": {
+    "read_only": 274,
+    "privileged_role_required": 78,
+    "unreviewed": 115,
+    "conditional_user_operation": 74,
+    "callback_or_contract_only": 3,
+    "simulation_only": 4
+  },
+  "implemented_adapter_functions": 5,
+  "observed_blocks": [
+    {
+      "source_key": "rpc:11155111:0xef2183a37523ac2bf8e14712a56538a50842c019e81f732ca37e9a5330d2428a",
+      "kind": "rpc_observation",
+      "url": "https://sepolia.etherscan.io/block/12021347",
+      "rpc_configuration": "SEPOLIA_RPC",
+      "chain_id": 11155111,
+      "block_number": 12021347,
+      "block_hash": "0xef2183a37523ac2bf8e14712a56538a50842c019e81f732ca37e9a5330d2428a",
+      "block_timestamp": 1793298984,
+      "consistency": "block hash rechecked after reads"
+    }
+  ],
+  "wallet_eligibility": "not_evaluated",
+  "gaps": [
+    {
+      "scope": "chain:11155111",
+      "code": "code_observation_scope",
+      "detail": "Code and proxy slots checked for 9 of 51 registered roles. ABI/bytecode equivalence is not established.",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": null
+    },
+    {
+      "scope": "chain:11155111",
+      "code": "rpc_read_failures",
+      "detail": "[{\"context\":\"deployment:aave-v3:11155111:contract:POOL_ADDRESSES_PROVIDER\",\"error\":\"eth_getStorageAt: HTTPError\"},{\"context\":\"deployment:aave-v3:11155111:contract:POOL\",\"error\":\"eth_getStorageAt: HTTPError\"},{\"context\":\"deployment:aave-v3:11155111:contract:POOL_CONFIGURATOR\",\"error\":\"eth_getStorageAt: HTTPError\"},{\"context\":\"deployment:aave-v3:11155111:contract:ORACLE\",\"error\":\"eth_getStorageAt: HTTPError\"},{\"context\":\"deployment:aave-v3:11155111:contract:WETH_GATEWAY\",\"error\":\"eth_getStorageAt: HTTPError\"},{\"context\":\"deployment:uniswap-v3:11155111:contract:UniswapV3Factory\",\"error\":\"eth_getStorageAt: HTTPError\"},{\"context\":\"deployment:uniswap-v3:11155111:contract:NonfungiblePositionManager\",\"error\":\"eth_getStorageAt: HTTPError\"},{\"context\":\"deployment:uniswap-v3:11155111:contract:QuoterV2\",\"error\":\"eth_getStorageAt: HTTPError\"},{\"context\":\"deployment:uniswap-v3:11155111:contract:SwapRouter02\",\"error\":\"eth_getStorageAt: HTTPError\"}]",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": null
+    },
+    {
+      "scope": "chain:1",
+      "code": "rpc_not_observed",
+      "detail": "MAINNET_RPC is not configured or --rpc was not requested; registry facts have no current chain-state confirmation.",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": null
+    },
+    {
+      "scope": "deployment:aave-umbrella:1",
+      "code": "helper_interfaces",
+      "detail": "Batch helper, configuration engine and ancillary contract ABIs are not yet imported.",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "aave-umbrella"
+    },
+    {
+      "scope": "deployment:aave-v3:11155111",
+      "code": "additional_contract_interfaces",
+      "detail": "Addresses are inventoried; interfaces are not mapped for: AAVE_PROTOCOL_DATA_PROVIDER, ACL_ADMIN, COLLECTOR, EMISSION_MANAGER, FAUCET, LEGACY_STATIC_A_TOKEN_FACTORY, UI_GHO_DATA_PROVIDER, UI_INCENTIVE_DATA_PROVIDER, WALLET_BALANCE_PROVIDER",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "aave-v3"
+    },
+    {
+      "scope": "deployment:aave-v3:1",
+      "code": "additional_contract_interfaces",
+      "detail": "Addresses are inventoried; interfaces are not mapped for: AAVE_PROTOCOL_DATA_PROVIDER, ACL_ADMIN, CLINIC_STEWARD, COLLECTOR, COLLECTOR_SWAP_STEWARD, CONFIG_ENGINE, DEBT_SWAP_ADAPTER, DELEGATION_AWARE_A_TOKEN_IMPL_REV_1, DUST_BIN, EDGE_INJECTOR_DISCOUNT_RATE, EDGE_INJECTOR_PENDLE_EMODE, EDGE_INJECTOR_RATES, EDGE_RISK_ORACLE, EDGE_RISK_STEWARD_DISCOUNT_RATE, EDGE_RISK_STEWARD_PENDLE_EMODE, EDGE_RISK_STEWARD_RATES, EMISSION_MANAGER, GHO_DIRECT_MINTER, LEGACY_STATIC_A_TOKEN_FACTORY, POOL_ADDRESSES_PROVIDER_REGISTRY, POOL_EXPOSURE_STEWARD, REPAY_WITH_COLLATERAL_ADAPTER, RISK_COUNCIL, RISK_STEWARD, SAVINGS_DAI_TOKEN_WRAPPER, SVR_STEWARD, SWAP_COLLATERAL_ADAPTER, UI_INCENTIVE_DATA_PROVIDER, WALLET_BALANCE_PROVIDER, WITHDRAW_SWAP_ADAPTER",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "aave-v3"
+    },
+    {
+      "scope": "deployment:uniswap-v3:11155111",
+      "code": "additional_contract_interfaces",
+      "detail": "Registry addresses included; ABIs not yet imported for: MixedRouteQuoterV2, Multicall2, NFTDescriptor, NonfungibleTokenPositionDescriptor, ProxyAdmin, UniswapInterfaceMulticall",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "uniswap-v3"
+    },
+    {
+      "scope": "deployment:uniswap-v3:11155111",
+      "code": "pool_discovery_scope",
+      "detail": "Queried 40 token-pair/fee combinations from USDC, USDT, DAI and WETH registry assets plus router WETH; found 35 pools. This is not an exhaustive factory event scan.",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "uniswap-v3"
+    },
+    {
+      "scope": "deployment:uniswap-v3:11155111",
+      "code": "pool_universe",
+      "detail": "Pool ABI is complete for its pinned release. Pool instances require factory discovery; this release only performs bounded pair lookups with --rpc.",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "uniswap-v3"
+    },
+    {
+      "scope": "deployment:uniswap-v3:1",
+      "code": "additional_contract_interfaces",
+      "detail": "Registry addresses included; ABIs not yet imported for: MixedRouteQuoterV1, MixedRouteQuoterV2, Multicall, Multicall2, NFTDescriptor, NonfungibleTokenPositionDescriptor, ProxyAdmin, Quoter, TransparentUpgradeableProxy, UniswapV3Staker",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "uniswap-v3"
+    },
+    {
+      "scope": "deployment:uniswap-v3:1",
+      "code": "pool_universe",
+      "detail": "Pool ABI is complete for its pinned release. Pool instances require factory discovery; this release only performs bounded pair lookups with --rpc.",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "uniswap-v3"
+    },
+    {
+      "scope": "module:aave-umbrella",
+      "code": "deployment_abi_compatibility",
+      "detail": "Pinned interfaces may differ from deployed implementation revisions; registry role associations are candidates, not selector authorization.",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "aave-umbrella"
+    },
+    {
+      "scope": "module:aave-umbrella",
+      "code": "ethereum_sepolia_not_listed",
+      "detail": "No UmbrellaSepolia.sol in the pinned official inventory. UmbrellaBaseSepolia.sol is a different chain. This is not proof of nonexistence.",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "aave-umbrella"
+    },
+    {
+      "scope": "module:aave-umbrella",
+      "code": "live_wallet_eligibility",
+      "detail": "Wallet balances, allowances, debt, health factor, market state and execution policy are not evaluated by this catalog.",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "aave-umbrella"
+    },
+    {
+      "scope": "module:aave-v3",
+      "code": "deployment_abi_compatibility",
+      "detail": "Pinned interfaces may differ from deployed implementation revisions; registry role associations are candidates, not selector authorization.",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "aave-v3"
+    },
+    {
+      "scope": "module:aave-v3",
+      "code": "live_wallet_eligibility",
+      "detail": "Wallet balances, allowances, debt, health factor, market state and execution policy are not evaluated by this catalog.",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "aave-v3"
+    },
+    {
+      "scope": "module:aave-v3",
+      "code": "other_markets_and_versions",
+      "detail": "Not imported in this release: AaveV1.sol, AaveV2.sol, AaveV2Avalanche.sol, AaveV2Ethereum.sol, AaveV2EthereumAMM.sol, AaveV2EthereumArc.sol, AaveV2Fuji.sol, AaveV2Polygon.sol, AaveV3Arbitrum.sol, AaveV3ArbitrumSepolia.sol, AaveV3Avalanche.sol, AaveV3BNB.sol, AaveV3Base.sol, AaveV3BaseSepolia.sol, AaveV3BaseSepoliaLido.sol, AaveV3Celo.sol, AaveV3EthereumEtherFi.sol, AaveV3EthereumHorizon.sol, AaveV3EthereumLido.sol, AaveV3Fantom.sol, AaveV3FantomTestnet.sol, AaveV3Fuji.sol, AaveV3Gnosis.sol, AaveV3Harmony.sol, AaveV3InkSepolia.sol, AaveV3InkWhitelabel.sol, AaveV3Linea.sol, AaveV3Mantle.sol, AaveV3MegaEth.sol, AaveV3Metis.sol, AaveV3Monad.sol, AaveV3Optimism.sol, AaveV3OptimismSepolia.sol, AaveV3Plasma.sol, AaveV3Polygon.sol, AaveV3Scroll.sol, AaveV3Soneium.sol, AaveV3Sonic.sol, AaveV3XLayer.sol, AaveV3ZkSync.sol, AaveV4.sol, AaveV4Arc.sol, AaveV4Avalanche.sol, AaveV4Base.sol, AaveV4EtherFiOptimismWhitelabel.sol, AaveV4Ethereum.sol, AaveV4EthereumSentoraCurated.sol, UmbrellaBaseSepolia.sol",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "aave-v3"
+    },
+    {
+      "scope": "module:uniswap-v3",
+      "code": "deployment_abi_compatibility",
+      "detail": "Pinned interfaces may differ from deployed implementation revisions; registry role associations are candidates, not selector authorization.",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "uniswap-v3"
+    },
+    {
+      "scope": "module:uniswap-v3",
+      "code": "live_wallet_eligibility",
+      "detail": "Wallet balances, allowances, debt, health factor, market state and execution policy are not evaluated by this catalog.",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "uniswap-v3"
+    },
+    {
+      "scope": "module:uniswap-v3",
+      "code": "other_versions_networks",
+      "detail": "Registry versions outside this release: ['liquidity-launchpad', 'permissioned-pools', 'permit2', 'smart-wallet', 'stable-pair', 'tjar', 'uniswapx', 'universal-router', 'v2', 'v4']; other V3 chain IDs: [10, 56, 100, 130, 137, 143, 146, 196, 232, 288, 314, 324, 480, 999, 1284, 1301, 1329, 1868, 4217, 4326, 4663, 5000, 5042, 8453, 10143, 42161, 42220, 43114, 44787, 57073, 59144, 84532, 167000, 421614, 534352, 7777777, 11155420, 999999999].",
+      "status": "open",
+      "implies_unsupported": false,
+      "module": "uniswap-v3"
+    }
+  ],
+  "database": "defi-knowledge-expanded",
+  "already_present": false,
+  "preservation_check": {
+    "unchanged": true,
+    "before": {
+      "neo4j": {
+        "database": "neo4j",
+        "sha256": "ef8b35ef4ebec05d4cb2ccd4aa786cbfd1e73b612dea32d4e60bad46b5ae0fba",
+        "nodes": 3736,
+        "relationships": 20729
+      },
+      "thesis-eval-20261019": {
+        "database": "thesis-eval-20261019",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "nodes": 0,
+        "relationships": 0
+      },
+      "thesis-eval-20261024": {
+        "database": "thesis-eval-20261024",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "nodes": 0,
+        "relationships": 0
+      }
+    },
+    "after": {
+      "neo4j": {
+        "database": "neo4j",
+        "sha256": "ef8b35ef4ebec05d4cb2ccd4aa786cbfd1e73b612dea32d4e60bad46b5ae0fba",
+        "nodes": 3736,
+        "relationships": 20729
+      },
+      "thesis-eval-20261019": {
+        "database": "thesis-eval-20261019",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "nodes": 0,
+        "relationships": 0
+      },
+      "thesis-eval-20261024": {
+        "database": "thesis-eval-20261024",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "nodes": 0,
+        "relationships": 0
+      }
+    }
+  }
+}
