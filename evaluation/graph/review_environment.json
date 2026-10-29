@@ -1,0 +1,40 @@
+{
+  "review_date": "2026-10-27",
+  "timezone": "Europe/Berlin",
+  "commit": "7bdfafd5fdff2bec0227129085bacf0c77564794",
+  "git_status": " M .env.example\n M .gitignore\n M EVALUATION_PLAN.md\n M GRAPH_PRESENTATION_VIEWS.md\n M README.md\n M SEPOLIA_SETUP.md\n M THESIS_GRAPH_V2.md\n M api/app.py\n M core/config.py\n M core/models.py\n M core/state.py\n M db/graph_builder.py\n M db/loaders/__init__.py\n M db/loaders/aave_loader.py\n M db/loaders/common.py\n M db/loaders/uniswap_loader.py\n M db/verifier.py\n M evaluation/runner.py\n M llm/intent_parser.py\n M llm/normalization.py\n D main.py\n M services/pipeline.py\n M static/app.js\n M templates/index.html\n M tests/test_frontend_contract.py\n D tests/test_full_pipeline.py\n M tests/test_intent_normalization.py\n D tests/test_swap_preflight.py\n M wallet/erc4337.py\n M wallet/package-lock.json\n M wallet/package.json\n M wallet/session-whitelist.json\n M wallet/wallet.mjs\n?? core/slippage.py\n?? db/verification_trace.py\n?? docs/\n?? evaluation/CONSTRAINT_HANDLING.md\n?? evaluation/EXPANDED_EVALUATION.md\n?? evaluation/README.md\n?? evaluation/SOURCED_EVALUATION.md\n?? evaluation/analyse_balanced_600.py\n?? evaluation/analyse_exploratory_400.py\n?? evaluation/archives/\n?? evaluation/balanced_600_2026-10-22/\n?? evaluation/balanced_600_completed_2026-10-24.zip\n?? evaluation/balanced_600_completed_2026-10-24.zip.sha256\n?? evaluation/balanced_600_preparation_2026-10-22.zip\n?? evaluation/balanced_600_preparation_2026-10-22.zip.sha256\n?? evaluation/balanced_600_reports/\n?? evaluation/balanced_600_runner.py\n?? evaluation/balanced_600_thesis_analysis_2026-10-24/\n?? evaluation/balanced_600_thesis_package_2026-10-24.zip\n?? evaluation/balanced_600_thesis_package_2026-10-24.zip.sha256\n?? evaluation/build_constraint_regression.py\n?? evaluation/build_expanded_dataset.py\n?? evaluation/build_sourced_dataset.py\n?? evaluation/chapter_5_combined_uploads_2026-10-24.zip\n?? evaluation/chapter_5_combined_uploads_2026-10-24/\n?? evaluation/constraint_reports/\n?? evaluation/core_verification_analysis_2026-10-24/\n?? evaluation/datasets/SOURCED_CASE_REVIEW.md\n?? evaluation/datasets/constraint_regression_v1.json\n?? evaluation/datasets/expanded_500_cases.json\n?? evaluation/datasets/sourced_cases.json\n?? evaluation/expanded_reports/\n?? evaluation/exploratory_400_2026-10-20.zip\n?? evaluation/exploratory_400_2026-10-20.zip.sha256\n?? evaluation/exploratory_400_reports/\n?? evaluation/exploratory_400_runner.py\n?? evaluation/graph_reports/\n?? evaluation/graph_runner.py\n?? evaluation/graph_stage.py\n?? evaluation/r5_review_2026-10-27/\n?? evaluation/snapshot_check.py\n?? evaluation/source_import.py\n?? evaluation/sourced_reports/\n?? evaluation/sourced_runner.py\n?? evaluation/sources/\n?? evaluation/stage_reports/\n?? evaluation/summarize_expanded_results.py\n?? evaluation/thesis_final_report/\n?? evaluation/thesis_final_report_2026-10-19.zip\n?? evaluation/traceability_post_change_2026-10-24/\n?? evaluation/traceability_post_change_final_2026-10-24/\n?? evaluation/traceability_post_change_verified_2026-10-24.zip\n?? evaluation/traceability_post_change_verified_2026-10-24.zip.sha256\n?? evaluation/traceability_post_change_verified_2026-10-24/\n?? evaluation/wallet_live_check.py\n?? llm/request_constraints.py\n?? scripts/\n?? tests/frontend_slippage.cjs\n?? tests/test_balanced_600_runner.py\n?? tests/test_constraint_regression_dataset.py\n?? tests/test_expanded_evaluation.py\n?? tests/test_exploratory_400_runner.py\n?? tests/test_graph_evaluation.py\n?? tests/test_intent_constraints.py\n?? tests/test_slippage_execution.py\n?? tests/test_sourced_evaluation.py\n?? tests/test_verification_trace.py\n?? tests/test_wallet_live_check.py\n",
+  "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "packages": {
+    "pytest": "8.4.2",
+    "neo4j": "6.2.0",
+    "pydantic": "2.13.4",
+    "fastapi": "0.136.3",
+    "httpx": "0.28.1"
+  },
+  "sources": {
+    "db/verifier.py": "19feb77952a40dd2ba89ccf30a062b82caaed53130184cf061eab7910b1e7cc1",
+    "db/verification_trace.py": "0f6f2f4a7b60f21255290459a6311fad238b6917355a067152972d906214b41e",
+    "core/models.py": "19c1102738daec6f0ea046e08ba6ff733de51ff3e26f66bdbe28e613d97fc81b",
+    "tests/test_verification_trace.py": "952db9d6f7795143cb4d0364b0551da899d3c700d3b9d3e6fba6483e97255b67",
+    "db/sync.py": "8f77c31045b40f5f8ce4ac4107097922d65f40bc16785f4ea214fac09462f075",
+    "db/graph_v2.py": "eefdde493ed56918e6337cba5d281e75efeba6e31966d3dfa6742385c2cde5a5",
+    "llm/intent_parser.py": "8da57771cbef5c3d33cfacc8ca475c5fb19752d5a23abeb86e3867e650dcc80a",
+    "llm/normalization.py": "7863eabc4706d670f10b91df01dd9a21d392da2d0cdc5e3c3b6023adef2a591e",
+    "services/pipeline.py": "d946c1c163bb63b29bba30969877dbdb3ee19a80b8569b3357de1357186521ed",
+    "core/config.py": "9a9b00c9654a40dfe18bc0bdc50291f85ada618198a2057bb38e0b7d80aea8b4",
+    "llm/request_constraints.py": "7d40d04f61d0200436aca645dd8d5f2a1aaff18402a6a64bca5de27c529612c4",
+    "core/slippage.py": "8ccc2da56228043a537720c9399145d1dab03ef52cf5ff89584fe98a6b20720c"
+  },
+  "saved_after_matches": {
+    "db/verifier.py": true,
+    "db/verification_trace.py": true,
+    "core/models.py": true,
+    "tests/test_verification_trace.py": true
+  },
+  "neo4j": {
+    "available": false,
+    "error_type": "ServiceUnavailable",
+    "error_code": null,
+    "reason": "Read-only server/connectivity check failed; transport messages and credentials omitted."
+  }
+}

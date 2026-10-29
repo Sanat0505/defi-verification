@@ -1,0 +1,259 @@
+[
+  {
+    "id": "UNI-01:contract_function",
+    "actual": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / USDC -> WETH",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.RELATIONSHIP.EXPOSES_FUNCTION",
+            "subject": {
+              "relationship": "EXPOSES_FUNCTION",
+              "source": {
+                "symbol": null,
+                "address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+                "chain_id": 11155111,
+                "signature": null,
+                "name": null,
+                "selector": null,
+                "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:2",
+                "key": null,
+                "labels": [
+                  "Contract"
+                ]
+              },
+              "target": {
+                "symbol": null,
+                "address": null,
+                "chain_id": null,
+                "signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+                "name": "exactInputSingle",
+                "selector": "0x04e45aaf",
+                "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:6",
+                "key": null,
+                "labels": [
+                  "Function"
+                ]
+              }
+            },
+            "expected": {
+              "present": true,
+              "properties": {}
+            },
+            "observed": {
+              "present": false,
+              "properties": {}
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "observed",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "fixture:admitted-snapshot-projection",
+          "last_successful_sync_at": "2026-10-24T20:07:08.095990+00:00",
+          "last_synced_at": null,
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": "official-address-book-complete",
+          "pool_discovery_complete": true,
+          "fresh": true,
+          "complete": true,
+          "max_age_hours": 168,
+          "absence_interpretation": "confirmed_under_declared_local_coverage"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "fixture:admitted-snapshot-projection",
+        "last_successful_sync_at": "2026-10-24T20:07:08.095990+00:00",
+        "last_synced_at": null,
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": "official-address-book-complete",
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "latency_ms": 21.15
+    }
+  },
+  {
+    "id": "uniswap-v3:database_unavailable:1",
+    "actual": {
+      "decision": "INSUFFICIENT_EVIDENCE",
+      "verified_address": null,
+      "reason": "Authoritative graph knowledge is temporarily unavailable.",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "KNOWLEDGE.UNAVAILABLE",
+      "trace": {
+        "version": 1,
+        "rule_id": "KNOWLEDGE.UNAVAILABLE",
+        "failures": [
+          {
+            "rule_id": "KNOWLEDGE.UNAVAILABLE",
+            "subject": {
+              "service": "graph_verification"
+            },
+            "expected": {
+              "knowledge_read_success": true
+            },
+            "observed": {
+              "knowledge_read_success": false,
+              "specific_cause": null
+            },
+            "evidence_scope": "runtime_observation"
+          }
+        ],
+        "diagnostic_status": "unavailable",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": null,
+          "source_url": null,
+          "last_successful_sync_at": null,
+          "last_synced_at": null,
+          "last_sync_status": null,
+          "asset_coverage": null,
+          "pool_discovery_complete": null,
+          "fresh": null,
+          "complete": null,
+          "max_age_hours": 168,
+          "absence_interpretation": "insufficient_to_establish_protocol_absence"
+        },
+        "limitations": []
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": null,
+        "source_url": null,
+        "last_successful_sync_at": null,
+        "last_synced_at": null,
+        "last_sync_status": null,
+        "asset_coverage": null,
+        "pool_discovery_complete": null,
+        "fresh": null,
+        "complete": null,
+        "max_age_hours": 168,
+        "absence_interpretation": "insufficient_to_establish_protocol_absence"
+      },
+      "latency_ms": 0.09
+    }
+  },
+  {
+    "id": "uniswap-v3:incomplete_missing_path:1",
+    "actual": {
+      "decision": "INSUFFICIENT_EVIDENCE",
+      "verified_address": null,
+      "reason": "The requested relationship was not found, but synchronized knowledge is incomplete.",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "rule_id": "GRAPH.PATH.NOT_FOUND_INCOMPLETE",
+      "trace": {
+        "version": 1,
+        "rule_id": "GRAPH.PATH.NOT_FOUND_INCOMPLETE",
+        "failures": [
+          {
+            "rule_id": "GRAPH.RELATIONSHIP.SUPPORTS_TOKEN",
+            "subject": {
+              "relationship": "SUPPORTS_TOKEN",
+              "source": {
+                "address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+                "chain_id": 11155111,
+                "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:40",
+                "key": null,
+                "labels": [
+                  "Pool"
+                ],
+                "name": null,
+                "selector": null,
+                "signature": null,
+                "symbol": null
+              },
+              "target": {
+                "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+                "chain_id": 11155111,
+                "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:41",
+                "key": null,
+                "labels": [
+                  "Token"
+                ],
+                "name": null,
+                "selector": null,
+                "signature": null,
+                "symbol": "USDC"
+              }
+            },
+            "expected": {
+              "present": true,
+              "properties": {}
+            },
+            "observed": {
+              "present": false,
+              "properties": {}
+            },
+            "evidence_scope": "admitted_local_snapshot"
+          }
+        ],
+        "diagnostic_status": "observed",
+        "diagnostic_error_code": null,
+        "knowledge": {
+          "scope": "admitted_local_snapshot",
+          "deployment_key": "uniswap-v3:11155111",
+          "source_url": "fixture:admitted-snapshot-projection",
+          "last_successful_sync_at": "2026-10-24T20:07:24.012172+00:00",
+          "last_synced_at": null,
+          "last_sync_status": "SUCCESS",
+          "asset_coverage": "partial",
+          "pool_discovery_complete": false,
+          "fresh": true,
+          "complete": false,
+          "max_age_hours": 168,
+          "absence_interpretation": "insufficient_to_establish_protocol_absence"
+        },
+        "limitations": [
+          "Observations describe admitted local knowledge, not independent protocol truth.",
+          "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+          "Diagnostic reads follow the decision query; concurrent graph changes can limit localization."
+        ]
+      },
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "fixture:admitted-snapshot-projection",
+        "last_successful_sync_at": "2026-10-24T20:07:24.012172+00:00",
+        "last_synced_at": null,
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": "partial",
+        "pool_discovery_complete": false,
+        "fresh": true,
+        "complete": false,
+        "max_age_hours": 168,
+        "absence_interpretation": "insufficient_to_establish_protocol_absence"
+      },
+      "latency_ms": 15.02
+    }
+  }
+]

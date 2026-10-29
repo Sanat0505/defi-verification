@@ -1,0 +1,42 @@
+{
+  "ReportDate": "2026-10-19",
+  "CPU": {
+    "Name": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+    "NumberOfCores": 4,
+    "NumberOfLogicalProcessors": 8
+  },
+  "OS": {
+    "Caption": "Microsoft Windows 11 Home Single Language",
+    "Version": "10.0.26300",
+    "TotalVisibleMemorySize": 8291556
+  },
+  "Database": "Local Neo4j Desktop; live neo4j and isolated thesis-eval-20261019",
+  "Concurrency": "Graph verifier sequential; fixture run overlapped the model continuation and brief local tests",
+  "Cache": "No OS/Neo4j cache flush; graph audit before timed calls; first calls retained",
+  "neo4j": [
+    {
+      "name": "Neo4j Kernel",
+      "versions": [
+        "2026.05.0"
+      ],
+      "edition": "enterprise"
+    },
+    {
+      "name": "Cypher",
+      "versions": [
+        "5",
+        "25"
+      ],
+      "edition": ""
+    }
+  ],
+  "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "packages": {
+    "groq": "0.37.1",
+    "neo4j": "6.2.0",
+    "fastapi": "0.136.3",
+    "pydantic": "2.13.4",
+    "pytest": "8.4.2",
+    "httpx": "0.28.1"
+  }
+}

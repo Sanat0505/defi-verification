@@ -1,0 +1,138 @@
+{
+  "id": "UNI-01:contract_function",
+  "mutation": "contract_function",
+  "expected": "REJECTED",
+  "before": {
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": false,
+    "C3_correct_specific_entity_or_broken_link": false,
+    "C4_expected_and_observed_mismatch_values": false,
+    "all_applicable": false,
+    "matching_witnesses": 0,
+    "unexpected_witnesses": 0,
+    "approval_checks": {}
+  },
+  "after": {
+    "C1_explicit_decision": true,
+    "C2_stable_rule_or_reason_identifier": true,
+    "C3_correct_specific_entity_or_broken_link": true,
+    "C4_expected_and_observed_mismatch_values": true,
+    "all_applicable": true,
+    "matching_witnesses": 1,
+    "unexpected_witnesses": 0,
+    "approval_checks": {}
+  },
+  "expected_deleted_edge": {
+    "from": "contract",
+    "relationship": "EXPOSES_FUNCTION",
+    "to": "function",
+    "deleted_count": 1
+  },
+  "before_result": {
+    "decision": "REJECTED",
+    "verified_address": null,
+    "reason": "No authoritative relationship path exists for Uniswap V3 / swap / USDC -> WETH",
+    "protocol": "Uniswap V3",
+    "action": "swap",
+    "chain_id": 11155111,
+    "network": "Ethereum Sepolia",
+    "latency_ms": 3.6,
+    "knowledge": {
+      "fresh": true,
+      "complete": true
+    }
+  },
+  "after_result": {
+    "decision": "REJECTED",
+    "verified_address": null,
+    "reason": "No authoritative relationship path exists for Uniswap V3 / swap / USDC -> WETH",
+    "protocol": "Uniswap V3",
+    "action": "swap",
+    "chain_id": 11155111,
+    "network": "Ethereum Sepolia",
+    "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+    "trace": {
+      "version": 1,
+      "rule_id": "GRAPH.PATH.NOT_FOUND_COMPLETE",
+      "failures": [
+        {
+          "rule_id": "GRAPH.RELATIONSHIP.EXPOSES_FUNCTION",
+          "subject": {
+            "relationship": "EXPOSES_FUNCTION",
+            "source": {
+              "symbol": null,
+              "address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+              "chain_id": 11155111,
+              "signature": null,
+              "name": null,
+              "selector": null,
+              "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:2",
+              "key": null,
+              "labels": [
+                "Contract"
+              ]
+            },
+            "target": {
+              "symbol": null,
+              "address": null,
+              "chain_id": null,
+              "signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+              "name": "exactInputSingle",
+              "selector": "0x04e45aaf",
+              "element_id": "4:03551e06-beff-4fa1-925c-3ab1b8810ebc:6",
+              "key": null,
+              "labels": [
+                "Function"
+              ]
+            }
+          },
+          "expected": {
+            "present": true,
+            "properties": {}
+          },
+          "observed": {
+            "present": false,
+            "properties": {}
+          },
+          "evidence_scope": "admitted_local_snapshot"
+        }
+      ],
+      "diagnostic_status": "observed",
+      "diagnostic_error_code": null,
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "uniswap-v3:11155111",
+        "source_url": "fixture:admitted-snapshot-projection",
+        "last_successful_sync_at": "2026-10-24T20:07:08.095990+00:00",
+        "last_synced_at": null,
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": "official-address-book-complete",
+        "pool_discovery_complete": true,
+        "fresh": true,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "confirmed_under_declared_local_coverage"
+      },
+      "limitations": [
+        "Observations describe admitted local knowledge, not independent protocol truth.",
+        "At most five candidate witnesses from the first localized edge check are returned; this is not an exhaustive or unique root-cause proof.",
+        "Diagnostic reads follow the decision query; concurrent graph changes can limit localization."
+      ]
+    },
+    "knowledge": {
+      "scope": "admitted_local_snapshot",
+      "deployment_key": "uniswap-v3:11155111",
+      "source_url": "fixture:admitted-snapshot-projection",
+      "last_successful_sync_at": "2026-10-24T20:07:08.095990+00:00",
+      "last_synced_at": null,
+      "last_sync_status": "SUCCESS",
+      "asset_coverage": "official-address-book-complete",
+      "pool_discovery_complete": true,
+      "fresh": true,
+      "complete": true,
+      "max_age_hours": 168,
+      "absence_interpretation": "confirmed_under_declared_local_coverage"
+    },
+    "latency_ms": 21.15
+  }
+}

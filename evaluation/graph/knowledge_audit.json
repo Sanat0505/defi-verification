@@ -1,0 +1,326 @@
+[
+  {
+    "id": "uniswap-v3:fresh_complete:1",
+    "condition": "fresh_complete",
+    "C1": true,
+    "C2": false,
+    "C3": true,
+    "C4": null,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:fresh_complete:2",
+    "condition": "fresh_complete",
+    "C1": true,
+    "C2": false,
+    "C3": true,
+    "C4": null,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:fresh_complete:3",
+    "condition": "fresh_complete",
+    "C1": true,
+    "C2": false,
+    "C3": true,
+    "C4": null,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:stale:1",
+    "condition": "stale",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:stale:2",
+    "condition": "stale",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:stale:3",
+    "condition": "stale",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:incomplete_missing_path:1",
+    "condition": "incomplete_missing_path",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:incomplete_missing_path:2",
+    "condition": "incomplete_missing_path",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:incomplete_missing_path:3",
+    "condition": "incomplete_missing_path",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:deactivated_membership:1",
+    "condition": "deactivated_membership",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:deactivated_membership:2",
+    "condition": "deactivated_membership",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:deactivated_membership:3",
+    "condition": "deactivated_membership",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:failed_refresh_fresh_snapshot_retained:1",
+    "condition": "failed_refresh_fresh_snapshot_retained",
+    "C1": true,
+    "C2": false,
+    "C3": true,
+    "C4": null,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:failed_refresh_fresh_snapshot_retained:2",
+    "condition": "failed_refresh_fresh_snapshot_retained",
+    "C1": true,
+    "C2": false,
+    "C3": true,
+    "C4": null,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:failed_refresh_fresh_snapshot_retained:3",
+    "condition": "failed_refresh_fresh_snapshot_retained",
+    "C1": true,
+    "C2": false,
+    "C3": true,
+    "C4": null,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:database_unavailable:1",
+    "condition": "database_unavailable",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:database_unavailable:2",
+    "condition": "database_unavailable",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "uniswap-v3:database_unavailable:3",
+    "condition": "database_unavailable",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:fresh_complete:1",
+    "condition": "fresh_complete",
+    "C1": true,
+    "C2": false,
+    "C3": true,
+    "C4": null,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:fresh_complete:2",
+    "condition": "fresh_complete",
+    "C1": true,
+    "C2": false,
+    "C3": true,
+    "C4": null,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:fresh_complete:3",
+    "condition": "fresh_complete",
+    "C1": true,
+    "C2": false,
+    "C3": true,
+    "C4": null,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:stale:1",
+    "condition": "stale",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:stale:2",
+    "condition": "stale",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:stale:3",
+    "condition": "stale",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:incomplete_missing_path:1",
+    "condition": "incomplete_missing_path",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:incomplete_missing_path:2",
+    "condition": "incomplete_missing_path",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:incomplete_missing_path:3",
+    "condition": "incomplete_missing_path",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:deactivated_membership:1",
+    "condition": "deactivated_membership",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:deactivated_membership:2",
+    "condition": "deactivated_membership",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:deactivated_membership:3",
+    "condition": "deactivated_membership",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:failed_refresh_fresh_snapshot_retained:1",
+    "condition": "failed_refresh_fresh_snapshot_retained",
+    "C1": true,
+    "C2": false,
+    "C3": true,
+    "C4": null,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:failed_refresh_fresh_snapshot_retained:2",
+    "condition": "failed_refresh_fresh_snapshot_retained",
+    "C1": true,
+    "C2": false,
+    "C3": true,
+    "C4": null,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:failed_refresh_fresh_snapshot_retained:3",
+    "condition": "failed_refresh_fresh_snapshot_retained",
+    "C1": true,
+    "C2": false,
+    "C3": true,
+    "C4": null,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:database_unavailable:1",
+    "condition": "database_unavailable",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:database_unavailable:2",
+    "condition": "database_unavailable",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  },
+  {
+    "id": "aave-v3:database_unavailable:3",
+    "condition": "database_unavailable",
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "no_fabricated_protocol_mismatch": true
+  }
+]

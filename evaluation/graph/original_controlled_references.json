@@ -1,0 +1,635 @@
+{
+  "created_at_utc": "2026-10-19T14:02:53.864915+00:00",
+  "review_status": "assistant_authored_controlled_fixtures_pending_researcher_review",
+  "snapshot_source": "evaluation\\thesis_final_report\\data\\graph\\snapshot-20261019T135654936964Z.json",
+  "snapshot_sha256": "768d9dbe3ee9a545075089782c3851c01dc6340cce2e0eaf2358ca17589d7c6b",
+  "database": "thesis-eval-20261019",
+  "fixtures": [
+    {
+      "id": "UNI-01",
+      "protocol": "Uniswap V3",
+      "protocol_key": "uniswap-v3",
+      "action": "swap",
+      "token_in": {
+        "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "chain_id": 11155111,
+        "decimals": 6,
+        "eligible": true,
+        "symbol": "USDC",
+        "verified": true
+      },
+      "token_out": {
+        "address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+        "chain_id": 11155111,
+        "decimals": 18,
+        "eligible": true,
+        "symbol": "WETH",
+        "verified": true
+      },
+      "resource": {
+        "deployment": "uniswap-v3:11155111",
+        "address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+        "fee": 10000,
+        "active": true,
+        "verified": true,
+        "chain_id": 11155111,
+        "eligible": true,
+        "tokens": [
+          {
+            "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "chain_id": 11155111,
+            "decimals": 6,
+            "eligible": true,
+            "symbol": "USDC",
+            "verified": true
+          },
+          {
+            "address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "chain_id": 11155111,
+            "decimals": 18,
+            "eligible": true,
+            "symbol": "WETH",
+            "verified": true
+          }
+        ]
+      },
+      "contract": {
+        "deployment": "uniswap-v3:11155111",
+        "role": "swap_router",
+        "address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "verified": true,
+        "signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "selector": "0x04e45aaf",
+        "function_verified": true,
+        "purpose": "execute",
+        "action": "swap"
+      },
+      "quoter": {
+        "deployment": "uniswap-v3:11155111",
+        "role": "quoter",
+        "address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+        "verified": true,
+        "signature": "quoteExactInputSingle((address,address,uint256,uint24,uint160))",
+        "selector": "0xc6a5026a",
+        "function_verified": true,
+        "purpose": "preflight",
+        "action": "swap"
+      }
+    },
+    {
+      "id": "UNI-02",
+      "protocol": "Uniswap V3",
+      "protocol_key": "uniswap-v3",
+      "action": "swap",
+      "token_in": {
+        "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "chain_id": 11155111,
+        "decimals": 6,
+        "eligible": true,
+        "symbol": "USDC",
+        "verified": true
+      },
+      "token_out": {
+        "address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+        "chain_id": 11155111,
+        "decimals": 18,
+        "eligible": true,
+        "symbol": "WETH",
+        "verified": true
+      },
+      "resource": {
+        "deployment": "uniswap-v3:11155111",
+        "address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+        "fee": 100,
+        "active": true,
+        "verified": true,
+        "chain_id": 11155111,
+        "eligible": true,
+        "tokens": [
+          {
+            "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+            "chain_id": 11155111,
+            "decimals": 6,
+            "eligible": true,
+            "symbol": "USDC",
+            "verified": true
+          },
+          {
+            "address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+            "chain_id": 11155111,
+            "decimals": 18,
+            "eligible": true,
+            "symbol": "WETH",
+            "verified": true
+          }
+        ]
+      },
+      "contract": {
+        "deployment": "uniswap-v3:11155111",
+        "role": "swap_router",
+        "address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "verified": true,
+        "signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "selector": "0x04e45aaf",
+        "function_verified": true,
+        "purpose": "execute",
+        "action": "swap"
+      },
+      "quoter": {
+        "deployment": "uniswap-v3:11155111",
+        "role": "quoter",
+        "address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+        "verified": true,
+        "signature": "quoteExactInputSingle((address,address,uint256,uint24,uint160))",
+        "selector": "0xc6a5026a",
+        "function_verified": true,
+        "purpose": "preflight",
+        "action": "swap"
+      }
+    },
+    {
+      "id": "UNI-03",
+      "protocol": "Uniswap V3",
+      "protocol_key": "uniswap-v3",
+      "action": "swap",
+      "token_in": {
+        "address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+        "chain_id": 11155111,
+        "decimals": 8,
+        "eligible": true,
+        "symbol": "WBTC",
+        "verified": true
+      },
+      "token_out": {
+        "address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+        "chain_id": 11155111,
+        "decimals": 18,
+        "eligible": true,
+        "symbol": "AAVE",
+        "verified": true
+      },
+      "resource": {
+        "deployment": "uniswap-v3:11155111",
+        "address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+        "fee": 500,
+        "active": true,
+        "verified": true,
+        "chain_id": 11155111,
+        "eligible": true,
+        "tokens": [
+          {
+            "address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+            "chain_id": 11155111,
+            "decimals": 8,
+            "eligible": true,
+            "symbol": "WBTC",
+            "verified": true
+          },
+          {
+            "address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+            "chain_id": 11155111,
+            "decimals": 18,
+            "eligible": true,
+            "symbol": "AAVE",
+            "verified": true
+          }
+        ]
+      },
+      "contract": {
+        "deployment": "uniswap-v3:11155111",
+        "role": "swap_router",
+        "address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "verified": true,
+        "signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "selector": "0x04e45aaf",
+        "function_verified": true,
+        "purpose": "execute",
+        "action": "swap"
+      },
+      "quoter": {
+        "deployment": "uniswap-v3:11155111",
+        "role": "quoter",
+        "address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+        "verified": true,
+        "signature": "quoteExactInputSingle((address,address,uint256,uint24,uint160))",
+        "selector": "0xc6a5026a",
+        "function_verified": true,
+        "purpose": "preflight",
+        "action": "swap"
+      }
+    },
+    {
+      "id": "UNI-04",
+      "protocol": "Uniswap V3",
+      "protocol_key": "uniswap-v3",
+      "action": "swap",
+      "token_in": {
+        "address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "chain_id": 11155111,
+        "decimals": 6,
+        "eligible": true,
+        "symbol": "USDT",
+        "verified": true
+      },
+      "token_out": {
+        "address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+        "chain_id": 11155111,
+        "decimals": 18,
+        "eligible": true,
+        "symbol": "LINK",
+        "verified": true
+      },
+      "resource": {
+        "deployment": "uniswap-v3:11155111",
+        "address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+        "fee": 500,
+        "active": true,
+        "verified": true,
+        "chain_id": 11155111,
+        "eligible": true,
+        "tokens": [
+          {
+            "address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+            "chain_id": 11155111,
+            "decimals": 6,
+            "eligible": true,
+            "symbol": "USDT",
+            "verified": true
+          },
+          {
+            "address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+            "chain_id": 11155111,
+            "decimals": 18,
+            "eligible": true,
+            "symbol": "LINK",
+            "verified": true
+          }
+        ]
+      },
+      "contract": {
+        "deployment": "uniswap-v3:11155111",
+        "role": "swap_router",
+        "address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+        "verified": true,
+        "signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+        "selector": "0x04e45aaf",
+        "function_verified": true,
+        "purpose": "execute",
+        "action": "swap"
+      },
+      "quoter": {
+        "deployment": "uniswap-v3:11155111",
+        "role": "quoter",
+        "address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+        "verified": true,
+        "signature": "quoteExactInputSingle((address,address,uint256,uint24,uint160))",
+        "selector": "0xc6a5026a",
+        "function_verified": true,
+        "purpose": "preflight",
+        "action": "swap"
+      }
+    },
+    {
+      "id": "AAVE-SUPPLY-USDC",
+      "protocol": "Aave V3",
+      "protocol_key": "aave-v3",
+      "action": "supply",
+      "token_in": {
+        "symbol": "USDC",
+        "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "decimals": 6
+      },
+      "token_out": null,
+      "resource": {
+        "deployment": "aave-v3:11155111",
+        "link_active": true,
+        "active": true,
+        "verified": true,
+        "symbol": "USDC",
+        "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "token_verified": true,
+        "token_chain_id": 11155111,
+        "decimals": 6,
+        "actions": [
+          "borrow",
+          "repay",
+          "supply",
+          "withdraw"
+        ]
+      },
+      "contract": {
+        "deployment": "aave-v3:11155111",
+        "role": "pool",
+        "address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "verified": true,
+        "signature": "supply(address,uint256,address,uint16)",
+        "selector": "0x617ba037",
+        "function_verified": true,
+        "purpose": "execute",
+        "action": "supply"
+      }
+    },
+    {
+      "id": "AAVE-SUPPLY-USDT",
+      "protocol": "Aave V3",
+      "protocol_key": "aave-v3",
+      "action": "supply",
+      "token_in": {
+        "symbol": "USDT",
+        "address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "decimals": 6
+      },
+      "token_out": null,
+      "resource": {
+        "deployment": "aave-v3:11155111",
+        "link_active": true,
+        "active": true,
+        "verified": true,
+        "symbol": "USDT",
+        "address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "token_verified": true,
+        "token_chain_id": 11155111,
+        "decimals": 6,
+        "actions": [
+          "borrow",
+          "repay",
+          "supply",
+          "withdraw"
+        ]
+      },
+      "contract": {
+        "deployment": "aave-v3:11155111",
+        "role": "pool",
+        "address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "verified": true,
+        "signature": "supply(address,uint256,address,uint16)",
+        "selector": "0x617ba037",
+        "function_verified": true,
+        "purpose": "execute",
+        "action": "supply"
+      }
+    },
+    {
+      "id": "AAVE-WITHDRAW-USDC",
+      "protocol": "Aave V3",
+      "protocol_key": "aave-v3",
+      "action": "withdraw",
+      "token_in": {
+        "symbol": "USDC",
+        "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "decimals": 6
+      },
+      "token_out": null,
+      "resource": {
+        "deployment": "aave-v3:11155111",
+        "link_active": true,
+        "active": true,
+        "verified": true,
+        "symbol": "USDC",
+        "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "token_verified": true,
+        "token_chain_id": 11155111,
+        "decimals": 6,
+        "actions": [
+          "borrow",
+          "repay",
+          "supply",
+          "withdraw"
+        ]
+      },
+      "contract": {
+        "deployment": "aave-v3:11155111",
+        "role": "pool",
+        "address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "verified": true,
+        "signature": "withdraw(address,uint256,address)",
+        "selector": "0x69328dec",
+        "function_verified": true,
+        "purpose": "execute",
+        "action": "withdraw"
+      }
+    },
+    {
+      "id": "AAVE-WITHDRAW-USDT",
+      "protocol": "Aave V3",
+      "protocol_key": "aave-v3",
+      "action": "withdraw",
+      "token_in": {
+        "symbol": "USDT",
+        "address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "decimals": 6
+      },
+      "token_out": null,
+      "resource": {
+        "deployment": "aave-v3:11155111",
+        "link_active": true,
+        "active": true,
+        "verified": true,
+        "symbol": "USDT",
+        "address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "token_verified": true,
+        "token_chain_id": 11155111,
+        "decimals": 6,
+        "actions": [
+          "borrow",
+          "repay",
+          "supply",
+          "withdraw"
+        ]
+      },
+      "contract": {
+        "deployment": "aave-v3:11155111",
+        "role": "pool",
+        "address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "verified": true,
+        "signature": "withdraw(address,uint256,address)",
+        "selector": "0x69328dec",
+        "function_verified": true,
+        "purpose": "execute",
+        "action": "withdraw"
+      }
+    },
+    {
+      "id": "AAVE-BORROW-USDC",
+      "protocol": "Aave V3",
+      "protocol_key": "aave-v3",
+      "action": "borrow",
+      "token_in": {
+        "symbol": "USDC",
+        "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "decimals": 6
+      },
+      "token_out": null,
+      "resource": {
+        "deployment": "aave-v3:11155111",
+        "link_active": true,
+        "active": true,
+        "verified": true,
+        "symbol": "USDC",
+        "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "token_verified": true,
+        "token_chain_id": 11155111,
+        "decimals": 6,
+        "actions": [
+          "borrow",
+          "repay",
+          "supply",
+          "withdraw"
+        ]
+      },
+      "contract": {
+        "deployment": "aave-v3:11155111",
+        "role": "pool",
+        "address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "verified": true,
+        "signature": "borrow(address,uint256,uint256,uint16,address)",
+        "selector": "0xa415bcad",
+        "function_verified": true,
+        "purpose": "execute",
+        "action": "borrow"
+      }
+    },
+    {
+      "id": "AAVE-BORROW-USDT",
+      "protocol": "Aave V3",
+      "protocol_key": "aave-v3",
+      "action": "borrow",
+      "token_in": {
+        "symbol": "USDT",
+        "address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "decimals": 6
+      },
+      "token_out": null,
+      "resource": {
+        "deployment": "aave-v3:11155111",
+        "link_active": true,
+        "active": true,
+        "verified": true,
+        "symbol": "USDT",
+        "address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "token_verified": true,
+        "token_chain_id": 11155111,
+        "decimals": 6,
+        "actions": [
+          "borrow",
+          "repay",
+          "supply",
+          "withdraw"
+        ]
+      },
+      "contract": {
+        "deployment": "aave-v3:11155111",
+        "role": "pool",
+        "address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "verified": true,
+        "signature": "borrow(address,uint256,uint256,uint16,address)",
+        "selector": "0xa415bcad",
+        "function_verified": true,
+        "purpose": "execute",
+        "action": "borrow"
+      }
+    },
+    {
+      "id": "AAVE-REPAY-USDC",
+      "protocol": "Aave V3",
+      "protocol_key": "aave-v3",
+      "action": "repay",
+      "token_in": {
+        "symbol": "USDC",
+        "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "decimals": 6
+      },
+      "token_out": null,
+      "resource": {
+        "deployment": "aave-v3:11155111",
+        "link_active": true,
+        "active": true,
+        "verified": true,
+        "symbol": "USDC",
+        "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "token_verified": true,
+        "token_chain_id": 11155111,
+        "decimals": 6,
+        "actions": [
+          "borrow",
+          "repay",
+          "supply",
+          "withdraw"
+        ]
+      },
+      "contract": {
+        "deployment": "aave-v3:11155111",
+        "role": "pool",
+        "address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "verified": true,
+        "signature": "repay(address,uint256,uint256,address)",
+        "selector": "0x573ade81",
+        "function_verified": true,
+        "purpose": "execute",
+        "action": "repay"
+      }
+    },
+    {
+      "id": "AAVE-REPAY-USDT",
+      "protocol": "Aave V3",
+      "protocol_key": "aave-v3",
+      "action": "repay",
+      "token_in": {
+        "symbol": "USDT",
+        "address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "decimals": 6
+      },
+      "token_out": null,
+      "resource": {
+        "deployment": "aave-v3:11155111",
+        "link_active": true,
+        "active": true,
+        "verified": true,
+        "symbol": "USDT",
+        "address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+        "token_verified": true,
+        "token_chain_id": 11155111,
+        "decimals": 6,
+        "actions": [
+          "borrow",
+          "repay",
+          "supply",
+          "withdraw"
+        ]
+      },
+      "contract": {
+        "deployment": "aave-v3:11155111",
+        "role": "pool",
+        "address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "verified": true,
+        "signature": "repay(address,uint256,uint256,address)",
+        "selector": "0x573ade81",
+        "function_verified": true,
+        "purpose": "execute",
+        "action": "repay"
+      }
+    }
+  ],
+  "D_expected": {
+    "control": "APPROVED",
+    "action_function": "REJECTED",
+    "contract_function": "REJECTED",
+    "deployment_contract": "REJECTED",
+    "resource_membership": "REJECTED",
+    "resource_asset": "REJECTED"
+  },
+  "E_expected": {
+    "fresh_complete": "APPROVED",
+    "stale": "INSUFFICIENT_EVIDENCE",
+    "incomplete_missing_path": "INSUFFICIENT_EVIDENCE",
+    "deactivated_membership": "REJECTED",
+    "failed_refresh_fresh_snapshot_retained": "APPROVED",
+    "database_unavailable": "INSUFFICIENT_EVIDENCE"
+  },
+  "notes": [
+    "Only one resource/path exists per fixture, preventing alternative-path masking.",
+    "All node identities and properties are preserved by each D mutation.",
+    "Lifecycle acquisition and database outages are injected, not real network outages.",
+    "Failed refresh retains a fresh, complete previously accepted snapshot; approval is expected under the current retention policy."
+  ]
+}
