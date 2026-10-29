@@ -1,1 +1,1 @@
-"""Load verified protocol metadata into Neo4j."""
+"""Source parsers and RPC helpers for the canonical graph synchronization."""

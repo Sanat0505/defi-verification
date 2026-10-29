@@ -1,4 +1,8 @@
-"""Manual full-pipeline preflight that never broadcasts a transaction."""
+"""Manual swap preparation; updates the wallet allowlist but never broadcasts.
+
+Run only with authorization to update the policy and prepare the swap.
+For a check using the existing policy, use evaluation.wallet_live_check.
+"""
 
 import json
 import os
@@ -30,7 +34,6 @@ def run():
     for address in destinations:
         print(json.dumps(add_to_whitelist(address), indent=2))
 
-    # Read-only balance, allowance, liquidity, quote, and calldata checks.
     result = prepare_swap(routes, amount)
     print(json.dumps(result, indent=2))
 
