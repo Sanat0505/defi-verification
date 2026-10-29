@@ -1,0 +1,466 @@
+{
+  "timestamp_utc": "2026-10-19T15:18:16.655632+00:00",
+  "read_only": true,
+  "transaction_broadcast": false,
+  "preflight": {
+    "checked_at_utc": "2026-10-19T15:18:16.655669+00:00",
+    "read_only": true,
+    "chain_id": 11155111,
+    "knowledge_max_age_hours": 168,
+    "graph_cases_scored": 0,
+    "transactions_broadcast": 0,
+    "note": "Freshness is a prerequisite, not proof of graph relationship correctness. No labels are derived from the production verifier.",
+    "deployments": [
+      {
+        "protocol": "Aave V3",
+        "deployment": "aave-v3:11155111",
+        "verified": true,
+        "last_successful_sync_at": "2026-10-15T16:45:56.237863+00:00",
+        "last_synced_at": "2026-10-15T16:45:50.325305+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": "official-address-book-complete",
+        "pool_discovery_complete": null,
+        "source_url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/refs/heads/main/src/AaveV3Sepolia.sol",
+        "age_hours": 94.539,
+        "fresh": true
+      },
+      {
+        "protocol": "Uniswap V3",
+        "deployment": "uniswap-v3:11155111",
+        "verified": true,
+        "last_successful_sync_at": "2026-10-15T16:46:22.367245+00:00",
+        "last_synced_at": "2026-10-15T16:46:07.078140+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": null,
+        "pool_discovery_complete": true,
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "age_hours": 94.532,
+        "fresh": true
+      }
+    ],
+    "freshness_prerequisite_met": true,
+    "status": "freshness_ready_relationship_review_still_required"
+  },
+  "invariants": {
+    "valid": true,
+    "inventory": [
+      {
+        "deployment": "aave-v3:1",
+        "active_reserves": 67,
+        "active_pools": 0,
+        "verification_eligible_pools": 0,
+        "trusted_assets": 67,
+        "discovered_assets": 0,
+        "active_contracts": 269,
+        "authorized_functions": 4,
+        "pool_discovery_complete": null,
+        "pool_discovery_mode": null
+      },
+      {
+        "deployment": "aave-v3:11155111",
+        "active_reserves": 9,
+        "active_pools": 0,
+        "verification_eligible_pools": 0,
+        "trusted_assets": 9,
+        "discovered_assets": 0,
+        "active_contracts": 60,
+        "authorized_functions": 4,
+        "pool_discovery_complete": null,
+        "pool_discovery_mode": null
+      },
+      {
+        "deployment": "uniswap-v3:1",
+        "active_reserves": 0,
+        "active_pools": 2,
+        "verification_eligible_pools": 2,
+        "trusted_assets": 3,
+        "discovered_assets": 3,
+        "active_contracts": 13,
+        "authorized_functions": 2,
+        "pool_discovery_complete": false,
+        "pool_discovery_mode": "curated-no-rpc"
+      },
+      {
+        "deployment": "uniswap-v3:11155111",
+        "active_reserves": 0,
+        "active_pools": 1524,
+        "verification_eligible_pools": 4,
+        "trusted_assets": 6,
+        "discovered_assets": 1488,
+        "active_contracts": 11,
+        "authorized_functions": 2,
+        "pool_discovery_complete": true,
+        "pool_discovery_mode": "full-rpc"
+      }
+    ],
+    "checks": {
+      "orphan_asset_support_nodes": 0,
+      "aave_reserve_missing_underlying": 0,
+      "aave_reserve_missing_supply_or_withdraw": 0,
+      "aave_variable_debt_missing_borrow_or_repay": 0,
+      "uniswap_pool_invalid_token_endpoints": 0,
+      "uniswap_pool_missing_fee_or_action": 0,
+      "uniswap_pool_asset_missing_deployment_support": 0,
+      "uniswap_pool_trust_mismatch": 0,
+      "execution_role_missing_authorized_function": 0
+    }
+  },
+  "deployments": [
+    {
+      "key": "aave-v3:11155111",
+      "verified": true,
+      "asset_coverage": "official-address-book-complete",
+      "pool_discovery_complete": null,
+      "factory_scanned_to_block": null,
+      "actions": [
+        "borrow",
+        "repay",
+        "supply",
+        "withdraw"
+      ]
+    },
+    {
+      "key": "uniswap-v3:11155111",
+      "verified": true,
+      "asset_coverage": null,
+      "pool_discovery_complete": true,
+      "factory_scanned_to_block": 11921704,
+      "actions": [
+        "swap"
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "deployment": "aave-v3:11155111",
+      "role": "pool",
+      "address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+      "verified": true,
+      "signature": "borrow(address,uint256,uint256,uint16,address)",
+      "selector": "0xa415bcad",
+      "function_verified": true,
+      "purpose": "execute",
+      "action": "borrow"
+    },
+    {
+      "deployment": "aave-v3:11155111",
+      "role": "pool",
+      "address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+      "verified": true,
+      "signature": "repay(address,uint256,uint256,address)",
+      "selector": "0x573ade81",
+      "function_verified": true,
+      "purpose": "execute",
+      "action": "repay"
+    },
+    {
+      "deployment": "aave-v3:11155111",
+      "role": "pool",
+      "address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+      "verified": true,
+      "signature": "supply(address,uint256,address,uint16)",
+      "selector": "0x617ba037",
+      "function_verified": true,
+      "purpose": "execute",
+      "action": "supply"
+    },
+    {
+      "deployment": "aave-v3:11155111",
+      "role": "pool",
+      "address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+      "verified": true,
+      "signature": "withdraw(address,uint256,address)",
+      "selector": "0x69328dec",
+      "function_verified": true,
+      "purpose": "execute",
+      "action": "withdraw"
+    },
+    {
+      "deployment": "uniswap-v3:11155111",
+      "role": "quoter",
+      "address": "0xed1f6473345f45b75f8179591dd5ba1888cf2fb3",
+      "verified": true,
+      "signature": "quoteExactInputSingle((address,address,uint256,uint24,uint160))",
+      "selector": "0xc6a5026a",
+      "function_verified": true,
+      "purpose": "preflight",
+      "action": "swap"
+    },
+    {
+      "deployment": "uniswap-v3:11155111",
+      "role": "swap_router",
+      "address": "0x3bfa4769fb09eefc5a80d6e87c3b9c650f7ae48e",
+      "verified": true,
+      "signature": "exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))",
+      "selector": "0x04e45aaf",
+      "function_verified": true,
+      "purpose": "execute",
+      "action": "swap"
+    }
+  ],
+  "reserves": [
+    {
+      "deployment": "aave-v3:11155111",
+      "link_active": true,
+      "active": true,
+      "verified": true,
+      "symbol": "AAVE",
+      "address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+      "token_verified": true,
+      "token_chain_id": 11155111,
+      "decimals": 18,
+      "actions": [
+        "borrow",
+        "repay",
+        "supply",
+        "withdraw"
+      ]
+    },
+    {
+      "deployment": "aave-v3:11155111",
+      "link_active": true,
+      "active": true,
+      "verified": true,
+      "symbol": "DAI",
+      "address": "0xff34b3d4aee8ddcd6f9afffb6fe49bd371b8a357",
+      "token_verified": true,
+      "token_chain_id": 11155111,
+      "decimals": 18,
+      "actions": [
+        "borrow",
+        "repay",
+        "supply",
+        "withdraw"
+      ]
+    },
+    {
+      "deployment": "aave-v3:11155111",
+      "link_active": true,
+      "active": true,
+      "verified": true,
+      "symbol": "EURS",
+      "address": "0x6d906e526a4e2ca02097ba9d0caa3c382f52278e",
+      "token_verified": true,
+      "token_chain_id": 11155111,
+      "decimals": 2,
+      "actions": [
+        "borrow",
+        "repay",
+        "supply",
+        "withdraw"
+      ]
+    },
+    {
+      "deployment": "aave-v3:11155111",
+      "link_active": true,
+      "active": true,
+      "verified": true,
+      "symbol": "GHO",
+      "address": "0xc4bf5cbdabe595361438f8c6a187bdc330539c60",
+      "token_verified": true,
+      "token_chain_id": 11155111,
+      "decimals": 18,
+      "actions": [
+        "borrow",
+        "repay",
+        "supply",
+        "withdraw"
+      ]
+    },
+    {
+      "deployment": "aave-v3:11155111",
+      "link_active": true,
+      "active": true,
+      "verified": true,
+      "symbol": "LINK",
+      "address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+      "token_verified": true,
+      "token_chain_id": 11155111,
+      "decimals": 18,
+      "actions": [
+        "borrow",
+        "repay",
+        "supply",
+        "withdraw"
+      ]
+    },
+    {
+      "deployment": "aave-v3:11155111",
+      "link_active": true,
+      "active": true,
+      "verified": true,
+      "symbol": "USDC",
+      "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+      "token_verified": true,
+      "token_chain_id": 11155111,
+      "decimals": 6,
+      "actions": [
+        "borrow",
+        "repay",
+        "supply",
+        "withdraw"
+      ]
+    },
+    {
+      "deployment": "aave-v3:11155111",
+      "link_active": true,
+      "active": true,
+      "verified": true,
+      "symbol": "USDT",
+      "address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+      "token_verified": true,
+      "token_chain_id": 11155111,
+      "decimals": 6,
+      "actions": [
+        "borrow",
+        "repay",
+        "supply",
+        "withdraw"
+      ]
+    },
+    {
+      "deployment": "aave-v3:11155111",
+      "link_active": true,
+      "active": true,
+      "verified": true,
+      "symbol": "WBTC",
+      "address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+      "token_verified": true,
+      "token_chain_id": 11155111,
+      "decimals": 8,
+      "actions": [
+        "borrow",
+        "repay",
+        "supply",
+        "withdraw"
+      ]
+    },
+    {
+      "deployment": "aave-v3:11155111",
+      "link_active": true,
+      "active": true,
+      "verified": true,
+      "symbol": "WETH",
+      "address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+      "token_verified": true,
+      "token_chain_id": 11155111,
+      "decimals": 18,
+      "actions": [
+        "borrow",
+        "repay",
+        "supply",
+        "withdraw"
+      ]
+    }
+  ],
+  "pools": [
+    {
+      "deployment": "uniswap-v3:11155111",
+      "address": "0x264b8fb8d89c401cace37f9501dd072bf35a2e0d",
+      "fee": 10000,
+      "active": true,
+      "verified": true,
+      "chain_id": 11155111,
+      "eligible": true,
+      "tokens": [
+        {
+          "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "chain_id": 11155111,
+          "decimals": 6,
+          "eligible": true,
+          "symbol": "USDC",
+          "verified": true
+        },
+        {
+          "address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "chain_id": 11155111,
+          "decimals": 18,
+          "eligible": true,
+          "symbol": "WETH",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "deployment": "uniswap-v3:11155111",
+      "address": "0xad5ff0b22e32fc8aca003816cf298143dacc7fbd",
+      "fee": 100,
+      "active": true,
+      "verified": true,
+      "chain_id": 11155111,
+      "eligible": true,
+      "tokens": [
+        {
+          "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+          "chain_id": 11155111,
+          "decimals": 6,
+          "eligible": true,
+          "symbol": "USDC",
+          "verified": true
+        },
+        {
+          "address": "0xc558dbdd856501fcd9aaf1e62eae57a9f0629a3c",
+          "chain_id": 11155111,
+          "decimals": 18,
+          "eligible": true,
+          "symbol": "WETH",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "deployment": "uniswap-v3:11155111",
+      "address": "0xce8e975771526306fbf5d24135869a47404bf8e1",
+      "fee": 500,
+      "active": true,
+      "verified": true,
+      "chain_id": 11155111,
+      "eligible": true,
+      "tokens": [
+        {
+          "address": "0x29f2d40b0605204364af54ec677bd022da425d03",
+          "chain_id": 11155111,
+          "decimals": 8,
+          "eligible": true,
+          "symbol": "WBTC",
+          "verified": true
+        },
+        {
+          "address": "0x88541670e55cc00beefd87eb59edd1b7c511ac9a",
+          "chain_id": 11155111,
+          "decimals": 18,
+          "eligible": true,
+          "symbol": "AAVE",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "deployment": "uniswap-v3:11155111",
+      "address": "0xffd53b90f7af4d805a832ab516d8f6d610970f14",
+      "fee": 500,
+      "active": true,
+      "verified": true,
+      "chain_id": 11155111,
+      "eligible": true,
+      "tokens": [
+        {
+          "address": "0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0",
+          "chain_id": 11155111,
+          "decimals": 6,
+          "eligible": true,
+          "symbol": "USDT",
+          "verified": true
+        },
+        {
+          "address": "0xf8fb3713d459d7c1018bd0a49d19b4c44290ebe5",
+          "chain_id": 11155111,
+          "decimals": 18,
+          "eligible": true,
+          "symbol": "LINK",
+          "verified": true
+        }
+      ]
+    }
+  ]
+}

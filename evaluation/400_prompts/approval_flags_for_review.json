@@ -1,0 +1,593 @@
+[
+  {
+    "id": "FINAL-DRAFT-127-A",
+    "query": "Using Aave V3 on Ethereum Sepolia, add liquidity 77.25 USDC.",
+    "category": "unknown_or_unsupported",
+    "draft_reference": {
+      "scenario_id": "FINAL-DRAFT-127",
+      "family_id": "FINAL-DRAFT-127",
+      "category": "unknown_or_unsupported",
+      "primary_prompt_id": "FINAL-DRAFT-127-A",
+      "reference_intent": {
+        "action": "add liquidity",
+        "protocol": "Aave V3",
+        "token_in": "USDC",
+        "amount": "77.25",
+        "chain": "Ethereum Sepolia"
+      },
+      "expected_validation_outcome": "UNSUPPORTED",
+      "expected_graph_outcome": "NOT_REACHED",
+      "graph_eligible": false,
+      "expected_reason": "Explicit out-of-scope protocol/network/action is unsupported; an unknown asset remains a complete interpretation but has no admitted reserve path.",
+      "expected_evidence": {
+        "scope": "Sepolia 11155111; current admitted graph policy",
+        "snapshot": "snapshot-20261019T135654936964Z.json",
+        "relationship_path": null,
+        "required_paths": [],
+        "review_required": true
+      },
+      "constraints": [],
+      "expected_missing_fields": [],
+      "network_condition": "Omitted network uses configured Ethereum Sepolia; explicit conflicting network is unsupported.",
+      "sources": [
+        {
+          "url": "https://aave.com/docs/aave-v3/smart-contracts/pool",
+          "source_id": "official_documentation"
+        }
+      ],
+      "transformation_history": [
+        "Researcher-review proposal authored by the assistant from documented operations and current scope; no model predictions used."
+      ],
+      "review_status": "assistant_draft_pending_researcher_review",
+      "reviewer": null,
+      "reviewed_at": null,
+      "frozen": false,
+      "review_flags": [
+        "Unsupported does not mean malformed. Unknown-asset references require snapshot review."
+      ],
+      "origin": "documentation_based_synthetic",
+      "leakage_screen": {
+        "same_graph_input_as_development": false,
+        "text_matches": []
+      },
+      "id": "FINAL-DRAFT-127-A",
+      "formulation": "A",
+      "primary": true,
+      "query": "Using Aave V3 on Ethereum Sepolia, add liquidity 77.25 USDC."
+    },
+    "raw_extraction": {
+      "action": "supply",
+      "protocol": "Aave V3",
+      "token_in": "USDC",
+      "token_out": null,
+      "amount": "77.25",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "normalized_resolution": {
+      "status": "APPROVED",
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "token_in": "USDC",
+        "token_out": null,
+        "amount": "77.25",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null,
+        "unhandled_constraints": []
+      },
+      "message": "Intent is complete and ready for graph verification.",
+      "missing_fields": [],
+      "error_code": null,
+      "unhandled_constraints": []
+    },
+    "pipeline": {
+      "decision": "APPROVED",
+      "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+      "verified_pool": null,
+      "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+      "verified_asset_decimals": 6,
+      "verified_function": "supply(address,uint256,address,uint16)",
+      "verified_selector": "0x617ba037",
+      "protocol": "Aave V3",
+      "action": "supply",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "knowledge": {
+        "fresh": true,
+        "complete": true
+      },
+      "latency_ms": 292.8,
+      "intent": {
+        "action": "supply",
+        "protocol": "Aave V3",
+        "token_in": "USDC",
+        "amount": "77.25",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "unhandled_constraints": []
+      },
+      "executable": true,
+      "verification_expires_in": 600
+    },
+    "pipeline_improper_approval_flag": true,
+    "semantic_graph_containment": false,
+    "review_status": "assistant diagnostic; human adjudication required; no execution tested"
+  },
+  {
+    "id": "FINAL-DRAFT-128-A",
+    "query": "Using Aave V3 on Ethereum Sepolia, remove liquidity 78.25 USDC.",
+    "category": "unknown_or_unsupported",
+    "draft_reference": {
+      "scenario_id": "FINAL-DRAFT-128",
+      "family_id": "FINAL-DRAFT-128",
+      "category": "unknown_or_unsupported",
+      "primary_prompt_id": "FINAL-DRAFT-128-A",
+      "reference_intent": {
+        "action": "remove liquidity",
+        "protocol": "Aave V3",
+        "token_in": "USDC",
+        "amount": "78.25",
+        "chain": "Ethereum Sepolia"
+      },
+      "expected_validation_outcome": "UNSUPPORTED",
+      "expected_graph_outcome": "NOT_REACHED",
+      "graph_eligible": false,
+      "expected_reason": "Explicit out-of-scope protocol/network/action is unsupported; an unknown asset remains a complete interpretation but has no admitted reserve path.",
+      "expected_evidence": {
+        "scope": "Sepolia 11155111; current admitted graph policy",
+        "snapshot": "snapshot-20261019T135654936964Z.json",
+        "relationship_path": null,
+        "required_paths": [],
+        "review_required": true
+      },
+      "constraints": [],
+      "expected_missing_fields": [],
+      "network_condition": "Omitted network uses configured Ethereum Sepolia; explicit conflicting network is unsupported.",
+      "sources": [
+        {
+          "url": "https://aave.com/docs/aave-v3/smart-contracts/pool",
+          "source_id": "official_documentation"
+        }
+      ],
+      "transformation_history": [
+        "Researcher-review proposal authored by the assistant from documented operations and current scope; no model predictions used."
+      ],
+      "review_status": "assistant_draft_pending_researcher_review",
+      "reviewer": null,
+      "reviewed_at": null,
+      "frozen": false,
+      "review_flags": [
+        "Unsupported does not mean malformed. Unknown-asset references require snapshot review."
+      ],
+      "origin": "documentation_based_synthetic",
+      "leakage_screen": {
+        "same_graph_input_as_development": false,
+        "text_matches": []
+      },
+      "id": "FINAL-DRAFT-128-A",
+      "formulation": "A",
+      "primary": true,
+      "query": "Using Aave V3 on Ethereum Sepolia, remove liquidity 78.25 USDC."
+    },
+    "raw_extraction": {
+      "action": "withdraw",
+      "protocol": "Aave V3",
+      "token_in": "USDC",
+      "token_out": null,
+      "amount": "78.25",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "normalized_resolution": {
+      "status": "APPROVED",
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "token_in": "USDC",
+        "token_out": null,
+        "amount": "78.25",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null,
+        "unhandled_constraints": []
+      },
+      "message": "Intent is complete and ready for graph verification.",
+      "missing_fields": [],
+      "error_code": null,
+      "unhandled_constraints": []
+    },
+    "pipeline": {
+      "decision": "APPROVED",
+      "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+      "verified_pool": null,
+      "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+      "verified_asset_decimals": 6,
+      "verified_function": "withdraw(address,uint256,address)",
+      "verified_selector": "0x69328dec",
+      "protocol": "Aave V3",
+      "action": "withdraw",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "knowledge": {
+        "fresh": true,
+        "complete": true
+      },
+      "latency_ms": 14.3,
+      "intent": {
+        "action": "withdraw",
+        "protocol": "Aave V3",
+        "token_in": "USDC",
+        "amount": "78.25",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "unhandled_constraints": []
+      },
+      "executable": true,
+      "verification_expires_in": 600
+    },
+    "pipeline_improper_approval_flag": true,
+    "semantic_graph_containment": false,
+    "review_status": "assistant diagnostic; human adjudication required; no execution tested"
+  },
+  {
+    "id": "FINAL-DRAFT-142-A",
+    "query": "Swap 18.75 tokens for WETH through Uniswap V3 on Sepolia.",
+    "category": "incomplete_or_ambiguous",
+    "draft_reference": {
+      "scenario_id": "FINAL-DRAFT-142",
+      "family_id": "FINAL-DRAFT-142",
+      "category": "incomplete_or_ambiguous",
+      "primary_prompt_id": "FINAL-DRAFT-142-A",
+      "reference_intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "token_in": null,
+        "token_out": "WETH",
+        "amount": "18.75",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "expected_validation_outcome": "NEEDS_CLARIFICATION",
+      "expected_graph_outcome": "NOT_REACHED",
+      "graph_eligible": false,
+      "expected_reason": "A critical field is missing or explicitly unresolved; do not invent it.",
+      "expected_evidence": {
+        "scope": "Sepolia 11155111; current admitted graph policy",
+        "snapshot": "snapshot-20261019T135654936964Z.json",
+        "relationship_path": null,
+        "required_paths": [],
+        "review_required": true
+      },
+      "constraints": [],
+      "expected_missing_fields": [
+        "token_in"
+      ],
+      "network_condition": "Omitted network uses configured Ethereum Sepolia; explicit conflicting network is unsupported.",
+      "sources": [
+        {
+          "url": "https://developers.uniswap.org/docs/protocols/v3/guides/swapping/single-hop-swapping",
+          "source_id": "official_documentation"
+        }
+      ],
+      "transformation_history": [
+        "Researcher-review proposal authored by the assistant from documented operations and current scope; no model predictions used."
+      ],
+      "review_status": "assistant_draft_pending_researcher_review",
+      "reviewer": null,
+      "reviewed_at": null,
+      "frozen": false,
+      "review_flags": [
+        "Human review must resolve clarification-versus-unsupported precedence for ambiguity.",
+        "Shares a graph input with development material; novel wording is not proof of independence."
+      ],
+      "origin": "documentation_based_synthetic",
+      "leakage_screen": {
+        "same_graph_input_as_development": true,
+        "text_matches": []
+      },
+      "id": "FINAL-DRAFT-142-A",
+      "formulation": "A",
+      "primary": true,
+      "query": "Swap 18.75 tokens for WETH through Uniswap V3 on Sepolia."
+    },
+    "raw_extraction": {
+      "action": "swap",
+      "protocol": "Uniswap V3",
+      "token_in": "tokens",
+      "token_out": "WETH",
+      "amount": "18.75",
+      "chain": "Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "normalized_resolution": {
+      "status": "APPROVED",
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "token_in": "TOKENS",
+        "token_out": "WETH",
+        "amount": "18.75",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null,
+        "unhandled_constraints": []
+      },
+      "message": "Intent is complete and ready for graph verification.",
+      "missing_fields": [],
+      "error_code": null,
+      "unhandled_constraints": []
+    },
+    "pipeline": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Uniswap V3 / swap / TOKENS -> WETH",
+      "protocol": "Uniswap V3",
+      "action": "swap",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "latency_ms": 87.75,
+      "knowledge": {
+        "fresh": true,
+        "complete": true
+      },
+      "intent": {
+        "action": "swap",
+        "protocol": "Uniswap V3",
+        "token_in": "TOKENS",
+        "token_out": "WETH",
+        "amount": "18.75",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "unhandled_constraints": []
+      },
+      "executable": false
+    },
+    "pipeline_improper_approval_flag": false,
+    "semantic_graph_containment": true,
+    "review_status": "assistant diagnostic; human adjudication required; no execution tested"
+  },
+  {
+    "id": "FINAL-DRAFT-160-A",
+    "query": "Borrow 18.75 tokens through Aave V3 on Sepolia.",
+    "category": "incomplete_or_ambiguous",
+    "draft_reference": {
+      "scenario_id": "FINAL-DRAFT-160",
+      "family_id": "FINAL-DRAFT-160",
+      "category": "incomplete_or_ambiguous",
+      "primary_prompt_id": "FINAL-DRAFT-160-A",
+      "reference_intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "token_in": null,
+        "token_out": null,
+        "amount": "18.75",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111
+      },
+      "expected_validation_outcome": "NEEDS_CLARIFICATION",
+      "expected_graph_outcome": "NOT_REACHED",
+      "graph_eligible": false,
+      "expected_reason": "A critical field is missing or explicitly unresolved; do not invent it.",
+      "expected_evidence": {
+        "scope": "Sepolia 11155111; current admitted graph policy",
+        "snapshot": "snapshot-20261019T135654936964Z.json",
+        "relationship_path": null,
+        "required_paths": [],
+        "review_required": true
+      },
+      "constraints": [],
+      "expected_missing_fields": [
+        "token_in"
+      ],
+      "network_condition": "Omitted network uses configured Ethereum Sepolia; explicit conflicting network is unsupported.",
+      "sources": [
+        {
+          "url": "https://aave.com/docs/aave-v3/smart-contracts/pool",
+          "source_id": "official_documentation"
+        }
+      ],
+      "transformation_history": [
+        "Researcher-review proposal authored by the assistant from documented operations and current scope; no model predictions used."
+      ],
+      "review_status": "assistant_draft_pending_researcher_review",
+      "reviewer": null,
+      "reviewed_at": null,
+      "frozen": false,
+      "review_flags": [
+        "Human review must resolve clarification-versus-unsupported precedence for ambiguity.",
+        "Shares a graph input with development material; novel wording is not proof of independence."
+      ],
+      "origin": "documentation_based_synthetic",
+      "leakage_screen": {
+        "same_graph_input_as_development": true,
+        "text_matches": []
+      },
+      "id": "FINAL-DRAFT-160-A",
+      "formulation": "A",
+      "primary": true,
+      "query": "Borrow 18.75 tokens through Aave V3 on Sepolia."
+    },
+    "raw_extraction": {
+      "action": "borrow",
+      "protocol": "Aave V3",
+      "token_in": "tokens",
+      "token_out": null,
+      "amount": "18.75",
+      "chain": "Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "normalized_resolution": {
+      "status": "APPROVED",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "token_in": "TOKENS",
+        "token_out": null,
+        "amount": "18.75",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null,
+        "unhandled_constraints": []
+      },
+      "message": "Intent is complete and ready for graph verification.",
+      "missing_fields": [],
+      "error_code": null,
+      "unhandled_constraints": []
+    },
+    "pipeline": {
+      "decision": "REJECTED",
+      "verified_address": null,
+      "reason": "No authoritative relationship path exists for Aave V3 / borrow / TOKENS",
+      "protocol": "Aave V3",
+      "action": "borrow",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "latency_ms": 144.58,
+      "knowledge": {
+        "fresh": true,
+        "complete": true
+      },
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "token_in": "TOKENS",
+        "amount": "18.75",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "unhandled_constraints": []
+      },
+      "executable": false
+    },
+    "pipeline_improper_approval_flag": false,
+    "semantic_graph_containment": true,
+    "review_status": "assistant diagnostic; human adjudication required; no execution tested"
+  },
+  {
+    "id": "FINAL-DRAFT-126-B",
+    "query": "Please flash borrow exactly 76.25 USDC; the protocol is Aave V3 and the network is Ethereum Sepolia.",
+    "category": "unknown_or_unsupported",
+    "draft_reference": {
+      "scenario_id": "FINAL-DRAFT-126",
+      "family_id": "FINAL-DRAFT-126",
+      "category": "unknown_or_unsupported",
+      "primary_prompt_id": "FINAL-DRAFT-126-A",
+      "reference_intent": {
+        "action": "flash borrow",
+        "protocol": "Aave V3",
+        "token_in": "USDC",
+        "amount": "76.25",
+        "chain": "Ethereum Sepolia"
+      },
+      "expected_validation_outcome": "UNSUPPORTED",
+      "expected_graph_outcome": "NOT_REACHED",
+      "graph_eligible": false,
+      "expected_reason": "Explicit out-of-scope protocol/network/action is unsupported; an unknown asset remains a complete interpretation but has no admitted reserve path.",
+      "expected_evidence": {
+        "scope": "Sepolia 11155111; current admitted graph policy",
+        "snapshot": "snapshot-20261019T135654936964Z.json",
+        "relationship_path": null,
+        "required_paths": [],
+        "review_required": true
+      },
+      "constraints": [],
+      "expected_missing_fields": [],
+      "network_condition": "Omitted network uses configured Ethereum Sepolia; explicit conflicting network is unsupported.",
+      "sources": [
+        {
+          "url": "https://aave.com/docs/aave-v3/smart-contracts/pool",
+          "source_id": "official_documentation"
+        }
+      ],
+      "transformation_history": [
+        "Researcher-review proposal authored by the assistant from documented operations and current scope; no model predictions used."
+      ],
+      "review_status": "assistant_draft_pending_researcher_review",
+      "reviewer": null,
+      "reviewed_at": null,
+      "frozen": false,
+      "review_flags": [
+        "Unsupported does not mean malformed. Unknown-asset references require snapshot review."
+      ],
+      "origin": "documentation_based_synthetic",
+      "leakage_screen": {
+        "same_graph_input_as_development": false,
+        "text_matches": []
+      },
+      "id": "FINAL-DRAFT-126-B",
+      "formulation": "B",
+      "primary": false,
+      "query": "Please flash borrow exactly 76.25 USDC; the protocol is Aave V3 and the network is Ethereum Sepolia."
+    },
+    "raw_extraction": {
+      "action": "borrow",
+      "protocol": "Aave V3",
+      "token_in": "USDC",
+      "token_out": null,
+      "amount": "76.25",
+      "chain": "Ethereum Sepolia",
+      "unsupported_action": null,
+      "slippage": null,
+      "unhandled_constraints": []
+    },
+    "normalized_resolution": {
+      "status": "APPROVED",
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "token_in": "USDC",
+        "token_out": null,
+        "amount": "76.25",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "slippage_bps": null,
+        "unhandled_constraints": []
+      },
+      "message": "Intent is complete and ready for graph verification.",
+      "missing_fields": [],
+      "error_code": null,
+      "unhandled_constraints": []
+    },
+    "pipeline": {
+      "decision": "APPROVED",
+      "verified_address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+      "verified_pool": null,
+      "verified_asset": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+      "verified_asset_decimals": 6,
+      "verified_function": "borrow(address,uint256,uint256,uint16,address)",
+      "verified_selector": "0xa415bcad",
+      "protocol": "Aave V3",
+      "action": "borrow",
+      "chain_id": 11155111,
+      "network": "Ethereum Sepolia",
+      "knowledge": {
+        "fresh": true,
+        "complete": true
+      },
+      "latency_ms": 448.07,
+      "intent": {
+        "action": "borrow",
+        "protocol": "Aave V3",
+        "token_in": "USDC",
+        "amount": "76.25",
+        "chain": "Ethereum Sepolia",
+        "chain_id": 11155111,
+        "unhandled_constraints": []
+      },
+      "executable": true,
+      "verification_expires_in": 600
+    },
+    "pipeline_improper_approval_flag": true,
+    "semantic_graph_containment": false,
+    "review_status": "assistant diagnostic; human adjudication required; no execution tested"
+  }
+]
