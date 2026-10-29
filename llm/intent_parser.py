@@ -62,6 +62,10 @@ Rules:
   has an unhandled multiple_operations condition. Never drop one of these clauses.
 - Preserve unsupported action, protocol, asset, and network names so the
   application can classify them; never replace them with a supported value.
+- Extract the action independently of whether the protocol supports it.
+  "Borrow 5 USDT from Uniswap V3" has action="borrow", protocol="Uniswap V3",
+  and unsupported_action=null. The application checks action/protocol pairings;
+  do not erase the action or replace the protocol to make a pairing supported.
 - Staking, transferring, bridging, and standalone token approval are not
   supply or swap. Put their verb in unsupported_action and do not translate
   them into a supported action.

@@ -4,6 +4,7 @@ from decimal import Decimal
 from core.models import ApprovedOperation, Decision, IntentCandidate, IntentResolution, PromptRequest
 from core.state import ConversationStore, VerificationCapabilityStore
 from services import pipeline
+from llm import intent_parser
 
 
 def _partial():
@@ -39,6 +40,31 @@ def test_multi_turn_clarification_uses_explicit_candidate(monkeypatch):
     assert first["decision"] == "NEEDS_CLARIFICATION"
     assert second["intent"]["amount"] == "0.1"
     assert second["intent"]["action"] == "swap"
+
+
+def test_borrow_from_uniswap_is_unsupported_without_graph_or_capability(monkeypatch):
+    monkeypatch.setattr(intent_parser, "_call_model", lambda _: {
+        "action": None, "unsupported_action": "borrow", "protocol": "Uniswap V3",
+        "token_in": "USDT", "amount": "5",
+    })
+    store = ConversationStore()
+    monkeypatch.setattr(pipeline, "conversation_store", store)
+
+    def forbidden(*_args):
+        raise AssertionError("An unsupported pairing must not reach graph verification or approval")
+
+    monkeypatch.setattr(pipeline, "verify_intent", forbidden)
+    monkeypatch.setattr(pipeline.capability_store, "issue", forbidden)
+    result = asyncio.run(pipeline.process_prompt(PromptRequest(
+        prompt="Borrow 5 USDT from Uniswap V3.", conversation_id="borrow-uniswap",
+    )))
+    assert result["decision"] == "UNSUPPORTED"
+    assert result["error_code"] == "unsupported_action_protocol_pair"
+    assert result["intent"]["action"] == "borrow"
+    assert result["intent"]["protocol"] == "Uniswap V3"
+    assert result["executable"] is False
+    assert "verification_id" not in result
+    assert store.get("borrow-uniswap") is None
 
 
 def test_capability_is_one_time():

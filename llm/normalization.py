@@ -128,7 +128,10 @@ def normalize_candidate(raw: dict[str, Any]) -> IntentResolution:
             message=_unsupported_action_message(unsupported_action),
             error_code="unsupported_action",
         )
-    action_raw = _field(raw, "action", "operation")
+    # The model may put a recognized verb in unsupported_action because its
+    # protocol pairing is unsupported. Retain the verb so validate_candidate
+    # can explain that mismatch instead of asking for an already stated action.
+    action_raw = _field(raw, "action", "operation") or unsupported_action
     protocol_raw = _field(raw, "protocol")
     token_in_raw = _field(raw, "token_in", "input_asset", "inputAsset", "asset")
     token_out_raw = _field(raw, "token_out", "output_asset", "outputAsset")
