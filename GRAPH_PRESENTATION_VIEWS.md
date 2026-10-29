@@ -50,7 +50,9 @@ python -m db.validate_graph_v2
 
 The first command rebuilds both selections from existing data and checks both
 display queries. It does not fetch official sources or submit transactions.
-`python -m db.graph_builder` also refreshes these views after synchronization.
+The normal synchronization entry points rebuild the separate demonstration
+and fixture graphs; run `db.presentation_views` explicitly when these two
+presentation selections need rebuilding.
 
 In Neo4j Browser, list the view membership counts:
 
