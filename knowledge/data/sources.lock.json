@@ -1,0 +1,382 @@
+{
+  "format_version": 1,
+  "created_at": "2026-10-29T18:27:08.797245+00:00",
+  "sources": [
+    {
+      "key": "aave/abi/IACLManager",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IACLManager.ts",
+      "kind": "typescript_abi",
+      "sha256": "62f74bbc9acee3b07d69ea9c8b2059fb01e399a22d574184dbb1edfcc36e102f",
+      "bytes": 6709,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IAToken",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IAToken.ts",
+      "kind": "typescript_abi",
+      "sha256": "3595d864bbe32d632bb21650292c73e8983ab867d3858746295e46e1743c87cd",
+      "bytes": 13321,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IAaveOracle",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IAaveOracle.ts",
+      "kind": "typescript_abi",
+      "sha256": "c314ad0df20c1e5661a8731ba2fd6ea9d5103384936d9089ae19dcec380064a1",
+      "bytes": 3527,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IDefaultInterestRateStrategy",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IDefaultInterestRateStrategy.ts",
+      "kind": "typescript_abi",
+      "sha256": "55221b4e3c23580a211e7031c6fe77e1f1bd825790d152c7acaa8db6d7f5bcc2",
+      "bytes": 3224,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IPool",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IPool.ts",
+      "kind": "typescript_abi",
+      "sha256": "23e01b8443ab5ee8273092af2793ccb739624b14465dd6919a095664940d98a4",
+      "bytes": 38651,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IPoolAddressesProvider",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IPoolAddressesProvider.ts",
+      "kind": "typescript_abi",
+      "sha256": "cc16c1fcdc71756a56fbb0fd585f3dd4755d665fc1ca4e9e5b7b53100d750a1b",
+      "bytes": 9210,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IPoolConfigurator",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IPoolConfigurator.ts",
+      "kind": "typescript_abi",
+      "sha256": "492258a7d8672fa7c45af854fa9fc8388a9214967dfd1148f21727f307e1acf7",
+      "bytes": 25856,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IRewardsController",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IRewardsController.ts",
+      "kind": "typescript_abi",
+      "sha256": "bbd85f1a6e24061903140d4c327e5f837b17396fe2f27eb202c5131349e15bcf",
+      "bytes": 16812,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IStataTokenFactory",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IStataTokenFactory.ts",
+      "kind": "typescript_abi",
+      "sha256": "af6834bd3acab019d2d73925c7f490e896e1414b956cac0900aace1a287480c2",
+      "bytes": 2466,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IStataTokenV2",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IStataTokenV2.ts",
+      "kind": "typescript_abi",
+      "sha256": "2c69f9a8328557ab781e898b532954c4cc4d9d43beb73e40aa16fb56b61ae11c",
+      "bytes": 20759,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IUiPoolDataProvider",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IUiPoolDataProvider.ts",
+      "kind": "typescript_abi",
+      "sha256": "5183055966f0885cfeff284f66427e58377939f562e4b012827e8e24f5b95392",
+      "bytes": 11823,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IUmbrella",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IUmbrella.ts",
+      "kind": "typescript_abi",
+      "sha256": "87db40815cf2efeb6803698203156544ae6ecae2fc82c64910eaaf46e89ae14d",
+      "bytes": 27407,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IUmbrellaRewardsController",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IUmbrellaRewardsController.ts",
+      "kind": "typescript_abi",
+      "sha256": "61d36df821fb09686fb6b70aec51e3fc4875371660fd5748a48fcc23c90404a8",
+      "bytes": 36129,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IUmbrellaStakeToken",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IUmbrellaStakeToken.ts",
+      "kind": "typescript_abi",
+      "sha256": "efcb2439d5753413fc693ccac38eb28163961495aa5a4224196ad51234dfc5e6",
+      "bytes": 32902,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/abi/IWrappedTokenGatewayV3",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/ts/abis/IWrappedTokenGatewayV3.ts",
+      "kind": "typescript_abi",
+      "sha256": "1736e11249c9d8d99510936ce612d9e9efda66f2272c89650b6c040698886edf",
+      "bytes": 3089,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/book/AaveV3Ethereum",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/AaveV3Ethereum.sol",
+      "kind": "address_book",
+      "sha256": "afe8adbbf8fe7d709ae1d2168b8d97ccb8110fdedb572fc2120ecae10ae7588b",
+      "bytes": 80417,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/book/AaveV3Sepolia",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/AaveV3Sepolia.sol",
+      "kind": "address_book",
+      "sha256": "fe45780c0802fcb3705cec1321dffa466bc5069afc61714b96f4e710df9a594d",
+      "bytes": 14061,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/book/UmbrellaEthereum",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/src/UmbrellaEthereum.sol",
+      "kind": "address_book",
+      "sha256": "2a224d51ca801477e45a6ee7ef22e23b6bcc206c030eeb0594c4df30c5dd12bc",
+      "bytes": 3332,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/inventory",
+      "url": "https://api.github.com/repos/aave-dao/aave-address-book/contents/src?ref=41b77cb9c05d49487b4a194f797eb663ba178748",
+      "kind": "registry_inventory",
+      "sha256": "2a61c253eb8935aa97e55d7692d8fba40e57496da5f0c67a4eaf695f4e22f0c1",
+      "bytes": 155943,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748"
+    },
+    {
+      "key": "aave/license",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/LICENSE",
+      "kind": "license",
+      "sha256": "719dd01a9b4549c3f489ff04420d4e8f010d91a368f57894505fe691e19b6c48",
+      "bytes": 1048,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "aave/package",
+      "url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/41b77cb9c05d49487b4a194f797eb663ba178748/package.json",
+      "kind": "package_metadata",
+      "sha256": "9b8a59b3f875bf33f4a56257b420b844068111820c9368fe089c23f0ec312957",
+      "bytes": 3557,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "41b77cb9c05d49487b4a194f797eb663ba178748",
+      "repository": "https://github.com/aave-dao/aave-address-book"
+    },
+    {
+      "key": "npm/@uniswap/swap-router-contracts/license",
+      "url": "https://unpkg.com/@uniswap/swap-router-contracts@1.3.1/LICENSE",
+      "kind": "license",
+      "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+      "bytes": 18091,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.3.1"
+    },
+    {
+      "key": "npm/@uniswap/swap-router-contracts/metadata",
+      "url": "https://registry.npmjs.org/@uniswap/swap-router-contracts/1.3.1",
+      "kind": "package_metadata",
+      "sha256": "cef6d8b872ea5f7c79289c59cd82b1ea03f6dc88a2049d8ab8f55b1e7da26012",
+      "bytes": 2805,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.3.1"
+    },
+    {
+      "key": "npm/@uniswap/v3-core/license",
+      "url": "https://unpkg.com/@uniswap/v3-core@1.0.1/LICENSE",
+      "kind": "license",
+      "sha256": "85c5cbc5be388d8bb38d8618de93c96e247ae5af20eb79dbafc1fb5b13b57b54",
+      "bytes": 4395,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.0.1"
+    },
+    {
+      "key": "npm/@uniswap/v3-core/metadata",
+      "url": "https://registry.npmjs.org/@uniswap/v3-core/1.0.1",
+      "kind": "package_metadata",
+      "sha256": "9f4766ca6bd0559dc20b82b29de9e5a62b8b47e71b1e933820b444bdb4d7c284",
+      "bytes": 3399,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.0.1"
+    },
+    {
+      "key": "npm/@uniswap/v3-periphery/license",
+      "url": "https://unpkg.com/@uniswap/v3-periphery@1.4.4/LICENSE",
+      "kind": "license",
+      "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+      "bytes": 18091,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.4.4"
+    },
+    {
+      "key": "npm/@uniswap/v3-periphery/metadata",
+      "url": "https://registry.npmjs.org/@uniswap/v3-periphery/1.4.4",
+      "kind": "package_metadata",
+      "sha256": "06f2c6219c2fafa20ff5b7e209a08d7e91171d5d02e85ef9eb2cbf1277909424",
+      "bytes": 2607,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.4.4"
+    },
+    {
+      "key": "uniswap/abi/INonfungiblePositionManager",
+      "url": "https://unpkg.com/@uniswap/v3-periphery@1.4.4/artifacts/contracts/interfaces/INonfungiblePositionManager.sol/INonfungiblePositionManager.json",
+      "kind": "json_artifact",
+      "sha256": "402bbc20d4f9538fdc1ad927cacc9f02db695caa1e96bad62f6f523475af94db",
+      "bytes": 22092,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.4.4",
+      "package": "@uniswap/v3-periphery",
+      "package_integrity": "sha512-S4+m+wh8HbWSO3DKk4LwUCPZJTpCugIsHrWR86m/OrUyvSqGDTXKFfc2sMuGXCZrD1ZqO3rhQsKgdWg3Hbb2Kw==",
+      "package_member": "artifacts/contracts/interfaces/INonfungiblePositionManager.sol/INonfungiblePositionManager.json",
+      "package_tarball_sha256": "7177174c4b8c66bd1d61e7c4127ee15e95f851edfb1a65ee8225b6ab4f818bd7"
+    },
+    {
+      "key": "uniswap/abi/IQuoterV2",
+      "url": "https://unpkg.com/@uniswap/v3-periphery@1.4.4/artifacts/contracts/interfaces/IQuoterV2.sol/IQuoterV2.json",
+      "kind": "json_artifact",
+      "sha256": "a22eed2010c75e5a3e98ef8c3eec2bdb00377a716ca7be86e8962b51a0fe3a13",
+      "bytes": 5081,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.4.4",
+      "package": "@uniswap/v3-periphery",
+      "package_integrity": "sha512-S4+m+wh8HbWSO3DKk4LwUCPZJTpCugIsHrWR86m/OrUyvSqGDTXKFfc2sMuGXCZrD1ZqO3rhQsKgdWg3Hbb2Kw==",
+      "package_member": "artifacts/contracts/interfaces/IQuoterV2.sol/IQuoterV2.json",
+      "package_tarball_sha256": "7177174c4b8c66bd1d61e7c4127ee15e95f851edfb1a65ee8225b6ab4f818bd7"
+    },
+    {
+      "key": "uniswap/abi/ISwapRouter",
+      "url": "https://unpkg.com/@uniswap/v3-periphery@1.4.4/artifacts/contracts/interfaces/ISwapRouter.sol/ISwapRouter.json",
+      "kind": "json_artifact",
+      "sha256": "29abb003382aa29e8130fefff87dcf1f2ed1eba55c6060d63369812da948fa77",
+      "bytes": 6136,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.4.4",
+      "package": "@uniswap/v3-periphery",
+      "package_integrity": "sha512-S4+m+wh8HbWSO3DKk4LwUCPZJTpCugIsHrWR86m/OrUyvSqGDTXKFfc2sMuGXCZrD1ZqO3rhQsKgdWg3Hbb2Kw==",
+      "package_member": "artifacts/contracts/interfaces/ISwapRouter.sol/ISwapRouter.json",
+      "package_tarball_sha256": "7177174c4b8c66bd1d61e7c4127ee15e95f851edfb1a65ee8225b6ab4f818bd7"
+    },
+    {
+      "key": "uniswap/abi/ITickLens",
+      "url": "https://unpkg.com/@uniswap/v3-periphery@1.4.4/artifacts/contracts/interfaces/ITickLens.sol/ITickLens.json",
+      "kind": "json_artifact",
+      "sha256": "de44d4ddf5c79e1f31fde8453b687b999e811b5b3cecd75c0cb9f8422408cf8a",
+      "bytes": 1230,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.4.4",
+      "package": "@uniswap/v3-periphery",
+      "package_integrity": "sha512-S4+m+wh8HbWSO3DKk4LwUCPZJTpCugIsHrWR86m/OrUyvSqGDTXKFfc2sMuGXCZrD1ZqO3rhQsKgdWg3Hbb2Kw==",
+      "package_member": "artifacts/contracts/interfaces/ITickLens.sol/ITickLens.json",
+      "package_tarball_sha256": "7177174c4b8c66bd1d61e7c4127ee15e95f851edfb1a65ee8225b6ab4f818bd7"
+    },
+    {
+      "key": "uniswap/abi/IUniswapV3Factory",
+      "url": "https://unpkg.com/@uniswap/v3-core@1.0.1/artifacts/contracts/interfaces/IUniswapV3Factory.sol/IUniswapV3Factory.json",
+      "kind": "json_artifact",
+      "sha256": "daf147e8a0023b9c4ab002689b15460fdcd024b1d18d0e92376726c6131f0853",
+      "bytes": 4350,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.0.1",
+      "package": "@uniswap/v3-core",
+      "package_integrity": "sha512-7pVk4hEm00j9tc71Y9+ssYpO6ytkeI0y7WE9P6UcmNzhxPePwyAxImuhVsTqWK9YFvzgtvzJHi64pBl4jUzKMQ==",
+      "package_member": "artifacts/contracts/interfaces/IUniswapV3Factory.sol/IUniswapV3Factory.json",
+      "package_tarball_sha256": "141b001e2a376fff867cb24e0713b2834095cb1250c13aae263d9a646446d329"
+    },
+    {
+      "key": "uniswap/abi/IUniswapV3Pool",
+      "url": "https://unpkg.com/@uniswap/v3-core@1.0.1/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json",
+      "kind": "json_artifact",
+      "sha256": "1cb22d8cc5f70b1cef8a4f59bdd49541f01279bfba116878244ed913fe4cba33",
+      "bytes": 21755,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.0.1",
+      "package": "@uniswap/v3-core",
+      "package_integrity": "sha512-7pVk4hEm00j9tc71Y9+ssYpO6ytkeI0y7WE9P6UcmNzhxPePwyAxImuhVsTqWK9YFvzgtvzJHi64pBl4jUzKMQ==",
+      "package_member": "artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json",
+      "package_tarball_sha256": "141b001e2a376fff867cb24e0713b2834095cb1250c13aae263d9a646446d329"
+    },
+    {
+      "key": "uniswap/abi/IV3Migrator",
+      "url": "https://unpkg.com/@uniswap/v3-periphery@1.4.4/artifacts/contracts/interfaces/IV3Migrator.sol/IV3Migrator.json",
+      "kind": "json_artifact",
+      "sha256": "0b215ca8b105b7b3b752ecff125042bfc36036600c4857556432804c893e21b5",
+      "bytes": 6752,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.4.4",
+      "package": "@uniswap/v3-periphery",
+      "package_integrity": "sha512-S4+m+wh8HbWSO3DKk4LwUCPZJTpCugIsHrWR86m/OrUyvSqGDTXKFfc2sMuGXCZrD1ZqO3rhQsKgdWg3Hbb2Kw==",
+      "package_member": "artifacts/contracts/interfaces/IV3Migrator.sol/IV3Migrator.json",
+      "package_tarball_sha256": "7177174c4b8c66bd1d61e7c4127ee15e95f851edfb1a65ee8225b6ab4f818bd7"
+    },
+    {
+      "key": "uniswap/abi/SwapRouter02",
+      "url": "https://unpkg.com/@uniswap/swap-router-contracts@1.3.1/artifacts/contracts/SwapRouter02.sol/SwapRouter02.json",
+      "kind": "json_artifact",
+      "sha256": "210a7bf29f26de9f45d35dac1214943eca41c3a002007dd6a0e1aa870bf2d2d1",
+      "bytes": 122766,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "1.3.1",
+      "package": "@uniswap/swap-router-contracts",
+      "package_integrity": "sha512-mh/YNbwKb7Mut96VuEtL+Z5bRe0xVIbjjiryn+iMMrK2sFKhR4duk/86mEz0UO5gSx4pQIw9G5276P5heY/7Rg==",
+      "package_member": "artifacts/contracts/SwapRouter02.sol/SwapRouter02.json",
+      "package_tarball_sha256": "efad19ccb35c90338981f06ef7acc6daa5cce7a8139611167270eb7b2a1e26df"
+    },
+    {
+      "key": "uniswap/deployments",
+      "url": "https://developers.uniswap.org/deployments.json",
+      "kind": "deployment_registry",
+      "sha256": "f3f39114477f9d64bc2a329a74deff190b6b40b411eec09fe47d32af17a908ab",
+      "bytes": 724587,
+      "retrieved_at": "2026-10-29T18:27:08.797245+00:00",
+      "revision": "cd2e8a869498e9cd6e821ad518d91f6c7a3d8d72"
+    }
+  ]
+}

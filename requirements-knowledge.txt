@@ -1,0 +1,4 @@
+# Optional dependencies for the expanded knowledge database and its CLI.
+-r requirements.txt
+json5>=0.12,<1
+eth-hash[pycryptodome]>=0.7,<1
