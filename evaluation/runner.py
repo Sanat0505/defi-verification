@@ -24,7 +24,7 @@ from services.pipeline import process_prompt
 
 
 DEFAULT_DATASET = Path(__file__).parent / "datasets" / "cases.json"
-DEFAULT_REPORTS = Path(__file__).parent / "reports"
+DEFAULT_REPORTS = ROOT / '.cache/evaluation-runs/pipeline'
 
 
 async def run_case(case: dict, run_number: int) -> dict:
@@ -104,6 +104,11 @@ def _summary_markdown(metadata: dict, metrics: dict) -> str:
 
 async def run(args) -> int:
     dataset = json.loads(Path(args.dataset).read_text(encoding="utf-8"))
+    if dataset.get("requires_sourced_runner"):
+        raise ValueError(
+            "This dataset separates interpretation references from conditional graph outcomes. "
+            "Use python -m evaluation.sourced_runner; do not score it as an end-to-end graph benchmark."
+        )
     cases = dataset["cases"]
     if args.case:
         selected = set(args.case)
