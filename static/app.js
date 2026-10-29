@@ -1,13 +1,10 @@
-/* State */
 let walletAddress = null;
 let lastVerified = null;
 let verificationId = null;
 let conversationId = localStorage.getItem("conversationId") || null;
 let requestInFlight = false;
 let stepTimers = [];
-let currentProcCard = null;
 
-/* Initialization */
 document.addEventListener("DOMContentLoaded", function () {
   initEventListeners();
   restoreWalletState();
@@ -37,11 +34,14 @@ function restoreWalletState() {
   const savedAddress = localStorage.getItem("walletAddress");
   if (savedAddress && window.ethereum) {
     walletAddress = savedAddress;
-    const short = walletAddress.slice(0, 6) + "…" + walletAddress.slice(-4);
-    const btn = document.getElementById("wallet-btn");
-    btn.classList.add("connected");
-    btn.innerHTML = `<div class="wallet-dot"></div><span>${esc(short)}</span>`;
+    renderConnectedWallet();
   }
+}
+
+function renderConnectedWallet(btn = document.getElementById("wallet-btn")) {
+  const short = walletAddress.slice(0, 6) + "…" + walletAddress.slice(-4);
+  btn.classList.add("connected");
+  btn.innerHTML = `<div class="wallet-dot"></div><span>${esc(short)}</span>`;
 }
 
 function restoreChatHistory() {
@@ -92,7 +92,6 @@ function saveChatMessage(type, content) {
       type,
       text: type === "user" ? content : (holder.textContent || "").trim().slice(0, 2000),
     });
-    // Keep only last 50 messages
     if (messages.length > 50) {
       messages.shift();
     }
@@ -120,7 +119,6 @@ function updateExampleCardsState() {
   });
 }
 
-/* Wallet */
 async function connectWallet() {
   if (!window.ethereum) {
     showErrToast("🦊 MetaMask not found — please install it from metamask.io");
@@ -154,9 +152,7 @@ async function connectWallet() {
     const signer = provider.getSigner();
     walletAddress = await signer.getAddress();
     localStorage.setItem("walletAddress", walletAddress);
-    const short = walletAddress.slice(0, 6) + "…" + walletAddress.slice(-4);
-    btn.classList.add("connected");
-    btn.innerHTML = `<div class="wallet-dot"></div><span>${esc(short)}</span>`;
+    renderConnectedWallet(btn);
     updateExampleCardsState();
   } catch (e) {
     label.textContent = "Connect Wallet";
@@ -164,7 +160,6 @@ async function connectWallet() {
   }
 }
 
-/* Input */
 function handleInputKey(e) {
   if (e.key === "Enter" && !e.shiftKey) {
     e.preventDefault();
@@ -190,7 +185,6 @@ function quick(text) {
   setTimeout(() => send(), 100);
 }
 
-/* Chat display */
 function showChat() {
   const ws = document.getElementById("welcome-screen");
   const cc = document.getElementById("chat-container");
@@ -260,7 +254,6 @@ function showErrToast(msg) {
     </svg><span>${esc(msg)}</span></div>`);
 }
 
-/* Processing */
 const STEPS = [
   {
     label: "Understanding intent",
@@ -274,14 +267,12 @@ const STEPS = [
     label: "Preparing smart wallet transaction",
     sub: "Building ERC-4337 user operation",
   },
-  { label: "Executing transaction", sub: "Submitting to the bundler network" },
 ];
 
 const STEP_ICONS = [
   /* sparkle */ `<svg width="13" height="13" viewBox="0 0 24 24" fill="FILL"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-5.26L4 11l5.91-1.74L12 2z"/></svg>`,
   /* graph   */ `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="FILL" stroke-width="2.5"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 11.5l10-5M7 12.5l10 5"/></svg>`,
   /* wallet  */ `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="FILL" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 13h.01"/><path d="M2 10h20"/></svg>`,
-  /* rocket  */ `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="FILL" stroke-width="2.5"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>`,
 ];
 
 const CHECK_SVG = `<svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00C48C" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>`;
@@ -335,12 +326,11 @@ function startStepAnimation(upTo) {
   activateStep(0);
 
   for (let i = 1; i < upTo; i++) {
-    const idx = i;
     stepTimers.push(
       setTimeout(() => {
-        completeStep(idx - 1);
-        activateStep(idx);
-      }, idx * 900),
+        completeStep(i - 1);
+        activateStep(i);
+      }, i * 900),
     );
   }
 
@@ -368,7 +358,6 @@ function clearStepTimers() {
   stepTimers = [];
 }
 
-/* Utilities */
 function setSendDisabled(val) {
   const btn = document.getElementById("send-btn");
   const inp = document.getElementById("prompt-input");
@@ -376,7 +365,6 @@ function setSendDisabled(val) {
   if (inp) inp.disabled = val;
 }
 
-/* Verification request */
 async function send() {
   const inputEl = document.getElementById("prompt-input");
   if (!inputEl) {
@@ -441,7 +429,6 @@ async function send() {
   }
 }
 
-/* Verification result */
 function renderVerification(data) {
   if (data.decision === "APPROVED") {
     const intent = data.intent || {};
@@ -458,6 +445,11 @@ function renderVerification(data) {
     }
 
     const amount = esc(String(intent.amount || "—"));
+    const executionParameters = data.execution_parameters || {};
+    const slippageBps = executionParameters.slippage_bps;
+    const slippageDetail = Number.isInteger(slippageBps)
+      ? `<div class="detail-item"><label>Maximum slippage</label><span>${esc((slippageBps / 100).toFixed(2))}% (${executionParameters.slippage_source === "user" ? "your limit" : "configured default"})</span></div>`
+      : "";
 
     addAIMsg(`
       <div class="verif-card">
@@ -478,6 +470,7 @@ function renderVerification(data) {
             <div class="detail-item"><label>Action</label><span>${action}</span></div>
             <div class="detail-item"><label>Token</label><span>${token}</span></div>
             <div class="detail-item"><label>Amount</label><span>${amount}</span></div>
+            ${slippageDetail}
           </div>
           <div class="graph-badge">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#065F46" stroke-width="2">
@@ -486,7 +479,7 @@ function renderVerification(data) {
             </svg>
             Verified relationship found in the protocol knowledge graph
           </div>
-          ${data.executable && data.verification_id ? `<button class="exec-cta" onclick="executeTransaction(this)">
+          ${data.executable && data.verification_id ? `<button class="exec-cta" onclick="executeTransaction()">
             Execute Transaction
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
               <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
@@ -521,8 +514,7 @@ function renderVerification(data) {
   }
 }
 
-/* Transaction execution */
-async function executeTransaction(btn) {
+async function executeTransaction() {
   if (!verificationId) {
     showErrToast("Verify the operation again before execution.");
     return;
@@ -566,7 +558,6 @@ async function executeTransaction(btn) {
   }
 }
 
-/* Execution result */
 function renderExecution(data) {
   if (data.decision === "EXECUTED" && data.execution) {
     const ex = data.execution;
