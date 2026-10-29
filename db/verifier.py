@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from core.config import settings
 from core.models import Decision
 from db.connection import get_session
+from db.verification_trace import diagnose_path, failure, knowledge_context, trace
 
 
 logger = logging.getLogger(__name__)
@@ -100,6 +101,13 @@ def _network_name(chain_id: int) -> str:
 
 
 def _result(decision: Decision, reason: str, protocol, action, chain_id, start, **extra):
+    explanation = extra.pop("trace", None)
+    if explanation is None:
+        explanation = trace(
+            extra.pop("rule_id"),
+            extra.pop("knowledge", knowledge_context(max_age_hours=settings.knowledge_max_age_hours)),
+            extra.pop("failures", ()),
+        )
     return {
         "decision": decision.value,
         "verified_address": None,
@@ -108,6 +116,9 @@ def _result(decision: Decision, reason: str, protocol, action, chain_id, start, 
         "action": action,
         "chain_id": chain_id,
         "network": _network_name(chain_id),
+        "rule_id": explanation["rule_id"],
+        "trace": explanation,
+        "knowledge": explanation["knowledge"],
         "latency_ms": _elapsed(start),
         **extra,
     }
@@ -147,17 +158,31 @@ def verify_intent(protocol, token_in, token_out=None, action="swap", chain_id=11
     token_out = str(token_out or "").strip().upper() or None
 
     if chain_id != settings.supported_chain_id:
-        return _result(Decision.UNSUPPORTED, f"Unsupported chain ID: {chain_id}", protocol, action, chain_id, start)
+        return _result(Decision.UNSUPPORTED, f"Unsupported chain ID: {chain_id}", protocol, action, chain_id, start,
+                       rule_id="SCOPE.CHAIN", failures=[failure("SCOPE.CHAIN", {"field":"chain_id"},
+                           {"value":settings.supported_chain_id}, {"value":chain_id}, "configured_scope")])
     if not normalized_protocol:
-        return _result(Decision.UNSUPPORTED, f"Unsupported protocol: {protocol}", protocol, action, chain_id, start)
+        return _result(Decision.UNSUPPORTED, f"Unsupported protocol: {protocol}", protocol, action, chain_id, start,
+                       rule_id="SCOPE.PROTOCOL", failures=[failure("SCOPE.PROTOCOL", {"field":"protocol"},
+                           {"allowed":list(SUPPORTED_PROTOCOLS.values())}, {"value":protocol}, "configured_scope")])
     if action == "swap" and normalized_protocol != "Uniswap V3":
-        return _result(Decision.UNSUPPORTED, "Swap verification is supported only for Uniswap V3.", normalized_protocol, action, chain_id, start)
+        return _result(Decision.UNSUPPORTED, "Swap verification is supported only for Uniswap V3.", normalized_protocol, action, chain_id, start,
+                       rule_id="SCOPE.ACTION_PROTOCOL", failures=[failure("SCOPE.ACTION_PROTOCOL", {"action":action},
+                           {"protocol":"Uniswap V3"}, {"protocol":normalized_protocol}, "configured_scope")])
     if action in LENDING_ACTIONS and normalized_protocol != "Aave V3":
-        return _result(Decision.UNSUPPORTED, f"{action.title()} verification is supported only for Aave V3.", normalized_protocol, action, chain_id, start)
+        return _result(Decision.UNSUPPORTED, f"{action.title()} verification is supported only for Aave V3.", normalized_protocol, action, chain_id, start,
+                       rule_id="SCOPE.ACTION_PROTOCOL", failures=[failure("SCOPE.ACTION_PROTOCOL", {"action":action},
+                           {"protocol":"Aave V3"}, {"protocol":normalized_protocol}, "configured_scope")])
     if action not in {"swap", *LENDING_ACTIONS}:
-        return _result(Decision.UNSUPPORTED, f"Unsupported action: {action}", normalized_protocol, action, chain_id, start)
+        return _result(Decision.UNSUPPORTED, f"Unsupported action: {action}", normalized_protocol, action, chain_id, start,
+                       rule_id="SCOPE.ACTION", failures=[failure("SCOPE.ACTION", {"field":"action"},
+                           {"allowed":["swap"] if normalized_protocol == "Uniswap V3" else sorted(LENDING_ACTIONS)},
+                           {"value":action}, "configured_scope")])
     if not token_in or (action == "swap" and not token_out):
-        return _result(Decision.REJECTED, "The structured intent is missing required asset fields.", normalized_protocol, action, chain_id, start)
+        return _result(Decision.REJECTED, "The structured intent is missing required asset fields.", normalized_protocol, action, chain_id, start,
+                       rule_id="INPUT.REQUIRED_ASSET", failures=[failure("INPUT.REQUIRED_ASSET", {"field":field},
+                           {"nonempty":True}, {"value":value}, "structured_graph_input")
+                           for field,value in [("token_in",token_in)] + ([("token_out",token_out)] if action == "swap" else []) if not value])
 
     try:
         with get_session() as session:
@@ -169,14 +194,27 @@ def verify_intent(protocol, token_in, token_out=None, action="swap", chain_id=11
                     Decision.INSUFFICIENT_EVIDENCE,
                     "The supported deployment has not been synchronized into local knowledge.",
                     normalized_protocol, action, chain_id, start,
+                    rule_id="KNOWLEDGE.DEPLOYMENT_UNAVAILABLE",
+                    failures=[failure("KNOWLEDGE.DEPLOYMENT_UNAVAILABLE",
+                        {"protocol":normalized_protocol,"chain_id":chain_id},
+                        {"deployment_context_present":True}, {"deployment_context_present":False})],
                 )
             state = dict(state_record)
             fresh, freshness_reason = _freshness(state)
+            complete = state.get("pool_discovery_complete") is True if action == "swap" else state.get("asset_coverage") == "official-address-book-complete"
+            knowledge = knowledge_context(state, fresh=fresh, complete=complete,
+                                          max_age_hours=settings.knowledge_max_age_hours)
             if not fresh:
+                timestamp = _parse_timestamp(state.get("last_successful_sync_at") or state.get("last_synced_at"))
+                freshness_rule = "KNOWLEDGE.STALE" if timestamp else "KNOWLEDGE.TIMESTAMP_UNAVAILABLE"
                 return _result(
                     Decision.INSUFFICIENT_EVIDENCE, freshness_reason,
                     normalized_protocol, action, chain_id, start,
-                    knowledge={"source_url": state.get("source_url"), "fresh": False},
+                    knowledge=knowledge, rule_id=freshness_rule,
+                    failures=[failure(freshness_rule, {"deployment_key":state.get("key")},
+                        {"valid_sync_timestamp":True,"max_age_hours":settings.knowledge_max_age_hours},
+                        {"timestamp":state.get("last_successful_sync_at") or state.get("last_synced_at"),
+                         "age_hours":(datetime.now(timezone.utc)-timestamp).total_seconds()/3600 if timestamp else None})],
                 )
 
             if action == "swap":
@@ -252,9 +290,17 @@ def verify_intent(protocol, token_in, token_out=None, action="swap", chain_id=11
                     reason += f" -> {token_out}"
             else:
                 reason = "The requested relationship was not found, but synchronized knowledge is incomplete."
+            try:
+                explanation = diagnose_path(session, CYPHER_SWAP if action == "swap" else CYPHER_LENDING,
+                    {"protocol":normalized_protocol,"action":action,"token_in":token_in,
+                     "token_out":token_out,"chain_id":chain_id}, knowledge)
+            except Exception as exc:
+                explanation = trace("GRAPH.PATH.NOT_FOUND_COMPLETE" if complete else "GRAPH.PATH.NOT_FOUND_INCOMPLETE",
+                    knowledge, status="unavailable", error_code=type(exc).__name__, limitations=[
+                        "Diagnostics unavailable; the original decision is retained without a specific failure assertion."])
             return _result(
                 decision, reason, normalized_protocol, action, chain_id, start,
-                knowledge={"fresh": True, "complete": complete},
+                trace=explanation,
             )
     except Exception:
         logger.exception("Graph verification failed")
@@ -262,6 +308,10 @@ def verify_intent(protocol, token_in, token_out=None, action="swap", chain_id=11
             Decision.INSUFFICIENT_EVIDENCE,
             "Authoritative graph knowledge is temporarily unavailable.",
             normalized_protocol, action, chain_id, start,
+            trace=trace("KNOWLEDGE.UNAVAILABLE", knowledge_context(max_age_hours=settings.knowledge_max_age_hours),
+                [failure("KNOWLEDGE.UNAVAILABLE", {"service":"graph_verification"},
+                         {"knowledge_read_success":True}, {"knowledge_read_success":False,"specific_cause":None},
+                         "runtime_observation")], status="unavailable"),
         )
 
 

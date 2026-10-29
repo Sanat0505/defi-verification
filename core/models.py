@@ -18,6 +18,32 @@ class Decision(str, Enum):
     ERROR = "ERROR"
 
 
+class VerificationFailure(BaseModel):
+    """A deterministic observation; absence is scoped to admitted local knowledge."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    rule_id: str
+    subject: dict[str, Any]
+    expected: dict[str, Any]
+    observed: dict[str, Any]
+    evidence_scope: str
+
+
+class VerificationTrace(BaseModel):
+    """Explanatory metadata that cannot authorize or change a decision."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    version: int = 1
+    rule_id: str
+    failures: list[VerificationFailure] = Field(default_factory=list)
+    diagnostic_status: str
+    diagnostic_error_code: str | None = None
+    knowledge: dict[str, Any]
+    limitations: list[str] = Field(default_factory=list)
+
+
 class IntentCandidate(BaseModel):
     """A partial or complete semantic intent; never contains blockchain addresses."""
 
