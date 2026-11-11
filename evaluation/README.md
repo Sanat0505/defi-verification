@@ -4,6 +4,18 @@ Start with the completed reports below. Files in these six directories are retai
 evidence; active Python runners remain at this directory's top level. Installation,
 configuration and application usage are in the [root README](../README.md).
 
+Application code lives in [source/](../source/README.md). Active runners import
+that implementation through `source.*`; they do not maintain a second copy.
+Tests for runners, datasets and evidence are in [tests/](tests/), while application
+tests are in [source/tests/](../source/tests/). Run this folder's tests from the
+repository root with `python -B -m pytest -q evaluation/tests`.
+
+The files under `sources/` and the source ZIPs are historical evidence. Their
+original imports and paths are preserved. The paired traceability runner resolves
+the frozen verifier's old imports temporarily when loading it; new runs record
+the current `source/` paths and hashes. Do not resume a historical run with the
+reorganized implementation.
+
 | Evaluation | Canonical report | Dataset / references | Authoritative observations and metrics |
 |---|---|---|---|
 | 400 prompts | [SUMMARY.md](400_prompts/SUMMARY.md) | [Frozen 400 prompts](400_prompts/dataset_snapshot.json) | [results.json](400_prompts/results.json), [analysis.json](400_prompts/analysis.json) |

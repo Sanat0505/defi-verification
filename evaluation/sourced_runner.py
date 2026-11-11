@@ -103,7 +103,7 @@ def metrics(records):
 
 
 async def run_case(case, run_number, timeout_seconds):
-    from llm.intent_parser import parse_intent
+    from source.llm.intent_parser import parse_intent
 
     started = time.perf_counter()
     error = None
@@ -213,7 +213,7 @@ def resume_report(path, expected_metadata):
 
 
 async def run(args):
-    from core.config import settings
+    from source.core.config import settings
 
     payload = args.dataset.read_bytes()
     dataset = json.loads(payload)
@@ -238,9 +238,9 @@ async def run(args):
             "timeout_seconds": args.timeout,
             "max_consecutive_errors": args.max_consecutive_errors,
             "code_sha256": {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest() for path in [
-                ROOT / "llm" / "intent_parser.py", ROOT / "llm" / "normalization.py", Path(__file__).resolve(),
-                ROOT / "llm" / "request_constraints.py", ROOT / "core" / "slippage.py",
-                ROOT / "core" / "models.py", ROOT / "core" / "config.py",
+                ROOT / "source/llm" / "intent_parser.py", ROOT / "source/llm" / "normalization.py", Path(__file__).resolve(),
+                ROOT / "source/llm" / "request_constraints.py", ROOT / "source/core" / "slippage.py",
+                ROOT / "source/core" / "models.py", ROOT / "source/core" / "config.py",
             ]},
         }, "metrics": metrics([]), "results": [],
     }

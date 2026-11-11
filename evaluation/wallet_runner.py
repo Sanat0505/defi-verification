@@ -30,10 +30,10 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from api import app as api_module
-from core.models import ApprovedOperation, ExecuteRequest, IntentCandidate
-from core.state import VerificationCapabilityStore
-from wallet import erc4337
+from source.api import app as api_module
+from source.core.models import ApprovedOperation, ExecuteRequest, IntentCandidate
+from source.core.state import VerificationCapabilityStore
+from source.wallet import erc4337
 
 
 DEFAULT_DATASET = Path(__file__).parent / "datasets" / "wallet_cases.json"

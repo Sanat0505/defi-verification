@@ -19,9 +19,9 @@ from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'.cache/evaluation-runs/traceability'
 sys.path.insert(0,str(ROOT))
-from core.config import settings
-from db import sync,verifier
-from db.connection import close_driver,get_driver
+from source.core.config import settings
+from source.db import sync,verifier
+from source.db.connection import close_driver,get_driver
 from evaluation.graph_runner import reference,evidence_matches,build_cases
 from evaluation.graph_stage import snapshot
 from evaluation import controlled_graph as harness
@@ -47,7 +47,16 @@ def journal(record):
 
 def load_before():
     spec=importlib.util.spec_from_file_location('verifier_before_traceability',ROOT/'evaluation/sources/graph_before_verifier.py')
-    mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod);return mod
+    mod=importlib.util.module_from_spec(spec)
+    # The frozen verifier retains its original imports. Resolve them only while
+    # loading it, using the same models and connection as the current runner.
+    legacy_imports = {
+        name: importlib.import_module(f"source.{name}")
+        for name in ("core", "core.config", "core.models", "db", "db.connection")
+    }
+    with patch.dict(sys.modules, legacy_imports):
+        spec.loader.exec_module(mod)
+    return mod
 
 
 def call(module,inputs,phase,case_id,variant,fixture=False,unavailable=False):
@@ -146,7 +155,7 @@ def main():
                               model_calls=0,production_graph_writes=False,paired_order='Alternating before/after order; no warmups excluded.',
                               query_plan_note='Diagnostic queries were EXPLAIN-validated during development; no cold-cache claim.',
                               expected_review='Historical assistant-drafted references; no new human-review claim.'),D=[],E=[],graph=[],boundaries=[])
-    code_hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest()for p in ('db/verifier.py','db/verification_trace.py','core/models.py')}
+    code_hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest()for p in ('source/db/verifier.py','source/db/verification_trace.py','source/core/models.py')}
     if existing:
         results=existing
         if results['metadata'].get('code_hashes'):assert results['metadata']['code_hashes']==code_hashes

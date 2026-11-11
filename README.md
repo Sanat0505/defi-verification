@@ -16,15 +16,21 @@ transfer execution path, so it must not reinterpret a wallet transfer as supply.
 
 ## System Architecture
 
+The repository has two main folders: [source/](source/README.md) contains the
+application and its tests; [evaluation/](evaluation/README.md) contains experiment
+runners, evaluation tests, datasets and retained results. Shared setup files stay
+at the root. Run the commands below from the repository root, using `source.` for
+application modules and `evaluation.` for experiment modules.
+
 | Component | Responsibility |
 |---|---|
-| [api/](api/) | FastAPI endpoints and the browser application |
-| [llm/](llm/) | Groq extraction, deterministic normalization, validation and request constraints |
-| [core/](core/) | Typed models, configuration, clarification state and verification capabilities |
-| [db/](db/) | Source acquisition, synchronization, graph verification and diagnostics |
-| [services/](services/) | Interpretation, clarification and verification pipeline |
-| [wallet/](wallet/) | Python adapter and Node.js ERC-4337/ZeroDev execution |
-| [static/](static/), [templates/](templates/) | Frontend demonstration interface; no frontend build step |
+| [source/api/](source/api/) | FastAPI endpoints and the browser application |
+| [source/llm/](source/llm/) | Groq extraction, deterministic normalization, validation and request constraints |
+| [source/core/](source/core/) | Typed models, configuration, clarification state and verification capabilities |
+| [source/db/](source/db/) | Source acquisition, synchronization, graph verification and diagnostics |
+| [source/services/](source/services/) | Interpretation, clarification and verification pipeline |
+| [source/wallet/](source/wallet/) | Python adapter and Node.js ERC-4337/ZeroDev execution |
+| [source/static/](source/static/), [source/templates/](source/templates/) | Frontend demonstration interface; no frontend build step |
 | [evaluation/](evaluation/README.md) | Completed experiments, frozen inputs, provenance and runners |
 
 `POST /api/verify` interprets and validates a request, then checks an action-specific
@@ -39,7 +45,7 @@ Knowledge synchronization runs separately from request handling.
 The verified local configuration is **Python 3.13.1**, **Node.js 24.18.0** and
 **npm 10.5.0**. Other runtime versions have not been validated here. Python package
 ranges are in [requirements.txt](requirements.txt); npm uses
-[wallet/package-lock.json](wallet/package-lock.json).
+[source/wallet/package-lock.json](source/wallet/package-lock.json).
 
 The saved graph experiments used Neo4j Desktop with **Neo4j Server 2026.05.0
 Enterprise**. This is a verified configuration, not a minimum-version claim. The
@@ -69,7 +75,7 @@ Windows PowerShell:
 py -3.13 -m venv venv
 .\venv\Scripts\Activate.ps1
 python -m pip install -r requirements-dev.txt
-npm --prefix wallet ci
+npm --prefix source/wallet ci
 if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 ```
 
@@ -82,12 +88,12 @@ Linux/macOS with Python 3.13 installed:
 python3.13 -m venv venv
 source venv/bin/activate
 python -m pip install -r requirements-dev.txt
-npm --prefix wallet ci
+npm --prefix source/wallet ci
 test -f .env || cp .env.example .env
 ```
 
 For runtime-only installation, substitute `requirements.txt` for
-`requirements-dev.txt`. Keep the virtual environment and `wallet/node_modules`
+`requirements-dev.txt`. Keep the virtual environment and `source/wallet/node_modules`
 installed locally; both are ignored by Git. Optional plotting dependencies:
 
 ```text
@@ -103,7 +109,7 @@ placeholder. For a remote instance, use its supplied URI and credentials.
 Wait until the instance has finished starting, then check the connection:
 
 ```text
-python -m db.connection
+python -m source.db.connection
 ```
 
 Expect `Connected to Neo4j!`. A connection-refused error on port `7687` means
@@ -115,8 +121,8 @@ different Bolt address, copy that address into `NEO4J_URI` and restart the API.
 After configuring Groq and Sepolia RPC, synchronize the supported deployments:
 
 ```text
-python -m db.sync --source aave-v3:11155111 --source uniswap-v3:11155111
-python -m db.validate_graph_v2
+python -m source.db.sync --source aave-v3:11155111 --source uniswap-v3:11155111
+python -m source.db.validate_graph_v2
 python -m evaluation.snapshot_check
 ```
 
@@ -155,7 +161,7 @@ wallet credentials. Saved-report inspection requires neither service. Execution
 additionally needs a usable ZeroDev project, a funded smart account or applicable
 sponsorship, balances/allowances, and the relevant Aave position or swap liquidity.
 The backend signer is distinct from the browser wallet address. The policy file
-defaults to `wallet/session-whitelist.json`; `WALLET_WHITELIST_FILE` can override
+defaults to `source/wallet/session-whitelist.json`; `WALLET_WHITELIST_FILE` can override
 its path. Do not edit authorization policy merely to make a test pass.
 
 ## Running the Application
@@ -163,7 +169,7 @@ its path. Do not edit authorization policy merely to make a test pass.
 With the virtual environment active, run from the repository root:
 
 ```text
-python -m uvicorn api.app:app --reload --host 127.0.0.1 --port 8000
+python -m uvicorn source.api.app:app --reload --host 127.0.0.1 --port 8000
 ```
 
 Open [http://localhost:8000](http://localhost:8000). The backend serves the frontend
@@ -216,28 +222,31 @@ these checks are offline:
 
 ```text
 python -B -m pytest -q
-node --check static/app.js
-node --check wallet/wallet.mjs
-node tests/frontend_slippage.cjs
+node --check source/static/app.js
+node --check source/wallet/wallet.mjs
+node source/tests/frontend_slippage.cjs
 python -B -m evaluation.check_integrity
 python -B -m evaluation.sourced_runner --validate-only
 python -m pip check
-npm --prefix wallet ls --depth=0
+npm --prefix source/wallet ls --depth=0
 ```
 
 Pytest includes unit tests, mocked integration tests, wallet-boundary fixtures and
 the two controlled-graph harness tests. External model, database and submission
-boundaries are mocked. The graph-focused subset is:
+boundaries are mocked. Application tests live in `source/tests/`; tests of runners,
+datasets and evidence live in `evaluation/tests/`. Run either group separately with
+`python -B -m pytest -q source/tests` or `python -B -m pytest -q evaluation/tests`.
+The graph-focused subset is:
 
 ```text
-python -B -m pytest -q tests/test_graph_v2_unit.py tests/test_graph_evaluation.py tests/test_sync_pipeline.py tests/test_verification_trace.py tests/test_controlled_graph.py
+python -B -m pytest -q source/tests/test_graph_v2_unit.py evaluation/tests/test_graph_evaluation.py source/tests/test_sync_pipeline.py source/tests/test_verification_trace.py evaluation/tests/test_controlled_graph.py
 ```
 
 `python -m evaluation.graph_runner --repeats 1` requires live Neo4j and fresh
 knowledge, makes no LLM calls, and neither mutates the database nor broadcasts.
 Controlled mutation harnesses have separate isolated-database requirements in the
 [evaluation guide](evaluation/README.md). Manual scripts such as
-`scripts/swap_preflight.py` can change authorization policy and are not offline tests.
+`source/scripts/swap_preflight.py` can change authorization policy and are not offline tests.
 
 ## Evaluation and Reproducibility
 

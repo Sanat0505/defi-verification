@@ -12,7 +12,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'.cache/evaluation-tools'))
 from evaluation.exploratory_400_runner import flatten, summary
 from evaluation.graph_runner import timing
-from core.slippage import parse_slippage
+from source.core.slippage import parse_slippage
 
 
 def write_json(path,value):path.write_text(json.dumps(value,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')

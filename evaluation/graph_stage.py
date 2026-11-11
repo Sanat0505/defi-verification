@@ -11,7 +11,7 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from db.connection import close_driver, get_driver
+from source.db.connection import close_driver, get_driver
 from evaluation.snapshot_check import inspect_snapshot
 
 
@@ -68,7 +68,7 @@ def write_report(kind, payload):
 
 
 def snapshot():
-    from db.validate_graph_v2 import validate
+    from source.db.validate_graph_v2 import validate
 
     result = {"timestamp_utc": datetime.now(timezone.utc).isoformat(), "read_only": True,
               "transaction_broadcast": False, "preflight": inspect_snapshot()}
@@ -89,7 +89,7 @@ def snapshot():
 
 
 def refresh():
-    from db.sync import build_tasks, run_task
+    from source.db.sync import build_tasks, run_task
 
     # Do not call synchronize(): it also performs global cleanup/demo rebuilding.
     # These selected tasks refresh only the authorized Sepolia deployment data.

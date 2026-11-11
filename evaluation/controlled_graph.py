@@ -20,10 +20,10 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from core.config import settings
-from db import sync, verifier
-from db.connection import close_driver, get_driver
-from db.graph_v2 import PROTOCOL_FUNCTIONS
+from source.core.config import settings
+from source.db import sync, verifier
+from source.db.connection import close_driver, get_driver
+from source.db.graph_v2 import PROTOCOL_FUNCTIONS
 
 OUT = ROOT / '.cache/evaluation-runs/controlled_graph'
 DB = "thesis-eval-20261019"
@@ -237,7 +237,7 @@ def main():
     before=live_fingerprint()
     ensure_fixture_database()
     report={'metadata':{'started_at_utc':datetime.now(timezone.utc).isoformat(),'database':DB,'live_database':'neo4j','live_before':before,
-        'production_verifier_sha256':hashlib.sha256((ROOT/'db/verifier.py').read_bytes()).hexdigest(),'runner_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'production_verifier_sha256':hashlib.sha256((ROOT/'source/db/verifier.py').read_bytes()).hexdigest(),'runner_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'reference_review':references['review_status'],'LLM_calls':0,'transaction_broadcast':False,'concurrency':1,'freshness_hours':settings.knowledge_max_age_hours,
         'database_unavailable_injected':True,'source_failure_injected':True},'D':[],'E':[]}
     if previous:

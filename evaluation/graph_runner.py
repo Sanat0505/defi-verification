@@ -14,9 +14,9 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-from core.config import settings
-from db.connection import close_driver
-from db.verifier import verify_intent
+from source.core.config import settings
+from source.db.connection import close_driver
+from source.db.verifier import verify_intent
 from evaluation.graph_stage import ROOT, snapshot, write_report
 
 
@@ -190,7 +190,7 @@ def main():
         "snapshot_before": str(snapshot_path), "snapshot_after": str(after_path), "references": str(references_path),
         "repeats": args.repeats, "knowledge_max_age_hours": settings.knowledge_max_age_hours,
         "source_dataset_sha256": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in SOURCE_FILES},
-        "code_sha256": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in [Path(__file__).resolve(), ROOT / "db/verifier.py", ROOT / "evaluation/graph_stage.py"]},
+        "code_sha256": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in [Path(__file__).resolve(), ROOT / "source/db/verifier.py", ROOT / "evaluation/graph_stage.py"]},
         "timing_boundary": "verify_intent wall time only; snapshot audit occurred first; not cold-start, end-to-end or production-load latency.",
         "independence_note": "Amounts, slippage and paraphrases can share the exact same graph input. Repeats and duplicate inputs are not independent samples."},
         "metrics": metrics, "results": records}

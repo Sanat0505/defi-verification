@@ -11,8 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def inspect_snapshot():
-    from core.config import settings
-    from db.connection import close_driver, get_driver
+    from source.core.config import settings
+    from source.db.connection import close_driver, get_driver
 
     now = datetime.now(timezone.utc)
     report = {

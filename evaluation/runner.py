@@ -17,10 +17,10 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from core.config import settings
-from core.models import PromptRequest
+from source.core.config import settings
+from source.core.models import PromptRequest
 from evaluation.metrics import calculate_metrics
-from services.pipeline import process_prompt
+from source.services.pipeline import process_prompt
 
 
 DEFAULT_DATASET = Path(__file__).parent / "datasets" / "cases.json"

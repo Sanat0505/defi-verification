@@ -12,11 +12,11 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from core.config import settings
-from db.connection import close_driver
-from db.verifier import verify_intent
+from source.core.config import settings
+from source.db.connection import close_driver
+from source.db.verifier import verify_intent
 from evaluation.wallet_runner import _find_node
-from wallet import erc4337
+from source.wallet import erc4337
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -84,7 +84,7 @@ def main():
         raise RuntimeError("Node.js is required")
     erc4337.NODE_CMD = node
     # Same file resolution as wallet.mjs. Do not print environment credentials.
-    policy_file = Path(os.getenv("WALLET_WHITELIST_FILE", str(ROOT / "wallet/session-whitelist.json"))).resolve()
+    policy_file = Path(os.getenv("WALLET_WHITELIST_FILE", str(ROOT / "source/wallet/session-whitelist.json"))).resolve()
     before = file_hash(policy_file)
     timestamp = datetime.now(timezone.utc)
     report = {"metadata": {
@@ -93,7 +93,7 @@ def main():
         "transaction_broadcast": False, "whitelist_writes": False,
         "uses_existing_policy_without_auto_whitelisting": True,
         "code_sha256": {str(path.relative_to(ROOT)): file_hash(path) for path in [
-            Path(__file__).resolve(), ROOT / "wallet/wallet.mjs", ROOT / "wallet/erc4337.py"]},
+            Path(__file__).resolve(), ROOT / "source/wallet/wallet.mjs", ROOT / "source/wallet/erc4337.py"]},
         "limitations": [
             "Observational check, not a labeled accuracy benchmark or an end-to-end execution test.",
             "The execution API normally adds graph-approved destinations before wallet execution; this read-only runner intentionally does not renew/change the real policy.",

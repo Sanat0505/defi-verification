@@ -18,10 +18,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import AsyncMock, patch
 
-from core.config import settings
-from core.models import IntentCandidate, IntentResolution, PromptRequest
-from db.connection import close_driver
-from db.verifier import verify_intent
+from source.core.config import settings
+from source.core.models import IntentCandidate, IntentResolution, PromptRequest
+from source.db.connection import close_driver
+from source.db.verifier import verify_intent
 from evaluation.graph_runner import evidence_matches, graph_key, reference, timing
 from evaluation.graph_stage import snapshot
 from evaluation.run_support import (
@@ -36,8 +36,8 @@ from evaluation.run_support import (
     stable_snapshot,
     utc,
 )
-from llm import intent_parser
-from services import pipeline
+from source.llm import intent_parser
+from source.services import pipeline
 
 ROOT=Path(__file__).resolve().parents[1]
 DEFAULT_DATASET=ROOT/'evaluation/400_prompts/dataset_snapshot.json'
@@ -96,10 +96,10 @@ async def run(args):
         raise ValueError('This runner is exploratory only; use --allow-unreviewed to explicitly acknowledge draft references.')
     if settings.supported_chain_id!=11155111:raise ValueError('Expected Sepolia configuration')
     if not os.getenv('GROQ_API_KEY'):raise ValueError('GROQ_API_KEY not configured')
-    code={str(p.relative_to(ROOT)):digest(p.read_bytes()) for base in ['core','llm','services','db'] for p in (ROOT/base).rglob('*.py')}
+    code={str(p.relative_to(ROOT)):digest(p.read_bytes()) for base in ['core','llm','services','db'] for p in (ROOT/'source'/base).rglob('*.py')}
     code[str(Path(__file__).relative_to(ROOT))]=digest(Path(__file__).read_bytes())
     code['evaluation/run_support.py']=digest((ROOT/'evaluation/run_support.py').read_bytes())
-    protected={name:digest((ROOT/name).read_bytes()) for name in ['.env','wallet/session-whitelist.json'] if (ROOT/name).exists()}
+    protected={name:digest((ROOT/name).read_bytes()) for name in ['.env','source/wallet/session-whitelist.json'] if (ROOT/name).exists()}
     out=args.resume or args.output_root/datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     out.mkdir(parents=True,exist_ok=bool(args.resume))
     path=out/'results.json'
