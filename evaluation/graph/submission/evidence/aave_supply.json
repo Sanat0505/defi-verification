@@ -1,0 +1,201 @@
+{
+  "nodes": [
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:11",
+      "labels": [
+        "Chain"
+      ],
+      "properties": {
+        "chain_id": 11155111,
+        "name": "Ethereum Sepolia",
+        "testnet": true
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:14",
+      "labels": [
+        "Contract",
+        "Pool"
+      ],
+      "properties": {
+        "last_synced_at": "2026-10-22T14:47:00.336123+00:00",
+        "protocol": "Aave V3",
+        "address": "0x6ae43d3271ff6888e7fc43fd7321a503ff738951",
+        "role": "pool",
+        "chain_id": 11155111,
+        "name": "POOL",
+        "verified": true,
+        "action": "supply",
+        "graph_version": "official-v2",
+        "source": "aave-address-book"
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1512",
+      "labels": [
+        "ProtocolFamily"
+      ],
+      "properties": {
+        "name": "Aave V3",
+        "graph_version": "official-v2",
+        "version": "3",
+        "key": "aave-v3"
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1696",
+      "labels": [
+        "ProtocolDeployment"
+      ],
+      "properties": {
+        "last_synced_at": "2026-10-22T14:47:00.336281+00:00",
+        "chain_id": 11155111,
+        "protocol_key": "aave-v3",
+        "verified": true,
+        "graph_version": "official-v2",
+        "last_sync_status": "SUCCESS",
+        "last_successful_sync_at": "2026-10-22T14:47:08.068134+00:00",
+        "source_url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/refs/heads/main/src/AaveV3Sepolia.sol",
+        "network": "Ethereum Sepolia",
+        "last_sync_attempt_at": "2026-10-22T14:46:55.849865+00:00",
+        "asset_count": 9,
+        "asset_coverage": "official-address-book-complete",
+        "name": "Aave V3 \u2014 Ethereum Sepolia",
+        "last_verified_at": "2026-10-22T14:47:08.068134+00:00",
+        "key": "aave-v3:11155111"
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1699",
+      "labels": [
+        "Reserve"
+      ],
+      "properties": {
+        "symbol": "USDC",
+        "last_synced_at": "2026-10-22T14:47:00.336123+00:00",
+        "featured": true,
+        "chain_id": 11155111,
+        "verified": true,
+        "graph_version": "official-v2",
+        "active": true,
+        "source": "aave-address-book",
+        "key": "aave-v3:11155111:0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8"
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1964",
+      "labels": [
+        "Function"
+      ],
+      "properties": {
+        "signature": "supply(address,uint256,address,uint16)",
+        "purpose": "execute",
+        "name": "supply",
+        "verified": true,
+        "graph_version": "official-v2",
+        "selector": "0x617ba037",
+        "key": "aave-v3:supply(address,uint256,address,uint16)",
+        "source_url": "https://github.com/aave/aave-v3-core/blob/master/contracts/interfaces/IPool.sol"
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:31",
+      "labels": [
+        "Token"
+      ],
+      "properties": {
+        "symbol": "USDC",
+        "last_synced_at": "2026-10-22T14:47:20.571073+00:00",
+        "address": "0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8",
+        "chain_id": 11155111,
+        "decimals": 6,
+        "verified": true,
+        "graph_version": "official-v2",
+        "source": "aave-address-book",
+        "verification_eligible": true,
+        "trust_source": "aave-address-book"
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:65",
+      "labels": [
+        "Action"
+      ],
+      "properties": {
+        "name": "supply"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1152935798258009760",
+      "type": "SUPPORTS_ACTION",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1696",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:65",
+      "properties": {}
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1152935798258009763",
+      "type": "SUPPORTS_ACTION",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1699",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:65",
+      "properties": {}
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1152944594351031971",
+      "type": "UNDERLYING_ASSET",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1699",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:31",
+      "properties": {}
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1152957788490565548",
+      "type": "IMPLEMENTS_ACTION",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1964",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:65",
+      "properties": {}
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1155173304420533920",
+      "type": "DEPLOYED_CONTRACT",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1696",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:14",
+      "properties": {
+        "last_synced_at": "2026-10-22T14:47:00.336123+00:00",
+        "role": "pool",
+        "active": true
+      }
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:6917548818850383520",
+      "type": "HAS_DEPLOYMENT",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1512",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1696",
+      "properties": {}
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:6917549918362011296",
+      "type": "HOSTS",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:11",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1696",
+      "properties": {}
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:6917551017873639075",
+      "type": "HAS_RESERVE",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1696",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1699",
+      "properties": {
+        "last_synced_at": "2026-10-22T14:47:00.336123+00:00",
+        "active": true
+      }
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:6919816011826857900",
+      "type": "EXPOSES_FUNCTION",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:14",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1964",
+      "properties": {}
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+[
+  {
+    "label": "Contract",
+    "nodes": 1959
+  },
+  {
+    "label": "Token",
+    "nodes": 1644
+  },
+  {
+    "label": "Pool",
+    "nodes": 1611
+  },
+  {
+    "label": "Reserve",
+    "nodes": 76
+  },
+  {
+    "label": "FixtureNode",
+    "nodes": 16
+  },
+  {
+    "label": "FeeTier",
+    "nodes": 6
+  },
+  {
+    "label": "Function",
+    "nodes": 6
+  },
+  {
+    "label": "Action",
+    "nodes": 5
+  },
+  {
+    "label": "FixtureScenario",
+    "nodes": 4
+  },
+  {
+    "label": "KnowledgeSource",
+    "nodes": 4
+  },
+  {
+    "label": "Protocol",
+    "nodes": 4
+  },
+  {
+    "label": "ProtocolDeployment",
+    "nodes": 4
+  },
+  {
+    "label": "FixtureDeployment",
+    "nodes": 3
+  },
+  {
+    "label": "FixtureToken",
+    "nodes": 3
+  },
+  {
+    "label": "GraphView",
+    "nodes": 3
+  },
+  {
+    "label": "Chain",
+    "nodes": 2
+  },
+  {
+    "label": "FixturePool",
+    "nodes": 2
+  },
+  {
+    "label": "MaliciousTest",
+    "nodes": 2
+  },
+  {
+    "label": "ProtocolFamily",
+    "nodes": 2
+  },
+  {
+    "label": "FixtureAction",
+    "nodes": 1
+  },
+  {
+    "label": "FixtureChain",
+    "nodes": 1
+  },
+  {
+    "label": "FixtureGraph",
+    "nodes": 1
+  },
+  {
+    "label": "FixtureReserve",
+    "nodes": 1
+  }
+]

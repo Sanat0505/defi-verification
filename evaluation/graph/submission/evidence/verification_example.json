@@ -1,0 +1,78 @@
+{
+  "illustrative_request": "Supply 10 USDC to Aave V3 on Ethereum Sepolia.",
+  "stage": "relationship verifier called directly with a reference intent",
+  "llm_called": false,
+  "wallet_called": false,
+  "freshness_policy_modified": false,
+  "input": {
+    "protocol": "Aave V3",
+    "token_in": "USDC",
+    "token_out": null,
+    "action": "supply",
+    "chain_id": 11155111
+  },
+  "note": "Amount is not an argument to the relationship verifier. This is not a full-pipeline execution.",
+  "result": {
+    "decision": "INSUFFICIENT_EVIDENCE",
+    "verified_address": null,
+    "reason": "Knowledge is stale (486.1 hours old; maximum is 168 hours).",
+    "protocol": "Aave V3",
+    "action": "supply",
+    "chain_id": 11155111,
+    "network": "Ethereum Sepolia",
+    "rule_id": "KNOWLEDGE.STALE",
+    "trace": {
+      "version": 1,
+      "rule_id": "KNOWLEDGE.STALE",
+      "failures": [
+        {
+          "rule_id": "KNOWLEDGE.STALE",
+          "subject": {
+            "deployment_key": "aave-v3:11155111"
+          },
+          "expected": {
+            "valid_sync_timestamp": true,
+            "max_age_hours": 168
+          },
+          "observed": {
+            "timestamp": "2026-10-22T14:47:08.068134+00:00",
+            "age_hours": 486.05864444222226
+          },
+          "evidence_scope": "admitted_local_snapshot"
+        }
+      ],
+      "diagnostic_status": "observed",
+      "diagnostic_error_code": null,
+      "knowledge": {
+        "scope": "admitted_local_snapshot",
+        "deployment_key": "aave-v3:11155111",
+        "source_url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/refs/heads/main/src/AaveV3Sepolia.sol",
+        "last_successful_sync_at": "2026-10-22T14:47:08.068134+00:00",
+        "last_synced_at": "2026-10-22T14:47:00.336281+00:00",
+        "last_sync_status": "SUCCESS",
+        "asset_coverage": "official-address-book-complete",
+        "pool_discovery_complete": null,
+        "fresh": false,
+        "complete": true,
+        "max_age_hours": 168,
+        "absence_interpretation": "insufficient_to_establish_protocol_absence"
+      },
+      "limitations": []
+    },
+    "knowledge": {
+      "scope": "admitted_local_snapshot",
+      "deployment_key": "aave-v3:11155111",
+      "source_url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/refs/heads/main/src/AaveV3Sepolia.sol",
+      "last_successful_sync_at": "2026-10-22T14:47:08.068134+00:00",
+      "last_synced_at": "2026-10-22T14:47:00.336281+00:00",
+      "last_sync_status": "SUCCESS",
+      "asset_coverage": "official-address-book-complete",
+      "pool_discovery_complete": null,
+      "fresh": false,
+      "complete": true,
+      "max_age_hours": 168,
+      "absence_interpretation": "insufficient_to_establish_protocol_absence"
+    },
+    "latency_ms": 1143.95
+  }
+}

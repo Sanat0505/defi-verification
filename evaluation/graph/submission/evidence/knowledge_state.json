@@ -1,0 +1,38 @@
+[
+  {
+    "deployment": "aave-v3:1",
+    "verified": true,
+    "last_successful_sync_at": "2026-10-03T12:36:29.896351+00:00",
+    "last_sync_status": "SUCCESS",
+    "asset_coverage": "official-address-book-complete",
+    "pool_discovery_complete": null,
+    "source_url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/refs/heads/main/src/AaveV3Ethereum.sol"
+  },
+  {
+    "deployment": "aave-v3:11155111",
+    "verified": true,
+    "last_successful_sync_at": "2026-10-22T14:47:08.068134+00:00",
+    "last_sync_status": "SUCCESS",
+    "asset_coverage": "official-address-book-complete",
+    "pool_discovery_complete": null,
+    "source_url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/refs/heads/main/src/AaveV3Sepolia.sol"
+  },
+  {
+    "deployment": "uniswap-v3:1",
+    "verified": true,
+    "last_successful_sync_at": "2026-10-03T12:36:41.424712+00:00",
+    "last_sync_status": "SUCCESS",
+    "asset_coverage": null,
+    "pool_discovery_complete": false,
+    "source_url": "https://developers.uniswap.org/deployments.json"
+  },
+  {
+    "deployment": "uniswap-v3:11155111",
+    "verified": true,
+    "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+    "last_sync_status": "SUCCESS",
+    "asset_coverage": null,
+    "pool_discovery_complete": true,
+    "source_url": "https://developers.uniswap.org/deployments.json"
+  }
+]

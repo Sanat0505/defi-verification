@@ -1,0 +1,213 @@
+{
+  "nodes": [
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:11",
+      "labels": [
+        "Chain"
+      ],
+      "properties": {
+        "chain_id": 11155111,
+        "name": "Ethereum Sepolia",
+        "testnet": true
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1511",
+      "labels": [
+        "Chain"
+      ],
+      "properties": {
+        "chain_id": 1,
+        "name": "Ethereum Mainnet",
+        "testnet": false
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1512",
+      "labels": [
+        "ProtocolFamily"
+      ],
+      "properties": {
+        "name": "Aave V3",
+        "graph_version": "official-v2",
+        "version": "3",
+        "key": "aave-v3"
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1513",
+      "labels": [
+        "ProtocolDeployment"
+      ],
+      "properties": {
+        "last_synced_at": "2026-10-03T12:36:08.057645+00:00",
+        "chain_id": 1,
+        "protocol_key": "aave-v3",
+        "verified": true,
+        "graph_version": "official-v2",
+        "last_sync_status": "SUCCESS",
+        "last_successful_sync_at": "2026-10-03T12:36:29.896351+00:00",
+        "source_url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/refs/heads/main/src/AaveV3Ethereum.sol",
+        "network": "Ethereum Mainnet",
+        "last_sync_attempt_at": "2026-10-03T12:36:03.054691+00:00",
+        "asset_count": 67,
+        "asset_coverage": "official-address-book-complete",
+        "name": "Aave V3 \u2014 Ethereum Mainnet",
+        "last_verified_at": "2026-10-03T12:36:29.896351+00:00",
+        "key": "aave-v3:1"
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1679",
+      "labels": [
+        "ProtocolFamily"
+      ],
+      "properties": {
+        "name": "Uniswap V3",
+        "graph_version": "official-v2",
+        "version": "3",
+        "key": "uniswap-v3"
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1680",
+      "labels": [
+        "ProtocolDeployment"
+      ],
+      "properties": {
+        "last_synced_at": "2026-10-03T12:36:36.871918+00:00",
+        "pool_discovery_complete": false,
+        "chain_id": 1,
+        "pool_discovery_mode": "curated-no-rpc",
+        "discovered_asset_count": 3,
+        "protocol_key": "uniswap-v3",
+        "verified": true,
+        "asset_trust_scope": "active Aave V3 reserves plus canonical WETH",
+        "graph_version": "official-v2",
+        "last_sync_status": "SUCCESS",
+        "last_successful_sync_at": "2026-10-03T12:36:41.424712+00:00",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "network": "Ethereum Mainnet",
+        "last_sync_attempt_at": "2026-10-03T12:36:35.879131+00:00",
+        "rejected_untrusted_pool_count": 0,
+        "trusted_asset_count": 3,
+        "discovered_pool_count": 2,
+        "name": "Uniswap V3 \u2014 Ethereum Mainnet",
+        "last_verified_at": "2026-10-03T12:36:41.424712+00:00",
+        "accepted_pool_count": 2,
+        "key": "uniswap-v3:1"
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1696",
+      "labels": [
+        "ProtocolDeployment"
+      ],
+      "properties": {
+        "last_synced_at": "2026-10-22T14:47:00.336281+00:00",
+        "chain_id": 11155111,
+        "protocol_key": "aave-v3",
+        "verified": true,
+        "graph_version": "official-v2",
+        "last_sync_status": "SUCCESS",
+        "last_successful_sync_at": "2026-10-22T14:47:08.068134+00:00",
+        "source_url": "https://raw.githubusercontent.com/aave-dao/aave-address-book/refs/heads/main/src/AaveV3Sepolia.sol",
+        "network": "Ethereum Sepolia",
+        "last_sync_attempt_at": "2026-10-22T14:46:55.849865+00:00",
+        "asset_count": 9,
+        "asset_coverage": "official-address-book-complete",
+        "name": "Aave V3 \u2014 Ethereum Sepolia",
+        "last_verified_at": "2026-10-22T14:47:08.068134+00:00",
+        "key": "aave-v3:11155111"
+      }
+    },
+    {
+      "id": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1706",
+      "labels": [
+        "ProtocolDeployment"
+      ],
+      "properties": {
+        "last_synced_at": "2026-10-22T14:47:17.621478+00:00",
+        "pool_discovery_complete": true,
+        "chain_id": 11155111,
+        "pool_discovery_mode": "full-rpc",
+        "discovered_asset_count": 1570,
+        "protocol_key": "uniswap-v3",
+        "verified": true,
+        "asset_trust_scope": "active Aave V3 reserves plus canonical WETH",
+        "factory_scanned_to_block": 11970228,
+        "graph_version": "official-v2",
+        "last_sync_status": "SUCCESS",
+        "last_successful_sync_at": "2026-10-22T14:47:34.451116+00:00",
+        "source_url": "https://developers.uniswap.org/deployments.json",
+        "network": "Ethereum Sepolia",
+        "last_sync_attempt_at": "2026-10-22T14:47:08.517669+00:00",
+        "rejected_untrusted_pool_count": 1599,
+        "trusted_asset_count": 6,
+        "discovered_pool_count": 1603,
+        "name": "Uniswap V3 \u2014 Ethereum Sepolia",
+        "last_verified_at": "2026-10-22T14:47:34.451116+00:00",
+        "accepted_pool_count": 4,
+        "key": "uniswap-v3:11155111"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1152941295816148456",
+      "type": "HAS_DEPLOYMENT",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1512",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1513",
+      "properties": {}
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1152941295816148623",
+      "type": "HAS_DEPLOYMENT",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1679",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1680",
+      "properties": {}
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1152942395327776231",
+      "type": "HOSTS",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1511",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1513",
+      "properties": {}
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:6917548818850383520",
+      "type": "HAS_DEPLOYMENT",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1512",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1696",
+      "properties": {}
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:6917548818850383530",
+      "type": "HAS_DEPLOYMENT",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1679",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1706",
+      "properties": {}
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:6917549918362011280",
+      "type": "HOSTS",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1511",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1680",
+      "properties": {}
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:6917549918362011296",
+      "type": "HOSTS",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:11",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1696",
+      "properties": {}
+    },
+    {
+      "id": "5:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:6917549918362011306",
+      "type": "HOSTS",
+      "start": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:11",
+      "end": "4:ee113ff5-1a2d-4ecc-b3c6-d00707e4c861:1706",
+      "properties": {}
+    }
+  ]
+}

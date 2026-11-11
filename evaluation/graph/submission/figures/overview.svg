@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="1100" viewBox="0 0 1320 1100">
+<rect width="100%" height="100%" fill="white"/>
+<text x="660" y="50" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="28" fill="#172b4d">Constructed graph: protocols and deployments</text>
+<text x="660" y="90" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="16" fill="#172b4d">Actual query result | 8 nodes | 8 relationships | Submission snapshot</text>
+<line x1="783.0" y1="236.02402800032675" x2="887.017856687341" y2="266.48859858438163" stroke="#52677d" stroke-width="2"/>
+<polygon points="887.017856687341,266.48859858438163 875.0559441794363,268.19524709922945 877.8666584860251,258.59837859503824" fill="#52677d"/>
+<line x1="783.0" y1="863.9759719996732" x2="887.017856687341" y2="833.5114014156184" stroke="#52677d" stroke-width="2"/>
+<polygon points="887.017856687341,833.5114014156184 877.8666584860251,841.4016214049618 875.0559441794363,831.8047529007706" fill="#52677d"/>
+<line x1="1126.8808164514721" y1="502.0" x2="1038.1370402358689" y2="350.51262658470836" stroke="#52677d" stroke-width="2"/>
+<polygon points="1038.1370402358689,350.51262658470836 1048.0114203546636,357.4765778531729 1039.3829707281511,362.5312644945716" fill="#52677d"/>
+<line x1="537.0" y1="236.02402800032675" x2="432.9821433126589" y2="266.48859858438163" stroke="#52677d" stroke-width="2"/>
+<polygon points="432.9821433126589,266.48859858438163 442.1333415139747,258.59837859503824 444.9440558205636,268.19524709922945" fill="#52677d"/>
+<line x1="537.0" y1="863.9759719996732" x2="432.982143312659" y2="833.5114014156184" stroke="#52677d" stroke-width="2"/>
+<polygon points="432.982143312659,833.5114014156184 444.94405582056373,831.8047529007706 442.1333415139748,841.4016214049618" fill="#52677d"/>
+<line x1="1126.8808164514721" y1="598.0" x2="1038.1370402358689" y2="749.4873734152916" stroke="#52677d" stroke-width="2"/>
+<polygon points="1038.1370402358689,749.4873734152916 1039.3829707281511,737.4687355054284 1048.0114203546636,742.523422146827" fill="#52677d"/>
+<line x1="193.11918354852781" y1="502.0" x2="281.86295976413106" y2="350.5126265847084" stroke="#52677d" stroke-width="2"/>
+<polygon points="281.86295976413106,350.5126265847084 280.6170292718489,362.53126449457164 271.98857964533624,357.47657785317296" fill="#52677d"/>
+<line x1="193.11918354852781" y1="598.0" x2="281.8629597641312" y2="749.4873734152916" stroke="#52677d" stroke-width="2"/>
+<polygon points="281.8629597641312,749.4873734152916 271.98857964533636,742.523422146827 280.617029271849,737.4687355054284" fill="#52677d"/>
+<rect x="792.7589283436705" y="219.5" width="134.5" height="21" fill="white"/>
+<text x="860.0089283436705" y="230" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">HAS_DEPLOYMENT</text>
+<rect x="792.7589283436705" y="864.5" width="134.5" height="21" fill="white"/>
+<text x="860.0089283436705" y="875" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">HAS_DEPLOYMENT</text>
+<rect x="1054.2589283436705" y="400.7563132923542" width="56.5" height="21" fill="white"/>
+<text x="1082.5089283436705" y="411.2563132923542" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">HOSTS</text>
+<rect x="392.74107165632944" y="219.5" width="134.5" height="21" fill="white"/>
+<text x="459.99107165632944" y="230" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">HAS_DEPLOYMENT</text>
+<rect x="392.7410716563295" y="864.5" width="134.5" height="21" fill="white"/>
+<text x="459.9910716563295" y="875" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">HAS_DEPLOYMENT</text>
+<rect x="1054.2589283436705" y="648.2436867076458" width="56.5" height="21" fill="white"/>
+<text x="1082.5089283436705" y="658.7436867076458" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">HOSTS</text>
+<rect x="209.24107165632944" y="400.7563132923542" width="56.5" height="21" fill="white"/>
+<text x="237.49107165632944" y="411.2563132923542" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">HOSTS</text>
+<rect x="209.2410716563295" y="648.2436867076458" width="56.5" height="21" fill="white"/>
+<text x="237.4910716563295" y="658.7436867076458" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">HOSTS</text>
+<rect x="42.0" y="502.0" width="246" height="96" rx="10" fill="#d1fae5" stroke="#708399"/>
+<text x="165.0" y="525.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#172b4d">Chain</text>
+<text x="165.0" y="550.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="19" fill="#172b4d">Ethereum Sepolia</text>
+<text x="165.0" y="576.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">Chain ID 11155111</text>
+<rect x="1032.0" y="502.0" width="246" height="96" rx="10" fill="#d1fae5" stroke="#708399"/>
+<text x="1155.0" y="525.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#172b4d">Chain</text>
+<text x="1155.0" y="550.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="19" fill="#172b4d">Ethereum Mainnet</text>
+<text x="1155.0" y="576.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">Chain ID 1</text>
+<rect x="537.0" y="152.0" width="246" height="96" rx="10" fill="#dbeafe" stroke="#708399"/>
+<text x="660.0" y="175.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#172b4d">ProtocolFamily</text>
+<text x="660.0" y="200.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="19" fill="#172b4d">Aave V3</text>
+<rect x="887.017856687341" y="254.51262658470836" width="246" height="96" rx="10" fill="#e0e7ff" stroke="#708399"/>
+<text x="1010.017856687341" y="277.51262658470836" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#172b4d">ProtocolDeployment</text>
+<text x="1010.017856687341" y="302.51262658470836" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="19" fill="#172b4d">aave-v3</text>
+<text x="1010.017856687341" y="328.51262658470836" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">Mainnet deployment</text>
+<rect x="537.0" y="852.0" width="246" height="96" rx="10" fill="#dbeafe" stroke="#708399"/>
+<text x="660.0" y="875.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#172b4d">ProtocolFamily</text>
+<text x="660.0" y="900.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="19" fill="#172b4d">Uniswap V3</text>
+<rect x="887.017856687341" y="749.4873734152916" width="246" height="96" rx="10" fill="#e0e7ff" stroke="#708399"/>
+<text x="1010.017856687341" y="772.4873734152916" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#172b4d">ProtocolDeployment</text>
+<text x="1010.017856687341" y="797.4873734152916" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="19" fill="#172b4d">uniswap-v3</text>
+<text x="1010.017856687341" y="823.4873734152916" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">Mainnet deployment</text>
+<rect x="186.98214331265888" y="254.5126265847084" width="246" height="96" rx="10" fill="#e0e7ff" stroke="#708399"/>
+<text x="309.9821433126589" y="277.5126265847084" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#172b4d">ProtocolDeployment</text>
+<text x="309.9821433126589" y="302.5126265847084" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="19" fill="#172b4d">aave-v3</text>
+<text x="309.9821433126589" y="328.5126265847084" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">Sepolia deployment</text>
+<rect x="186.982143312659" y="749.4873734152916" width="246" height="96" rx="10" fill="#e0e7ff" stroke="#708399"/>
+<text x="309.982143312659" y="772.4873734152916" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="12" fill="#172b4d">ProtocolDeployment</text>
+<text x="309.982143312659" y="797.4873734152916" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="19" fill="#172b4d">uniswap-v3</text>
+<text x="309.982143312659" y="823.4873734152916" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="13" fill="#172b4d">Sepolia deployment</text>
+<text x="660" y="1010" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="15" fill="#172b4d">Selected stored relationships; not the complete database or proof of transaction success.</text>
+<text x="660" y="1043" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="14" fill="#172b4d">See the saved verifier result for freshness checks and the query files for reproducibility.</text>
+</svg>

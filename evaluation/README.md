@@ -1,5 +1,9 @@
 # Completed evaluations
 
+For the native Neo4j submission export, inspection queries and graph figures, see
+the [graph directory guide](graph/README.md). The submission snapshot is separate
+from the historical experiments described below.
+
 Start with the completed reports below. Files in these six directories are retained
 evidence; active Python runners remain at this directory's top level. Installation,
 configuration and application usage are in the [root README](../README.md).

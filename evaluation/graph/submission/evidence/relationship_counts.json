@@ -1,0 +1,146 @@
+[
+  {
+    "relationship_type": "SUPPORTS_TOKEN",
+    "relationships": 3286
+  },
+  {
+    "relationship_type": "HAS_POOL",
+    "relationships": 2325
+  },
+  {
+    "relationship_type": "INCLUDES",
+    "relationships": 2317
+  },
+  {
+    "relationship_type": "SUPPORTS_ACTION",
+    "relationships": 1925
+  },
+  {
+    "relationship_type": "TOKEN0",
+    "relationships": 1607
+  },
+  {
+    "relationship_type": "TOKEN1",
+    "relationships": 1607
+  },
+  {
+    "relationship_type": "CREATED_POOL",
+    "relationships": 1605
+  },
+  {
+    "relationship_type": "USES_FEE_TIER",
+    "relationships": 1605
+  },
+  {
+    "relationship_type": "DISCOVERED_ASSET",
+    "relationships": 1573
+  },
+  {
+    "relationship_type": "SWAPS_TOKEN",
+    "relationships": 1441
+  },
+  {
+    "relationship_type": "DEPLOYED_CONTRACT",
+    "relationships": 414
+  },
+  {
+    "relationship_type": "REPRESENTS_ASSET",
+    "relationships": 112
+  },
+  {
+    "relationship_type": "SUPPORTS_ASSET",
+    "relationships": 94
+  },
+  {
+    "relationship_type": "HAS_RESERVE",
+    "relationships": 77
+  },
+  {
+    "relationship_type": "UNDERLYING_ASSET",
+    "relationships": 77
+  },
+  {
+    "relationship_type": "CONFIGURES_RATES_FOR",
+    "relationships": 76
+  },
+  {
+    "relationship_type": "DEBT_FOR",
+    "relationships": 76
+  },
+  {
+    "relationship_type": "HAS_A_TOKEN",
+    "relationships": 76
+  },
+  {
+    "relationship_type": "HAS_VARIABLE_DEBT_TOKEN",
+    "relationships": 76
+  },
+  {
+    "relationship_type": "PRICES",
+    "relationships": 76
+  },
+  {
+    "relationship_type": "USES_INTEREST_RATE_STRATEGY",
+    "relationships": 76
+  },
+  {
+    "relationship_type": "USES_ORACLE",
+    "relationships": 76
+  },
+  {
+    "relationship_type": "HAS_STATIC_A_TOKEN",
+    "relationships": 36
+  },
+  {
+    "relationship_type": "REPRESENTS",
+    "relationships": 17
+  },
+  {
+    "relationship_type": "EXPOSES_FUNCTION",
+    "relationships": 12
+  },
+  {
+    "relationship_type": "CAN_BORROW",
+    "relationships": 9
+  },
+  {
+    "relationship_type": "CAN_REPAY",
+    "relationships": 9
+  },
+  {
+    "relationship_type": "CAN_SUPPLY",
+    "relationships": 9
+  },
+  {
+    "relationship_type": "CAN_WITHDRAW",
+    "relationships": 9
+  },
+  {
+    "relationship_type": "HOSTS",
+    "relationships": 7
+  },
+  {
+    "relationship_type": "DEPLOYED_ON",
+    "relationships": 6
+  },
+  {
+    "relationship_type": "IMPLEMENTS_ACTION",
+    "relationships": 6
+  },
+  {
+    "relationship_type": "HAS_DEPLOYMENT",
+    "relationships": 4
+  },
+  {
+    "relationship_type": "SYNCHRONIZED_FROM",
+    "relationships": 4
+  },
+  {
+    "relationship_type": "EXPECTS_APPROVED",
+    "relationships": 2
+  },
+  {
+    "relationship_type": "EXPECTS_BLOCKED",
+    "relationships": 2
+  }
+]

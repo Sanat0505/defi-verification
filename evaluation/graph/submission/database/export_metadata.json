@@ -1,0 +1,39 @@
+{
+  "exported_at_utc": "2026-11-11T20:56:00.370308+00:00",
+  "database": "neo4j",
+  "neo4j_version": "2026.05.0",
+  "edition": "enterprise",
+  "desktop_version": "2.3.0",
+  "snapshot_kind": "submission snapshot; not asserted to be the historical evaluation state",
+  "file": "neo4j.dump",
+  "bytes": 1761262,
+  "sha256": "861a5175fec963b5ddd7668213d704ba316db13765774fe16354ab27b1631f2f",
+  "export_method": "neo4j-admin database dump after clean shutdown",
+  "excluded": [
+    "system database",
+    "other user databases",
+    "application .env and credentials"
+  ],
+  "validation": {
+    "native_load_into_fresh_isolated_directory": "passed",
+    "offline_consistency_check": "passed",
+    "consistency_check_exit_code": 0,
+    "dirty_index_warnings_in_final_check": false,
+    "checked_at_utc": "2026-11-11T21:00:26.745921+00:00",
+    "live_query_source": "original user database, read-only, immediately before clean shutdown and final dump",
+    "restored_server_startup": "not completed: standalone Enterprise license configuration required; no agreement accepted",
+    "desktop_import_workflow": "documented, not automated",
+    "original_instance_final_state": "stopped"
+  },
+  "counts": {
+    "nodes": 3736,
+    "relationships": 20729
+  },
+  "counts_scope": "whole user database including presentation and fixture metadata",
+  "verification_example": {
+    "decision": "INSUFFICIENT_EVIDENCE",
+    "rule_id": "KNOWLEDGE.STALE",
+    "freshness_policy_modified": false
+  },
+  "figures": "rendered from saved query results; not Neo4j UI screenshots"
+}

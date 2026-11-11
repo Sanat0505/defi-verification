@@ -1,0 +1,215 @@
+{
+  "captured_at_utc": "2026-11-11T20:50:39.351099+00:00",
+  "snapshot_kind": "submission inspection; not asserted to be the historical evaluation state",
+  "database": "neo4j",
+  "components": [
+    {
+      "name": "Neo4j Kernel",
+      "versions": [
+        "2026.05.0"
+      ],
+      "edition": "enterprise"
+    },
+    {
+      "name": "Cypher",
+      "versions": [
+        "5",
+        "25"
+      ],
+      "edition": ""
+    }
+  ],
+  "counts": {
+    "nodes": 3736,
+    "relationships": 20729
+  },
+  "count_scope": "whole user database, including presentation and fixture metadata",
+  "constraints": [
+    {
+      "name": "action_name_v2",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "Action"
+      ],
+      "properties": [
+        "name"
+      ]
+    },
+    {
+      "name": "chain_id_v2",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "Chain"
+      ],
+      "properties": [
+        "chain_id"
+      ]
+    },
+    {
+      "name": "contract_identity_v2",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "Contract"
+      ],
+      "properties": [
+        "chain_id",
+        "address"
+      ]
+    },
+    {
+      "name": "deployment_id_v2",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "ProtocolDeployment"
+      ],
+      "properties": [
+        "deployment_id"
+      ]
+    },
+    {
+      "name": "fee_tier_key",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "FeeTier"
+      ],
+      "properties": [
+        "key"
+      ]
+    },
+    {
+      "name": "fixture_node_key",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "FixtureNode"
+      ],
+      "properties": [
+        "key"
+      ]
+    },
+    {
+      "name": "function_key",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "Function"
+      ],
+      "properties": [
+        "key"
+      ]
+    },
+    {
+      "name": "graph_view_key",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "GraphView"
+      ],
+      "properties": [
+        "key"
+      ]
+    },
+    {
+      "name": "knowledge_source_key",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "KnowledgeSource"
+      ],
+      "properties": [
+        "key"
+      ]
+    },
+    {
+      "name": "market_identity_v2",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "Market"
+      ],
+      "properties": [
+        "chain_id",
+        "address"
+      ]
+    },
+    {
+      "name": "pool_identity_v2",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "Pool"
+      ],
+      "properties": [
+        "chain_id",
+        "address"
+      ]
+    },
+    {
+      "name": "protocol_deployment_key",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "ProtocolDeployment"
+      ],
+      "properties": [
+        "key"
+      ]
+    },
+    {
+      "name": "protocol_family_key",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "ProtocolFamily"
+      ],
+      "properties": [
+        "key"
+      ]
+    },
+    {
+      "name": "protocol_key_v2",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "Protocol"
+      ],
+      "properties": [
+        "key"
+      ]
+    },
+    {
+      "name": "reserve_identity_v2",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "Reserve"
+      ],
+      "properties": [
+        "chain_id",
+        "market_address",
+        "underlying_address"
+      ]
+    },
+    {
+      "name": "reserve_key",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "Reserve"
+      ],
+      "properties": [
+        "key"
+      ]
+    },
+    {
+      "name": "token_identity_v2",
+      "type": "NODE_PROPERTY_UNIQUENESS",
+      "labelsOrTypes": [
+        "Token"
+      ],
+      "properties": [
+        "chain_id",
+        "address"
+      ]
+    }
+  ],
+  "source_commit": "9c0765f793b0726491a379b02a5a7e790307f00f",
+  "query_sha256": {
+    "01_overview.cypher": "b8f16a6a5be02daa11779bdc02b9248d9c6bd4cb9bbbdfc55a4f4eee6f3cf421",
+    "02_aave_supply.cypher": "f0a1488f089dce445f56677b32cf2f3a6ddd83ea2f865f979db004324ab74424",
+    "03_node_counts.cypher": "5db5df39e66a90a97906018a8e4d320943282b4b14ebeb3e099aa7d43ea2b2e3",
+    "04_relationship_counts.cypher": "2f220d2fa8f6dffa30c874ccf1eedddd0d59e730b2b887e6b65ab8db50dee712",
+    "05_knowledge_state.cypher": "d1123cded14a780267162950c5c91fc5678abedd2e79e122ba78b6accb893163"
+  },
+  "read_only": true,
+  "configured_secret_property_scan": "passed"
+}
