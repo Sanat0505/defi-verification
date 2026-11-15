@@ -21,7 +21,7 @@ transfer execution path, so it must not reinterpret a wallet transfer as supply.
 The implementation and experiments are organized in two folders: [source/](source/README.md) contains the
 application and its tests; [evaluation/](evaluation/README.md) contains experiment
 runners, evaluation tests, datasets and retained results. Shared setup files stay
-at the root. The [thesis folder](thesis/README.md) contains the [report PDF](thesis/DEFI_VERIFICATION.pdf), its editable LaTeX source, and the figures. Run the commands below from the repository root, using `source.` for
+at the root. The [thesis folder](thesis/README.md) contains the [report PDF](thesis/EN%20SANATKUMAR%20KAKADIYA%20DEFI%20VERIFICATION.pdf), its editable LaTeX source, and the figures. Run the commands below from the repository root, using `source.` for
 application modules and `evaluation.` for experiment modules.
 
 | Component | Responsibility |
