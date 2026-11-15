@@ -230,33 +230,6 @@ R1 is assessed using the following criteria:
 \end{enumerate}
 
 
-% \begin{table}[H]
-% \centering
-% \begin{tabular}{p{2.3cm} p{9.9cm}}
-% \hline
-% \textbf{Rating} & \textbf{Assessment Condition} \\ \hline
-
-% $\star\star\star$ &
-% All four criteria C1--C4 are supported. \\
-
-% $\star\star\circ$ &
-% Three criteria are supported, including C1 and C2. \\
-
-% $\star\circ\circ$ &
-% One or two criteria are supported, or three criteria are supported without
-% both mandatory criteria. \\
-
-% $\circ\circ\circ$ &
-% The approach does not provide an action-specific machine-readable
-% representation of the user's request. \\
-
-
-% \hline
-% \end{tabular}
-% \caption{Assessment scale for R1: Complete and unambiguous structured intent}
-% \label{tab:r1_scale}
-% \end{table}
-
 % C1 and C2 are mandatory because they represent the minimum functionality required for structured intent generation.
 
 The general scale in Table~\ref{tab:general_assessment_scale} applies.
@@ -319,19 +292,6 @@ blockchain execution.
 
 A simplified execution relationship can be represented as:
 
-% \begin{quote}
-% Protocol Deployment
-% $\rightarrow$
-% Action
-% $\rightarrow$
-% Official Contract
-% $\rightarrow$
-% Callable Function
-% $\rightarrow$
-% Supported Asset or Resource
-% \end{quote}
-
-% Requires: \usepackage{tikz,graphicx,float}
 
 \begin{figure}[H]
 \centering
@@ -431,32 +391,7 @@ R2 is assessed using the following criteria:
 \end{enumerate}
 
 
-% \begin{table}[H]
-% \centering
-% \begin{tabular}{p{2.3cm} p{9.9cm}}
-% \hline
-% \textbf{Rating} & \textbf{Assessment Condition} \\ \hline
 
-% $\star\star\star$ &
-% All four criteria C1--C4 are supported. \\
-
-% $\star\star\circ$ &
-% Three criteria are supported, including C4. \\
-
-% $\star\circ\circ$ &
-% One or two criteria are supported, or three criteria are supported without
-% pre-execution validation. \\
-
-% $\circ\circ\circ$ &
-% The approach does not validate the relationship between the requested action
-% and the selected execution information. \\
-
-
-% \hline
-% \end{tabular}
-% \caption{Assessment scale for R2: Intent-to-execution relationship validation}
-% \label{tab:r2_scale}
-% \end{table}
 The general scale in Table~\ref{tab:general_assessment_scale} applies.
 C4 is mandatory for a rating above $\star\circ\circ$ because R2 concerns
 pre-execution validation rather than analysis of an already executed transaction.
@@ -692,31 +627,6 @@ is explicitly reported.
 \end{enumerate}
 
 
-% \begin{table}[H]
-% \centering
-% \begin{tabular}{p{2.3cm} p{9.9cm}}
-% \hline
-% \textbf{Rating} & \textbf{Assessment Condition} \\ \hline
-
-% $\star\star\star$ &
-% All four criteria C1--C4 are supported. \\
-
-% $\star\star\circ$ &
-% Three criteria are supported, including C3. \\
-
-% $\star\circ\circ$ &
-% One or two criteria are supported, or a general explanation is provided
-% without identifying the exact verification condition. \\
-
-% $\circ\circ\circ$ &
-% The approach provides no usable explanation or traceable verification result. \\
-
-% \hline
-% \end{tabular}
-% \caption{Assessment scale for R5: Traceable verification result}
-% \label{tab:r5_scale}
-% \end{table}
-
 The general scale in Table~\ref{tab:general_assessment_scale} applies.
 C3 is mandatory for a rating above $\star\circ\circ$ because a traceable
 result must identify the verification condition responsible for the decision.
@@ -737,38 +647,6 @@ Even if the verification decision is correct, an excessively slow verification
 process may make the system unsuitable for interactive use. Terms such as
 ``fast'' or ``low latency'' are therefore insufficient unless the expected
 processing time can be measured.
-
-% \paragraph{Requirement.}
-
-% A quantitative threshold is required so that the additional verification delay can be evaluated objectively. Since the verification stage is part of an interactive pre-execution workflow, this thesis adopts two seconds as a conservative prototype-specific upper bound for the verification decision.
-
-% For the prototype developed in this thesis, the measurable target is
-% defined:
-
-% \begin{quote}
-% At least 95\% of pre-execution verification decisions shall be returned within
-% 2 seconds.
-% \end{quote}
-
-% The two-second threshold is a project-specific acceptance target for the prototype and is not presented as a universal performance requirement for all DeFi applications.
-
-% The measurement begins when a complete structured intent reaches the
-% verification stage and ends when the verification decision and its structured
-% result are available. The measurement excludes, 
-%     user input time,
-%    LLM intent-generation time,
-%     user wallet-confirmation time,
-%     bundler processing time,
-%      blockchain submission time, and
-%     blockchain confirmation time of a transaction.
-
-% These stages are excluded because R6 measures only the additional processing
-% delay introduced by the verification mechanism. The two-second threshold is a project-specific acceptance target for the
-% prototype and is not presented as a universal performance requirement for all
-% DeFi applications. When existing approaches are assessed, a rating is assigned only when their
-% reported measurements are sufficiently comparable with the defined
-% pre-execution measurement boundary. Otherwise, the result is marked as
-% \textit{N/E}.
 
 \paragraph{Requirement.}
 

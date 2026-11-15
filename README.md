@@ -1,5 +1,7 @@
 # DeFi relationship verification
 
+Automated wallet execution requires an owner-installed validator and separate authority and executor keys. The legacy `PRIVATE_KEY` alone cannot authorize execution. See [.env.example](.env.example) for the required settings.
+
 ## Project Overview
 
 This Master's thesis prototype converts natural-language DeFi requests into

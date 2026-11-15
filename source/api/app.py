@@ -21,7 +21,7 @@ from source.db.connection import check_connection, close_driver
 from source.db.verifier import verify_intent
 from source.services.pipeline import process_prompt
 from source.llm.normalization import validate_candidate
-from source.wallet.erc4337 import add_to_whitelist, execute_aave, execute_swap
+from source.wallet.erc4337 import add_to_whitelist, execute_approved
 
 
 logging.basicConfig(
@@ -84,12 +84,22 @@ def _route_signature(route: dict) -> tuple:
         int(route.get("pool_fee", 0)),
         str(route.get("token_in_address", "")).lower(),
         str(route.get("token_out_address", "")).lower(),
+        str(route.get("quoter_address", "")).lower(),
+        route.get("token_in_decimals"),
+        route.get("token_out_decimals"),
+        route.get("function_signature"),
+        str(route.get("function_selector", "")).lower(),
     )
 
 
 def _same_authority(saved, current: dict) -> bool:
     """Ensure current graph authority still resolves the saved structured operation."""
     if current.get("decision") != Decision.APPROVED.value:
+        return False
+    if (current.get("chain_id") != saved.chain_id
+            or current.get("action") != saved.action
+            or current.get("protocol") != saved.protocol
+            or current.get("verified_function") != saved.verified_function):
         return False
     if str(current.get("verified_address", "")).lower() != saved.verified_address.lower():
         return False
@@ -168,8 +178,10 @@ async def execute(request: ExecuteRequest):
             },
         }
 
-    routes = current.get("routes") or []
-    amount_text = format(intent.amount, "f")
+    # Only retained routes that still match current graph authority may execute.
+    current_routes = {_route_signature(r) for r in current.get("routes") or []}
+    routes = [r for r in operation.routes if _route_signature(r) in current_routes]
+    operation.routes = routes
     if operation.action == "swap":
         trusted_destinations = {
             current.get("verified_address"),
@@ -201,26 +213,7 @@ async def execute(request: ExecuteRequest):
                     },
                 }
 
-        if operation.action == "swap":
-            exec_result = await asyncio.to_thread(
-                execute_swap,
-                routes,
-                amount_text,
-                operation.slippage_bps,
-            )
-        else:
-            exec_result = await asyncio.to_thread(execute_aave, {
-                "action": operation.action,
-                "pool_address": current["verified_address"],
-                "asset_address": current["verified_asset"],
-                "asset_symbol": operation.verified_asset_symbol,
-                "asset_decimals": current["verified_asset_decimals"],
-                "amount": amount_text,
-                "function_signature": current["verified_function"],
-                "function_selector": current["verified_selector"],
-                "interest_rate_mode": operation.interest_rate_mode,
-                "referral_code": operation.referral_code,
-            })
+        exec_result = await asyncio.to_thread(execute_approved, operation, request.verification_id)
     except Exception:
         logger.exception("Structured execution failed")
         return {

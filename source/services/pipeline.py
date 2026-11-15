@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import os
 import uuid
 
 from source.core.config import settings
@@ -136,6 +137,7 @@ async def process_prompt(request: PromptRequest) -> dict:
             interest_rate_mode=(2 if intent.action in {"borrow", "repay"} else None),
             slippage_bps=slippage_bps,
             slippage_source=slippage_source,
+            smart_account=os.getenv("RESTRICTED_ACCOUNT_ADDRESS"),
         )
         graph_result["verification_id"] = capability_store.issue(operation)
         graph_result["verification_expires_in"] = settings.verification_ttl_seconds

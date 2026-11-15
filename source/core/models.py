@@ -118,3 +118,6 @@ class ApprovedOperation(BaseModel):
     # intent field above remains null when the user did not specify slippage.
     slippage_bps: int | None = Field(default=None, strict=True, ge=1, le=500)
     slippage_source: str | None = None
+    # Set only by the server capability store; bounds later wallet attestations.
+    approval_expires_at: float | None = None
+    smart_account: str | None = None

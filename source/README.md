@@ -1,5 +1,9 @@
 # Application source
 
+For restricted-authorization setup, follow the
+[wallet settings in .env.example](../.env.example).
+The automated path does not use the legacy owner key.
+
 This folder contains the implemented system. Experiment runners, datasets and
 saved results live in [evaluation/](../evaluation/README.md). Installation and
 environment configuration are described in the [root README](../README.md).

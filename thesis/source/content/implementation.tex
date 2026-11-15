@@ -637,109 +637,6 @@ Section~\ref{sec:verification_knowledge_implementation}.
 
 \subsection{Action-Specific Relationship Verification}
 
-% For Uniswap V3, the verifier requires a deployment that supports
-% the swap action, an active and verification-eligible liquidity pool
-% connecting the requested assets, and verified router and quoter
-% contracts exposing the corresponding functions. All components
-% must belong to the applicable deployment and network context.
-
-% Listing~\ref{lst:uniswap_verification_query} presents the
-% implemented relationship query. Rather than checking the
-% existence of individual contracts or tokens independently,
-% the query matches their required connections within the
-% same deployment.
-
-% \begin{lstlisting}[
-%     style=thesiscypher,
-%     caption={Parameterized relationship verification for a Uniswap V3 swap.},
-%     label={lst:uniswap_verification_query}
-% ]
-% MATCH (family:ProtocolFamily)-[:HAS_DEPLOYMENT]->
-%       (deployment:ProtocolDeployment {verified:true, chain_id:$chain_id})
-% WHERE toLower(family.name) = toLower($protocol)
-% MATCH (deployment)-[:SUPPORTS_ACTION]->(action:Action {name:'swap'})
-% MATCH (deployment)-[pool_rel:HAS_POOL]->
-%       (pool:Pool {verified:true, verification_eligible:true, active:true, chain_id:$chain_id})
-% MATCH (pool)-[:SUPPORTS_TOKEN]->
-%       (t1:Token {symbol:$token_in, verified:true, verification_eligible:true, chain_id:$chain_id})
-% MATCH (pool)-[:SUPPORTS_TOKEN]->
-%       (t2:Token {symbol:$token_out, verified:true, verification_eligible:true, chain_id:$chain_id})
-% MATCH (deployment)-[router_rel:DEPLOYED_CONTRACT {role:'swap_router'}]->
-%       (router:Contract {verified:true})-[:EXPOSES_FUNCTION]->
-%       (fn:Function {verified:true, purpose:'execute'})-[:IMPLEMENTS_ACTION]->(action)
-% MATCH (deployment)-[quoter_rel:DEPLOYED_CONTRACT {role:'quoter'}]->
-%       (quoter:Contract {verified:true})-[:EXPOSES_FUNCTION]->
-%       (:Function {verified:true, purpose:'preflight'})-[:IMPLEMENTS_ACTION]->(action)
-% WHERE pool_rel.active=true AND router_rel.active=true AND quoter_rel.active=true
-%   AND t1.address <> t2.address
-%   AND t1.decimals IS NOT NULL AND t2.decimals IS NOT NULL AND pool.fee IS NOT NULL
-% RETURN router.address AS address, quoter.address AS quoter_address,
-%        pool.address AS pool_address, pool.fee AS pool_fee,
-%        coalesce(pool.featured, false) AS featured,
-%        t1.address AS token_in_address, t1.symbol AS token_in_symbol,
-%        t1.decimals AS token_in_decimals,
-%        t2.address AS token_out_address, t2.symbol AS token_out_symbol,
-%        t2.decimals AS token_out_decimals,
-%        fn.name AS function_name, fn.signature AS function_signature,
-%        fn.selector AS function_selector,
-%        family.name AS protocol, $chain_id AS chain_id
-% ORDER BY featured DESC, pool.fee ASC, pool.address ASC
-% LIMIT 20
-% \end{lstlisting}
-
-% The query returns graph-derived contract addresses, function
-% information, pool fees, and token decimals. Matching routes
-% are ordered by their recorded featured status, fee tier, and
-% pool address, with a maximum of 20 results. This ordering
-% does not represent price optimization. A matching path
-% establishes structural compatibility with the stored
-% knowledge but does not establish current liquidity or
-% guarantee that the requested swap can be executed.
-
-% Aave V3 uses a different relationship pattern because lending
-% operations depend on reserves rather than liquidity pools.
-% The verifier checks whether the deployment and the relevant
-% reserve support the requested action. The reserve must
-% reference the requested underlying asset, while the
-% deployment's Pool contract must expose a function
-% implementing the same action.
-
-% Listing~\ref{lst:aave_verification_query} shows the
-% corresponding query for supply, withdraw, borrow, and repay.
-
-% \begin{lstlisting}[
-%     style=thesiscypher,
-%     caption={Parameterized reserve and function verification for Aave V3.},
-%     label={lst:aave_verification_query}
-% ]
-% MATCH (family:ProtocolFamily)-[:HAS_DEPLOYMENT]->
-%       (deployment:ProtocolDeployment {verified:true, chain_id:$chain_id})
-% WHERE toLower(family.name) = toLower($protocol)
-% MATCH (deployment)-[:SUPPORTS_ACTION]->(action:Action {name:$action})
-% MATCH (deployment)-[reserve_rel:HAS_RESERVE]->
-%       (reserve:Reserve {verified:true, active:true})
-% MATCH (reserve)-[:UNDERLYING_ASSET]->
-%       (token:Token {symbol:$token_in, chain_id:$chain_id, verified:true})
-% MATCH (reserve)-[:SUPPORTS_ACTION]->(action)
-% MATCH (deployment)-[pool_rel:DEPLOYED_CONTRACT {role:'pool'}]->
-%       (pool:Contract {verified:true})-[:EXPOSES_FUNCTION]->
-%       (fn:Function {verified:true, purpose:'execute'})-[:IMPLEMENTS_ACTION]->(action)
-% WHERE reserve_rel.active=true AND pool_rel.active=true
-% RETURN pool.address AS address, null AS pool_address,
-%        token.address AS token_address, token.decimals AS token_decimals,
-%        fn.name AS function_name, fn.signature AS function_signature,
-%        fn.selector AS function_selector,
-%        family.name AS protocol, $chain_id AS chain_id
-% LIMIT 1
-% \end{lstlisting}
-
-% The returned contract, asset, and function information is
-% used for subsequent transaction preparation. Unlike the
-% Uniswap query, this pattern verifies an action-specific
-% reserve relationship. It does not establish the user's
-% available collateral, outstanding debt, health factor,
-% or the feasibility of the requested lending operation.
-
 For Uniswap V3, the verifier requires a deployment
 supporting the swap action, an active and eligible
 liquidity pool connecting the requested assets, and
@@ -1085,6 +982,39 @@ transaction receipts or post-execution balances.
 Consequently, the execution response demonstrates
 the implemented verification-to-submission handover,
 but does not establish successful on-chain settlement.
+
+
+
+
+\medskip
+\noindent\textbf{Restricted Wallet Authorization.}
+The execution component incorporates a custom
+ERC-7579-compatible validator, \texttt{GraphBoundValidator},
+to enforce restricted authorization through the
+ERC-4337 smart-account validation mechanism. The authorization architecture separates the privileged
+account owner, the verification authority, and the
+restricted execution signer. Following graph re-verification,
+the complete transaction batch is prepared and checked
+against the retained approved operation. The verification
+authority authorizes the exact encoded batch, including
+contract destinations, callable functions, parameters,
+and execution order. The restricted signer cannot
+authorize modifications or additional calls without
+a corresponding authorization from the verification
+authority.
+
+The validator enforces the smart-account and network
+context, limited authorization validity, and single-use
+approval identifiers. The mechanism was evaluated using
+the actual ZeroDev Kernel and ERC-4337 EntryPoint
+contracts in a local EVM environment. The tests
+demonstrated successful authorization of all five
+supported operation patterns and rejection of
+unauthorized changes to execution parameters. The restricted authorization mechanism was not
+deployed on public Ethereum Sepolia. Therefore,
+public-bundler compatibility, testnet execution,
+and production-level security remain unverified.
+
 
 
 % ## 4.7 Summary ###

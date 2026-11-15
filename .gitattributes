@@ -6,3 +6,6 @@
 /evaluation/sources/** -text
 /evaluation/datasets/*.json -text
 /evaluation/MANIFEST.sha256 -text
+# Preserve the tested Solidity bytecode and upstream-source manifest on checkout.
+*.sol text eol=lf
+source/wallet/test/vendor/** -text whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof

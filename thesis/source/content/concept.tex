@@ -207,44 +207,6 @@ The information extracted in the example illustrates the general purpose of
 the structured-intent model. At the conceptual level, a candidate intent may
 contain the fields shown in Table~\ref{tab:structured_intent_fields}.
 
-% \begin{table}[H]
-% \centering
-% \small
-% \caption{Conceptual fields of the structured DeFi intent.}
-% \label{tab:structured_intent_fields}
-% \begin{tabular}{p{0.24\textwidth} p{0.70\textwidth}}
-% \hline
-% \textbf{Field} & \textbf{Purpose} \\
-% \hline
-
-% Action &
-% Requested DeFi operation, such as swap, supply, withdraw, or borrow. \\
-
-% Protocol &
-% Requested DeFi protocol when explicitly specified or required by the
-% supported operation. \\
-
-% Network &
-% Blockchain network on which the operation is intended to take place. \\
-
-% Input / Asset &
-% Asset provided, supplied, withdrawn, or borrowed depending on the action. \\
-
-% Output Asset &
-% Asset expected from an exchange operation, where applicable. \\
-
-% Amount &
-% Quantity associated with the requested operation. \\
-
-% Recipient / Spender &
-% Destination or authorization-related entity where required. \\
-
-% Action-Specific Data &
-% Additional user-level parameters required by a particular supported action. \\
-
-% \hline
-% \end{tabular}
-% \end{table}
 
 \begin{table}[H]
 \centering
@@ -594,19 +556,7 @@ timestamp alone does not establish that all required knowledge has been
 acquired. If sufficient coverage or current applicability cannot be
 established, missing relationships are treated as insufficient evidence.
 
-Figure~\ref{fig:conceptual_graph_model} places the requested action at the
-centre of the graph. The relationships around it show which deployment
-supports the action, which function implements it, and which pool or
-reserve can participate in it.
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.80\textwidth]
-%     {figures/conceptual_graph_model.png}
-%     \caption{Conceptual action-centred graph model for representing
-%     authoritative DeFi execution relationships.}
-%     \label{fig:conceptual_graph_model}
-% \end{figure}
 
 \begin{figure}[H]
     \centering
@@ -617,6 +567,11 @@ reserve can participate in it.
     DeFi verification knowledge.}
     \label{fig:conceptual_graph_model}
 \end{figure}
+
+Figure~\ref{fig:conceptual_graph_model} places the requested action at the
+centre of the graph. The relationships around it show which deployment
+supports the action, which function implements it, and which pool or
+reserve can participate in it.
 
 The graph is intentionally action-centred because different operations require
 different connected structures. A swap may require relationships among the
@@ -656,192 +611,6 @@ execution context, determining the required relationship pattern, resolving the
 corresponding entities from the authoritative graph, and evaluating whether all
 mandatory relationships are supported by valid evidence.
 
-% \subsection{Action-Specific Relationship Verification}
-
-% Relationship verification determines whether the requested DeFi operation
-% is supported by a consistent set of execution relationships in the
-% authoritative property graph. The relationships that must be established
-% depend on the requested action.
-
-% Consider the example introduced in Section~\ref{sec:intent_generation}:
-
-% \begin{quote}
-% \textit{``Swap 50 USDT for WETH using Uniswap V3.''}
-% \end{quote}
-
-% After intent validation, the verifier uses the requested action, protocol,
-% network, and assets to identify the required execution relationships.
-% For this swap, it must establish that the applicable network hosts a
-% Uniswap V3 deployment supporting the swap action. It must also identify
-% an authoritative contract with a callable swap function and verify that
-% a compatible liquidity pool supports the requested asset pair and
-% applicable pool configuration.
-
-% These checks establish whether the requested operation has a supported
-% execution structure. The amount of 50 USDT remains a user-provided
-% parameter; the graph is used to resolve and verify execution-specific
-% information rather than to modify the requested operation.
-
-% Other DeFi actions require different relationships. For example, a
-% lending operation requires evidence of an applicable lending deployment,
-% an authoritative contract and function for the requested action, and
-% a reserve supporting the requested asset. The representative requirements
-% for swap, supply, and borrow operations are summarized in
-% Table~\ref{tab:verification_patterns}.
-
-% \begin{table}[H]
-% \centering
-% \caption{Representative action-specific relationship requirements.}
-% \label{tab:verification_patterns}
-
-% \small
-
-% \begin{tabular}{p{0.18\textwidth} p{0.77\textwidth}}
-% \hline
-% \textbf{Action} & \textbf{Required Verification Evidence} \\
-% \hline
-
-% Swap &
-% The applicable network and protocol deployment support the swap action.
-% An authoritative contract provides a callable swap function, and a
-% compatible liquidity pool supports the requested asset pair and
-% applicable pool configuration. \\
-
-% Supply &
-% The applicable network and lending deployment support the supply action.
-% An authoritative contract provides a callable supply function, and a
-% lending reserve supports the requested asset and supply operation. \\
-
-% Borrow &
-% The applicable network and lending deployment support the borrow action.
-% An authoritative contract provides a callable borrow function, and a
-% lending reserve supports the requested asset and borrow operation. \\
-
-% \hline
-% \end{tabular}
-% \end{table}
-
-% The verifier evaluates these requirements as connected relationships
-% within the same network and protocol deployment. For example, an
-% authoritative contract and a compatible liquidity pool cannot establish
-% a valid swap execution structure if they belong to different deployments.
-% An operation can therefore be approved only when all mandatory
-% relationships for its action are established consistently.
-
-
-% \subsection{Decision and Traceable Verification Result}
-
-% The verification result directly determines the decision. A separate
-% probabilistic decision component is not required.
-
-% The conceptual approval rule is:
-
-% \begin{quote}
-% \textit{A request is approved only when the structured intent is valid and
-% sufficient accepted evidence exists for every mandatory relationship required
-% by the requested action and execution context.}
-% \end{quote}
-
-% An \textbf{APPROVE} result is produced only when all mandatory execution
-% relationships can be established consistently using valid authoritative
-% verification knowledge. If the available evidence establishes that the requested execution structure
-% is unsupported or inconsistent, the verifier produces a \textbf{REJECT}
-% result. For example, the requested action may not be supported by the
-% applicable protocol deployment, or the required contract, function, and
-% protocol resources may not form a consistent execution structure.
-
-% The verifier obtains its evidence from the authoritative property graph
-% described in Section~\ref{sec:verification_knowledge}. If the required
-% information is missing, outdated, or unavailable, the verifier cannot
-% establish whether the requested execution structure is supported. This
-% condition is reported as a \textbf{verification failure}, rather than
-% assuming that missing relationships are valid or treating incomplete
-% knowledge as proof that the operation is unsupported. The absence of a matching relationship is treated as evidence of an
-% unsupported operation only when the applicable verification knowledge is
-% sufficiently complete and current for that check. Otherwise, the absence
-% is treated as insufficient evidence and results in a verification failure.
-
-% Both rejection and verification failure prevent blockchain execution.
-% A request may proceed only after all mandatory relationships have been
-% established using valid authoritative evidence.
-
-% Figure~\ref{fig:verification_outcome_examples} illustrates these three
-% outcomes for the same hypothetical validated swap request. Sufficient,
-% current, and valid evidence establishing all mandatory relationships leads
-% to approval. Complete and current knowledge, together with valid evidence
-% establishing that the deployment does not support the requested action,
-% leads to rejection. Stale or unavailable evidence instead produces a
-% verification failure because action support cannot be established. Approval
-% allows the verified result to proceed to the controlled execution checks;
-% it does not guarantee successful blockchain execution.
-
-% \begin{figure}[H]
-%     \centering
-%     \resizebox{0.98\linewidth}{!}{%
-%         \input{figures/verification_outcome_examples.tex}%
-%     }
-%     \caption{Illustrative verification outcomes for a DeFi request:
-% approval, rejection, and verification failure.}
-%     \label{fig:verification_outcome_examples}
-% \end{figure}
-
-% The result also records information required for traceability. Depending on the
-% outcome, this includes:
-
-% \begin{itemize}
-%     \item the approval, rejection, or verification-failure decision;
-%     \item a reason identifying the relevant failed or satisfied condition;
-%     \item the entities and relationships relevant to the decision;
-%     \item the execution information resolved from authoritative knowledge;
-%     \item the user-provided parameters covered by the verification;
-%     \item the authoritative evidence used; and
-%     \item the time and validity context of the result.
-% \end{itemize}
-
-% For an approved operation, this result binds the validated intent to the
-% resolved execution structure. It may therefore contain the network, protocol
-% deployment, target contract, callable function, relevant assets, pool or
-% reserve, amount, recipient or spender where applicable, and other protected
-% action-specific parameters. For a rejected request, the reason should identify the failed condition without
-% claiming information that was never resolved. For example, if no authoritative
-% contract can be established, the result should report that condition rather
-% than describing a mismatch with a particular contract. A successful result is valid only for the operation and context that were
-% actually verified. Changes to protected parameters or invalidation of the
-% underlying evidence require another verification before execution.
-
-% Figure~\ref{fig:verification_sequence} illustrates the interaction between
-% intent validation, relationship verification and decision, authoritative
-% verification knowledge, and the request controller. \\
-% The sequence starts once the candidate intent has successfully passed
-% deterministic validation. The validated intent is then forwarded to the
-% relationship-verification component, which identifies the relationships that
-% must hold for the requested DeFi action. Using the action, protocol, network,
-% and asset information from the intent, the verifier queries the authoritative
-% graph for the corresponding deployment, contract, callable function, and
-% protocol-specific resources such as a liquidity pool or lending reserve. The
-% graph returns the available verification evidence, which is evaluated as one
-% connected execution structure rather than as isolated entities. If sufficient, current, and valid evidence establishes all mandatory
-% relationships within the same execution context, the verifier returns an
-% approved structured verification result to the request controller,
-% including the resolved execution information. If the applicable knowledge
-% is sufficiently complete and current but the required relationships cannot
-% be established, the verifier returns a rejection with the supporting reason
-% and evidence. Otherwise, insufficient, invalid, stale, or unavailable
-% evidence produces a verification failure rather than a supported rejection.
-
-% \begin{figure}[H]
-%     \centering
-%     \resizebox{0.95\textwidth}{!}{%
-%         \input{figures/verification_sequence.tex}%
-%     }
-%    \caption{Graph-based relationship verification after intent validation.}
-%     \label{fig:verification_sequence}
-% \end{figure}
-
-% The verification component returns a traceable decision together with the
-% relevant evidence or failure reason. Only an approved result is forwarded
-% to controlled execution with its verified parameters unchanged. A rejected
-% request or verification failure does not produce an execution handover.
 
 \subsection{Action-Specific Relationship Verification}
 
@@ -1076,6 +845,17 @@ altered. The approved result and its protected parameters must therefore
 be preserved through a trusted handover. The concrete mechanism used
 to establish this integrity is an implementation concern.
 
+
+The execution restrictions may additionally be enforced through
+programmable smart-account authorization. A restricted execution
+signer can be limited to the contracts, functions, parameters,
+and validity conditions associated with an approved operation.
+Enforcing these conditions at the wallet level provides an
+additional boundary beyond application-level checks and prevents
+the delegated signer from executing operations outside the
+authorized scope.
+
+
 A rejected request, verification failure, expired approval, or modification
 of protected parameters must not proceed to transaction submission. In this
 way, the verification result acts as an execution constraint rather than
@@ -1111,19 +891,6 @@ parameters cannot be changed without another verification step.
 
 The concept therefore establishes the following overall path:
 
-% \begin{center}
-% \textit{Natural-Language Request}
-% $\rightarrow$
-% \textit{Candidate Intent}
-% $\rightarrow$
-% \textit{Intent Validation}
-% $\rightarrow$
-% \textit{Relationship Verification}
-% $\rightarrow$
-% \textit{Verified Decision}
-% $\rightarrow$
-% \textit{Controlled Execution}
-% \end{center}
 \begin{figure}[H]
 \centering
 

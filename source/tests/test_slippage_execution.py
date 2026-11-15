@@ -43,14 +43,15 @@ def isolated(monkeypatch):
         calls["whitelist"].append(address)
         return {"success": True}
 
-    def swap(routes, amount, slippage):
-        calls["wallet"].append((routes, amount, slippage))
-        return {"executed": True, "slippage_bps": slippage, "tx_hash": "mock-only"}
+    def swap(operation, verification_id):
+        assert operation.approval_expires_at is not None
+        calls["wallet"].append((operation.routes, format(operation.intent.amount, "f"), operation.slippage_bps))
+        return {"executed": True, "slippage_bps": operation.slippage_bps, "tx_hash": "mock-only"}
 
     monkeypatch.setattr(pipeline, "verify_intent", graph)
     monkeypatch.setattr(api, "verify_intent", graph)
     monkeypatch.setattr(api, "add_to_whitelist", whitelist)
-    monkeypatch.setattr(api, "execute_swap", swap)
+    monkeypatch.setattr(api, "execute_approved", swap)
     return store, calls
 
 
