@@ -12,9 +12,19 @@ The materials follow the organization of the project repository:
 defi-verification/
 |-- thesis/
 |   |-- DEFI_VERIFICATION.pdf
+|   |-- DEFI_VERIFICATION.zip
 |   |-- source/
-|   |-- figures/
 |-- source/
+|   |-- api/
+|   |-- core/
+|   |-- db/
+|   |-- llm/
+|   |-- scripts/
+|   |-- services/
+|   |-- static/
+|   |-- templates/
+|   |-- tests/
+|   |-- wallet/
 |-- evaluation/
 |   |-- 400_prompts/
 |   |-- 600_prompts/
@@ -42,21 +52,31 @@ the corresponding directories.
 
 \section{Thesis Documents}
 
-The \texttt{thesis/} directory contains the final thesis in PDF format,
-corresponding to the submitted printed version. The
-\texttt{thesis/source/} directory contains the editable thesis project,
-bibliography, and supporting files required to generate the document.
-Editable diagram sources and figure-generation scripts are included
-in \texttt{thesis/figures/}.
+The \texttt{thesis/} directory contains the final report
+(\texttt{DEFI\_VERIFICATION.pdf}), the original LaTeX project archive
+(\texttt{DEFI\_VERIFICATION.zip}), and a \texttt{README.md} with build
+instructions. The unpacked project is in \texttt{thesis/source/},
+with \texttt{thesis.tex} as its entry point. Editable diagram sources
+and exported figures are in \texttt{thesis/source/figures/}.
 
 \section{Prototypical Implementation}
 
-The \texttt{source/} directory contains the implementation of the
-graph-based intent-verification system. It includes natural-language
-intent extraction, normalization and validation, authoritative
-knowledge acquisition, graph synchronization, relationship
-verification, and the wallet execution adapter. The browser
-interface and application tests are also included.
+
+The top-level \texttt{source/} directory contains the prototype
+described in Chapter~\ref{chap:implementation}. Within it,
+\texttt{llm/} extracts and normalizes intents from natural-language
+requests. The \texttt{db/} directory contains the code that acquires
+protocol knowledge, synchronizes it with Neo4j, and checks the
+relationships required by an intent. The \texttt{services/} directory
+connects intent interpretation with these verification steps.
+The \texttt{wallet/} directory contains the Python adapter and Node.js
+code for executing approved plans.
+
+The \texttt{api/} directory exposes the verification workflow through
+FastAPI, while \texttt{templates/} and \texttt{static/} provide the
+browser interface. Shared data models, configuration, and application
+state are in \texttt{core/}. Operational utilities are in
+\texttt{scripts/}, and application tests are in \texttt{tests/}.
 
 The root \texttt{README.md} documents software requirements,
 installation, environment configuration, application startup, and
