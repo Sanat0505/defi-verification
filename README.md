@@ -1,5 +1,12 @@
 # DeFi relationship verification
 
+This branch implements restricted ERC-4337 authorization. See the
+[R4 implementation report](R4_RESTRICTED_AUTHORIZATION_IMPLEMENTATION_REPORT.md)
+for setup and validation details. Automated execution now requires a
+separate owner-installed validator and distinct authority/executor keys; legacy
+`PRIVATE_KEY` sudo execution is disabled. The earlier setup described below is
+retained for context and is not sufficient to enable execution on this branch.
+
 ## Project Overview
 
 This Master's thesis prototype converts natural-language DeFi requests into

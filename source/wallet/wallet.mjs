@@ -6,41 +6,29 @@
  *   node wallet.mjs add_whitelist '{"address":"0x..."}'
  *   node wallet.mjs check_session '{"to":"0x...","value_eth":0.001}'
  *   node wallet.mjs prepare_swap '{"amount":"0.001","routes":[...]}'
- *   node wallet.mjs send_swap '{"amount":"0.001","routes":[...]}'
  *   node wallet.mjs prepare_aave '{"action":"supply",...}'
- *   node wallet.mjs send_aave '{"action":"supply",...}'
+ *   node wallet.mjs send_authorized --stdin
+ *   node wallet.mjs prepare_installation --stdin
+ * Raw send_swap/send_aave are deliberately disabled on this branch.
  */
 
 import fs from "fs";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
+import { encodeCalls, installationCall } from "./authorization.mjs";
+import { exactUnits } from "./approved-plan.mjs";
+import { walletAddress, sendAuthorized } from "./restricted-client.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Local policy commands avoid SDK startup and read configuration from the process.
-const startupCommand = process.argv[2];
-if (!new Set(["add_whitelist", "check_session", "evaluate_policy"]).has(startupCommand)) {
-  const dotenv = await import("dotenv");
-  dotenv.config({
-    path: resolve(__dirname, "../../.env"),
-    quiet: true,
-  });
-}
+// The worker never loads .env: the backend passes an explicitly filtered environment.
 
 function isAddress(value) {
   return typeof value === "string" && /^0x[0-9a-fA-F]{40}$/.test(value);
 }
 
 const CHAIN_RPC = process.env.SEPOLIA_RPC;
-const ZERODEV_PROJECT_ID = process.env.ZERODEV_PROJECT_ID;
-const ZERODEV_RPC =
-  process.env.ZERODEV_RPC ||
-  (ZERODEV_PROJECT_ID
-    ? `https://rpc.zerodev.app/api/v3/${ZERODEV_PROJECT_ID}/chain/11155111`
-    : null);
-
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 const SESSION_LIMIT_ETH = 0.005;
 const SESSION_DURATION_MS = 24 * 60 * 60 * 1000;
@@ -223,45 +211,25 @@ function fail(message, extra = {}) {
 }
 
 let zerodevImportsLoaded = false;
-let ENTRY_POINT, KERNEL_VER, CHAIN;
+let CHAIN;
 
 async function loadZeroDevDependencies() {
   if (zerodevImportsLoaded) return;
 
   const {
-    createKernelAccount,
-    createKernelAccountClient: _createKernelAccountClient,
-    createZeroDevPaymasterClient,
-  } = await import("@zerodev/sdk");
-
-  const { KERNEL_V3_1, getEntryPoint } = await import("@zerodev/sdk/constants");
-  const { signerToEcdsaValidator } = await import("@zerodev/ecdsa-validator");
-  const {
     http,
     createPublicClient: _createPublicClient,
-    parseEther: _parseEther,
-    parseUnits: _parseUnits,
     formatUnits: _formatUnits,
     encodeFunctionData: _encodeFunctionData,
   } = await import("viem");
-  const { privateKeyToAccount } = await import("viem/accounts");
   const { sepolia } = await import("viem/chains");
 
-  ENTRY_POINT = getEntryPoint("0.7");
-  KERNEL_VER = KERNEL_V3_1;
   CHAIN = sepolia;
 
-  globalThis.__createKernelAccount = createKernelAccount;
-  globalThis.__createKernelAccountClient = _createKernelAccountClient;
-  globalThis.__createZeroDevPaymasterClient = createZeroDevPaymasterClient;
   globalThis.__http = http;
   globalThis.__createPublicClient = _createPublicClient;
-  globalThis.__parseEther = _parseEther;
-  globalThis.__parseUnits = _parseUnits;
   globalThis.__formatUnits = _formatUnits;
   globalThis.__encodeFunctionData = _encodeFunctionData;
-  globalThis.__signerToEcdsaValidator = signerToEcdsaValidator;
-  globalThis.__privateKeyToAccount = privateKeyToAccount;
   zerodevImportsLoaded = true;
 }
 
@@ -483,71 +451,15 @@ function evaluatePolicyCommand(args) {
 
 async function buildClients() {
   await loadZeroDevDependencies();
-
-  if (!PRIVATE_KEY) {
-    throw new Error("PRIVATE_KEY not set in environment");
-  }
-
-  if (!PRIVATE_KEY.startsWith("0x")) {
-    throw new Error("PRIVATE_KEY must start with 0x");
-  }
-
   if (!CHAIN_RPC) {
     throw new Error("SEPOLIA_RPC not set in environment");
   }
-
-  if (!ZERODEV_RPC) {
-    throw new Error("Set ZERODEV_PROJECT_ID or ZERODEV_RPC in environment");
-  }
-
-  const signer = globalThis.__privateKeyToAccount(PRIVATE_KEY);
-
   const publicClient = globalThis.__createPublicClient({
     chain: CHAIN,
     transport: globalThis.__http(CHAIN_RPC),
   });
-
-  const ecdsaValidator = await globalThis.__signerToEcdsaValidator(
-    publicClient,
-    {
-      signer,
-      entryPoint: ENTRY_POINT,
-      kernelVersion: KERNEL_VER,
-    },
-  );
-
-  const account = await globalThis.__createKernelAccount(publicClient, {
-    plugins: {
-      sudo: ecdsaValidator,
-    },
-    entryPoint: ENTRY_POINT,
-    kernelVersion: KERNEL_VER,
-  });
-
-  const paymasterClient = globalThis.__createZeroDevPaymasterClient({
-    chain: CHAIN,
-    transport: globalThis.__http(ZERODEV_RPC),
-  });
-
-  const kernelClient = globalThis.__createKernelAccountClient({
-    account,
-    chain: CHAIN,
-    client: publicClient,
-    bundlerTransport: globalThis.__http(ZERODEV_RPC),
-    paymaster: {
-      getPaymasterData: async (userOperation) => {
-        return paymasterClient.sponsorUserOperation({
-          userOperation,
-        });
-      },
-    },
-  });
-
-  return {
-    account,
-    kernelClient,
-    publicClient,
-  };
+  if (await publicClient.getChainId() !== 11155111) throw new Error("Wrong blockchain network");
+  return { account: { address: walletAddress() }, publicClient };
 }
 
 async function createWallet() {
@@ -619,6 +531,10 @@ function decodeRevertString(message) {
 }
 
 function describeError(err) {
+  // RPC error messages may contain credentials or request bodies.
+  if (err?.details || err?.shortMessage || /https?:\/\//i.test(String(err?.message))) {
+    return "Wallet RPC/simulation failed; check configuration, funds, and installed authorization";
+  }
   const candidates = [err?.details, err?.shortMessage, err?.message, String(err)];
   for (const candidate of candidates) {
     const decoded = decodeRevertString(candidate);
@@ -672,7 +588,7 @@ async function buildSwapPlan(args) {
 
   let amountIn;
   try {
-    amountIn = globalThis.__parseUnits(amountText, first.token_in_decimals);
+    amountIn = exactUnits(amountText, first.token_in_decimals);
   } catch {
     throw new Error(
       `${first.token_in_symbol} supports at most ${first.token_in_decimals} decimal places`,
@@ -682,7 +598,7 @@ async function buildSwapPlan(args) {
     throw new Error("Swap amount must be greater than zero");
   }
 
-  const { account, kernelClient, publicClient } = await buildClients();
+  const { account, publicClient } = await buildClients();
   const quotedRoutes = [];
   const quoteErrors = [];
   for (const route of routes) {
@@ -798,6 +714,11 @@ async function buildSwapPlan(args) {
     account,
     kernelClient,
     calls,
+    authorization_plan: {
+      account: account.address, chainId: 11155111, pool: best.route.pool_address,
+      quotedAmountOut: best.amountOut.toString(), callData: encodeCalls(calls),
+      calls: calls.map(c => ({ ...c, value: c.value.toString() })),
+    },
     summary: {
       smart_wallet: account.address,
       router: first.router_address,
@@ -825,6 +746,7 @@ async function prepareSwap(args) {
       prepared: true,
       executed: false,
       ...plan.summary,
+      authorization_plan: plan.authorization_plan,
       chain: "ethereum-sepolia",
       chain_id: 11155111,
       latency_ms: Date.now() - start,
@@ -835,34 +757,6 @@ async function prepareSwap(args) {
       prepared: false,
       executed: false,
       blocked_by: "swap preflight",
-      reason: describeError(err),
-      latency_ms: Date.now() - start,
-    });
-  }
-}
-
-async function sendSwap(args) {
-  const start = Date.now();
-  try {
-    const plan = await buildSwapPlan(args);
-    const txHash = await plan.kernelClient.sendTransaction({ calls: plan.calls });
-    respond({
-      success: true,
-      executed: true,
-      tx_hash: txHash,
-      ...plan.summary,
-      verified_address: plan.summary.router,
-      action: "swap",
-      chain: "ethereum-sepolia",
-      chain_id: 11155111,
-      explorer: `https://sepolia.etherscan.io/tx/${txHash}`,
-      latency_ms: Date.now() - start,
-    });
-  } catch (err) {
-    respond({
-      success: false,
-      executed: false,
-      blocked_by: "swap execution",
       reason: describeError(err),
       latency_ms: Date.now() - start,
     });
@@ -928,7 +822,7 @@ async function buildAavePlan(args) {
 
   let amount;
   try {
-    amount = globalThis.__parseUnits(operation.amountText, operation.assetDecimals);
+    amount = exactUnits(operation.amountText, operation.assetDecimals);
   } catch {
     throw new Error(
       `${operation.assetSymbol} supports at most ${operation.assetDecimals} decimal places`,
@@ -936,7 +830,7 @@ async function buildAavePlan(args) {
   }
   if (amount <= 0n) throw new Error("Aave amount must be greater than zero");
 
-  const { account, kernelClient, publicClient } = await buildClients();
+  const { account, publicClient } = await buildClients();
   const calls = [];
   let approvalRequired = false;
   if (operation.approved.needsApproval) {
@@ -1024,6 +918,10 @@ async function buildAavePlan(args) {
     account,
     kernelClient,
     calls,
+    authorization_plan: {
+      account: account.address, chainId: 11155111, callData: encodeCalls(calls),
+      calls: calls.map(c => ({ ...c, value: c.value.toString() })),
+    },
     summary: {
       smart_wallet: account.address,
       verified_address: operation.poolAddress,
@@ -1052,6 +950,7 @@ async function prepareAave(args) {
       prepared: true,
       executed: false,
       ...plan.summary,
+      authorization_plan: plan.authorization_plan,
       chain: "ethereum-sepolia",
       chain_id: 11155111,
       latency_ms: Date.now() - start,
@@ -1068,40 +967,13 @@ async function prepareAave(args) {
   }
 }
 
-async function sendAave(args) {
-  const start = Date.now();
-  try {
-    const plan = await buildAavePlan(args);
-    const txHash = await plan.kernelClient.sendTransaction({ calls: plan.calls });
-    respond({
-      success: true,
-      executed: true,
-      tx_hash: txHash,
-      ...plan.summary,
-      protocol: "Aave V3",
-      chain: "ethereum-sepolia",
-      chain_id: 11155111,
-      explorer: `https://sepolia.etherscan.io/tx/${txHash}`,
-      latency_ms: Date.now() - start,
-    });
-  } catch (err) {
-    respond({
-      success: false,
-      executed: false,
-      blocked_by: "Aave execution",
-      reason: describeError(err),
-      latency_ms: Date.now() - start,
-    });
-  }
-}
-
 async function main() {
   const [, , command, rawArgs] = process.argv;
 
   let args = {};
 
   try {
-    args = rawArgs ? JSON.parse(rawArgs) : {};
+    args = rawArgs === "--stdin" ? JSON.parse(fs.readFileSync(0, "utf8")) : rawArgs ? JSON.parse(rawArgs) : {};
   } catch {
     fail("Invalid JSON args");
   }
@@ -1129,7 +1001,7 @@ async function main() {
         break;
 
       case "send_swap":
-        await sendSwap(args);
+        respond({ success: false, executed: false, reason: "Raw execution disabled; retained graph authorization required" });
         break;
 
       case "prepare_aave":
@@ -1137,7 +1009,21 @@ async function main() {
         break;
 
       case "send_aave":
-        await sendAave(args);
+        respond({ success: false, executed: false, reason: "Raw execution disabled; retained graph authorization required" });
+        break;
+
+      case "prepare_installation":
+        respond({ success: true, executed: false, call: installationCall(args) });
+        break;
+
+      case "send_authorized":
+        try {
+          respond(await sendAuthorized(args));
+        } catch {
+          // Signer/provider errors can embed credentials. Never return them.
+          respond({ success: false, executed: false,
+            reason: "Restricted authorization or submission failed; check installed configuration and permission validity" });
+        }
         break;
 
       case "send_userop":
@@ -1161,7 +1047,7 @@ async function main() {
     respond(
       {
         success: false,
-        error: err?.message || String(err),
+        error: describeError(err),
       },
       1,
     );

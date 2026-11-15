@@ -1,0 +1,140 @@
+
+This thesis investigated how an AI-generated structured DeFi intent can
+be verified against authoritative execution relationships before blockchain
+submission. The central problem was that individually valid protocols,
+contracts, functions, and assets can still form an inconsistent execution
+structure. Neither a well-formed model response nor wallet authorization
+establishes that these entities belong together for the proposed operation.
+The objective was therefore to investigate a maintained, domain-specific
+property graph as a pre-execution verification mechanism and to connect
+its decisions to controlled ERC-4337 wallet execution.
+
+The developed concept separates natural-language intent generation,
+deterministic validation, verification-knowledge acquisition,
+action-specific relationship verification, and controlled execution.
+The language model produces a candidate intent, while execution-specific
+contracts, functions, and protocol resources are resolved from admitted
+graph knowledge. The prototype implements this approach using Neo4j for
+selected Uniswap V3 single-hop swaps and Aave V3 supply, withdrawal,
+borrowing, and repayment operations on Ethereum Sepolia. Approved
+operations are retained server-side and reverified before transaction
+preparation.
+
+\medskip
+\noindent\textbf{Contributions and Main Findings}
+
+The principal contribution is an action-specific verification architecture
+that evaluates the connections among execution entities within the
+applicable network and protocol deployment. The graph serves as maintained
+verification knowledge against which the structured operation is checked.
+This makes the relationships required for approval explicit and separates
+their verification from probabilistic language interpretation. The approach
+also distinguishes evidence of an unsupported operation from insufficient
+evidence, preventing either condition from authorizing execution.
+
+The controlled relationship experiment provides the clearest evidence
+for this contribution. Both the full verifier and an entity-existence
+baseline approved 12 valid controls. After individual relationship
+deletions, the full verifier rejected all 60 altered paths, whereas the
+baseline approved all 60. Since the entities remained present, the
+comparison demonstrates the importance of checking their required
+connections. It supports the tested verification patterns without
+establishing that a graph database is the only suitable implementation.
+
+The evaluation also examined graph verification independently of
+language-model output. All 340 direct reference-intent calls, covering
+112 distinct graph inputs, agreed with the decisions and selected
+execution evidence derived from the admitted snapshot. Of these calls,
+338 completed within two seconds, corresponding to 99.41\%. The first
+occurrences of distinct inputs met the threshold in 110 of 112 cases,
+or 98.21\%. These results satisfy the prototype-specific R6 target for
+the recorded workload. Separately, 36 knowledge-maintenance observations
+across 12 controlled conditions matched the predefined expectations,
+including non-approval under stale or incomplete evidence.
+
+The balanced natural-language study produced 534 final-status matches
+across 600 prompts, corresponding to 89.00\% agreement with the draft
+references. The more restrictive joint-reference measure matched in
+529 cases, or 88.17\%, while four attempts ended in provider quota errors.
+These findings show that the complete pipeline remains less reliable
+than the graph checks considered separately. The research objective
+has therefore been achieved for relationship verification within the
+admitted and evaluated scope, while integration with controlled wallet
+execution was initially demonstrated at the application handover level.
+A separate November regression subsequently demonstrated exact-batch,
+one-use authorization through actual local Kernel and EntryPoint contracts.
+
+\medskip
+\noindent\textbf{Limitations}
+
+The most important limitation concerns preservation of the original
+request. In one evaluated case, the language model omitted an explicit
+intermediate-token condition and produced a direct-swap intent. The
+graph verifier approved that reduced operation because its relationships
+were supported by the admitted knowledge. No transaction was submitted.
+This demonstrates that relationship correctness does not establish
+intent correctness: a verifier can correctly assess the operation it
+receives while a user constraint has already been lost. The evaluation also has methodological boundaries. The natural-language
+references were assistant-drafted without documented independent
+item-level review, and the joint measure checks only selected aspects
+of interpretation. The graph references were derived from the admitted
+snapshot rather than an independent validation of every protocol fact.
+Prompts, graph inputs, and mutation fixtures contain dependent
+observations. Furthermore, the earlier 400-prompt study and the
+600-prompt follow-up used different datasets and do not establish
+causal improvement.
+
+Verification remains dependent on the quality and maintenance of its
+reference knowledge. Synchronization procedures automate acquisition
+when invoked, but continuous source monitoring is not implemented.
+Manually maintained function mappings, non-atomic updates, incomplete
+removal of obsolete relationships, and limited representation of live
+reserve restrictions constrain the meaning of approval. The graph
+establishes consistency with admitted knowledge rather than complete
+current transaction feasibility. Traceability and deployment assurance
+also remain incomplete. The original 28 wallet-policy and handover tests
+included simulated responses. The later local authorization regression
+supports R4 for exact approved batches and one-use restrictions, but does
+not establish Sepolia installation, public-bundler acceptance, cumulative
+budgets across approvals, or successful testnet settlement.
+The subsequent traceability regression correctly localized all 60
+controlled relationship deletions and reported their expected and
+observed conditions. However, approved controls still lacked an explicit
+reason or verification-rule identifier, and some broader graph results
+remained unlocalized. The improvement therefore supports traceability
+for the tested mutation cases rather than complete R5 coverage across
+all outcomes.
+
+\medskip
+\noindent\textbf{Future Work}
+
+An immediate research direction is stronger preservation of explicit
+user constraints throughout interpretation, validation, and transaction
+preparation. This should be evaluated using independently reviewed
+references and requests kept separate from development. Evaluation
+should also distinguish failure to extract a constraint from failure
+to enforce a correctly extracted constraint. Further work should strengthen knowledge maintenance through consistent
+updates, dependency-aware freshness checks, and validation of relevant
+protocol state. Extending the approach to additional protocols,
+networks, and actions would help determine which relationship patterns
+are reusable and which require protocol-specific verification rules.
+Beyond the initial scope, multi-step operations offer a further research
+question: how can individually valid actions be verified as a consistent
+sequence when the output and state changes of one action affect the
+requirements of the next?
+
+Further work should independently audit and deploy the locally tested
+authorization mechanism, validate public-bundler compatibility, and add
+authenticated browser-account binding, cumulative budgets across approvals,
+and persistent receipt reconciliation.
+Comparing the property-graph implementation with equally expressive
+rule-based or relational alternatives would also clarify the practical
+benefits and costs of the chosen representation.
+
+The thesis shows that explicit, action-specific relationship verification
+can provide a useful safeguard between AI-generated DeFi intents and
+blockchain execution. Its contribution is a verifiable connection between
+an interpreted operation and admitted execution knowledge. The security
+value of that connection depends on preserving the user's constraints,
+maintaining the underlying knowledge, and enforcing the approved
+operation at the execution boundary.

@@ -1,0 +1,30 @@
+\vspace*{0pt plus 1fill}
+\begin{tucsimplesection}[2\bigskipamount]{Abstract}
+
+\bigskip
+The integration of automated AI agents into Decentralized Finance (DeFi) introduces potential
+for abstracting complex financial operations behind simple natural language commands. To
+enable such automation safely, the ERC-4337 Account Abstraction standard has emerged as a
+foundational execution layer, providing programmable smart contract wallets with basic
+constraints such as session-scoped spending limits and whitelisted contract enforcement.
+However, it cannot evaluate the semantic correctness of the contracts that an AI agent targets.
+Current AI-Web3 architectures rely on probabilistic Retrieval-Augmented Generation (RAG)
+for on-chain data retrieval, leaving automated agents vulnerable to hallucination-induced
+misrouting and adversarial prompt injection attacks, possibly resulting in irreversible loss of
+user funds. \\ \\
+This thesis aims to tackle this issue through a verification architecture that introduces a
+deterministic, graph-based pre-execution validation layer between the AI reasoning stage and
+the blockchain execution layer. Instead of directly identifying contract addresses, the AI should
+only extract the declared transaction intent, while an automatically populated, domain-specific
+Blockchain graph would then be used to verify the involved protocols, pools, and tokens
+before allowing the transaction. This graph-based resolution layer could then be combined with
+an ERC-4337 smart contract wallet at the execution stage for a layered verification architecture.\\ \\
+The objective of this thesis is the creation of a solution or the combination of existing
+approaches to solve the above-described problem of verifying DeFi transactions in AI agents.
+This includes an analysis of the state of the art of existing verification mechanisms, Blockchain
+graphs, graph retrieval methods, and other relevant literature. Based on this analysis, a possible
+solution should be conceptualized, demonstrated through a prototypical implementation, and a
+suitable evaluation conducted based on its effectiveness and its compliance with requirements
+extracted through the literature research.
+\end{tucsimplesection}
+\vspace*{0pt plus 2.5fill}

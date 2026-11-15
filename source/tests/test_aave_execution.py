@@ -73,31 +73,23 @@ def test_execute_uses_graph_approved_aave_operation(monkeypatch):
     monkeypatch.setattr(api_module, "capability_store", store)
     monkeypatch.setattr(api_module, "verify_intent", lambda *args: graph_result(operation))
     monkeypatch.setattr(api_module, "add_to_whitelist", lambda address: {"success": True})
-    def execute(payload):
-        captured.update(payload)
+    def execute(payload, verification_id):
+        captured.update(operation=payload, verification_id=verification_id)
         return {
             "executed": True, "tx_hash": "0xabc", "smart_wallet": "0x" + "3" * 40,
             "verified_address": operation.verified_address, "asset_address": operation.verified_asset,
             "token_in": "USDT", "amount_in": "10", "action": "repay",
         }
-    monkeypatch.setattr(api_module, "execute_aave", execute)
+    monkeypatch.setattr(api_module, "execute_approved", execute)
     result = asyncio.run(api_module.execute(ExecuteRequest(
         verification_id=token,
         wallet_address="0x" + "4" * 40,
     )))
     assert result["decision"] == "EXECUTED"
-    assert captured == {
-        "action": "repay",
-        "pool_address": operation.verified_address,
-        "asset_address": operation.verified_asset,
-        "asset_symbol": "USDT",
-        "asset_decimals": 6,
-        "amount": "10",
-        "function_signature": operation.verified_function,
-        "function_selector": operation.verified_selector,
-        "interest_rate_mode": 2,
-        "referral_code": 0,
-    }
+    assert captured["verification_id"] == token
+    saved = captured["operation"]
+    assert saved.approval_expires_at is not None
+    assert saved.model_dump(exclude={"approval_expires_at"}) == operation.model_dump(exclude={"approval_expires_at"})
 
 
 def test_python_wallet_wrapper_passes_only_structured_aave_payload(monkeypatch):

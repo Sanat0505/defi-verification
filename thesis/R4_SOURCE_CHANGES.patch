@@ -1,0 +1,379 @@
+--- supplied-zip/content/concept.tex
++++ thesis/content/concept.tex
+@@ -1074,7 +1074,11 @@
+ the trusted verification component and that the result has not been
+ altered. The approved result and its protected parameters must therefore
+ be preserved through a trusted handover. The concrete mechanism used
+-to establish this integrity is an implementation concern.
++to establish this integrity is an implementation concern. A restricted
++wallet validator can enforce this handover by checking an authorization
++for the complete encoded call batch, including its account, network,
++validity period, and one-time use. Administrative ownership remains
++separate from the automated execution signer.
+ 
+ A rejected request, verification failure, expired approval, or modification
+ of protected parameters must not proceed to transaction submission. In this
+--- supplied-zip/content/implementation.tex
++++ thesis/content/implementation.tex
+@@ -970,23 +970,20 @@
+ original target contract and function selector.
+ For Aave operations, the underlying asset address and
+ decimals must also remain unchanged. For Uniswap swaps,
+-at least one newly returned route must match the
+-originally approved router, pool, fee tier, and
+-asset addresses. A failed comparison prevents execution.
+-
+-
+-This mechanism reassesses graph authority without
+-requiring an immutable knowledge snapshot. However,
+-the implementation does not preserve every execution
+-parameter through the comparison. Swap preparation
+-receives all routes returned by the renewed verification
+-and may select a route other than the one that matched
+-the original approval. Quoter addresses and token decimals
+-are also excluded from the swap comparison. Consequently,
+-the complete approved swap configuration is not
+-immutably bound to transaction preparation. Approval
+-expiry is checked when the identifier is claimed,
+-rather than immediately before blockchain submission.
++only originally retained routes that still match the renewed graph result
++are passed to preparation. The comparison includes router, pool, fee tier,
++assets, quoter, token decimals, function signature, and selector. Network,
++protocol, and action must also remain unchanged. A failed comparison
++prevents execution.
++
++
++This mechanism reassesses graph authority without requiring an immutable
++knowledge snapshot. The configured development smart account is retained
++with the approval. After read-only preparation, the backend independently
++checks the complete encoded batch against the retained operation. It then
++authorizes those exact bytes; submission neither selects another route nor
++recalculates the quote. The wallet authorization expires no later than the
++original approval and at most 120 seconds after issuance.
+ 
+ 
+ \subsection{Transaction Preparation and Submission}
+@@ -1000,17 +997,27 @@
+ version~0.7 on Ethereum Sepolia
+ ~\cite{implZeroDevSDK,implERC4337}. A bundler handles
+ submission, while a paymaster supports transaction
+-sponsorship. The smart account is controlled by a backend-configured
+-ECDSA signer with \texttt{sudo} authority.\footnote{In
+-the ZeroDev Kernel plugin model, a \texttt{sudo}
+-validator provides unrestricted signing authority,
+-unlike a permission-limited session-key validator
+-~\cite{implZeroDevPlugins}.}
+-The connected MetaMask account is not cryptographically
+-bound to this signer. Although the API validates the
+-format of the submitted wallet address, it does not
+-establish ownership of that address or require its
+-authorization for transaction submission.
++sponsorship. In the restricted implementation, three signing roles are
++separate. The privileged owner installs a custom ERC-7579 secondary
++validator, \texttt{GraphBoundValidator}, on a development Kernel account.
++A backend graph authority attests the prepared operation after capability
++claim and re-verification. A restricted execution key signs the
++UserOperation through the SDK's \texttt{regular} plugin. The execution
++worker receives neither the owner key nor the authority key and has no
++\texttt{sudo} fallback. The connected MetaMask address remains interface
++context rather than proof of ownership of the configured smart account.
++
++The validator checks the authority's signature over a commitment to the
++complete Kernel execution calldata, account, chain, execution key, validator,
++configuration epoch, approval identifier, and validity window. EntryPoint
++enforces the returned time bounds. The validator consumes each approval
++identifier once and enforces an owner-configured maximum UserOperation gas
++cost. Consequently, changing a destination, selector, argument, native value,
++or batch member invalidates the authorization. General message-signature
++authorization and direct execution through this validator are disabled.
++The owner retains installation and revocation authority. Installation
++calldata is prepared separately; deployment and installation on Sepolia
++were not performed during the supplementary local evaluation.
+ 
+ Before constructing a transaction, the execution
+ component checks the graph-derived contract addresses,
+@@ -1025,9 +1032,11 @@
+ but the normal execution path can add currently
+ verified destinations to this list. It therefore
+ does not provide an independent user-defined
+-authorization policy. These restrictions operate
+-at the application level, without an on-chain
+-session-key policy or cumulative ERC-20 spending limit.
++authorization policy. The allowlist remains an application-level preflight check. Independent
++wallet enforcement is provided by the signed batch commitment and the
++one-use validator. Token approvals are limited to the exact operation
++amount; a reset to zero may precede them. A cumulative budget across
++separately approved operations is not implemented.
+ 
+ 
+ Figure~\ref{fig:blockchain_execution} shows the
+@@ -1045,7 +1054,7 @@
+ \end{figure}
+ 
+ For Uniswap V3 swaps, the execution component obtains
+-quotes for the routes returned by the renewed graph
++quotes for retained routes that still match the renewed graph
+ verification and selects the route with the highest
+ positive quoted output. The minimum acceptable output
+ is calculated using the stored slippage tolerance,
+@@ -1070,21 +1079,19 @@
+ Graph approval therefore does not establish that
+ the lending transaction will succeed.
+ 
+-The Kernel client submits the prepared operations.
+-When submission returns a transaction hash, the
+-backend reports \texttt{EXECUTED} with reason code
+-\texttt{TRANSACTION\_SUBMITTED}. This status indicates
+-submission through the wallet client, not confirmed
+-blockchain execution. Errors encountered during
+-preparation or submission produce \texttt{FAILED}.
+-
+-
+-
+-The prototype does not independently reconcile
+-transaction receipts or post-execution balances.
+-Consequently, the execution response demonstrates
+-the implemented verification-to-submission handover,
+-but does not establish successful on-chain settlement.
++The Kernel client submits the authorized calldata and waits for a
++successful UserOperation receipt before reporting \texttt{EXECUTED}.
++The existing response reason code \texttt{TRANSACTION\_SUBMITTED} is
++retained for interface compatibility. A reverted operation, failed
++preparation, or submission error produces \texttt{FAILED}.
++
++
++
++Receipt waiting does not provide persistent reconciliation, finality
++monitoring, or post-execution balance checks. Figure~\ref{fig:blockchain_execution}
++records the earlier demonstration and is not evidence of the new validator
++on Sepolia. The supplementary authorization evidence is limited to local
++contract execution, as described in Chapter~\ref{chap:evaluation}.
+ 
+ 
+ % ## 4.7 Summary ###
+@@ -1106,12 +1113,12 @@
+ conceptual guarantees. Knowledge synchronization requires external
+ invocation and is not fully atomic, while live Aave reserve
+ restrictions are only partially represented. Verification results
+-do not retain immutable evidence snapshots. Although the execution
+-endpoint repeats relationship verification, its comparison does not
+-bind every swap-preparation parameter to the original approval.
+-Wallet restrictions remain primarily application-level controls,
+-and the backend signer is not authenticated as the connected
+-browser account.
++do not retain immutable evidence snapshots. The revised execution
++endpoint retains matching routes and binds the prepared batch to a
++one-use wallet authorization. The supplementary local tests establish
++this enforcement boundary, while Sepolia installation, operational
++bundler compatibility, and authentication of the connected browser
++account remain outside the demonstrated scope.
+ 
+ The following chapter evaluates intent processing, relationship
+ verification, knowledge maintenance, and the controlled execution
+--- supplied-zip/content/evaluation.tex
++++ thesis/content/evaluation.tex
+@@ -276,6 +276,16 @@
+ establish wallet authorization, sufficient balances or collateral, or
+ transaction success.} The controlled experiments were conducted separately
+ from the 600-prompt language study.
++
++A further authorization regression was conducted on 15 November 2026,
++separately from the recorded experiments. It combined mocked backend
++approval tests with an in-memory EVM running the actual Kernel 0.3.1,
++EntryPoint 0.7, and custom secondary-validator contracts. Positive cases
++covered the Uniswap swap and all four supported Aave actions. Negative
++cases changed protected calldata and batch members or attempted expired,
++reused, incorrectly scoped, or unrestricted authorization. Recording
++contracts observed dispatched calls; they did not model liquidity,
++collateral, or protocol economics. No testnet transaction was submitted.
+ 
+ \subsection{Measurements and Analysis}
+ \label{sec:evaluation_measurements}
+@@ -1078,6 +1088,18 @@
+ budgets, and persistent receipt reconciliation. Several responses were
+ simulated, and these tests did not establish live transaction success.
+ 
++The separate November regression passed 213 Python tests and 74 JavaScript
++tests. The latter included actual local EntryPoint and Kernel validation,
++SDK signing, ABI checks before attestation, and disabled legacy entry points.
++All five authorized protocol-call patterns executed locally, including
++their required approval batches. With genuine restricted-key signatures,
++the contracts rejected mutations of targets, selectors, assets, amounts,
++recipients, spenders, allowances, swap conditions, and batch composition.
++Expiry, reuse, account and chain mismatches, missing authority signatures,
++gas-budget violations, and sudo or direct-call bypass attempts were also
++rejected. These are new authorization results, not additional observations
++in the original graph or language-model experiments.
++
+ % 5.4 discussion
+ 
+ 
+@@ -1134,9 +1156,11 @@
+     dependency on Aave.
+ 
+     \item \textbf{Execution control.} Controlled wallet tests support the
+-    implemented handover checks, but signer binding, cumulative spending
+-    limits, and transaction-receipt reconciliation remain incomplete.
+-    Simulated outcomes do not demonstrate successful blockchain execution.
++    implemented handover checks. The separate local contract regression
++    additionally demonstrates exact-batch authorization and one-use limits.
++    Browser-account authentication, cumulative budgets across approvals,
++    persistent receipt reconciliation, and deployment validation remain
++    incomplete. Local outcomes do not demonstrate Sepolia settlement.
+ 
+     
+ \item \textbf{Traceability.} The revised verifier identified all 60
+@@ -1202,19 +1226,20 @@
+ 
+ 
+ \noindent\textbf{R4: Pre-Execution Enforcement and Controlled Execution.}
+-The prototype implements a verification boundary that prevents
+-non-approved operations from proceeding through the intended execution
+-workflow. Controlled tests also examine the expiry, reuse, and
+-modification of approved operations. The implementation was evaluated on Ethereum Sepolia, where the main
+-objective was to test relationship verification and the subsequent
+-execution handover. Comprehensive smart-wallet restrictions were not
+-enforced in the demonstration environment, as production-level wallet
+-authorization was outside the primary experimental scope. Although
+-ERC-4337 and ZeroDev Kernel provide mechanisms for restricting execution,
+-their complete enforcement was not demonstrated by the prototype.
+-Consequently, R4 receives \evOne{} under the criteria defined in
+-Chapter~\ref{chap:stateoftheart}.
+-
++The revised prototype produces an explicit decision before execution (C1)
++and blocks rejected, unresolved, expired, or reused approvals (C2).
++An owner-installed Kernel secondary validator independently restricts the
++execution key to an authority-attested batch, account, network, validity
++window, and one-use limit (C3). The commitment covers every encoded call
++and its security-relevant arguments; changes require another approval and
++authorization (C4). The separate November regression demonstrated these
++properties through backend tests and actual local Kernel and EntryPoint
++execution, including unauthorized operations signed by the restricted key.
++All four criteria, including mandatory C2 and C3, are therefore supported
++within this locally evaluated scope, yielding \evThree{}. This revises the
++earlier \evOne{} assessment of the demonstration implementation; it does
++not establish Sepolia deployment, public-bundler acceptance, or production
++security.
+ 
+ 
+ \medskip\noindent\textbf{R5: Traceable Verification Result.}
+@@ -1270,7 +1295,7 @@
+           & \evZero & \evZero & \evOne & \evZero & \evOne & N/E \\
+         \hline
+ \textbf{Implemented prototype}
+-  & \evTwo & \evThree & \evThree & \evOne & \evTwo & \evThree \\
++  & \evTwo & \evThree & \evThree & \evThree & \evTwo & \evThree \\
+         \hline
+     \end{tabular}
+ \end{table}
+@@ -1280,9 +1305,9 @@
+ groups usually address separately. Its strongest demonstrated contribution
+ is the validation of connected execution relationships. The revised
+ traceability mechanism provides more specific diagnostic evidence, supporting
+-the R5 assessment, while the limited R4 rating reflects the remaining gap
+-between application-level verification and fully restricted smart-wallet
+-execution. The comparison applies the common requirement criteria rather
++the R5 assessment. The revised R4 rating incorporates the separate local
++contract-authorization evidence and does not extend the historical
++Sepolia demonstration results. The comparison applies the common requirement criteria rather
+ than a direct experimental benchmark against the reviewed systems.
+ 
+ 
+@@ -1318,7 +1343,13 @@
+ on-chain correctness of every protocol fact. The entity-existence baseline
+ represents a deliberately limited alternative, while the mutation experiments
+ cover missing relationships rather than all possible execution-data errors.
+-Wallet tests rely substantially on controlled or simulated outcomes, and R6
++The original wallet tests rely substantially on controlled or simulated
++outcomes. The supplementary authorization tests use actual validation
++contracts but substitute recording targets for DeFi protocols; they do not
++test economic feasibility, public-bundler policy, or finality. The owner,
++graph authority, RPC responses, and host credential isolation remain trust
++assumptions. The new validator has not received an independent security
++audit. R6
+ measures only graph-verification time, excluding intent generation and wallet
+ processing.
+ 
+@@ -1381,8 +1412,9 @@
+ approved controls and generic diagnostics in some other cases prevent
+ a claim of complete traceability. The revised verifier also met the
+ specified latency target in the recorded post-change workload. Targeted
+-regression tests supported the revised R5 assessment. Intent preservation and
+-comprehensive wallet-level execution enforcement remain less complete.
++regression tests supported the revised R5 assessment. A later, separate
++contract regression supports R4 within the local authorization scope.
++Intent preservation and operational deployment assurance remain incomplete.
+ 
+ Overall, the evaluation supports the central contribution of this thesis:
+ explicit verification of action-specific DeFi execution relationships provides
+--- supplied-zip/content/conclusion.tex
++++ thesis/content/conclusion.tex
+@@ -60,7 +60,9 @@
+ than the graph checks considered separately. The research objective
+ has therefore been achieved for relationship verification within the
+ admitted and evaluated scope, while integration with controlled wallet
+-execution has been demonstrated at the application handover level.
++execution was initially demonstrated at the application handover level.
++A separate November regression subsequently demonstrated exact-batch,
++one-use authorization through actual local Kernel and EntryPoint contracts.
+ 
+ \medskip
+ \noindent\textbf{Limitations}
+@@ -89,11 +91,12 @@
+ removal of obsolete relationships, and limited representation of live
+ reserve restrictions constrain the meaning of approval. The graph
+ establishes consistency with admitted knowledge rather than complete
+-current transaction feasibility. Execution enforcement and traceability also remain incomplete.
+-The 28 supplementary wallet-policy and handover tests included simulated
+-responses and do not establish successful blockchain settlement.
+-The backend signer, incomplete binding of swap parameters, and absence
+-of independently enforced spending restrictions limit fulfilment of R4.
++current transaction feasibility. Traceability and deployment assurance
++also remain incomplete. The original 28 wallet-policy and handover tests
++included simulated responses. The later local authorization regression
++supports R4 for exact approved batches and one-use restrictions, but does
++not establish Sepolia installation, public-bundler acceptance, cumulative
++budgets across approvals, or successful testnet settlement.
+ The subsequent traceability regression correctly localized all 60
+ controlled relationship deletions and reported their expected and
+ observed conditions. However, approved controls still lacked an explicit
+@@ -120,10 +123,10 @@
+ sequence when the output and state changes of one action affect the
+ requirements of the next?
+ 
+-Another direction is stronger integration between verification and
+-execution authorization. Approved parameters should remain bound to
+-transaction construction and independently enforced wallet permissions,
+-including authenticated authorization and explicit spending restrictions.
++Further work should independently audit and deploy the locally tested
++authorization mechanism, validate public-bundler compatibility, and add
++authenticated browser-account binding, cumulative budgets across approvals,
++and persistent receipt reconciliation.
+ Comparing the property-graph implementation with equally expressive
+ rule-based or relational alternatives would also clarify the practical
+ benefits and costs of the chosen representation.
+--- supplied-zip/figures/controlled_execution_flow.tex
++++ thesis/figures/controlled_execution_flow.tex
+@@ -156,17 +156,17 @@
+ 
+ \node[execbox] (prepare) at (0,-8.60)
+     {\textbf{Prepare protocol calls}\\
+-     Validate parameters and local policy\\
+-     Quotes, balances, and allowances};
++     Check parameters and read-only state\\
++     Attest exact batch and expiry};
+ 
+ \node[execbox] (submit) at (0,-10.75)
+     {\textbf{Submit call batch}\\
+-     Kernel smart account\\
+-     ZeroDev bundler and paymaster};
++     Restricted Kernel validator\\
++     Exact batch, expiry, and one use};
+ 
+ \node[execbox] (result) at (0,-12.90)
+     {\textbf{Return \texttt{EXECUTED}}\\
+-     Transaction hash\\
++     Successful UserOperation receipt\\
+      Execution summary};
+ 
+ \node[execbox, text width=2.8cm]

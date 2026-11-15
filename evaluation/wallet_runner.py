@@ -153,7 +153,7 @@ async def _run_api_case(case: dict) -> tuple[str, str, dict]:
         stack.enter_context(patch.object(api_module, "capability_store", store))
         stack.enter_context(patch.object(api_module, "verify_intent", lambda *args: current))
         stack.enter_context(patch.object(api_module, "add_to_whitelist", lambda address: whitelist_result))
-        stack.enter_context(patch.object(api_module, "execute_aave", lambda payload: wallet_result))
+        stack.enter_context(patch.object(api_module, "execute_approved", lambda payload, verification_id: wallet_result))
         response = await api_module.execute(ExecuteRequest(
             verification_id=verification_id,
             wallet_address="0x" + "4" * 40,

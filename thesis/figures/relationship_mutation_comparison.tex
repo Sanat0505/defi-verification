@@ -1,0 +1,38 @@
+% Experiment D, recorded single-edge deletions. Twelve fixtures per class.
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.84\linewidth,
+    height=7.0cm,
+    xbar,
+    xmin=0, xmax=14.5,
+    ymin=0.45, ymax=5.55,
+    xtick={0,2,4,6,8,10,12},
+    ytick={1,2,3,4,5},
+    yticklabels={Action to function,Contract to function,Deployment to contract,Resource to asset,Resource membership},
+    yticklabel style={font=\footnotesize,align=right},
+    xlabel={Invalid relationships not approved (out of 12)},
+    xlabel style={font=\small},
+    grid=major,
+    xmajorgrids=true,
+    ymajorgrids=false,
+    grid style={gray!20},
+    axis line style={gray!55},
+    legend style={font=\footnotesize,draw=none,at={(0.5,1.09)},anchor=south,legend columns=2},
+    enlarge y limits=false,
+    nodes near coords,
+    every node near coord/.append style={font=\footnotesize},
+]
+\addplot+[xbar,bar shift=+5pt,bar width=8pt,
+    fill=blue!65!black,draw=blue!65!black,
+    nodes near coords] coordinates {
+    (12,1) (12,2) (12,3) (12,4) (12,5)
+};
+\addlegendentry{Full relationship verifier}
+\addplot+[xbar,bar shift=-5pt,bar width=8pt,
+    fill=orange!75!black,draw=orange!75!black,
+    nodes near coords] coordinates {
+    (0,1) (0,2) (0,3) (0,4) (0,5)
+};
+\addlegendentry{Entity-existence baseline}
+\end{axis}
+\end{tikzpicture}

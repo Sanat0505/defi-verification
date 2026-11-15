@@ -65,10 +65,13 @@ class VerificationCapabilityStore:
 
     def issue(self, operation: ApprovedOperation) -> str:
         capability_id = secrets.token_urlsafe(32)
+        snapshot = operation.model_copy(deep=True)
+        expires_at = time.time() + self.ttl_seconds
+        snapshot.approval_expires_at = expires_at
         with self._lock:
             self._items[capability_id] = Capability(
-                operation=operation.model_copy(deep=True),
-                expires_at=time.time() + self.ttl_seconds,
+                operation=snapshot,
+                expires_at=expires_at,
             )
         return capability_id
 

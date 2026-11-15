@@ -2,11 +2,20 @@
   "name": "wallet",
   "version": "1.0.0",
   "license": "ISC",
+  "scripts": {
+    "build:validator": "node test/compile.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
   "dependencies": {
     "@zerodev/ecdsa-validator": "^5.4.9",
     "@zerodev/sdk": "^5.5.10",
     "dotenv": "^17.4.2",
     "tslib": "^2.8.1",
     "viem": "^2.53.1"
+  },
+  "devDependencies": {
+    "@account-abstraction/contracts": "0.7.0",
+    "ganache": "7.9.2",
+    "solc": "0.8.24"
   }
 }

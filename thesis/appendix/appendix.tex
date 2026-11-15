@@ -1,0 +1,1095 @@
+% ============================================================
+ % Criterion-Level Assessment
+% ============================================================
+
+\chapter{Criterion-Level Assessment of Existing Approaches}
+\label{app:requirement_assessment}
+
+This appendix documents the evidence underlying the
+approach-group ratings presented in
+Section~\ref{sec:sota_comparison}. The assessment
+follows the requirement-specific criteria defined in
+Section~\ref{sec:requirements_analysis}.
+
+For R1--R5, each group is examined against four
+criteria using the following notation:
+
+\begin{itemize}
+    \item \textbf{Y}: The reviewed evidence supports
+    the criterion within the assessed scope.
+
+    \item \textbf{P}: The approach provides partial or
+    conditional support, but the complete criterion
+    is not demonstrated.
+
+    \item \textbf{--}: The criterion is not demonstrated
+    within the reviewed scope.
+\end{itemize}
+
+Only criteria marked \textbf{Y} are counted when
+assigning ratings. Mandatory conditions are applied
+as defined in the Requirements Analysis. A zero-star
+rating indicates that none of the criteria is
+demonstrated within the assessed scope. It does not
+mean that the approach could not be extended to
+provide the corresponding capability.
+
+The assessment is performed at the approach-group
+level using documented characteristics and
+representative implementations. Evidence from a
+particular system is identified explicitly and
+is not assumed to describe every implementation
+within the group. Where several mechanisms provide
+complementary capabilities, their combined contribution
+is distinguished from the functionality of a
+standalone approach.
+
+% ============================================================
+% A.1: R1
+% ============================================================
+
+\section{R1: Complete and Unambiguous Structured Intent}
+
+R1 concerns transforming natural-language requests
+into machine-readable intents, identifying mandatory
+information, and detecting missing or ambiguous fields.
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{5.0cm}ccccc}
+\hline
+\textbf{Approach Group}
+& \textbf{C1}
+& \textbf{C2}
+& \textbf{C3}
+& \textbf{C4}
+& \textbf{Rating} \\
+\hline
+
+Execution-Layer Security and Policy Enforcement
+& -- & -- & -- & --
+& $\circ\circ\circ$ \\
+
+AI-Agent Blockchain Execution
+& Y & Y & Y & P
+& $\star\star\circ$ \\
+
+Knowledge Retrieval and Grounding
+& -- & -- & -- & --
+& $\circ\circ\circ$ \\
+
+Graph-Based Relationship Analysis
+& -- & -- & -- & --
+& $\circ\circ\circ$ \\
+
+Smart Contract Security Analysis
+& -- & -- & -- & --
+& $\circ\circ\circ$ \\
+
+\hline
+\end{tabular}
+\caption{Criterion-level assessment of R1}
+\label{tab:appendix_r1}
+\end{table}
+
+\paragraph{Assessment rationale.}
+
+AI-agent blockchain execution provides the main
+contribution to R1. Coinbase AgentKit exposes
+blockchain operations through structured action
+interfaces and input schemas
+\cite{coinbaseAgentKit2026,
+coinbaseAgentKitActionSchemas2026}.
+These mechanisms support machine-readable
+representations (C1), action-specific parameters
+(C2), and schema-based detection of missing or
+invalid arguments (C3). Web3Agent further demonstrates the transformation
+of natural-language instructions into structured
+blockchain workflows \cite{fanWeb3Agent2026}.
+However, schema validation does not independently
+establish that ambiguities in the original user
+request are consistently resolved through
+clarification or rejection (C4).
+
+The remaining groups primarily process prepared
+operations, external knowledge, relationships,
+or contract behaviour. Structured-intent generation
+is not their independent objective. The three
+supported criteria result in two stars for
+AI-agent blockchain execution.
+
+% ============================================================
+% A.2: R2
+% ============================================================
+
+\section{R2: Intent-to-Execution Relationship Validation}
+
+R2 requires verification of the selected deployment,
+contract, callable function, and action-specific
+resources before blockchain execution. C4 is
+mandatory for a rating above one star.
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{5.0cm}ccccc}
+\hline
+\textbf{Approach Group}
+& \textbf{C1}
+& \textbf{C2}
+& \textbf{C3}
+& \textbf{C4}
+& \textbf{Rating} \\
+\hline
+
+Execution-Layer Security and Policy Enforcement
+& -- & P & -- & P
+& $\circ\circ\circ$ \\
+
+AI-Agent Blockchain Execution
+& P & Y & P & Y
+& $\star\circ\circ$ \\
+
+Knowledge Retrieval and Grounding
+& -- & -- & P & P
+& $\circ\circ\circ$ \\
+
+Graph-Based Relationship Analysis
+& P & P & P & P
+& $\circ\circ\circ$ \\
+
+Smart Contract Security Analysis
+& -- & -- & -- & --
+& $\circ\circ\circ$ \\
+
+\hline
+\end{tabular}
+\caption{Criterion-level assessment of R2}
+\label{tab:appendix_r2}
+\end{table}
+
+\paragraph{Assessment rationale.}
+
+Within AI-agent blockchain execution, Arbiter
+provides direct evidence of pre-execution
+intent-to-transaction validation
+\cite{yaoArbiter2026}. Its validation nodes
+examine operation matching, contract compatibility,
+token addresses, and other transaction parameters. For the documented protocol-specific cases, the checks
+provide evidence of transaction-target and action
+compatibility under C2, as well as validation before
+execution under C4.
+However, the evidence does not establish systematic
+verification of the selected protocol deployment
+against an action in the full network-specific
+context required by C1. Likewise, checking token
+identity and protocol compatibility does not
+demonstrate every pool, reserve, or resource
+relationship required by C3. The group therefore receives one star, based on
+two supported criteria. This acknowledges existing
+pre-execution verification without attributing
+the complete relationship model of R2 to Arbiter.
+
+Execution-layer mechanisms can restrict permitted
+contracts and functions
+\cite{zeroDevPermissionPolicies2026,
+safeSmartAccountGuards2026}.
+However, such policies do not inherently establish
+that those execution targets correspond to the
+user's requested action. Knowledge retrieval and graph-based analysis
+provide complementary capabilities. Retrieved
+information may contain protocol details, while
+graph queries can examine connected structures
+\cite{edgeGraphRAG2024,
+francisCypher2018}. Neither capability, by
+itself, demonstrates the complete action-specific
+verification checks defined by R2. Smart contract security analysis investigates
+program behaviour and vulnerabilities rather
+than the correctness of an execution path for
+a particular user intent
+\cite{feistSlither2019,
+liuPropertyGPT2025}.
+
+% ============================================================
+% A.3: R3
+% ============================================================
+
+\section{R3: Authoritative and Maintainable Verification Knowledge}
+
+R3 concerns source authority, provenance, knowledge
+maintenance, and extensibility. C1 requires
+identifiable trusted or authoritative sources and
+is mandatory for a rating above one star.
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{5.0cm}ccccc}
+\hline
+\textbf{Approach Group}
+& \textbf{C1}
+& \textbf{C2}
+& \textbf{C3}
+& \textbf{C4}
+& \textbf{Rating} \\
+\hline
+
+Execution-Layer Security and Policy Enforcement
+& -- & P & P & Y
+& $\star\circ\circ$ \\
+
+AI-Agent Blockchain Execution
+& -- & Y & P & P
+& $\star\circ\circ$ \\
+
+Knowledge Retrieval and Grounding
+& -- & Y & P & Y
+& $\star\circ\circ$ \\
+
+Graph-Based Relationship Analysis
+& -- & Y & P & Y
+& $\star\circ\circ$ \\
+
+Smart Contract Security Analysis
+& -- & Y & P & P
+& $\star\circ\circ$ \\
+
+\hline
+\end{tabular}
+\caption{Criterion-level assessment of R3}
+\label{tab:appendix_r3}
+\end{table}
+
+\paragraph{Assessment rationale.}
+
+Execution-layer mechanisms allow additional
+permissions and restrictions to be introduced
+through configurable policies and modules.
+ERC-7579 and ZeroDev illustrate this extensibility,
+which contributes to C4
+\cite{erc7579MinimalModularSmartAccounts2023,
+zeroDevPermissionPolicies2026}.
+However, maintaining account permissions does
+not establish authoritative acquisition or
+freshness of DeFi verification knowledge. AI-agent frameworks can identify relevant
+operational context through action providers,
+network configurations, and structured tool
+definitions \cite{coinbaseAgentKit2026}.
+This contributes to C2 within the documented
+configuration. Nevertheless, authoritative
+knowledge acquisition and invalidation are not
+inherent capabilities of such frameworks.
+
+Knowledge retrieval approaches maintain
+external information separately from model
+parameters \cite{lewisRetrievalAugmentedGeneration2020}.
+GraphRAG further demonstrates the construction
+and retrieval of connected information
+\cite{edgeGraphRAG2024}.
+These approaches support identifiable information
+sources (C2) and the extension of knowledge
+collections (C4). Updating the underlying
+collection is possible, but automatic recognition
+and invalidation of outdated protocol relationships
+under C3 require additional mechanisms. Graph-based approaches provide an explicit
+representation of entities and their relationships
+\cite{hoganKnowledgeGraphs2021,
+anglesPropertyGraphModel2018}.
+Provenance information can be represented using
+models such as PROV-O, supporting C2
+\cite{w3cPROVO2013}. Graph structures can also
+accommodate additional entities and relationships,
+supporting C4. Reliable invalidation of outdated
+verification information under C3 is not
+guaranteed by the graph representation itself. Smart contract security analysis produces evidence
+associated with specific contracts, functions,
+or security properties. Tools such as Slither
+and PropertyGPT demonstrate identifiable
+analysis context, contributing to C2
+\cite{feistSlither2019,liuPropertyGPT2025}.
+However, contract-analysis results do not
+independently establish authoritative and
+maintained DeFi execution knowledge.
+
+The decisive limitation across the groups is
+C1. None of these mechanisms, considered as
+reviewed general-purpose approach groups,
+inherently establishes authoritative source
+acquisition for the deployment-specific
+verification information required by R3.
+Consequently, none receives more than one star. Knowledge retrieval and graph-based analysis
+provide different supporting capabilities.
+Their identical ratings do not imply identical
+purposes or technical characteristics.
+
+% ============================================================
+% A.4: R4
+% ============================================================
+
+\section{R4: Pre-Execution Enforcement and Controlled Execution}
+
+R4 addresses pre-execution decisions, blocking
+unapproved operations, enforcing execution
+restrictions, and binding operations to approved
+security-relevant parameters. C2 and C3 are
+mandatory for ratings above one star.
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{5.0cm}ccccc}
+\hline
+\textbf{Approach Group}
+& \textbf{C1}
+& \textbf{C2}
+& \textbf{C3}
+& \textbf{C4}
+& \textbf{Rating} \\
+\hline
+
+Execution-Layer Security and Policy Enforcement
+& Y & Y & Y & Y
+& $\star\star\star$ \\
+
+AI-Agent Blockchain Execution
+& Y & P & -- & P
+& $\star\circ\circ$ \\
+
+Knowledge Retrieval and Grounding
+& -- & -- & -- & --
+& $\circ\circ\circ$ \\
+
+Graph-Based Relationship Analysis
+& -- & -- & -- & --
+& $\circ\circ\circ$ \\
+
+Smart Contract Security Analysis
+& -- & -- & -- & --
+& $\circ\circ\circ$ \\
+
+\hline
+\end{tabular}
+\caption{Criterion-level assessment of R4}
+\label{tab:appendix_r4}
+\end{table}
+
+\paragraph{Assessment rationale.}
+
+Execution-layer security provides the strongest
+enforcement capabilities. ERC-4337 specifies
+smart-account validation before processing
+a UserOperation and incorporates the operation
+data and blockchain context into its signed
+operation hash
+\cite{buterinERC4337AccountAbstraction2021}. Modular account architectures allow additional
+validation mechanisms
+\cite{erc7579MinimalModularSmartAccounts2023}.
+Safe Guards can inspect transaction parameters
+and block execution when configured conditions
+are violated
+\cite{safeSmartAccountGuards2026}.
+ZeroDev permission policies restrict callable
+contracts, functions, parameters, spending,
+and delegated authority
+\cite{zeroDevPermissionPolicies2026}.
+
+Taken together, these mechanisms support
+pre-execution authorisation (C1), blocking
+disallowed operations (C2), and restricting
+execution to configured policy conditions (C3).
+Signed-operation validation and repeated policy
+checks also provide mechanisms for preventing
+unapproved modification of security-relevant
+parameters (C4). The three-star assessment concerns the available
+capabilities of an appropriately configured
+policy-enforcement architecture. In particular,
+C4 requires the approved security-relevant
+parameters to be encoded in the operation or
+enforced policy. ERC-4337 does not itself verify
+natural-language intent, and a smart account does
+not automatically consume an external graph-based
+verification result. That integration remains a
+separate responsibility. Within AI-agent blockchain execution, Arbiter
+produces an explicit ACCEPT or REJECT decision
+before transaction execution
+\cite{yaoArbiter2026}, supporting C1.
+However, a validation outcome does not
+independently guarantee wallet-level blocking
+or preservation of approved transaction
+parameters. The group therefore receives
+limited R4 coverage.
+
+Retrieval, graph-based relationship analysis,
+and smart contract security analysis do not
+inherently enforce wallet execution restrictions.
+
+% ============================================================
+% A.5: R5
+% ============================================================
+
+\section{R5: Traceable Verification Result}
+
+R5 concerns an identifiable verification
+outcome, its reason, the responsible condition,
+and expected and observed values where applicable.
+C3 is mandatory for a rating above one star.
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{5.0cm}ccccc}
+\hline
+\textbf{Approach Group}
+& \textbf{C1}
+& \textbf{C2}
+& \textbf{C3}
+& \textbf{C4}
+& \textbf{Rating} \\
+\hline
+
+Execution-Layer Security and Policy Enforcement
+& Y & Y & Y & P
+& $\star\star\circ$ \\
+
+AI-Agent Blockchain Execution
+& Y & Y & Y & P
+& $\star\star\circ$ \\
+
+Knowledge Retrieval and Grounding
+& -- & P & -- & --
+& $\circ\circ\circ$ \\
+
+Graph-Based Relationship Analysis
+& P & Y & Y & P
+& $\star\circ\circ$ \\
+
+Smart Contract Security Analysis
+& P & Y & Y & P
+& $\star\circ\circ$ \\
+
+\hline
+\end{tabular}
+\caption{Criterion-level assessment of R5}
+\label{tab:appendix_r5}
+\end{table}
+
+\paragraph{Assessment rationale.}
+
+Execution-layer mechanisms can produce
+identifiable policy outcomes and information
+about failed execution conditions.
+Safe Guards support checking transaction
+parameters before execution, while simulation
+tools such as Tenderly expose execution
+status, contract calls, and transaction traces
+\cite{safeSmartAccountGuards2026,
+tenderlyTransactionSimulation2026}.
+These capabilities contribute to C1--C3
+within the policy and simulation context.
+Complete reporting of expected and observed
+intent-verification values under C4 is not
+established as a general capability. Arbiter demonstrates traceable pre-execution
+validation by producing explicit decisions,
+identifiable failing nodes, and human-readable
+reasons \cite{yaoArbiter2026}.
+These mechanisms support C1, C2, and C3.
+Although particular examples include conflicting
+parameter values, complete coverage of C4
+is not established across all validation cases.
+
+Knowledge retrieval can return supporting
+documents or contextual evidence. However,
+retrieval evidence alone is not a structured
+intent-verification outcome.
+
+Graph validation mechanisms provide a
+different form of traceability. SHACL defines
+validation reports that identify affected
+entities, property paths, and violated
+constraints \cite{w3cSHACL2017}.
+These capabilities support C2 and C3,
+but do not inherently produce an approval
+or rejection for a proposed DeFi intent. Smart contract security tools similarly
+produce findings associated with particular
+contracts, functions, and vulnerabilities.
+Slither and PropertyGPT demonstrate identifiable
+security-analysis evidence
+\cite{feistSlither2019,liuPropertyGPT2025}.
+Such findings support C2 and C3 within
+contract analysis, but are not equivalent
+to a complete intent-verification decision.
+
+% ============================================================
+% A.6: R6
+% ============================================================
+
+\section{R6: Bounded Verification Time}
+
+R6 is assessed quantitatively. The measurement
+begins when a complete structured intent reaches
+the verification stage and ends when the
+structured verification result is available.
+The requirement specifies that at least 95\%
+of decisions must complete within two seconds.
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{4.4cm}p{7.0cm}c}
+\hline
+\textbf{Approach Group}
+& \textbf{Evidence Limitation}
+& \textbf{Rating} \\
+\hline
+
+Execution-Layer Security and Policy Enforcement
+& Wallet validation and simulation measurements
+do not consistently isolate the defined
+verification stage.
+& \textit{N/E} \\
+
+AI-Agent Blockchain Execution
+& Reported verification latency does not
+establish the required proportion of
+decisions within two seconds.
+& \textit{N/E} \\
+
+Knowledge Retrieval and Grounding
+& Retrieval and generation measurements
+do not establish complete verification
+latency.
+& \textit{N/E} \\
+
+Graph-Based Relationship Analysis
+& Graph-query measurements do not necessarily
+cover the complete verification process.
+& \textit{N/E} \\
+
+Smart Contract Security Analysis
+& Contract-analysis measurements concern
+different processing tasks and boundaries.
+& \textit{N/E} \\
+
+\hline
+\end{tabular}
+\caption{Assessment of available evidence for R6}
+\label{tab:appendix_r6}
+\end{table}
+
+\paragraph{Assessment rationale.}
+
+The reviewed approaches report different
+performance metrics and measurement boundaries.
+Arbiter, for example, reports end-to-end
+validation latency that includes deterministic
+rule execution and LLM-based reasoning
+\cite{yaoArbiter2026}. Although these results provide relevant
+performance evidence, reported average
+latencies do not establish the proportion
+of decisions completed within the specific
+two-second threshold defined by R6.
+Other approaches report retrieval,
+graph-query, contract-analysis, or
+transaction-processing times that are
+not directly comparable with this boundary. Consequently, the available evidence does
+not support a consistent quantitative rating
+across the approach groups. The designation
+\textit{N/E} indicates insufficient comparable
+evidence rather than demonstrated failure
+to meet the target.
+
+R6 is measured directly for the proposed
+prototype in Chapter~\ref{chap:evaluation}.
+
+% ==========================================================
+% Appendix: Graph Examples and Natural-Language Requests
+% ==========================================================
+
+\chapter{Property-Graph Instances and Example Requests}
+\label{app:graph_instances}
+
+This section presents selected graph instances from the
+implemented verification knowledge and the Cypher queries
+used to retrieve their relationships. The examples cover
+Uniswap V3 swaps and Aave V3 lending operations on
+Ethereum Sepolia. Natural-language requests are included
+to illustrate the inputs supported by the prototype.
+
+
+% ----------------------------------------------------------
+% Uniswap V3
+% ----------------------------------------------------------
+
+\subsection{Uniswap V3 Graph Instance}
+
+Figure~\ref{fig:appendix_uniswap_neo4j} reconstructs a
+selected Uniswap V3 subgraph retrieved from Neo4j.
+The deployment is connected to its protocol family,
+network, router, factory, quoter, supported swap action,
+and liquidity pool. The pool is further associated
+with its participating tokens and fee tier.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{\linewidth}{!}{%
+        \input{figures/uniswap_neo4j_light.tex}%
+    }
+    \caption{TikZ reconstruction of selected Uniswap V3
+    relationships in Neo4j on Ethereum Sepolia.}
+    \label{fig:appendix_uniswap_neo4j}
+\end{figure}
+
+Listing~\ref{lst:appendix_uniswap_graph} contains the
+Cypher query used to retrieve the connected graph
+structure. It matches the deployment and its associated
+execution and protocol resources, returning the selected
+relationships as paths.
+
+\begin{lstlisting}[
+    style=thesiscypher,
+    caption={Cypher query for retrieving the selected Uniswap V3 subgraph.},
+    label={lst:appendix_uniswap_graph}
+]
+MATCH p1 =
+  (family:ProtocolFamily {key: 'uniswap-v3'})
+  -[:HAS_DEPLOYMENT]->
+  (deployment:ProtocolDeployment {key: 'uniswap-v3:11155111'})
+
+MATCH p2 =
+  (chain:Chain {chain_id: 11155111})
+  -[:HOSTS]->(deployment)
+
+MATCH p3 =
+  (deployment)
+  -[:DEPLOYED_CONTRACT {role: 'swap_router', active: true}]->
+  (router:Contract)
+  -[:EXPOSES_FUNCTION]->
+  (execute:Function {
+    name: 'exactInputSingle',
+    purpose: 'execute',
+    selector: '0x04e45aaf'
+  })
+  -[:IMPLEMENTS_ACTION]->
+  (action:Action {name: 'swap'})
+
+MATCH p4 =
+  (deployment)
+  -[:DEPLOYED_CONTRACT {role: 'factory', active: true}]->
+  (factory:Contract)
+  -[:CREATED_POOL]->
+  (pool:Pool {
+    chain_id: 11155111,
+    active: true,
+    verified: true,
+    verification_eligible: true
+  })
+
+MATCH p5 =
+  (deployment)
+  -[:DEPLOYED_CONTRACT {role: 'quoter', active: true}]->
+  (quoter:Contract)
+  -[:EXPOSES_FUNCTION]->
+  (quote:Function {
+    name: 'quoteExactInputSingle',
+    purpose: 'preflight'
+  })
+  -[:IMPLEMENTS_ACTION]->(action)
+
+MATCH p6 =
+  (deployment)-[:HAS_POOL {active: true}]->(pool)
+
+MATCH p7 =
+  (deployment)-[:SUPPORTS_ACTION]->(action)
+
+MATCH p8 =
+  (pool)-[:TOKEN0]->(token0:Token)
+
+MATCH p9 =
+  (pool)-[:TOKEN1]->(token1:Token)
+
+MATCH p10 =
+  (pool)-[:SUPPORTS_TOKEN]->(token0)
+
+MATCH p11 =
+  (pool)-[:SUPPORTS_TOKEN]->(token1)
+
+MATCH p12 =
+  (pool)-[:USES_FEE_TIER]->(fee:FeeTier)
+
+RETURN p1, p2, p3, p4, p5, p6,
+       p7, p8, p9, p10, p11, p12
+ORDER BY pool.address
+LIMIT 1;
+\end{lstlisting}
+
+The query retrieves a selected connected graph instance
+rather than evaluating a submitted transaction intent.
+In particular, it does not constrain the participating
+assets to a specific requested token pair or evaluate
+knowledge freshness. These checks are handled separately
+by the runtime verifier.
+
+
+\medskip
+\noindent\textbf{Example Natural-Language Swap Requests}
+
+\medskip
+
+Table~\ref{tab:uniswap_user_queries} presents illustrative
+requests for Uniswap V3 intent generation and relationship
+verification. The examples vary the phrasing, token
+direction, amount, and slippage tolerance while remaining
+within the supported swap operation.
+
+\begin{table}[htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.15}
+\caption{Example natural-language requests for Uniswap V3 swaps.}
+\label{tab:uniswap_user_queries}
+\begin{tabular}{@{}p{0.10\linewidth}p{0.85\linewidth}@{}}
+\hline
+\textbf{ID} & \textbf{Natural-language request} \\
+\hline
+U01 & Swap 10 USDT for WETH using Uniswap V3 on Ethereum Sepolia. \\
+U02 & Swap 0.01 WETH for USDT using Uniswap V3 on Sepolia. \\
+U03 & I want to swap 25 USDT to WETH through Uniswap V3. \\
+U04 & Exchange 0.05 WETH for USDT using Uniswap V3 on Ethereum Sepolia. \\
+U05 & Swap 15 USDT for WETH on Uniswap V3 with 0.5\% slippage. \\
+U06 & Swap 0.02 WETH for USDT on Uniswap V3 with a slippage tolerance of 50 basis points. \\
+U07 & Please convert 20 USDT into WETH using Uniswap V3 on Sepolia. \\
+U08 & Using Uniswap V3 on Ethereum Sepolia, swap 30 USDT for WETH. \\
+U09 & I would like to swap 0.03 WETH to USDT using Uniswap V3. \\
+U10 & Swap 12.375 USDT for WETH using Uniswap V3 on Ethereum Sepolia with 1\% slippage. \\
+\hline
+\end{tabular}
+\end{table}
+
+These examples are illustrative inputs, not recorded
+successful verification results. Approval requires
+successful intent validation and a matching, active,
+and eligible pool for the requested asset pair, together
+with the required deployment, contract, function, and
+action relationships in fresh verification knowledge.
+
+
+% ----------------------------------------------------------
+% Aave V3
+% ----------------------------------------------------------
+
+\subsection{Aave V3 Graph Instance}
+
+Figure~\ref{fig:appendix_aave_neo4j} reconstructs the
+relationships associated with a USDC supply operation
+on Aave V3. The graph connects the protocol deployment,
+reserve, underlying asset, Pool contract, supply function,
+and supported action. It also includes the reserve's
+aToken and variable-debt token associations.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{\linewidth}{!}{%
+        \input{figures/aave_neo4j_light.tex}%
+    }
+    \caption{TikZ reconstruction of selected Aave V3
+    relationships for USDC supply on Ethereum Sepolia.}
+    \label{fig:appendix_aave_neo4j}
+\end{figure}
+
+In the original Neo4j visualization, the reserve appears
+with the caption \texttt{TRUE}. This is a display caption
+rather than the reserve's entity type. The corresponding
+node is identified as a \texttt{Reserve} in the query.
+
+Listing~\ref{lst:appendix_aave_graph} retrieves the
+connected supply-related graph instance, including
+supplementary reserve-token relationships.
+
+\begin{lstlisting}[
+    style=thesiscypher,
+    caption={Cypher query for retrieving the selected Aave V3 USDC supply subgraph.},
+    label={lst:appendix_aave_graph}
+]
+MATCH p1 =
+  (family:ProtocolFamily {key: 'aave-v3'})
+  -[:HAS_DEPLOYMENT]->
+  (deployment:ProtocolDeployment {key: 'aave-v3:11155111'})
+
+MATCH p2 =
+  (chain:Chain {chain_id: 11155111})
+  -[:HOSTS]->(deployment)
+
+MATCH p3 =
+  (deployment)
+  -[:HAS_RESERVE {active: true}]->
+  (reserve:Reserve {active: true, verified: true})
+  -[:UNDERLYING_ASSET]->
+  (token:Token {
+    symbol: 'USDC',
+    chain_id: 11155111,
+    verified: true
+  })
+
+MATCH p4 =
+  (deployment)
+  -[:DEPLOYED_CONTRACT {role: 'pool', active: true}]->
+  (pool:Contract {verified: true})
+  -[:EXPOSES_FUNCTION]->
+  (fn:Function {
+    name: 'supply',
+    purpose: 'execute',
+    selector: '0x617ba037'
+  })
+  -[:IMPLEMENTS_ACTION]->
+  (action:Action {name: 'supply'})
+
+MATCH p5 =
+  (deployment)-[:SUPPORTS_ACTION]->(action)
+
+MATCH p6 =
+  (reserve)-[:SUPPORTS_ACTION]->(action)
+
+MATCH p7 =
+  (reserve)
+  -[:HAS_A_TOKEN]->
+  (atoken:Contract)
+  -[:REPRESENTS_ASSET]->(token)
+
+MATCH p8 =
+  (reserve)
+  -[:HAS_VARIABLE_DEBT_TOKEN]->
+  (debt:Contract)
+  -[:DEBT_FOR]->(token)
+
+RETURN p1, p2, p3, p4, p5, p6, p7, p8;
+\end{lstlisting}
+
+This query retrieves the represented USDC supply
+relationships. Unlike the runtime verifier, it also
+matches the aToken and variable-debt token associations
+for inspection. Their presence in this graph-inspection
+query does not make all of these relationships mandatory
+for supply verification.
+
+
+\medskip
+\noindent\textbf{Example Natural-Language Lending Requests}
+
+\medskip
+
+Table~\ref{tab:aave_user_queries} contains illustrative
+requests for Aave V3 intent generation and relationship
+verification. The supply requests correspond to the
+action shown in Figure~\ref{fig:appendix_aave_neo4j}.
+The remaining examples cover clarification and the
+other supported lending actions.
+
+\begin{table}[htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.15}
+\caption{Example natural-language requests for Aave V3 operations.}
+\label{tab:aave_user_queries}
+\begin{tabular}{@{}p{0.10\linewidth}p{0.85\linewidth}@{}}
+\hline
+\textbf{ID} & \textbf{Natural-language request} \\
+\hline
+A01 & Supply 10 USDC to Aave V3 on Ethereum Sepolia. \\
+A02 & Deposit 25 USDC into Aave V3 on Sepolia. \\
+A03 & Supply 5 USDC to Aave V3. \\
+A04 & I want to deposit 12.5 USDC into Aave V3 using Ethereum Sepolia. \\
+A05 & Using Aave V3 on Sepolia, supply 50 USDC. \\
+A06 & Please supply 0.75 USDC to Aave V3 on Ethereum Sepolia. \\
+A07 & Add 20 USDC to the Aave V3 lending pool on Sepolia. \\
+A08 & Supply USDC to Aave V3 on Ethereum Sepolia. \\
+A09 & Withdraw 5 USDC from Aave V3 on Ethereum Sepolia. \\
+A10 & Borrow 2 USDC from Aave V3 on Ethereum Sepolia. \\
+A11 & Repay 2 USDC to Aave V3 on Ethereum Sepolia. \\
+\hline
+\end{tabular}
+\end{table}
+
+Requests A01--A07 target the supply action represented
+in the graph, while A08 omits the amount and requires
+clarification. Requests A09--A11 concern other supported
+lending actions and depend on their corresponding
+reserve and function relationships. The examples are
+not recorded verification results, and graph approval
+does not establish successful transaction execution.
+
+
+% ==========================================================
+% Appendix: Runtime Relationship Verification Queries
+% ==========================================================
+
+\section{Runtime Relationship Verification Queries}
+\label{app:runtime_verification_queries}
+
+The following queries implement the action-specific
+relationship checks described in
+Section~\ref{sec:relationship_verification_implementation}.
+Unlike the preceding graph-inspection queries, they
+receive parameters from validated intents and return
+execution-relevant contract, function, and asset
+information. The surrounding verifier separately
+handles supported scope, knowledge freshness, coverage,
+and decision classification.
+
+
+% ----------------------------------------------------------
+% Runtime Uniswap V3 verification
+% ----------------------------------------------------------
+
+\subsection{Uniswap V3 Swap Verification}
+
+Listing~\ref{lst:uniswap_verification_query} matches
+the execution relationships required for a Uniswap V3
+swap. It establishes a connected path between the
+deployment, requested assets, eligible pool, router,
+quoter, and supported action.
+
+\begin{lstlisting}[
+    style=thesiscypher,
+    caption={Parameterized relationship-verification query for Uniswap V3 swaps.},
+    label={lst:uniswap_verification_query}
+]
+MATCH (family:ProtocolFamily)-[:HAS_DEPLOYMENT]->
+      (deployment:ProtocolDeployment {verified:true, chain_id:$chain_id})
+WHERE toLower(family.name) = toLower($protocol)
+
+MATCH (deployment)-[:SUPPORTS_ACTION]->
+      (action:Action {name:'swap'})
+
+MATCH (deployment)-[pool_rel:HAS_POOL]->
+      (pool:Pool {verified:true, verification_eligible:true, active:true, chain_id:$chain_id})
+
+MATCH (pool)-[:SUPPORTS_TOKEN]->
+      (t1:Token {symbol:$token_in, verified:true, verification_eligible:true, chain_id:$chain_id})
+
+MATCH (pool)-[:SUPPORTS_TOKEN]->
+      (t2:Token {symbol:$token_out, verified:true, verification_eligible:true, chain_id:$chain_id})
+
+MATCH (deployment)-[router_rel:DEPLOYED_CONTRACT {role:'swap_router'}]->
+      (router:Contract {verified:true})
+      -[:EXPOSES_FUNCTION]->
+      (fn:Function {verified:true, purpose:'execute'})
+      -[:IMPLEMENTS_ACTION]->(action)
+
+MATCH (deployment)-[quoter_rel:DEPLOYED_CONTRACT {role:'quoter'}]->
+      (quoter:Contract {verified:true})
+      -[:EXPOSES_FUNCTION]->
+      (:Function {verified:true, purpose:'preflight'})
+      -[:IMPLEMENTS_ACTION]->(action)
+
+WHERE pool_rel.active=true
+  AND router_rel.active=true
+  AND quoter_rel.active=true
+  AND t1.address <> t2.address
+  AND t1.decimals IS NOT NULL
+  AND t2.decimals IS NOT NULL
+  AND pool.fee IS NOT NULL
+
+RETURN router.address AS address,
+       quoter.address AS quoter_address,
+       pool.address AS pool_address,
+       pool.fee AS pool_fee,
+       coalesce(pool.featured, false) AS featured,
+       t1.address AS token_in_address,
+       t1.symbol AS token_in_symbol,
+       t1.decimals AS token_in_decimals,
+       t2.address AS token_out_address,
+       t2.symbol AS token_out_symbol,
+       t2.decimals AS token_out_decimals,
+       fn.name AS function_name,
+       fn.signature AS function_signature,
+       fn.selector AS function_selector,
+       family.name AS protocol,
+       $chain_id AS chain_id
+
+ORDER BY featured DESC, pool.fee ASC,
+         pool.address ASC
+LIMIT 20
+\end{lstlisting}
+
+The query returns up to 20 matching pool routes
+and their associated execution information. The
+ordering uses stored graph attributes and does not
+select the economically optimal route. Quotation
+and final route selection occur during transaction
+preparation.
+
+
+% ----------------------------------------------------------
+% Runtime Aave V3 verification
+% ----------------------------------------------------------
+
+\subsection{Aave V3 Lending Verification}
+
+Listing~\ref{lst:aave_verification_query} presents
+the shared relationship pattern used for Aave V3
+supply, withdraw, borrow, and repay operations.
+The requested action must be supported by both
+the deployment and the corresponding reserve,
+and the Pool contract must expose a function
+implementing that action.
+
+\begin{lstlisting}[
+    style=thesiscypher,
+    caption={Parameterized relationship-verification query for Aave V3 lending operations.},
+    label={lst:aave_verification_query}
+]
+MATCH (family:ProtocolFamily)-[:HAS_DEPLOYMENT]->
+      (deployment:ProtocolDeployment {verified:true, chain_id:$chain_id})
+WHERE toLower(family.name) = toLower($protocol)
+
+MATCH (deployment)-[:SUPPORTS_ACTION]->
+      (action:Action {name:$action})
+
+MATCH (deployment)-[reserve_rel:HAS_RESERVE]->
+      (reserve:Reserve {verified:true, active:true})
+
+MATCH (reserve)-[:UNDERLYING_ASSET]->
+      (token:Token {symbol:$token_in, chain_id:$chain_id, verified:true})
+
+MATCH (reserve)-[:SUPPORTS_ACTION]->(action)
+
+MATCH (deployment)-[pool_rel:DEPLOYED_CONTRACT {role:'pool'}]->
+      (pool:Contract {verified:true})
+      -[:EXPOSES_FUNCTION]->
+      (fn:Function {verified:true, purpose:'execute'})
+      -[:IMPLEMENTS_ACTION]->(action)
+
+WHERE reserve_rel.active=true
+  AND pool_rel.active=true
+
+RETURN pool.address AS address,
+       null AS pool_address,
+       token.address AS token_address,
+       token.decimals AS token_decimals,
+       fn.name AS function_name,
+       fn.signature AS function_signature,
+       fn.selector AS function_selector,
+       family.name AS protocol,
+       $chain_id AS chain_id
+LIMIT 1
+\end{lstlisting}
+
+The query returns the Pool contract, underlying asset,
+and callable function associated with the requested
+lending action. It does not establish the user's
+available balance, collateral, outstanding debt, or
+the feasibility of the operation.
+
+The results of both runtime queries are interpreted
+according to the knowledge-maintenance and decision
+rules described in Chapter~\ref{chap:implementation}.
+A matching path supports graph approval within the
+admitted knowledge context, but does not independently
+guarantee blockchain execution.

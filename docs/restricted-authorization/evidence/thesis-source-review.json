@@ -1,0 +1,54 @@
+{
+  "supplied_zip_sha256": "4b237676c0a5d506aceef551b6e31af4d42130290dcf27da4c67356ba990ae97",
+  "modified_supplied_files": [
+    "content/concept.tex",
+    "content/conclusion.tex",
+    "content/evaluation.tex",
+    "content/implementation.tex",
+    "figures/controlled_execution_flow.tex"
+  ],
+  "pdf_pages": 147,
+  "review_pages": {
+    "71": [
+      "restricted wallet validator"
+    ],
+    "85": [
+      "Restricted Kernel validator"
+    ],
+    "86": [
+      "GraphBoundValidator",
+      "originally retained routes"
+    ],
+    "95": [
+      "further authorization regression"
+    ],
+    "104": [
+      "213 Python",
+      "November regression"
+    ],
+    "105": [
+      "cumulative budgets",
+      "exact-batch"
+    ],
+    "106": [
+      "authority-attested",
+      "November regression"
+    ],
+    "107": [
+      "The revised R4 rating"
+    ],
+    "108": [
+      "substitute recording targets"
+    ],
+    "109": [
+      "local authorization scope"
+    ],
+    "112": [
+      "November regression",
+      "exact-batch"
+    ],
+    "113": [
+      "cumulative budgets"
+    ]
+  }
+}

@@ -1,5 +1,9 @@
 # Application source
 
+For restricted-authorization setup, follow the
+[implementation report](../R4_RESTRICTED_AUTHORIZATION_IMPLEMENTATION_REPORT.md).
+The automated path does not use the legacy owner key.
+
 This folder contains the implemented system. Experiment runners, datasets and
 saved results live in [evaluation/](../evaluation/README.md). Installation and
 environment configuration are described in the [root README](../README.md).
