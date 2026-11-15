@@ -1,0 +1,1284 @@
+This chapter presents the proposed concept for verifying AI-generated DeFi
+requests before blockchain execution. The concept describes the solution at an
+abstract and implementation-independent level. It defines the responsibilities
+of the main components, the information exchanged between them, and their
+intended behaviour without prescribing a specific programming language,
+database system, query language, wallet implementation, or software framework.
+
+The concept follows from the findings of the State of the Art in
+Chapter~\ref{chap:stateoftheart}. The analysis showed that the investigated
+approaches address different parts of the AI-to-blockchain execution problem.
+AI-agent blockchain execution approaches provide mechanisms for interpreting
+natural-language requests and transforming them into structured actions.
+Knowledge retrieval and grounding approaches contribute external and updateable
+information. Graph-based approaches provide an explicit representation of DeFi
+entities and their relationships, while execution-layer security approaches
+provide mechanisms for restricting blockchain execution. None of these
+approach groups alone provides the complete workflow required by the
+requirements defined in Section~\ref{sec:requirements_analysis}. The proposed
+concept therefore combines complementary characteristics of these approaches.
+
+The proposed solution separates natural-language interpretation, deterministic
+intent validation, authoritative relationship verification, and controlled
+blockchain execution. A language model first generates a candidate structured
+intent. Deterministic checks establish whether this intent is suitable for
+verification. The validated intent is then evaluated against authoritative
+graph-based verification knowledge. Only a successfully verified operation is
+allowed to continue toward controlled smart-wallet execution.
+
+
+
+% =========================================================
+% 3.1 Overall System Concept
+% =========================================================
+
+\section{Overall System Concept}
+\label{sec:overall_system_concept}
+
+The proposed system introduces a mandatory verification boundary between the
+interpretation of a user's DeFi request and blockchain execution. This boundary
+is necessary because individually valid blockchain entities do not necessarily
+form a valid execution combination. A protocol, contract, callable function,
+asset, pool, or reserve may each be legitimate independently while still being
+incorrectly combined for a particular action, protocol deployment, or
+blockchain network.
+
+The proposed concept combines complementary capabilities identified in the
+chapter~\ref{chap:stateoftheart}. AI-agent approaches provide natural-language interpretation,
+knowledge-retrieval approaches contribute external and updateable protocol
+information, graph-based approaches provide explicit representation of DeFi
+entities and their relationships, and execution-layer approaches provide
+mechanisms for restricting blockchain execution. The proposed system combines
+these capabilities into a pre-execution verification workflow rather than
+attempting to replace them.
+
+As illustrated in Figure~\ref{fig:system_architecture}, the proposed system
+is organized into four architectural subsystems: AI/Intent, Verification
+Knowledge, Relationship Verification, and Controlled Execution. Together,
+these subsystems provide five main conceptual elements:
+
+\begin{enumerate}
+
+    \item \textbf{LLM-Based Intent Generation} interprets the user's
+    natural-language request and transforms it into a machine-readable
+    candidate intent describing the requested DeFi operation. The language
+    model identifies what the user intends to perform but does not determine
+    the complete blockchain execution path.
+
+    \item \textbf{Intent Validation} checks whether the candidate intent is
+    sufficiently complete, valid, supported, and unambiguous for subsequent
+    verification. Invalid or unresolved intents are not allowed to proceed.
+
+    \item \textbf{Authoritative Verification Knowledge} provides the trusted
+    reference used during verification. It represents accepted information
+    about protocol deployments, supported actions, contracts, functions,
+    assets, pools, reserves, and their relationships as a maintained
+    graph-based knowledge model.
+
+    \item \textbf{Relationship Verification and Decision} evaluates the
+    validated intent against the authoritative verification knowledge. It returns approval when the required relationships are established, rejection when the evidence rules them out, and verification failure when the evidence is insufficient for either conclusion.
+
+\item \textbf{Controlled Smart-Wallet Execution} receives an approved
+verification result and checks its validity before blockchain submission.
+Execution is permitted only if the protected parameters remain unchanged,
+the approval has not expired, and the referenced verification evidence
+remains applicable. Otherwise, the operation must be verified again.
+
+\end{enumerate}
+
+The five elements do not form a purely sequential pipeline.
+\textbf{Authoritative Verification Knowledge} is maintained independently and
+acts as a supporting knowledge source for
+\textbf{Relationship Verification and Decision}. The request-processing path
+therefore proceeds from intent generation to intent validation, relationship
+verification, and controlled execution, while verification knowledge is
+acquired and maintained separately.
+
+Figure~\ref{fig:overall_system_flow} illustrates how an individual DeFi
+request is processed. 
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.90\textwidth}{!}{%
+        \input{figures/overall_system_flow.tex}%
+    }
+    \caption{Overall request-processing flow and supporting knowledge
+    maintenance from natural-language input to controlled smart-wallet
+    execution.}
+    \label{fig:overall_system_flow}
+\end{figure}
+The language model converts the natural-language
+request into a candidate intent, which must pass validation before
+relationship verification begins. Validation checks whether the intent is
+complete, valid, supported, and unambiguous. Requests that do not satisfy
+these conditions require clarification or are rejected, and execution is
+blocked.
+
+
+The supporting knowledge branch shows how the authoritative property graph
+is established and maintained independently of individual requests.
+Information from authoritative DeFi sources, including official protocol
+documentation, deployment records, and blockchain data, is acquired and
+assessed for authority, consistency, and freshness before accepted entities
+and relationships are added or updated. The maintained graph provides the
+reference relationships and evidence used during verification.
+
+Relationship verification evaluates the action-specific relationships
+required by the validated intent. Approval requires sufficient and current
+evidence establishing all mandatory relationships. If the evidence is
+incomplete, stale, or unavailable, verification fails without approval.
+Missing or inconsistent relationships support rejection only when the
+applicable knowledge is sufficiently complete and current. An
+\texttt{APPROVE} decision therefore indicates consistency with the
+represented authoritative relationships within the supported scope; it does
+not guarantee successful blockchain execution.
+
+Controlled smart-wallet execution consumes the approved structured
+verification result. Before submission, it checks that the
+protected parameters remain unchanged, the approval has not expired, and
+the referenced verification evidence remains applicable. If these conditions
+are not satisfied, execution is blocked and renewed verification is required.
+Even when the result remains valid, wallet authorization or execution-layer
+validation may prevent successful submission. Such submission failures remain
+distinct from the graph-verification decision. The blockchain endpoint in the
+figure denotes submission rather than confirmation that the requested
+operation has completed successfully.
+
+
+It determines whether the action-specific execution relationships required
+by the request can be established consistently and produces an approval,
+rejection, or verification failure together with the relevant evidence
+or failure reason.
+
+Figure~\ref{fig:system_architecture} shows how the five conceptual elements
+are organized into four subsystems. The arrows show the information exchanged
+between them. Relationship Verification receives two inputs: a validated
+intent from AI / Intent Processing, which interprets and validates the user's
+request, and verification evidence from Verification Knowledge, which maintains
+the authoritative property graph using records from DeFi sources. The verifier
+uses this evidence to check the relationships required by the requested action.
+Only an approved verification result is passed to Controlled Execution, which
+checks that the approval remains valid before submitting the operation to the
+blockchain network.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.98\textwidth}{!}{%
+        \input{figures/system_architecture.tex}%
+    }
+   \caption{component diagram of the AI-assisted DeFi verification system.}
+    \label{fig:system_architecture}
+\end{figure}
+
+
+
+% =========================================================
+% 3.2 LLM-Based Intent Generation
+% =========================================================
+
+\section{LLM-Based Intent Generation}
+\label{sec:intent_generation}
+
+The first processing element converts the user's natural-language DeFi request
+into a machine-readable representation. For example, a user may submit the
+following request:
+
+\begin{quote}
+\textit{``Swap 50 USDT for WETH using Uniswap V3.''}
+\end{quote}
+
+In this example, the requested action is a swap, the protocol is Uniswap V3,
+the input asset is USDT, the output asset is WETH, and the amount is 50 USDT.
+Although these parameters are expressed in natural language, they must be
+organized into a structured representation before they can be evaluated by
+the relationship-verification component. The language model therefore
+interprets the request, extracts this user-level information, and organizes
+it according to a predefined structured-intent model.
+
+Structured generation provides a predictable interface between probabilistic
+language interpretation and subsequent deterministic processing. Constraining
+language-model output to an expected structure can reduce variability in
+generated outputs and improve their suitability for downstream processing
+\cite{geng2023grammar}. Nevertheless, the generated output is treated only as
+a \textit{candidate structured intent}; it is not trusted directly for
+blockchain execution.
+
+The information extracted in the example illustrates the general purpose of
+the structured-intent model. At the conceptual level, a candidate intent may
+contain the fields shown in Table~\ref{tab:structured_intent_fields}.
+
+% \begin{table}[H]
+% \centering
+% \small
+% \caption{Conceptual fields of the structured DeFi intent.}
+% \label{tab:structured_intent_fields}
+% \begin{tabular}{p{0.24\textwidth} p{0.70\textwidth}}
+% \hline
+% \textbf{Field} & \textbf{Purpose} \\
+% \hline
+
+% Action &
+% Requested DeFi operation, such as swap, supply, withdraw, or borrow. \\
+
+% Protocol &
+% Requested DeFi protocol when explicitly specified or required by the
+% supported operation. \\
+
+% Network &
+% Blockchain network on which the operation is intended to take place. \\
+
+% Input / Asset &
+% Asset provided, supplied, withdrawn, or borrowed depending on the action. \\
+
+% Output Asset &
+% Asset expected from an exchange operation, where applicable. \\
+
+% Amount &
+% Quantity associated with the requested operation. \\
+
+% Recipient / Spender &
+% Destination or authorization-related entity where required. \\
+
+% Action-Specific Data &
+% Additional user-level parameters required by a particular supported action. \\
+
+% \hline
+% \end{tabular}
+% \end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Conceptual fields of the structured DeFi intent, with values
+extracted from ``Swap 50 USDT for WETH using Uniswap V3.''}
+\label{tab:structured_intent_fields}
+
+\begin{tabular}{@{}p{0.20\textwidth} p{0.55\textwidth} p{0.16\textwidth}@{}}
+\hline
+\textbf{Field} & \textbf{Purpose} & \textbf{Value} \\
+\hline
+
+Action &
+Requested DeFi operation, such as swap, supply, withdraw, or borrow. &
+Swap \\
+
+Protocol &
+Requested DeFi protocol when explicitly specified or required by the
+supported operation. &
+Uniswap V3 \\
+
+Network &
+Blockchain network on which the operation is intended to take place. &
+Not specified \\
+
+Input / Asset &
+Asset provided, supplied, withdrawn, or borrowed depending on the action. &
+USDT \\
+
+Output Asset &
+Asset expected from an exchange operation, where applicable. &
+WETH \\
+
+Amount &
+Quantity associated with the requested operation. &
+50 USDT \\
+
+Recipient / Spender &
+Destination or authorization-related entity where required. &
+Not specified \\
+
+Action-Specific Data &
+Additional user-level parameters required by a particular supported action. &
+Not specified \\
+
+\hline
+\end{tabular}
+\end{table}
+
+The required fields depend on the requested action. A swap requires an input
+asset, output asset, and amount, whereas a supply operation requires an asset
+and amount but no output asset. The example request does not explicitly
+specify a network. The network context may be specified by the user or
+provided by the execution environment. In either case, it must be established
+before relationship verification because protocol deployments and their
+associated execution resources are network-specific.
+
+The candidate intent describes \textit{what the user requests}, but does not
+require the language model to select the final contract address, callable
+function, liquidity pool, or transaction payload. These execution-specific
+elements are resolved later using authoritative verification knowledge.
+Whether the candidate intent is sufficiently complete, supported, and
+unambiguous is determined by the intent-validation component described in
+the following section.
+
+% =========================================================
+% 3.3 Intent Validation
+% =========================================================
+
+\section{Intent Validation}
+\label{sec:intent_validation}
+
+The candidate intent generated by the language model must be validated before
+it is used for relationship verification. The purpose of this stage is to
+determine whether the structured representation is sufficiently complete,
+well-formed, supported, and unambiguous for deterministic processing. General schema-validation mechanisms commonly support checks such as required
+properties, data types, permitted values, and numerical bounds
+\cite{jsonschema2020}. In the proposed concept, these structural checks are
+combined with action-specific and contextual DeFi checks.
+
+Four categories of validation are considered:
+
+\begin{enumerate}
+
+    \item \textbf{Structural validation} checks whether the candidate follows
+    the expected representation and contains the required fields in an
+    appropriate form.
+
+    \item \textbf{Action-specific validation} determines whether the fields
+    required for the selected operation are present. For example, a swap
+    requires both input and output assets, whereas a supply request requires
+    an asset and amount.
+
+    \item \textbf{Value validation} checks basic constraints on individual
+    values. An amount, for example, must represent a permitted positive
+    quantity.
+
+    \item \textbf{Context and ambiguity validation} checks whether the
+    requested action and network are within the supported scope and whether
+    critical identifiers can be resolved unambiguously. An ambiguous asset
+    identifier must not be resolved by guessing.
+
+\end{enumerate}
+
+If all required conditions are satisfied, the candidate becomes a
+\textit{validated structured intent} and may proceed to relationship
+verification. Missing, malformed, unsupported, or unresolved information
+prevents further processing. Depending on the interaction model, the system may
+request clarification from the user or reject the request. For the example swap request, validation checks whether the input asset, output
+asset, and amount are present, whether the amount is permitted, whether the
+action and network are supported, and whether the asset identifiers can be
+interpreted unambiguously. It does not determine the router contract, callable
+function, or liquidity pool.
+
+Deterministic validation has a defined limitation. A structurally complete and
+internally valid intent does not prove that the language model has perfectly
+interpreted the user's meaning. The validation stage can identify missing,
+invalid, unsupported, or ambiguous information, but it cannot generally prove
+semantic equivalence between the original natural-language request and the
+generated representation. The subsequent verification therefore assumes that
+the validated intent represents the requested operation and focuses on whether
+an authoritative execution structure can be established for it.
+
+
+% =========================================================
+% 3.4 Authoritative Verification Knowledge and Graph Model
+% =========================================================
+
+\section{Authoritative Verification Knowledge and Graph Model}
+\label{sec:verification_knowledge}
+
+Before a validated intent can be verified, the system requires an
+authoritative representation of the execution relationships supported by
+the relevant DeFi protocols. This verification knowledge is acquired,
+checked, and maintained independently of the language model and individual
+user requests. It represents accepted information about protocol deployments,
+supported actions, contracts, callable functions, assets, liquidity pools,
+lending reserves, and their relationships within the supported scope.
+
+A graph-based representation is used because verification depends not only
+on the validity of individual entities but also on their relationships.
+For example, a legitimate contract or asset is insufficient if it does
+not belong to the protocol deployment and action required by the current
+request. The following subsections explain how this knowledge is established,
+represented, and maintained for use by the relationship-verification component
+described in Section~\ref{sec:relationship_verification}.
+
+\subsection{Knowledge Acquisition and Admission}
+
+The graph is constructed from authoritative protocol and blockchain information
+rather than from execution information generated by the language model.
+Relevant sources may include official deployment information, contract or
+address registries, protocol-defined interfaces and documentation, and directly
+verifiable on-chain protocol state. These sources provide the deployment, contract, function, asset, and
+protocol-resource information required to construct the verification graph.
+Table~\ref{tab:verification_sources} summarizes the main information categories
+and their role in the graph. Examples include the network-specific deployment records published for Uniswap V3 and the contract addresses maintained in the Aave Address Book \cite{UniswapV3Deployments,AaveAddressBook}.
+
+\begin{table}[H]
+\centering
+\caption{Conceptual sources of authoritative verification knowledge.}
+\label{tab:verification_sources}
+\small
+\begin{tabular}{p{0.30\textwidth} p{0.29\textwidth} p{0.33\textwidth}}
+\hline
+\textbf{Information} &
+\textbf{Source Category} &
+\textbf{Purpose in the Graph} \\
+\hline
+
+Protocol deployment &
+Official deployment information or registry &
+Identifies network, version, and deployment context. \\
+
+Contract information &
+Official contract or address information &
+Associates authoritative contracts with a deployment. \\
+
+Callable functions &
+Protocol-defined interfaces or documentation &
+Associates functions with supported protocol actions. \\
+
+Liquidity pools &
+Verifiable protocol or on-chain state &
+Associates pools with deployments, assets, and pool configuration. \\
+
+Lending reserves &
+Verifiable protocol or on-chain state &
+Associates reserves with deployments and underlying assets. \\
+
+Asset information &
+Accepted protocol- or network-specific information &
+Identifies assets in the correct blockchain context. \\
+
+\hline
+\end{tabular}
+\end{table}
+
+An important distinction is made between \textit{discovered information} and
+\textit{accepted verification information}. Discovering an entity does not by
+itself make that entity suitable for approving an execution. Before information
+is admitted to the verification knowledge, its applicable context must be
+established. Depending on the information type, this includes the originating
+source, blockchain network, protocol and version, associated deployment,
+synchronization time, and validity state.
+
+Information whose source or applicable context cannot be established is not
+used as positive verification evidence. The acquisition process can therefore
+be summarized as:
+\begin{figure}[H]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[x=1cm,y=1cm,>=stealth]
+
+% Colours
+\definecolor{stepfill}{HTML}{F8FAFC}
+\definecolor{stepborder}{HTML}{475569}
+\definecolor{arrowcol}{HTML}{64748B}
+\definecolor{steptext}{HTML}{1E293B}
+
+% Authoritative Source
+\draw[rounded corners=0.08cm, draw=stepborder,
+      fill=stepfill, line width=0.6pt]
+  (0,0) rectangle (3.2,1.1);
+\node[align=center, text=steptext, font=\small]
+  at (1.6,0.55)
+  {\textit{Authoritative}\\\textit{Source}};
+
+% Acquire
+\draw[rounded corners=0.08cm, draw=stepborder,
+      fill=stepfill, line width=0.6pt]
+  (4.0,0) rectangle (6.2,1.1);
+\node[align=center, text=steptext, font=\small]
+  at (5.1,0.55)
+  {\textit{Acquire}};
+
+% Contextualize and Validate
+\draw[rounded corners=0.08cm, draw=stepborder,
+      fill=stepfill, line width=0.6pt]
+  (7.55,0) rectangle (10.35,1.1);
+\node[align=center, text=steptext, font=\small]
+  at (8.95,0.55)
+  {\textit{Contextualize}\\\textit{and Validate}};
+
+% Admit as Verification Knowledge
+\draw[rounded corners=0.08cm, draw=stepborder,
+      fill=stepfill, line width=0.6pt]
+  (11.7,0) rectangle (15.4,1.1);
+\node[align=center, text=steptext, font=\small]
+  at (13.55,0.55)
+  {\textit{Admit as}\\\textit{Verification Knowledge}};
+
+% Arrows connected to box edges
+\draw[->, line width=0.7pt, draw=arrowcol]
+  (3.2,0.55) -- (4.0,0.55);
+
+\draw[->, line width=0.7pt, draw=arrowcol]
+  (6.2,0.55) -- (7.55,0.55);
+
+\draw[->, line width=0.7pt, draw=arrowcol]
+  (10.35,0.55) -- (11.7,0.55);
+
+\end{tikzpicture}%
+}
+\caption{Conceptual stages in establishing authoritative verification knowledge.}
+\label{fig:knowledge_admission_flow}
+\end{figure}
+
+Knowledge acquisition continues after the graph is first populated and
+takes place independently of individual user requests. During each
+synchronization, the system compares information from authoritative sources
+with the accepted records for the same network and protocol deployment.
+New or changed information must meet the same admission criteria as the
+original records. If a source confirms that a previously accepted
+relationship is no longer valid, that relationship can no longer support
+approval. If a source cannot be reached, the failed check does not renew
+the freshness of the existing record.
+
+
+The exact acquisition scripts, API calls, blockchain queries, and storage
+operations are implementation concerns and are described in Chapter~\ref{chap:implementation}.
+
+\subsection{Graph Model and Maintenance}
+A property graph represents entities as nodes and their relationships as
+edges; both can carry properties \cite{angles2018propertygraph}. In the
+proposed model, nodes represent entities such as protocol deployments,
+actions, contracts, and assets. The edges identify which deployment
+supports an action, which contract exposes a function, and which assets
+belong to a pool. Table~\ref{tab:graph_entities} summarizes the principal
+entities.
+
+\begin{table}[H]
+\centering
+\caption{Principal entities in the authoritative verification knowledge.}
+\label{tab:graph_entities}
+\small
+\begin{tabular}{p{0.29\textwidth} p{0.66\textwidth}}
+\hline
+\textbf{Entity} & \textbf{Purpose} \\
+\hline
+
+Blockchain Network &
+Defines the network context of a protocol deployment. \\
+
+Protocol Deployment &
+Represents a protocol deployment or version on a particular network. \\
+
+Action &
+Represents a supported DeFi operation such as swap, supply, withdraw, or
+borrow. \\
+
+Authoritative Contract &
+Represents a contract accepted for the applicable protocol deployment. \\
+
+Callable Function &
+Represents a contract function associated with a supported action. \\
+
+Asset &
+Represents an asset in its applicable network context. \\
+
+Liquidity Pool &
+Represents an exchange resource and its participating assets and
+configuration. \\
+
+Reserve &
+Represents a lending resource associated with an underlying asset. \\
+
+Protocol-Specific Resource &
+Represents additional resources required by a particular protocol or action. \\
+
+\hline
+\end{tabular}
+\end{table}
+
+Conceptually, the graph represents relationships such as a network hosting a
+protocol deployment, a deployment supporting an action, a deployment using an
+authoritative contract, a contract exposing a callable function, and a function
+implementing an action. Additional branches associate deployments with
+liquidity pools, reserves, assets, and other protocol-specific resources.
+
+Knowledge completeness is assessed within a defined verification scope,
+such as a particular network, protocol deployment, action, and resource
+category. Freshness is assessed using the applicable update policy and
+the recorded synchronization and validity information. A synchronization
+timestamp alone does not establish that all required knowledge has been
+acquired. If sufficient coverage or current applicability cannot be
+established, missing relationships are treated as insufficient evidence.
+
+Figure~\ref{fig:conceptual_graph_model} places the requested action at the
+centre of the graph. The relationships around it show which deployment
+supports the action, which function implements it, and which pool or
+reserve can participate in it.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.80\textwidth]
+%     {figures/conceptual_graph_model.png}
+%     \caption{Conceptual action-centred graph model for representing
+%     authoritative DeFi execution relationships.}
+%     \label{fig:conceptual_graph_model}
+% \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.95\textwidth}{!}{%
+        \input{figures/conceptual_graph_model.tex}%
+    }
+    \caption{Conceptual action-centred property graph for authoritative
+    DeFi verification knowledge.}
+    \label{fig:conceptual_graph_model}
+\end{figure}
+
+The graph is intentionally action-centred because different operations require
+different connected structures. A swap may require relationships among the
+deployment, swap action, routing contract, function, liquidity pool, and
+requested assets. A lending operation may instead require the deployment,
+lending action, protocol contract, function, reserve, and underlying asset. The existence of a resource does not automatically imply that every action is
+available for it. For example, the presence of an asset as a lending reserve
+establishes reserve membership but does not by itself establish that supply or
+borrowing is currently enabled. Action availability must therefore be
+represented or verified separately from resource membership.
+
+The W3C PROV-O ontology describes how information is derived from a source
+and how its invalidation can be recorded \cite{w3cPROVO2013}. In the
+proposed graph, each verification record identifies its source, the network
+and protocol deployment to which it applies, its synchronization time, and
+its validity state. The knowledge-maintenance process must therefore support both updates and
+invalidation. A previously accepted contract, pool, reserve, or relationship
+must not remain usable as positive verification evidence after it is no longer
+applicable. New protocols, networks, assets, or actions can be incorporated by
+extending the graph with additional accepted entities and relationships without
+changing the overall verification principle.
+
+
+% =========================================================
+% 3.5 Relationship Verification and Decision
+% =========================================================
+
+\section{Relationship Verification and Decision}
+\label{sec:relationship_verification}
+
+After intent validation, the system determines whether the requested operation
+can be mapped to an accepted execution structure. Unlike intent validation,
+which evaluates the structured request itself, relationship verification
+evaluates the execution relationships required to realize that request. The requested action determines the relationship pattern that must be
+established. Conceptually, verification consists of identifying the applicable
+execution context, determining the required relationship pattern, resolving the
+corresponding entities from the authoritative graph, and evaluating whether all
+mandatory relationships are supported by valid evidence.
+
+% \subsection{Action-Specific Relationship Verification}
+
+% Relationship verification determines whether the requested DeFi operation
+% is supported by a consistent set of execution relationships in the
+% authoritative property graph. The relationships that must be established
+% depend on the requested action.
+
+% Consider the example introduced in Section~\ref{sec:intent_generation}:
+
+% \begin{quote}
+% \textit{``Swap 50 USDT for WETH using Uniswap V3.''}
+% \end{quote}
+
+% After intent validation, the verifier uses the requested action, protocol,
+% network, and assets to identify the required execution relationships.
+% For this swap, it must establish that the applicable network hosts a
+% Uniswap V3 deployment supporting the swap action. It must also identify
+% an authoritative contract with a callable swap function and verify that
+% a compatible liquidity pool supports the requested asset pair and
+% applicable pool configuration.
+
+% These checks establish whether the requested operation has a supported
+% execution structure. The amount of 50 USDT remains a user-provided
+% parameter; the graph is used to resolve and verify execution-specific
+% information rather than to modify the requested operation.
+
+% Other DeFi actions require different relationships. For example, a
+% lending operation requires evidence of an applicable lending deployment,
+% an authoritative contract and function for the requested action, and
+% a reserve supporting the requested asset. The representative requirements
+% for swap, supply, and borrow operations are summarized in
+% Table~\ref{tab:verification_patterns}.
+
+% \begin{table}[H]
+% \centering
+% \caption{Representative action-specific relationship requirements.}
+% \label{tab:verification_patterns}
+
+% \small
+
+% \begin{tabular}{p{0.18\textwidth} p{0.77\textwidth}}
+% \hline
+% \textbf{Action} & \textbf{Required Verification Evidence} \\
+% \hline
+
+% Swap &
+% The applicable network and protocol deployment support the swap action.
+% An authoritative contract provides a callable swap function, and a
+% compatible liquidity pool supports the requested asset pair and
+% applicable pool configuration. \\
+
+% Supply &
+% The applicable network and lending deployment support the supply action.
+% An authoritative contract provides a callable supply function, and a
+% lending reserve supports the requested asset and supply operation. \\
+
+% Borrow &
+% The applicable network and lending deployment support the borrow action.
+% An authoritative contract provides a callable borrow function, and a
+% lending reserve supports the requested asset and borrow operation. \\
+
+% \hline
+% \end{tabular}
+% \end{table}
+
+% The verifier evaluates these requirements as connected relationships
+% within the same network and protocol deployment. For example, an
+% authoritative contract and a compatible liquidity pool cannot establish
+% a valid swap execution structure if they belong to different deployments.
+% An operation can therefore be approved only when all mandatory
+% relationships for its action are established consistently.
+
+
+% \subsection{Decision and Traceable Verification Result}
+
+% The verification result directly determines the decision. A separate
+% probabilistic decision component is not required.
+
+% The conceptual approval rule is:
+
+% \begin{quote}
+% \textit{A request is approved only when the structured intent is valid and
+% sufficient accepted evidence exists for every mandatory relationship required
+% by the requested action and execution context.}
+% \end{quote}
+
+% An \textbf{APPROVE} result is produced only when all mandatory execution
+% relationships can be established consistently using valid authoritative
+% verification knowledge. If the available evidence establishes that the requested execution structure
+% is unsupported or inconsistent, the verifier produces a \textbf{REJECT}
+% result. For example, the requested action may not be supported by the
+% applicable protocol deployment, or the required contract, function, and
+% protocol resources may not form a consistent execution structure.
+
+% The verifier obtains its evidence from the authoritative property graph
+% described in Section~\ref{sec:verification_knowledge}. If the required
+% information is missing, outdated, or unavailable, the verifier cannot
+% establish whether the requested execution structure is supported. This
+% condition is reported as a \textbf{verification failure}, rather than
+% assuming that missing relationships are valid or treating incomplete
+% knowledge as proof that the operation is unsupported. The absence of a matching relationship is treated as evidence of an
+% unsupported operation only when the applicable verification knowledge is
+% sufficiently complete and current for that check. Otherwise, the absence
+% is treated as insufficient evidence and results in a verification failure.
+
+% Both rejection and verification failure prevent blockchain execution.
+% A request may proceed only after all mandatory relationships have been
+% established using valid authoritative evidence.
+
+% Figure~\ref{fig:verification_outcome_examples} illustrates these three
+% outcomes for the same hypothetical validated swap request. Sufficient,
+% current, and valid evidence establishing all mandatory relationships leads
+% to approval. Complete and current knowledge, together with valid evidence
+% establishing that the deployment does not support the requested action,
+% leads to rejection. Stale or unavailable evidence instead produces a
+% verification failure because action support cannot be established. Approval
+% allows the verified result to proceed to the controlled execution checks;
+% it does not guarantee successful blockchain execution.
+
+% \begin{figure}[H]
+%     \centering
+%     \resizebox{0.98\linewidth}{!}{%
+%         \input{figures/verification_outcome_examples.tex}%
+%     }
+%     \caption{Illustrative verification outcomes for a DeFi request:
+% approval, rejection, and verification failure.}
+%     \label{fig:verification_outcome_examples}
+% \end{figure}
+
+% The result also records information required for traceability. Depending on the
+% outcome, this includes:
+
+% \begin{itemize}
+%     \item the approval, rejection, or verification-failure decision;
+%     \item a reason identifying the relevant failed or satisfied condition;
+%     \item the entities and relationships relevant to the decision;
+%     \item the execution information resolved from authoritative knowledge;
+%     \item the user-provided parameters covered by the verification;
+%     \item the authoritative evidence used; and
+%     \item the time and validity context of the result.
+% \end{itemize}
+
+% For an approved operation, this result binds the validated intent to the
+% resolved execution structure. It may therefore contain the network, protocol
+% deployment, target contract, callable function, relevant assets, pool or
+% reserve, amount, recipient or spender where applicable, and other protected
+% action-specific parameters. For a rejected request, the reason should identify the failed condition without
+% claiming information that was never resolved. For example, if no authoritative
+% contract can be established, the result should report that condition rather
+% than describing a mismatch with a particular contract. A successful result is valid only for the operation and context that were
+% actually verified. Changes to protected parameters or invalidation of the
+% underlying evidence require another verification before execution.
+
+% Figure~\ref{fig:verification_sequence} illustrates the interaction between
+% intent validation, relationship verification and decision, authoritative
+% verification knowledge, and the request controller. \\
+% The sequence starts once the candidate intent has successfully passed
+% deterministic validation. The validated intent is then forwarded to the
+% relationship-verification component, which identifies the relationships that
+% must hold for the requested DeFi action. Using the action, protocol, network,
+% and asset information from the intent, the verifier queries the authoritative
+% graph for the corresponding deployment, contract, callable function, and
+% protocol-specific resources such as a liquidity pool or lending reserve. The
+% graph returns the available verification evidence, which is evaluated as one
+% connected execution structure rather than as isolated entities. If sufficient, current, and valid evidence establishes all mandatory
+% relationships within the same execution context, the verifier returns an
+% approved structured verification result to the request controller,
+% including the resolved execution information. If the applicable knowledge
+% is sufficiently complete and current but the required relationships cannot
+% be established, the verifier returns a rejection with the supporting reason
+% and evidence. Otherwise, insufficient, invalid, stale, or unavailable
+% evidence produces a verification failure rather than a supported rejection.
+
+% \begin{figure}[H]
+%     \centering
+%     \resizebox{0.95\textwidth}{!}{%
+%         \input{figures/verification_sequence.tex}%
+%     }
+%    \caption{Graph-based relationship verification after intent validation.}
+%     \label{fig:verification_sequence}
+% \end{figure}
+
+% The verification component returns a traceable decision together with the
+% relevant evidence or failure reason. Only an approved result is forwarded
+% to controlled execution with its verified parameters unchanged. A rejected
+% request or verification failure does not produce an execution handover.
+
+\subsection{Action-Specific Relationship Verification}
+
+The verifier receives the validated structured intent. For the example in
+Section~\ref{sec:intent_generation}, its input is:
+
+\begin{quote}
+\small
+\textbf{Action:} swap; \textbf{protocol:} Uniswap V3;
+\textbf{network:} Sepolia;\\
+\textbf{input asset:} USDT; \textbf{output asset:} WETH;
+\textbf{amount:} 50 USDT.
+\end{quote}
+
+The user supplied the action, protocol, assets, and amount. The request
+did not name a network; in this example, the execution environment supplied
+Sepolia before verification. The asset symbols denote the identifiers
+resolved for that network. The amount remains a protected parameter of the
+request.
+
+For a direct swap, the verifier looks for two connected branches in the
+graph. Both must belong to the same Uniswap V3 deployment on the selected
+network. On the contract branch, the deployment must support the swap
+action and identify an authoritative router that exposes a function
+implementing it. On the pool branch, a pool belonging to that deployment
+must support the swap, contain both requested assets, and satisfy the
+applicable pool configuration. For example, the Uniswap V3 pool interface
+identifies the factory, the two tokens, and the fee tier.\footnote{Uniswap,
+\textit{IUniswapV3PoolImmutables}, Uniswap V3 Core,
+\url{https://github.com/Uniswap/v3-core/blob/main/contracts/interfaces/pool/IUniswapV3PoolImmutables.sol}.}
+The token order recorded by the pool does not determine the direction
+of the swap: the intent specifies USDT as the input and WETH as the output.
+
+Table~\ref{tab:verification_patterns} summarizes the evidence required for
+three representative actions.
+
+\begin{table}[H]
+\centering
+\caption{Representative action-specific relationship requirements.}
+\label{tab:verification_patterns}
+
+\small
+
+\begin{tabular}{p{0.18\textwidth} p{0.77\textwidth}}
+\hline
+\textbf{Action} & \textbf{Required Verification Evidence} \\
+\hline
+
+Swap &
+The applicable network and protocol deployment support the swap action.
+An authoritative contract provides a callable swap function, and a
+compatible liquidity pool supports the requested asset pair and
+applicable pool configuration. \\
+
+Supply &
+The applicable network and lending deployment support the supply action.
+An authoritative contract provides a callable supply function, and a
+lending reserve supports the requested asset and supply operation. \\
+
+Borrow &
+The applicable network and lending deployment support the borrow action.
+An authoritative contract provides a callable borrow function, and a
+lending reserve supports the requested asset and borrow operation. \\
+
+\hline
+\end{tabular}
+\end{table}
+
+A matching token pair alone is insufficient. For example, a pool from
+another deployment cannot complete the required structure, even if it
+contains USDT and WETH. Figure~\ref{fig:verification_outcome_examples}
+shows how changing one pool relationship affects the decision when the
+deployment and contract branch are held fixed.
+
+\subsection{Decision and Traceable Verification Result}
+
+The verification result directly determines the decision. A separate
+probabilistic decision component is not required.
+
+The conceptual approval rule is:
+
+\begin{quote}
+\textit{A request is approved only when the structured intent is valid and
+sufficient accepted evidence exists for every mandatory relationship required
+by the requested action and execution context.}
+\end{quote}
+
+An \textbf{APPROVE} result is produced only when all mandatory execution
+relationships can be established consistently using valid authoritative
+verification knowledge. If the available evidence establishes that the requested execution structure
+is unsupported or inconsistent, the verifier produces a \textbf{REJECT}
+result. For example, the requested action may not be supported by the
+applicable protocol deployment, or the required contract, function, and
+protocol resources may not form a consistent execution structure.
+
+The verifier uses the authoritative property graph described in
+Section~\ref{sec:verification_knowledge}. In their work on RDF data
+sources, Darari et al.\ distinguish completeness for a specified part
+of a dataset from completeness of the dataset as a whole
+\cite{darari2013completeness}. The verifier applies this distinction
+to the requested action and deployment. If current, valid evidence
+covers all eligible resources and none satisfies a mandatory
+relationship, the verifier returns \textbf{REJECT}. If the required
+evidence is missing, stale, or unavailable, the verifier cannot establish
+whether the relationship holds and reports a \textbf{verification failure}.
+Both rejection and verification failure prevent blockchain execution.
+A request may proceed only after all mandatory relationships have been
+established using valid authoritative evidence.
+
+Figure~\ref{fig:verification_outcome_examples} compares two hypothetical
+graph snapshots for the same validated intent. For this example, the
+accepted evidence is current and covers all eligible direct pools in the
+selected deployment; only pool $P$ is eligible. The contract, action, and
+configuration checks pass in both snapshots. In panel~A, $P$ contains USDT
+and WETH, so all required relationships are established. In panel~B, the
+recorded pair is USDT and USDC. Because the eligible pool set is complete,
+this mismatch rules out the requested direct swap within the stated scope.
+If the verifier instead lacks current evidence of the pair or cannot
+establish coverage, the result is a \textbf{verification failure}: the
+available evidence supports neither approval nor rejection.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.98\linewidth}{!}{%
+        \input{figures/verification_outcome_examples.tex}%
+    }
+    \caption{Direct swap verification for the same validated intent.}
+    \label{fig:verification_outcome_examples}
+\end{figure}
+
+The result also records information required for traceability. Depending on the
+outcome, this includes:
+
+\begin{itemize}
+    \item the approval, rejection, or verification-failure decision;
+    \item a reason identifying the relevant failed or satisfied condition;
+    \item the entities and relationships relevant to the decision;
+    \item the execution information resolved from authoritative knowledge;
+    \item the user-provided parameters covered by the verification;
+    \item the authoritative evidence used; and
+    \item the time and validity context of the result.
+\end{itemize}
+
+For an approved operation, this result binds the validated intent to the
+resolved execution structure. It may therefore contain the network, protocol
+deployment, target contract, callable function, relevant assets, pool or
+reserve, amount, recipient or spender where applicable, and other protected
+action-specific parameters. For a rejected request, the reason should identify the failed condition without
+claiming information that was never resolved. For example, if no authoritative
+contract can be established, the result should report that condition rather
+than describing a mismatch with a particular contract. A successful result is valid only for the operation and context that were
+actually verified. Changes to protected parameters or invalidation of the
+underlying evidence require another verification before execution.
+
+Figure~\ref{fig:verification_sequence} shows how the relationship verifier uses the authoritative property graph to evaluate a validated intent and returns the result to the request controller.\\
+The sequence starts once the candidate intent has successfully passed
+deterministic validation. The validated intent is then forwarded to the
+relationship-verification component, which identifies the relationships that
+must hold for the requested DeFi action. Using the action, protocol, network,
+and asset information from the intent, the verifier queries the authoritative
+graph for the corresponding deployment, contract, callable function, and
+protocol-specific resources such as a liquidity pool or lending reserve. The
+graph returns the available verification evidence, which is evaluated as one
+connected execution structure rather than as isolated entities. If sufficient, current, and valid evidence establishes all mandatory
+relationships within the same execution context, the verifier returns an
+approved structured verification result to the request controller,
+including the resolved execution information. If the applicable knowledge
+is sufficiently complete and current but the required relationships cannot
+be established, the verifier returns a rejection with the supporting reason
+and evidence. Otherwise, insufficient, invalid, stale, or unavailable
+evidence produces a verification failure rather than a supported rejection.
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.95\textwidth}{!}{%
+        \input{figures/verification_sequence.tex}%
+    }
+   \caption{Graph-based relationship verification after intent validation.}
+    \label{fig:verification_sequence}
+\end{figure}
+
+The verification component returns a traceable decision together with the
+relevant evidence or failure reason. Only an approved result is forwarded
+to controlled execution with its verified parameters unchanged. A rejected
+request or verification failure does not produce an execution handover.
+
+
+% =========================================================
+% 3.6 Controlled Smart-Wallet Execution
+% =========================================================
+
+\section{Controlled Smart-Wallet Execution}
+\label{sec:controlled_execution}
+
+The final conceptual element ensures that an approved operation is executed
+within the conditions that were actually verified. The controlled execution
+component therefore consumes the approved verification result rather than
+reconstructing the operation from the original natural-language request. The verification result acts as the handover between relationship verification
+and execution. It contains the protected parameters of the approved operation,
+including the blockchain network, protocol deployment, target contract,
+callable function, assets, amount, recipient or spender where applicable,
+and other action-specific restrictions. These parameters define the
+execution boundary of the approved operation.
+
+An approved result also contains an expiry condition and a reference to the
+verification evidence or knowledge state used for approval. Before blockchain
+submission, the Controlled Smart-Wallet Execution component performs a final
+validity check. It confirms that the operation to be submitted matches the
+protected parameters, that the approval has not expired, and that the referenced
+verification information remains applicable. If any of these conditions cannot
+be confirmed, submission is blocked and the operation requires reverification.
+
+This establishes the following invariant:
+
+\begin{quote}
+\textit{An operation may proceed to blockchain submission only if its
+execution parameters match the approved verification result, the approval
+has not expired, and the referenced verification evidence remains applicable.}
+\end{quote}
+
+The proposed concept uses an ERC-4337 smart wallet as the controlled execution
+boundary. ERC-4337 provides an account-abstraction model that supports
+programmable smart-account validation and execution \cite{erc4337}. Within
+the proposed system, the controlled execution component constructs the
+blockchain operation using the approved execution information and enforces
+the required validity conditions before submission. The smart-wallet
+execution mechanism must preserve the verified parameters and must not
+independently replace the approved target contract, callable function,
+assets, amount, or other protected information. The execution component must establish that the approval originates from
+the trusted verification component and that the result has not been
+altered. The approved result and its protected parameters must therefore
+be preserved through a trusted handover. The concrete mechanism used
+to establish this integrity is an implementation concern.
+
+A rejected request, verification failure, expired approval, or modification
+of protected parameters must not proceed to transaction submission. In this
+way, the verification result acts as an execution constraint rather than
+merely an advisory warning. The exact smart-wallet software,
+account-abstraction provider, transaction-construction logic, signing
+mechanism, and blockchain-submission interface are implementation concerns
+described in Chapter~\ref{chap:implementation}.
+
+% =========================================================
+% 3.7 Summary
+% =========================================================
+
+\section{Summary}
+\label{sec:concept_summary}
+
+This chapter presented the conceptual design of the proposed pre-execution
+verification system. The design separates natural-language interpretation,
+deterministic intent validation, authoritative verification knowledge,
+relationship verification, and controlled smart-wallet execution. An LLM first converts the user's natural-language request into a candidate
+structured intent. Deterministic validation then checks whether the intent is
+complete, supported, and sufficiently unambiguous for further processing.
+Execution-specific information is not trusted from the language model; it is
+resolved from authoritative graph-based knowledge constructed and maintained
+from accepted protocol and blockchain sources. Relationship verification evaluates whether the entities required by the
+validated intent form a consistent action-specific execution structure. Only
+when all mandatory relationships can be established is an approved,
+traceable verification result produced. This result carries the execution
+information and evidence associated with the decision.
+
+Finally, controlled smart-wallet execution ensures that only the verified
+operation may continue toward blockchain submission and that critical
+parameters cannot be changed without another verification step.
+
+The concept therefore establishes the following overall path:
+
+% \begin{center}
+% \textit{Natural-Language Request}
+% $\rightarrow$
+% \textit{Candidate Intent}
+% $\rightarrow$
+% \textit{Intent Validation}
+% $\rightarrow$
+% \textit{Relationship Verification}
+% $\rightarrow$
+% \textit{Verified Decision}
+% $\rightarrow$
+% \textit{Controlled Execution}
+% \end{center}
+\begin{figure}[H]
+\centering
+
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[x=1cm,y=1cm,>=stealth]
+
+% ------------------------------------------------------------
+% Colours — neutral / non-colorful
+% ------------------------------------------------------------
+\definecolor{stepfill}{HTML}{F8FAFC}
+\definecolor{stepborder}{HTML}{475569}
+\definecolor{arrowcol}{HTML}{64748B}
+\definecolor{steptext}{HTML}{1E293B}
+
+% ------------------------------------------------------------
+% Step 1 — Natural-Language Request
+% ------------------------------------------------------------
+\draw[
+    rounded corners=0.08cm,
+    draw=stepborder,
+    fill=stepfill,
+    line width=0.6pt
+]
+(0,0) rectangle (2.9,1.2);
+
+\node[
+    align=center,
+    text=steptext,
+    font=\small
+] at (1.45,0.6)
+{
+    \textit{Natural-Language}\\
+    \textit{Request}
+};
+
+% ------------------------------------------------------------
+% Step 2 — Candidate Intent
+% ------------------------------------------------------------
+\draw[
+    rounded corners=0.08cm,
+    draw=stepborder,
+    fill=stepfill,
+    line width=0.6pt
+]
+(3.6,0) rectangle (6.1,1.2);
+
+\node[
+    align=center,
+    text=steptext,
+    font=\small
+] at (4.85,0.6)
+{
+    \textit{Candidate}\\
+    \textit{Intent}
+};
+
+% ------------------------------------------------------------
+% Step 3 — Intent Validation
+% ------------------------------------------------------------
+\draw[
+    rounded corners=0.08cm,
+    draw=stepborder,
+    fill=stepfill,
+    line width=0.6pt
+]
+(6.8,0) rectangle (9.5,1.2);
+
+\node[
+    align=center,
+    text=steptext,
+    font=\small
+] at (8.15,0.6)
+{
+    \textit{Intent}\\
+    \textit{Validation}
+};
+
+% ------------------------------------------------------------
+% Step 4 — Relationship Verification
+% ------------------------------------------------------------
+\draw[
+    rounded corners=0.08cm,
+    draw=stepborder,
+    fill=stepfill,
+    line width=0.6pt
+]
+(10.2,0) rectangle (13.5,1.2);
+
+\node[
+    align=center,
+    text=steptext,
+    font=\small
+] at (11.85,0.6)
+{
+    \textit{Relationship}\\
+    \textit{Verification}
+};
+
+% ------------------------------------------------------------
+% Step 5 — Verified Decision
+% ------------------------------------------------------------
+\draw[
+    rounded corners=0.08cm,
+    draw=stepborder,
+    fill=stepfill,
+    line width=0.6pt
+]
+(14.2,0) rectangle (16.8,1.2);
+
+\node[
+    align=center,
+    text=steptext,
+    font=\small
+] at (15.5,0.6)
+{
+    \textit{Verified}\\
+    \textit{Decision}
+};
+
+% ------------------------------------------------------------
+% Step 6 — Controlled Execution
+% ------------------------------------------------------------
+\draw[
+    rounded corners=0.08cm,
+    draw=stepborder,
+    fill=stepfill,
+    line width=0.6pt
+]
+(17.5,0) rectangle (20.4,1.2);
+
+\node[
+    align=center,
+    text=steptext,
+    font=\small
+] at (18.95,0.6)
+{
+    \textit{Controlled}\\
+    \textit{Execution}
+};
+
+% ------------------------------------------------------------
+% Arrows
+% ------------------------------------------------------------
+\draw[->, line width=0.7pt, draw=arrowcol] (2.9,0.6) -- (3.6,0.6);
+\draw[->, line width=0.7pt, draw=arrowcol] (6.1,0.6) -- (6.8,0.6);
+\draw[->, line width=0.7pt, draw=arrowcol] (9.5,0.6) -- (10.2,0.6);
+\draw[->, line width=0.7pt, draw=arrowcol] (13.5,0.6) -- (14.2,0.6);
+\draw[->, line width=0.7pt, draw=arrowcol] (16.8,0.6) -- (17.5,0.6);
+
+\end{tikzpicture}%
+}
+
+\caption{Summary of the conceptual workflow of the proposed system.}
+\label{fig:concept_summary_flow}
+\end{figure}
+
+The following chapter describes how these conceptual elements are realized in
+the prototype implementation.

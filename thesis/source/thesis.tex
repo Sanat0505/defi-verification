@@ -1,0 +1,227 @@
+\PassOptionsToPackage{table,x11names}{xcolor}
+\documentclass[twoside,a4paper,11pt,openright]{report}
+
+%
+% Base packages. Only change if you know what you are doing.
+%
+\usepackage[utf8]{inputenc}	% input encoding setting
+\usepackage[english]{babel}	% english hyphenation
+\usepackage{newpxtext}		% font palatino
+\usepackage{newpxmath}		% matching math-font
+\usepackage[T1]{fontenc}	% font encoding setting
+\usepackage{amsmath}		% math extensions
+\usepackage{microtype}		% improved microtypography
+\usepackage{csquotes}		% contextual quotes
+\usepackage{calc}		    % calculation of tex dimensions
+\usepackage[%
+  inner=25mm,%
+  outer=35mm,%
+  top=25mm,%
+  bottom=30mm,%
+  includeheadfoot,%
+  headheight=14pt,%
+  marginparwidth=25mm%
+]{geometry}			        % adjustment of type area
+\usepackage{parskip}		% no indentation
+\usepackage{emptypage}		% no page numbers on empty pages
+\usepackage{array}		    % table extension
+\usepackage{graphicx}		% integration of graphics
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc}
+\usepackage{float}		    % adjustment of floating environments
+\usepackage{fancyhdr}		% customization of headers and footers
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+%
+% Packages that could be included if needed.
+%
+
+%\usepackage{biblatex}		% bibliographie
+%\usepackage[style=ieee]{biblatex}
+%\addbibresource{citationDB.bib}
+%\usepackage{textcomp}
+\usepackage{xcolor}		% colours
+\usepackage{subcaption}	% subnumbering for illustrations
+%\usepackage{subfig}
+
+\usepackage{listings}		% source code listings
+\lstset{basicstyle = \ttfamily,columns=fullflexible}
+%\usepackage{listingsutf8}
+%\usepackage{units}		% physical units
+% TODO: caption
+\captionsetup{
+    labelsep=colon,
+    format=hang
+}
+% TODO: rotating
+% TODO: paralist
+% TODO: tikz
+\usepackage[table,x11names]{xcolor}
+
+\usepackage{rotating}
+
+\usepackage{pdfpages}       % include official statement of authorship
+\usepackage{tocbibind}
+
+%\usepackage[acronym]{glossaries} % glossary
+\usepackage[acronym,toc]{glossaries}
+\makenoidxglossaries
+\input{content/glossary_defs}
+\setacronymstyle{long-short}
+
+% %\makeglossaries
+% \makenoidxglossaries
+% \input{content/glossary_defs}
+
+
+%
+% The hyperref package enables links within a document. For technical reasons 
+% it must be loaded as one of the last packages. 
+% Some packages should only be loaded after hyperref. 
+% See section 9 in the package documentation: https://ctan.org/pkg/hyperref
+%
+
+\usepackage{hyperref}
+
+\usepackage[nameinlink]{cleveref}
+\crefname{appsec}{appendix}{appendices}
+\Crefname{appsec}{Appendix}{Appendices}
+
+%
+% Packages that are only important for the design. 
+% They can be removed after completion.
+%
+\usepackage{todonotes}		% TODO-remarks
+\usepackage{lipsum}		% dummy text
+\usepackage{layout}		% representation of print space
+\usepackage{soul}
+
+% Insert line numbers for correction notes.
+%\usepackage[switch*]{lineno}
+%\linenumbers
+
+
+
+%
+% This approach fools TeXstudio and Texmaker to not show the included files in
+% the structure tree. This promotes clarity. Files inside the `latex/'
+% directory are not expected to be edited and thus should not be selectable.
+% Effectively the command \myinput is just an alias for \input but won't be
+% recognized be the editor.
+%
+\let\myinput\input
+
+\myinput{latex/float}		% adjustments for float environments
+\myinput{latex/titlepage}	% Format template for the cover sheet
+\myinput{latex/simplesection}	% simple headings for tasks, etc.
+
+\usepackage{ragged2e}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\renewcommand{\arraystretch}{1.3} % Default: 1.0
+
+% Activate if needed
+\myinput{latex/fancyhdr}	% header and footer settings
+%\myinput{latex/linespace_md}	% extended line spacing in floating environments, footnotes and minpages
+
+
+
+%%
+%% Load literature database.
+%%
+%\addbibresource{citationDB.bib}
+
+\raggedbottom
+
+\begin{document}
+%
+% preamble and directories
+%
+
+% roman page numbers for the opening credits
+\pagenumbering{roman}
+
+\input{content/titlepage}
+
+% short presentation
+%\cleardoublepage
+%\input{content/abstract}
+
+% given task/topic
+\input{content/aboutme}
+
+\cleardoublepage
+\input{content/acknowledgment}
+
+\cleardoublepage
+\input{content/topic}
+
+% table of contents
+\tableofcontents
+
+\cleardoublepage
+\input{content/indices}
+
+% TODO: directories
+% TODO: abbreviations
+
+
+
+%
+% text body
+%
+
+% arabic page numbers for the main part
+\cleardoublepage
+\pagenumbering{arabic}
+
+\input{content/introduction}
+\clearpage
+
+\chapter{State of the Art} \label{chap:stateoftheart}
+
+\input{content/stateoftheart_requirements}
+
+\input{content/stateoftheart_literature}
+
+\chapter{Concept} \label{chap:concept}
+
+\input{content/concept}
+
+\chapter{Implementation} \label{chap:implementation}
+
+\input{content/implementation}
+\input{content/thesis_listings_preamble}
+
+\chapter{Evaluation} \label{chap:evaluation}
+
+\input{content/evaluation}
+
+\chapter{Conclusion} \label{chap:conclusion}
+
+\input{content/conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography}
+
+%
+% Attachments
+%
+
+\appendix
+\part*{Appendix}
+\markboth{}{}
+\captionsetup{list=no}
+\crefalias{chapter}{appsec}
+
+\cleardoublepage
+%\input{content/acknowledgment}
+\input{appendix/appendix}
+\chapter{Digital Appendix} \label{chap:digital_appendix}
+\input{appendix/digital_appendix}
+
+
+
+\cleardoublepage
+\input{content/declaration} % TODO: upload and replace the PDF with a filled-out version!
+\end{document}

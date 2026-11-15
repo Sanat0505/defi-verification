@@ -1,0 +1,29 @@
+% Drawing only. Requires \usepackage{tikz}.
+\begingroup
+\definecolor{motInk}{HTML}{1E293B}
+\definecolor{motRule}{HTML}{475569}
+\definecolor{motLight}{HTML}{F1F5F9}
+\definecolor{motRust}{HTML}{853E2D}
+\begin{tikzpicture}[x=1cm,y=1cm,font=\sffamily\small,
+every node/.style={text=motInk,inner sep=0pt}]
+\node[align=center,font=\sffamily\bfseries] at (0,0)
+  {\textquotedblleft Supply 100 USDT to Aave V3.\textquotedblright};
+\node[align=center,font=\sffamily\small] at (0,-.52)
+  {Execution context: intended market A};
+\fill[motLight] (-5.7,-.98) rectangle (5.7,-1.85);
+\draw[motRule,line width=.65pt] (-5.7,-.98)--(5.7,-.98)
+ (-5.7,-1.85)--(5.7,-1.85) (-5.7,-3.93)--(5.7,-3.93);
+\node[anchor=west,font=\sffamily\small\bfseries] at (-5.45,-1.42) {Field};
+\node[align=center] at (-.45,-1.42) {\textbf{Expected}\\Market record};
+\node[align=center] at (3.52,-1.42) {\textbf{Proposed}\\AI instruction};
+\node[anchor=west] at (-5.45,-2.21) {Operation};
+\node at (-.45,-2.21) {Supply 100 USDT};
+\node at (3.52,-2.21) {Supply 100 USDT};
+\node[anchor=west] at (-5.45,-2.87) {Target contract};
+\node at (-.45,-2.87) {\textbf{Pool A}};
+\node[text=motRust] at (3.52,-2.87) {\textbf{Pool B}};
+\node[anchor=west] at (-5.45,-3.53) {Market of target};
+\node at (-.45,-3.53) {Market A};
+\node[text=motRust] at (3.52,-3.53) {Market B};
+\end{tikzpicture}
+\endgroup

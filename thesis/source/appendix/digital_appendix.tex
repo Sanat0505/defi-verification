@@ -1,0 +1,186 @@
+
+
+The digital appendix contains the thesis documents, the prototypical
+implementation, and the experimental materials supporting this work.
+It provides access to the implementation described in Chapter~\ref{chap:implementation},
+the evidence supporting Chapter~\ref{chap:evaluation}, and an inspectable copy of the
+constructed Neo4j graph.
+
+The materials follow the organization of the project repository:
+
+\begin{verbatim}
+defi-verification/
+|-- thesis/
+|   |-- DEFI_VERIFICATION.pdf
+|   |-- source/
+|   |   |-- figures/
+|-- source/
+|-- evaluation/
+|   |-- 400_prompts/
+|   |-- 600_prompts/
+|   |-- datasets/
+|   |-- graph/
+|   |   |-- submission/
+|   |       |-- database/
+|   |       |-- evidence/
+|   |       |-- figures/
+|   |       |-- queries/
+|   |       |-- README.md
+|   |-- sources/
+|   |-- tests/
+|   |-- wallet/
+|-- README.md
+|-- requirements.txt
+|-- requirements-dev.txt
+|-- pytest.ini
+|-- .env.example
+\end{verbatim}
+
+The directory listing shows the principal components. Additional
+scripts, documentation, and integrity manifests are provided within
+the corresponding directories.
+
+\section{Thesis Documents}
+
+The \texttt{thesis/} directory contains the PDF built from the accompanying LaTeX project. The
+\texttt{thesis/source/} directory contains the editable thesis project,
+bibliography, and supporting files required to generate the document.
+Editable diagram sources and figure-generation scripts are included
+in \texttt{thesis/source/figures/}.
+
+\section{Prototypical Implementation}
+
+The \texttt{source/} directory contains the implementation of the
+graph-based intent-verification system. It includes natural-language
+intent extraction, normalization and validation, authoritative
+knowledge acquisition, graph synchronization, relationship
+verification, and the wallet execution adapter. The browser
+interface and application tests are also included.
+
+The root \texttt{README.md} documents software requirements,
+installation, environment configuration, application startup, and
+testing. Python dependencies are specified in
+\texttt{requirements.txt} and \texttt{requirements-dev.txt}.
+Node.js dependencies and their lock file are provided in
+\texttt{source/wallet/}. The \texttt{.env.example} file describes
+the required configuration without including secret credentials.
+
+\section{Experimental Materials and Results}
+
+The \texttt{evaluation/} directory contains evaluation runners,
+datasets, reference information, raw observations, and analysis
+outputs supporting Chapter~5.
+
+\begin{description}
+    \item[\texttt{400\_prompts/}]
+    Materials from the exploratory 400-prompt study, including
+    frozen inputs, recorded interpretations, verification outcomes,
+    execution journals, and analysis outputs.
+
+    \item[\texttt{600\_prompts/}]
+    Materials from the balanced 600-prompt study, including
+    the frozen dataset, execution order, recorded observations,
+    error reviews, metrics, tables, and figures.
+
+    \item[\texttt{datasets/}]
+    Additional evaluation datasets and controlled test cases.
+
+    \item[\texttt{graph/}]
+    Evidence from graph-verification, controlled
+    relationship-mutation, knowledge-maintenance, and traceability
+    studies. The \texttt{submission/} subdirectory additionally
+    provides the database export and inspection materials described
+    below.
+
+    \item[\texttt{wallet/}]
+    Results from the supplementary controlled wallet evaluation.
+    These observations concern policy and execution-boundary
+    behaviour; simulated outcomes do not establish successful
+    on-chain execution.
+
+    \item[\texttt{sources/}]
+    Source provenance, historical implementation snapshots,
+    environment records, and supporting reproduction materials.
+
+    \item[\texttt{tests/}]
+    Tests for evaluation runners, datasets, metrics, and
+    evidence-integrity checks.
+\end{description}
+
+Raw observations include recorded model interpretations, provider
+attempts and errors, verification decisions, graph events, and
+timings. Derived metrics and analysis outputs are retained alongside
+the corresponding experimental records.
+
+\section{Constructed Neo4j Graph}
+
+The directory \texttt{evaluation/graph/submission/} contains
+materials for inspecting the graph used by the prototype.
+The submission snapshot was exported on 11 November 2026 using
+Neo4j 2026.05.0 Enterprise.
+
+\begin{description}
+    \item[\texttt{database/}]
+    Contains the native \texttt{neo4j.dump} database export and
+    metadata recording its version, checksum, and validation.
+    The export contains the \texttt{neo4j} user database;
+    the system database and other local databases are excluded.
+
+    \item[\texttt{queries/}]
+    Contains read-only Cypher queries for displaying the protocol
+    and deployment overview, inspecting an Aave V3 USDC supply
+    subgraph, counting nodes and relationships, and examining
+    knowledge provenance and synchronization timestamps.
+
+    \item[\texttt{evidence/}]
+    Contains saved query results, database counts, selected node
+    and relationship properties, and a recorded response from the
+    relationship verifier.
+
+    \item[\texttt{figures/}]
+    Contains PNG and SVG diagrams generated from the saved query
+    results. These figures present selected stored relationships;
+    they are not screenshots of the Neo4j interface or
+    visualizations of the complete database.
+\end{description}
+
+The inspected database contains 3,736 nodes and 20,729 relationships,
+including presentation and fixture metadata. The focused Aave supply
+view contains eight nodes and nine relationships connecting the
+network, protocol deployment, authorized contract and function,
+supported action, reserve, and underlying token.
+
+The recorded verifier response is
+\texttt{INSUFFICIENT\_EVIDENCE}, with rule
+\texttt{KNOWLEDGE.STALE}, because the stored knowledge exceeded the
+configured freshness limit at inspection time. The structural
+relationships remain visible, but their presence alone does not
+establish current approval. The freshness policy and synchronization
+timestamps were not modified to obtain a different result.
+
+The submission snapshot is preserved separately from the historical
+experimental evidence. It is not claimed to be the exact database
+state used for the earlier evaluations. The export was successfully
+loaded into an isolated data directory and passed an offline
+consistency check. Restoration and inspection instructions are
+provided in the accompanying \texttt{README.md}.
+
+\section{Inspection and Reproduction}
+
+The root \texttt{README.md} explains how to configure and run the
+prototype. The file \texttt{evaluation/README.md} describes how to
+inspect the retained experimental evidence, verify its integrity,
+and execute the evaluation procedures.
+
+Saved reports, observations, and graph figures can be inspected
+without rerunning the experiments. Live evaluation requires the
+documented external services, configuration, and graph prerequisites.
+Repeated executions may produce different observations because
+model responses, external knowledge sources, and blockchain state
+can change.
+
+Historical source snapshots and results retain their original
+contents. Paths within these artifacts may therefore reflect the
+directory structure used when the experiments were conducted.
+New experiments should write their outputs to separate locations
+rather than overwrite the retained evidence.

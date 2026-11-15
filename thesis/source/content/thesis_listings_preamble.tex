@@ -1,0 +1,60 @@
+
+% Thesis Code Listings Configuration
+
+% Colors
+\definecolor{thesiscodebg}{HTML}{F8FAFC}
+\definecolor{thesiscodeborder}{HTML}{CBD5E1}
+\definecolor{thesiscodekw}{HTML}{1D4ED8}
+\definecolor{thesiscodecomment}{HTML}{64748B}
+\definecolor{thesiscodebrown}{HTML}{B45309}
+
+% General style
+\lstdefinestyle{thesiscode}{
+    basicstyle=\ttfamily\footnotesize,
+    backgroundcolor=\color{thesiscodebg},
+    keywordstyle=\color{thesiscodekw}\bfseries,
+    commentstyle=\color{thesiscodecomment},
+    stringstyle=\color{thesiscodebrown},
+    numbers=left,
+    numberstyle=\tiny\color{thesiscodecomment},
+    numbersep=6pt,
+    frame=single,
+    rulecolor=\color{thesiscodeborder},
+    framerule=0.5pt,
+    breaklines=true,
+    breakatwhitespace=true,
+    columns=fullflexible,
+    keepspaces=true,
+    showstringspaces=false,
+    tabsize=4,
+    captionpos=b,
+    aboveskip=0.75\baselineskip,
+    belowskip=0.8\baselineskip,
+    xleftmargin=0.5em,
+    xrightmargin=0.5em
+}
+
+% JSON language
+\lstdefinelanguage{JSON}{
+    morestring=[b]",
+    morekeywords={true,false,null},
+    keywordstyle=\color{thesiscodekw}\bfseries,
+    stringstyle=\color{thesiscodebrown},
+    sensitive=true
+}
+
+% Cypher language
+\lstdefinelanguage{Cypher}{
+    morekeywords={
+        MATCH,WHERE,WITH,RETURN,AS,AND,OR,NOT,
+        ORDER,BY,LIMIT,MERGE,SET,CREATE,DELETE,
+        DISTINCT,OPTIONAL,TRUE,FALSE,NULL
+    },
+    sensitive=false,
+    morecomment=[l]{//},
+    morestring=[b]',
+    morestring=[b]"
+}
+
+% Apply style
+\lstset{style=thesiscode}

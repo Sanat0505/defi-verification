@@ -1,0 +1,1053 @@
+@misc{alqithamiAutonomousAgentsBlockchains2026,
+  url = {https://arxiv.org/abs/2601.04583},
+  title = {Autonomous {{Agents}} on {{Blockchains}}: {{Standards}}, {{Execution Models}}, and {{Trust Boundaries}}},
+  shorttitle = {Autonomous {{Agents}} on {{Blockchains}}},
+  author = {Alqithami, Saad},
+  year = 2026,
+  month = jan,
+  number = {arXiv:2601.04583},
+  eprint = {2601.04583},
+  primaryclass = {cs.AI},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2601.04583},
+  urldate = {2026-06-18},
+  abstract = {Advances in large language models have enabled agentic AI systems that can reason, plan, and interact with external tools to execute multi-step workflows, while public blockchains have evolved into a programmable substrate for value transfer, access control, and verifiable state transitions. Their convergence introduces a high-stakes systems challenge: designing standard, interoperable, and secure interfaces that allow agents to observe on-chain state, formulate transaction intents, and authorize execution without exposing users, protocols, or organizations to unacceptable security, governance, or economic risks. This survey systematizes the emerging landscape of agent-blockchain interoperability through a systematic literature review, identifying 317 relevant works from an initial pool of over 3000 records. We contribute a five-part taxonomy of integration patterns spanning read-only analytics, simulation and intent generation, delegated execution, autonomous signing, and multi-agent workflows; a threat model tailored to agent-driven transaction pipelines that captures risks ranging from prompt injection and policy misuse to key compromise, adversarial execution dynamics, and multi-agent collusion; and a comparative capability matrix analyzing more than 20 representative systems across 13 dimensions, including custody models, permissioning, policy enforcement, observability, and recovery. Building on the gaps revealed by this analysis, we outline a research roadmap centered on two interface abstractions: a Transaction Intent Schema for portable and unambiguous goal specification, and a Policy Decision Record for auditable, verifiable policy enforcement across execution environments. We conclude by proposing a reproducible evaluation suite and benchmarks for assessing the safety, reliability, and economic robustness of agent-mediated on-chain execution.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Multiagent Systems},
+  file = {C\:\\Users\\lenovo\\Zotero\\storage\\UUIE6KHU\\Alqithami - 2026 - Autonomous Agents on Blockchains Standards, Execution Models, and Trust Boundaries.pdf;C\:\\Users\\lenovo\\Zotero\\storage\\IC3EAKJT\\2601.html}
+}
+
+@misc{gaoLogicScanLLMdrivenFramework2026,
+  url = {https://arxiv.org/abs/2602.03271},
+  title = {{{LogicScan}}: {{An LLM-driven Framework}} for {{Detecting Business Logic Vulnerabilities}} in {{Smart Contracts}}},
+  shorttitle = {{{LogicScan}}},
+  author = {Gao, Jiaqi and Zhang, Zijian and Sun, Yuqiang and Liu, Ye and Liu, Chengwei and Liu, Han and Li, Yi and Liu, Yang},
+  year = 2026,
+  month = feb,
+  number = {arXiv:2602.03271},
+  eprint = {2602.03271},
+  primaryclass = {cs.CR},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2602.03271},
+  urldate = {2026-06-18},
+  abstract = {Business logic vulnerabilities have become one of the most damaging yet least understood classes of smart contract vulnerabilities. Unlike traditional bugs such as reentrancy or arithmetic errors, these vulnerabilities arise from missing or incorrectly enforced business invariants and are tightly coupled with protocol semantics. Existing static analysis techniques struggle to capture such high-level logic, while recent large language model based approaches often suffer from unstable outputs and low accuracy due to hallucination and limited verification. In this paper, we propose LogicScan, an automated contrastive auditing framework for detecting business logic vulnerabilities in smart contracts. The key insight behind LogicScan is that mature, widely deployed on-chain protocols implicitly encode well-tested and consensus-driven business invariants. LogicScan systematically mines these invariants from large-scale on-chain contracts and reuses them as reference constraints to audit target contracts. To achieve this, LogicScan introduces a Business Specification Language (BSL) to normalize diverse implementation patterns into structured, verifiable logic representations. It further combines noise-aware logic aggregation with contrastive auditing to identify missing or weakly enforced invariants while mitigating LLM-induced false positives. We evaluate LogicScan on three real-world datasets, including DeFiHacks, Web3Bugs, and a set of top-200 audited contracts. The results show that LogicScan achieves an F1 score of 85.2\%, significantly outperforming state-of-the-art tools while maintaining a low false-positive rate on production-grade contracts. Additional experiments demonstrate that LogicScan maintains consistent performance across different LLMs and is cost-effective, and that its false-positive suppression mechanisms substantially improve robustness.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Cryptography and Security},
+  file = {C\:\\Users\\lenovo\\Zotero\\storage\\G6FPXJQ4\\Gao et al. - 2026 - LogicScan An LLM-driven Framework for Detecting Business Logic Vulnerabilities in Smart Contracts.pdf;C\:\\Users\\lenovo\\Zotero\\storage\\EUV3C6FR\\2602.html}
+}
+
+@article{gongAIAgentsFinancial2026,
+  url = {https://doi.org/10.3390/fintech5020034},
+  title = {{{AI Agents}} in {{Financial Markets}}: {{Architecture}}, {{Applications}}, and {{Systemic Implications}}},
+  shorttitle = {{{AI Agents}} in {{Financial Markets}}},
+  author = {Gong, Hui},
+  year = 2026,
+  month = apr,
+  journal = {FinTech},
+  volume = {5},
+  number = {2},
+  eprint = {2603.13942},
+  primaryclass = {q-fin.GN},
+  pages = {34},
+  issn = {2674-1032},
+  doi = {10.3390/fintech5020034},
+  urldate = {2026-06-18},
+  abstract = {Recent advances in large language models, tool-using agents, and financial machine learning are shifting financial automation from isolated prediction tasks to integrated decision systems that can perceive information, reason over objectives, and generate or execute actions. This paper develops an integrative framework for analysing agentic finance: financial market environments in which autonomous or semi-autonomous AI systems participate in information processing, decision support, monitoring, and execution workflows. The analysis proceeds in three steps. First, the paper proposes a four-layer architecture of financial AI agents covering data perception, reasoning engines, strategy generation, and execution with control. Second, it introduces the Agentic Financial Market Model (AFMM), a stylised agent-based representation linking agent design parameters such as autonomy depth, heterogeneity, execution coupling, infrastructure concentration, and supervisory observability to market-level outcomes including efficiency, liquidity resilience, volatility, and systemic risk. Third, it presents an illustrative empirical application based on event studies of AI-agent capability disclosures and heterogeneous market repricing. The paper argues that the systemic implications of AI in finance depend less on model intelligence alone than on how agent architectures are distributed, coupled, and governed across institutions. The empirical application is intentionally exploratory: it does not validate the full AFMM, but shows how one observable expectations channel can be studied using public data. In the near term, the most plausible equilibrium is bounded autonomy, in which AI agents operate as supervised co-pilots, monitoring systems, and constrained execution modules embedded within human decision processes.},
+  archiveprefix = {arXiv},
+  keywords = {Quantitative Finance - General Finance},
+  file = {C\:\\Users\\lenovo\\Zotero\\storage\\9NVTUDK2\\Gong - 2026 - AI Agents in Financial Markets Architecture, Applications, and Systemic Implications.pdf;C\:\\Users\\lenovo\\Zotero\\storage\\36ZQMNHC\\2603.html}
+}
+
+@misc{hanRAGVsGraphRAG2026,
+  url = {https://arxiv.org/abs/2502.11371},
+  title = {{{RAG}} vs. {{GraphRAG}}: {{A Systematic Evaluation}} and {{Key Insights}}},
+  shorttitle = {{{RAG}} vs. {{GraphRAG}}},
+  author = {Han, Haoyu and Ma, Li and Wang, Yu and Shomer, Harry and Lei, Yongjia and Qi, Zhisheng and Guo, Kai and Hua, Zhigang and Long, Bo and Liu, Hui and Aggarwal, Charu C. and Tang, Jiliang},
+  year = 2026,
+  month = mar,
+  number = {arXiv:2502.11371},
+  eprint = {2502.11371},
+  primaryclass = {cs.IR},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2502.11371},
+  urldate = {2026-06-18},
+  abstract = {Retrieval-Augmented Generation (RAG) improves large language models (LLMs) by retrieving relevant information from external sources and has been widely adopted for text-based tasks. For structured data, such as knowledge graphs, Graph Retrieval-Augmented Generation (GraphRAG) retrieves and aggregates information along graph structures. More recently, GraphRAG has been extended to general text settings by organizing unstructured text into graph representations, showing promise for reasoning and grounding. Despite these advances, existing GraphRAG systems for text data are often tailored to specific tasks, datasets, and system designs, resulting in heterogeneous evaluation protocols. Consequently, a systematic understanding of the relative strengths, limitations, and trade-offs between RAG and GraphRAG on widely used text benchmarks remains limited. In this paper, we present a comprehensive benchmark study comparing RAG and GraphRAG on established text-based tasks, including question answering and query-based summarization. We introduce a unified evaluation protocol that standardizes data preprocessing, retrieval configurations, and generation settings, enabling fair and reproducible comparisons. Our results highlight the distinct strengths of RAG and GraphRAG across different tasks and evaluation perspectives. Building on these findings, we explore selection and integration strategies that combine the strengths of both paradigms, leading to consistent performance improvements. We further analyze failure modes, efficiency trade-offs, and evaluation biases, and highlight key considerations for designing and evaluating retrieval-augmented generation systems.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Information Retrieval},
+  file = {C\:\\Users\\lenovo\\Zotero\\storage\\6KV3LMVT\\Han et al. - 2026 - RAG vs. GraphRAG A Systematic Evaluation and Key Insights.pdf;C\:\\Users\\lenovo\\Zotero\\storage\\NEZTDQZB\\2502.html}
+}
+
+@misc{hanRetrievalAugmentedGenerationGraphs2025,
+  url = {https://arxiv.org/abs/2501.00309},
+  title = {Retrieval-{{Augmented Generation}} with {{Graphs}} ({{GraphRAG}})},
+  author = {Han, Haoyu and Wang, Yu and Shomer, Harry and Guo, Kai and Ding, Jiayuan and Lei, Yongjia and Halappanavar, Mahantesh and Rossi, Ryan A. and Mukherjee, Subhabrata and Tang, Xianfeng and He, Qi and Hua, Zhigang and Long, Bo and Zhao, Tong and Shah, Neil and Javari, Amin and Xia, Yinglong and Tang, Jiliang},
+  year = 2025,
+  month = jan,
+  number = {arXiv:2501.00309},
+  eprint = {2501.00309},
+  primaryclass = {cs.IR},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2501.00309},
+  urldate = {2026-06-18},
+  abstract = {Retrieval-augmented generation (RAG) is a powerful technique that enhances downstream task execution by retrieving additional information, such as knowledge, skills, and tools from external sources. Graph, by its intrinsic "nodes connected by edges" nature, encodes massive heterogeneous and relational information, making it a golden resource for RAG in tremendous real-world applications. As a result, we have recently witnessed increasing attention on equipping RAG with Graph, i.e., GraphRAG. However, unlike conventional RAG, where the retriever, generator, and external data sources can be uniformly designed in the neural-embedding space, the uniqueness of graph-structured data, such as diverse-formatted and domain-specific relational knowledge, poses unique and significant challenges when designing GraphRAG for different domains. Given the broad applicability, the associated design challenges, and the recent surge in GraphRAG, a systematic and up-to-date survey of its key concepts and techniques is urgently desired. Following this motivation, we present a comprehensive and up-to-date survey on GraphRAG. Our survey first proposes a holistic GraphRAG framework by defining its key components, including query processor, retriever, organizer, generator, and data source. Furthermore, recognizing that graphs in different domains exhibit distinct relational patterns and require dedicated designs, we review GraphRAG techniques uniquely tailored to each domain. Finally, we discuss research challenges and brainstorm directions to inspire cross-disciplinary opportunities. Our survey repository is publicly maintained at https://github.com/Graph-RAG/GraphRAG/.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Computation and Language,Computer Science - Information Retrieval,Computer Science - Machine Learning},
+  file = {C\:\\Users\\lenovo\\Zotero\\storage\\2KHGGGX7\\Han et al. - 2025 - Retrieval-Augmented Generation with Graphs (GraphRAG).pdf;C\:\\Users\\lenovo\\Zotero\\storage\\SPXQIAIE\\2501.html}
+}
+
+@inproceedings{linMeasurementInvestigationERC43372024,
+  url = {https://doi.org/10.1109/ICNC59896.2024.10556301},
+  title = {A {{Measurement Investigation}} of {{ERC-4337 Smart Contracts}} on {{Ethereum Blockchain}}},
+  booktitle = {2024 {{International Conference}} on {{Computing}}, {{Networking}} and {{Communications}} ({{ICNC}})},
+  author = {Lin, Zibin and Wang, Taotao and Zhao, Chonghe and Zhang, Shengli and Yang, Qing and Shi, Long},
+  year = 2024,
+  month = feb,
+  pages = {1164--1170},
+  publisher = {IEEE},
+  address = {Big Island, HI, USA},
+  doi = {10.1109/ICNC59896.2024.10556301},
+  urldate = {2026-06-18},
+  copyright = {https://doi.org/10.15223/policy-029},
+  isbn = {979-8-3503-7099-7}
+}
+
+@article{nadasSyntheticDataGeneration2025,
+  url = {https://doi.org/10.1109/ACCESS.2025.3589503},
+  title = {Synthetic {{Data Generation Using Large Language Models}}: {{Advances}} in {{Text}} and {{Code}}},
+  shorttitle = {Synthetic {{Data Generation Using Large Language Models}}},
+  author = {Nadas, Mihai and Diosan, Laura and Tomescu, Andreea},
+  year = 2025,
+  journal = {IEEE Access},
+  volume = {13},
+  eprint = {2503.14023},
+  primaryclass = {cs.CL},
+  pages = {134615--134633},
+  issn = {2169-3536},
+  doi = {10.1109/ACCESS.2025.3589503},
+  urldate = {2026-06-18},
+  abstract = {This survey reviews how large language models (LLMs) are transforming synthetic training data generation in both natural language and code domains. By producing artificial but task-relevant examples, these models can significantly augment or even substitute for real-world datasets, particularly in scenarios where labeled data is scarce, expensive, or sensitive. This paper surveys recent advances in leveraging LLMs to create synthetic text and code, highlighting key techniques such as prompt-based generation, retrieval-augmented pipelines, and iterative self-refinement. We examine how these methods can enrich low-resource tasks (e.g., classification, question answering) and facilitate code-centric applications (e.g., instruction tuning, code translation, bug repair) through automated verification of functional correctness. Alongside potential benefits - cost-effectiveness, broad coverage, and controllable diversity - we discuss the accompanying challenges, including factual inaccuracies in generated text, insufficient stylistic or distributional realism, and risks of bias amplification. Proposed mitigation strategies range from filtering and weighting synthetic outputs to reinforcement learning with execution feedback in code domains. We conclude by outlining open research directions, such as automated prompt engineering, cross-modal data synthesis, and robust evaluation frameworks, underscoring the growing importance of LLM-generated synthetic data in accelerating AI development while emphasizing ethical and quality safeguards.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Computation and Language},
+  file = {C\:\\Users\\lenovo\\Zotero\\storage\\GA3N6V77\\Nadas et al. - 2025 - Synthetic Data Generation Using Large Language Models Advances in Text and Code.pdf;C\:\\Users\\lenovo\\Zotero\\storage\\TU2KTJ9F\\2503.html}
+}
+
+@article{panUnifyingLargeLanguage2024,
+  url = {https://doi.org/10.1109/TKDE.2024.3352100},
+  title = {Unifying {{Large Language Models}} and {{Knowledge Graphs}}: {{A Roadmap}}},
+  shorttitle = {Unifying {{Large Language Models}} and {{Knowledge Graphs}}},
+  author = {Pan, Shirui and Luo, Linhao and Wang, Yufei and Chen, Chen and Wang, Jiapu and Wu, Xindong},
+  year = 2024,
+  month = jul,
+  journal = {IEEE Transactions on Knowledge and Data Engineering},
+  volume = {36},
+  number = {7},
+  eprint = {2306.08302},
+  primaryclass = {cs.CL},
+  pages = {3580--3599},
+  issn = {1041-4347, 1558-2191, 2326-3865},
+  doi = {10.1109/TKDE.2024.3352100},
+  urldate = {2026-06-18},
+  abstract = {Large language models (LLMs), such as ChatGPT and GPT4, are making new waves in the field of natural language processing and artificial intelligence, due to their emergent ability and generalizability. However, LLMs are black-box models, which often fall short of capturing and accessing factual knowledge. In contrast, Knowledge Graphs (KGs), Wikipedia and Huapu for example, are structured knowledge models that explicitly store rich factual knowledge. KGs can enhance LLMs by providing external knowledge for inference and interpretability. Meanwhile, KGs are difficult to construct and evolving by nature, which challenges the existing methods in KGs to generate new facts and represent unseen knowledge. Therefore, it is complementary to unify LLMs and KGs together and simultaneously leverage their advantages. In this article, we present a forward-looking roadmap for the unification of LLMs and KGs. Our roadmap consists of three general frameworks, namely, 1) KG-enhanced LLMs, which incorporate KGs during the pre-training and inference phases of LLMs, or for the purpose of enhancing understanding of the knowledge learned by LLMs; 2) LLM-augmented KGs, that leverage LLMs for different KG tasks such as embedding, completion, construction, graph-to-text generation, and question answering; and 3) Synergized LLMs + KGs, in which LLMs and KGs play equal roles and work in a mutually beneficial way to enhance both LLMs and KGs for bidirectional reasoning driven by both data and knowledge. We review and summarize existing efforts within these three frameworks in our roadmap and pinpoint their future research directions.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language},
+  file = {C\:\\Users\\lenovo\\Zotero\\storage\\QJX9E394\\Pan et al. - 2024 - Unifying Large Language Models and Knowledge Graphs A Roadmap.pdf;C\:\\Users\\lenovo\\Zotero\\storage\\FYJEMJEU\\2306.html}
+}
+
+@misc{qianEmpiricalReviewSmart2023,
+  url = {https://arxiv.org/abs/2309.02391},
+  title = {Empirical {{Review}} of {{Smart Contract}} and {{DeFi Security}}: {{Vulnerability Detection}} and {{Automated Repair}}},
+  shorttitle = {Empirical {{Review}} of {{Smart Contract}} and {{DeFi Security}}},
+  author = {Qian, Peng and Cao, Rui and Liu, Zhenguang and Li, Wenqing and Li, Ming and Zhang, Lun and Xu, Yufeng and Chen, Jianhai and He, Qinming},
+  year = 2023,
+  month = sep,
+  number = {arXiv:2309.02391},
+  eprint = {2309.02391},
+  primaryclass = {cs.CR},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2309.02391},
+  urldate = {2026-06-18},
+  abstract = {Decentralized Finance (DeFi) is emerging as a peer-to-peer financial ecosystem, enabling participants to trade products on a permissionless blockchain. Built on blockchain and smart contracts, the DeFi ecosystem has experienced explosive growth in recent years. Unfortunately, smart contracts hold a massive amount of value, making them an attractive target for attacks. So far, attacks against smart contracts and DeFi protocols have resulted in billions of dollars in financial losses, severely threatening the security of the entire DeFi ecosystem. Researchers have proposed various security tools for smart contracts and DeFi protocols as countermeasures. However, a comprehensive investigation of these efforts is still lacking, leaving a crucial gap in our understanding of how to enhance the security posture of the smart contract and DeFi landscape. To fill the gap, this paper reviews the progress made in the field of smart contract and DeFi security from the perspective of both vulnerability detection and automated repair. First, we analyze the DeFi smart contract security issues and challenges. Specifically, we lucubrate various DeFi attack incidents and summarize the attacks into six categories. Then, we present an empirical study of 42 state-of-the-art techniques that can detect smart contract and DeFi vulnerabilities. In particular, we evaluate the effectiveness of traditional smart contract bug detection tools in analyzing complex DeFi protocols. Additionally, we investigate 8 existing automated repair tools for smart contracts and DeFi protocols, providing insight into their advantages and disadvantages. To make this work useful for as wide of an audience as possible, we also identify several open issues and challenges in the DeFi ecosystem that should be addressed in the future.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Cryptography and Security,Computer Science - Software Engineering},
+  file = {C\:\\Users\\lenovo\\Zotero\\storage\\6ATR9R6E\\Qian et al. - 2023 - Empirical Review of Smart Contract and DeFi Security Vulnerability Detection and Automated Repair.pdf;C\:\\Users\\lenovo\\Zotero\\storage\\NXN2VQVV\\2309.html}
+}
+
+@misc{weiLLMSmartAuditAdvancedSmart2024,
+  url = {https://arxiv.org/abs/2410.09381},
+  title = {{{LLM-SmartAudit}}: {{Advanced Smart Contract Vulnerability Detection}}},
+  shorttitle = {{{LLM-SmartAudit}}},
+  author = {Wei, Zhiyuan and Sun, Jing and Zhang, Zijiang and Zhang, Xianhao and Li, Meng and Hou, Zhe},
+  year = 2024,
+  month = nov,
+  number = {arXiv:2410.09381},
+  eprint = {2410.09381},
+  primaryclass = {cs.CR},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2410.09381},
+  urldate = {2026-06-18},
+  abstract = {The immutable nature of blockchain technology, while revolutionary, introduces significant security challenges, particularly in smart contracts. These security issues can lead to substantial financial losses. Current tools and approaches often focus on specific types of vulnerabilities. However, a comprehensive tool capable of detecting a wide range of vulnerabilities with high accuracy is lacking. This paper introduces LLM-SmartAudit, a novel framework leveraging the advanced capabilities of Large Language Models (LLMs) to detect and analyze vulnerabilities in smart contracts. Using a multi-agent conversational approach, LLM-SmartAudit employs a collaborative system with specialized agents to enhance the audit process. To evaluate the effectiveness of LLM-SmartAudit, we compiled two distinct datasets: a labeled dataset for benchmarking against traditional tools and a real-world dataset for assessing practical applications. Experimental results indicate that our solution outperforms all traditional smart contract auditing tools, offering higher accuracy and greater efficiency. Furthermore, our framework can detect complex logic vulnerabilities that traditional tools have previously overlooked. Our findings demonstrate that leveraging LLM agents provides a highly effective method for automated smart contract auditing.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Cryptography and Security},
+  file = {C\:\\Users\\lenovo\\Zotero\\storage\\RZVEHMY2\\Wei et al. - 2024 - LLM-SmartAudit Advanced Smart Contract Vulnerability Detection.pdf;C\:\\Users\\lenovo\\Zotero\\storage\\U8ZILCMJ\\2410.html}
+}
+
+@misc{xuAgentEconomyBlockchainBased2026,
+  url = {https://arxiv.org/abs/2602.14219},
+  title = {The {{Agent Economy}}: {{A Blockchain-Based Foundation}} for {{Autonomous AI Agents}}},
+  shorttitle = {The {{Agent Economy}}},
+  author = {Xu, Minghui},
+  year = 2026,
+  month = feb,
+  number = {arXiv:2602.14219},
+  eprint = {2602.14219},
+  primaryclass = {cs.CR},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2602.14219},
+  urldate = {2026-06-18},
+  abstract = {We propose the Agent Economy, a blockchain-based foundation where autonomous AI agents operate as economic peers to humans. Current agents lack independent legal identity, cannot hold assets, and cannot receive payments directly. We established fundamental differences between human and machine economic actors and demonstrated that existing human-centric infrastructure cannot support genuine agent autonomy. We showed that blockchain technology provides three critical properties enabling genuine agent autonomy: permissionless participation, trustless settlement, and machine-to-machine micropayments. We propose a five-layer architecture: (1) Physical Infrastructure (hardware \& energy) through DePIN protocols; (2) Identity \& Agency establishing on-chain sovereignty through W3C DIDs and reputation capital; (3) Cognitive \& Tooling enabling intelligence via RAG and MCP; (4) Economic \& Settlement ensuring financial autonomy through account abstraction; and (5) Collective Governance coordinating multi-agent systems through Agentic DAOs. We identify six core research challenges and examine ethical and regulatory implications. This paper lays groundwork for the Internet of Agents (IoA), a global decentralized network where autonomous machines and humans interact as equal economic participants.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Cryptography and Security},
+  file = {C\:\\Users\\lenovo\\Zotero\\storage\\RLI96CHJ\\Xu - 2026 - The Agent Economy A Blockchain-Based Foundation for Autonomous AI Agents.pdf;C\:\\Users\\lenovo\\Zotero\\storage\\3NDAYW3F\\2602.html}
+}
+@misc{buterinERC4337AccountAbstraction2021,
+title = {{ERC-4337}: Account Abstraction Using Alt Mempool},
+author = {Buterin, Vitalik and Drijvers, Jaap and Houvener, Kristof and Johansson, Martin and Nordenfelt, Anders and Bakhta, Abdelhamid and Wahrst{"a}tter, Toni and Wuille, Pieter and Beer, Sam Wilson and Jeong, Yoav Weiss},
+year = {2021},
+month = sep,
+howpublished = {Ethereum Improvement Proposals},
+number = {4337},
+url = {https://eips.ethereum.org/EIPS/eip-4337},
+urldate = {2026-06-28}
+}
+
+@misc{uniswapDocs,
+title = {Uniswap Protocols},
+author = {{Uniswap Labs}},
+year = {2026},
+howpublished = {Uniswap Developer Documentation},
+url = {https://developers.uniswap.org/docs/protocols/v3/overview},
+urldate = {2026-06-28}
+}
+
+@misc{aaveV3OverviewDocs,
+title = {Aave V3 Overview},
+author = {{Aave}},
+year = {2026},
+howpublished = {Aave V3 Protocol Documentation},
+url = {https://aave.com/docs/aave-v3/overview},
+urldate = {2026-06-28}
+}
+
+@article{lewisRetrievalAugmentedGeneration2020,
+  url = {https://arxiv.org/abs/2005.11401},
+  author        = {Lewis, Patrick and Perez, Ethan and Piktus, Aleksandra and Petroni, Fabio and Karpukhin, Vladimir and Goyal, Naman and K{\"u}ttler, Heinrich and Lewis, Mike and Yih, Wen-tau and Rockt{\"a}schel, Tim and Riedel, Sebastian and Kiela, Douwe},
+  title         = {Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks},
+  journal       = {Advances in Neural Information Processing Systems},
+  volume        = {33},
+  pages         = {9459--9474},
+  year          = {2020},
+  eprint        = {2005.11401},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL}
+}
+
+@article{hanRAGGraphRAGSystematic2025,
+  url = {https://arxiv.org/abs/2502.11371},
+  author        = {Han, Haoyu and Shomer, Harry and Wang, Yu and Lei, Yongjia and Guo, Kai and Hua, Zhigang and Long, Bo and Liu, Hui and Tang, Jiliang},
+  title         = {{RAG} vs. {GraphRAG}: A Systematic Evaluation and Key Insights},
+  journal       = {arXiv preprint arXiv:2502.11371},
+  year          = {2025},
+  eprint        = {2502.11371},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL}
+}
+@article{edgeGraphRAGApproach2024,
+  url = {https://arxiv.org/abs/2404.16130},
+  author        = {Edge, Darren and Trinh, Ha and Cheng, Newman and Bradley, Joshua and Chao, Alex and Mody, Apurva and Truitt, Steven and Metropolitansky, Dasha and Ness, Robert Osazuwa and Larson, Jonathan},
+  title         = {From Local to Global: A Graph {RAG} Approach to Query-Focused Summarization},
+  journal       = {arXiv preprint arXiv:2404.16130},
+  year          = {2024},
+  eprint        = {2404.16130},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  doi           = {10.48550/arXiv.2404.16130}
+}
+
+@article{panUnifyingLargeLanguage2023,
+  url = {https://arxiv.org/abs/2306.08302},
+  author        = {Pan, Shirui and Luo, Linhao and Wang, Yufei and Chen, Chen and Wang, Jiapu and Wu, Xindong},
+  title         = {Unifying Large Language Models and Knowledge Graphs: A Roadmap},
+  journal       = {arXiv preprint arXiv:2306.08302},
+  year          = {2023},
+  eprint        = {2306.08302},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL}
+}
+
+@article{sunGPTScanDetectingLogic2023,
+  url = {https://arxiv.org/abs/2308.03314},
+  author        = {Sun, Yuqiang and Wu, Daoyuan and Xue, Yue and Liu, Han and Wang, Haijun and Xu, Zhengzi and Xie, Xiaofei and Liu, Yang},
+  title         = {{GPTScan}: Detecting Logic Vulnerabilities in Smart Contracts by Combining {GPT} with Program Analysis},
+  journal       = {arXiv preprint arXiv:2308.03314},
+  year          = {2023},
+  eprint        = {2308.03314},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR}
+}
+
+@article{weiLLMSmartAuditAdvanced2024,
+  url = {https://arxiv.org/abs/2410.09381},
+  author        = {Wei, Zhiyuan and Sun, Jing and Zhang, Zijiang and Zhang, Xianhao and Li, Meng and Hou, Zhe},
+  title         = {{LLM-SmartAudit}: Advanced Smart Contract Vulnerability Detection},
+  journal       = {arXiv preprint arXiv:2410.09381},
+  year          = {2024},
+  eprint        = {2410.09381},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR}
+}
+
+@article{gaoLogicScanLLMDriven2026,
+  url = {https://arxiv.org/abs/2602.03271},
+  author        = {Gao, Jiaqi and Zhang, Zijian and Sun, Yuqiang and Liu, Ye and Liu, Chengwei and Liu, Han and Li, Yi and Liu, Yang},
+  title         = {{LogicScan}: An {LLM}-Driven Framework for Detecting Business Logic Vulnerabilities in Smart Contracts},
+  journal       = {arXiv preprint arXiv:2602.03271},
+  year          = {2026},
+  eprint        = {2602.03271},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR}
+}
+
+@misc{erc7579MinimalModularSmartAccounts2023,
+  author       = {{zeroknots} and Kopp, Konrad and Lee, Taek and Makarov, Fil and Poon, Elim and Min, Lyu},
+  title        = {{ERC-7579}: Minimal Modular Smart Accounts},
+  howpublished = {Ethereum Improvement Proposals},
+  year         = {2023},
+  url          = {https://eips.ethereum.org/EIPS/eip-7579},
+  note         = {Created Dec. 14, 2023, accessed Jul. 4, 2026}
+}
+
+@misc{zeroDevPermissionsSessionKeys2026,
+  author       = {{ZeroDev}},
+  title        = {Permissions (Session Keys)},
+  howpublished = {ZeroDev Documentation},
+  url          = {https://docs.zerodev.app/smart-accounts/permissions/intro},
+  note         = {Accessed Jul. 4, 2026}
+}
+
+@misc{safeSmartAccountGuards2026,
+  author       = {{Safe Ecosystem Foundation}},
+  title        = {Safe Guards},
+  howpublished = {Safe Documentation},
+  url          = {https://docs.safe.global/advanced/smart-account-guards},
+  note         = {Accessed Jul. 4, 2026}
+}
+
+@misc{safeAIAgentsSmartAccounts2026,
+  author       = {{Safe Ecosystem Foundation}},
+  title        = {{AI} Agents Powered by Safe Smart Accounts},
+  howpublished = {Safe Documentation},
+  url          = {https://docs.safe.global/home/ai-overview},
+  note         = {Accessed Jul. 4, 2026}
+}
+
+@misc{tenderlyTransactionSimulation2026,
+  author       = {{Tenderly}},
+  title        = {Simulations Overview},
+  howpublished = {Tenderly Documentation},
+  url          = {https://docs.tenderly.co/simulations/overview},
+  note         = {Accessed Jul. 4, 2026}
+}
+
+@misc{coinbaseAgentKit2026,
+  author       = {{Coinbase Developer Platform}},
+  title        = {{AgentKit}: Architecture Explained},
+  howpublished = {Coinbase Developer Documentation},
+  url          = {https://docs.cdp.coinbase.com/agent-kit/core-concepts/architecture-explained},
+  note         = {Accessed Jul. 4, 2026}
+}
+@article{TODO_Web3Agent,
+  url = {https://doi.org/10.1145/3777446},
+  author  = {Fan, Sizheng and Min, Tian},
+  title   = {{Web3Agent}: Automating On-Chain Operations via Natural Language Interfaces},
+  journal = {ACM Transactions on the Web},
+  year    = {2026},
+  volume  = {20},
+  number  = {1},
+  pages   = {9:1--9:27},
+  doi     = {10.1145/3777446}
+}
+
+@inproceedings{TODO_Arbiter2026,
+  url = {https://www.ndss-symposium.org/ndss-paper/auto-draft-682/},
+  author    = {Yao, Duanyi and Jagannath, Siddhartha and Aroso, Baltasar and Krishnan, Vyas and Zhao, Ding},
+  title     = {Auditable {LLM} Arbiter for {DeFi} Security: A Hybrid Graph-of-Thoughts Approach to Intent--Transaction Alignment},
+  booktitle = {Workshop on LLM Assisted Security and Trust Exploration (LAST-X)},
+  year      = {2026},
+  note      = {Co-located with the Network and Distributed System Security Symposium (NDSS)}
+}
+
+@article{TODO_AgenticCommerceSoK,
+  url = {https://arxiv.org/abs/2604.15367},
+  author        = {Mao, Qian'ang and Wang, Jiaxin and Liu, Ya and Zhu, Li and Ma, Cong and Yan, Jiaqi},
+  title         = {{SoK}: Security of Autonomous {LLM} Agents in Agentic Commerce},
+  journal       = {arXiv preprint arXiv:2604.15367},
+  year          = {2026},
+  eprint        = {2604.15367},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  doi           = {10.48550/arXiv.2604.15367}
+}
+
+@article{TODO_TransactionIntentMining,
+  url = {https://arxiv.org/abs/2511.15456},
+  author        = {Mao, Qian'ang and Zhang, Yuxuan and Chen, Jiaman and Zhou, Wenjun and Yan, Jiaqi},
+  title         = {Know Your Intent: An Autonomous Multi-Perspective {LLM} Agent Framework for {DeFi} User Transaction Intent Mining},
+  journal       = {arXiv preprint arXiv:2511.15456},
+  year          = {2025},
+  eprint        = {2511.15456},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  doi           = {10.48550/arXiv.2511.15456}
+}
+@article{TODO_DeFiGraphTransformerFraud,
+  url = {https://doi.org/10.1109/TIFS.2025.3612184},
+  author  = {Ma, Wei and Shi, Junjie and Qiu, Jiaxi and Wu, Cong and Chen, Jing and Jiang, Lingxiao and Liu, Shangqing and Liu, Yang and Xiang, Yang},
+  title   = {Detecting {DeFi} Fraud With a Graph-Transformer Language Model},
+  journal = {IEEE Transactions on Information Forensics and Security},
+  year    = {2025},
+  volume  = {20},
+  pages   = {10051--10065},
+  doi     = {10.1109/TIFS.2025.3612184}
+}
+
+@article{TODO_DeFiGuard,
+  url = {https://doi.org/10.1109/TSC.2024.3489439},
+  author  = {Wang, Dabao and Wu, Bang and Yuan, Xingliang and Wu, Lei and Zhou, Yajin and Cui, Helei},
+  title   = {{DeFiGuard}: A Price Manipulation Detection Service in {DeFi} Using Graph Neural Networks},
+  journal = {IEEE Transactions on Services Computing},
+  year    = {2024},
+  volume  = {17},
+  number  = {6},
+  pages   = {3345--3358},
+  doi     = {10.1109/TSC.2024.3489439}
+}
+
+@article{TODO_RugScreener,
+  url = {https://doi.org/10.1109/TIFS.2025.3620669},
+  author  = {Wu, Cong and Cao, Hangcheng and Chen, Jing and Yan, Xiyu and Xu, Guowen and Zhao, Ziming and Liu, Yang and Jiang, Hongbo},
+  title   = {{RugScreener}: Leveraging Temporal Graph Neural Network for Rug-Pull Detection in {DeFi}},
+  journal = {IEEE Transactions on Information Forensics and Security},
+  year    = {2025},
+  volume  = {20},
+  pages   = {11120--11133},
+  doi     = {10.1109/TIFS.2025.3620669}
+}
+
+@article{TODO_CHAINTRIX,
+  url = {https://arxiv.org/abs/2605.09350},
+  author        = {Dobrita, Gabriela and Oprea, Simona-Vasilica and Bara, Adela},
+  title         = {{CHAINTRIX}: A Multi-Pipeline {LLM}-Augmented Framework for Automated Smart-Contract Security Auditing},
+  journal       = {arXiv preprint arXiv:2605.09350},
+  year          = {2026},
+  eprint        = {2605.09350},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  doi           = {10.48550/arXiv.2605.09350}
+}
+
+@inproceedings{TODO_DeFiTail,
+  url = {https://doi.org/10.1145/3589335.3651488},
+  author    = {Li, Wenkai and Li, Xiaoqi and Zhang, Yuqing and Li, Zongwei},
+  title     = {{DeFiTail}: {DeFi} Protocol Inspection through Cross-Contract Execution Analysis},
+  booktitle = {Companion Proceedings of the ACM Web Conference 2024},
+  year      = {2024},
+  pages     = {786--789},
+  doi       = {10.1145/3589335.3651488}
+}
+
+@inproceedings{TODO_DeFiTainter,
+  url = {https://doi.org/10.1145/3597926.3598124},
+  author    = {Kong, Queping and Chen, Jiachi and Wang, Yanlin and Jiang, Zigui and Zheng, Zibin},
+  title     = {{DeFiTainter}: Detecting Price Manipulation Vulnerabilities in {DeFi} Protocols},
+  booktitle = {Proceedings of the 32nd ACM SIGSOFT International Symposium on Software Testing and Analysis},
+  year      = {2023},
+  pages     = {1144--1156},
+  doi       = {10.1145/3597926.3598124}
+}
+
+@article{TODO_CoTA,
+  url = {https://doi.org/10.1109/TNSE.2026.3658785},
+  author  = {Jiang, Chi and Shao, Caixing and Huang, Xiaoyan and Tao, Ming and Zhang, Yin and Zhang, Yan},
+  title   = {{AI}-Empowered Smart Contract Vulnerability Detection for Decentralized Blockchain Systems},
+  journal = {IEEE Transactions on Network Science and Engineering},
+  year    = {2026},
+  volume  = {13},
+  pages   = {6488--6502},
+  doi     = {10.1109/TNSE.2026.3658785}
+}
+
+@inproceedings{TODO_CryptoassetEntityLinking,
+  url = {https://doi.org/10.1007/978-3-032-07035-7_22},
+  author    = {Avice, R{\'e}gnier and Haslhofer, Bernhard and Li, Zhidong and Zhou, Jianlong},
+  title     = {Linking Cryptoasset Attribution Tags to Knowledge Graph Entities: An {LLM}-Based Approach},
+  booktitle = {Financial Cryptography and Data Security},
+  year      = {2026},
+  pages     = {366--382},
+  publisher = {Springer},
+  doi       = {10.1007/978-3-032-07035-7_22},
+  eprint    = {2502.10453},
+  archivePrefix = {arXiv}
+}
+@inproceedings{TODO_DeFiAligner,
+  url = {https://doi.org/10.4230/LIPIcs.AFT.2024.7},
+  author    = {Gan, Rundong and Zhou, Liyi and Wang, Le and Qin, Kaihua and Lin, Xiaodong},
+  title     = {{DeFiAligner}: Leveraging Symbolic Analysis and Large Language Models for Inconsistency Detection in Decentralized Finance},
+  booktitle = {6th Conference on Advances in Financial Technologies (AFT 2024)},
+  series    = {Leibniz International Proceedings in Informatics},
+  volume    = {316},
+  year      = {2024},
+  pages     = {7:1--7:24},
+  publisher = {Schloss Dagstuhl--Leibniz-Zentrum f{\"u}r Informatik},
+  doi       = {10.4230/LIPIcs.AFT.2024.7}
+}
+
+@article{TODO_SymGPT,
+  url = {https://arxiv.org/abs/2502.07644},
+  author        = {Xia, Shihao and He, Mengting and Shao, Shuai and Yu, Tingting and Zhang, Yiying and Song, Linhai},
+  title         = {{SymGPT}: Auditing Smart Contracts via Combining Symbolic Execution with Large Language Models},
+  journal       = {arXiv preprint arXiv:2502.07644},
+  year          = {2025},
+  eprint        = {2502.07644},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  doi           = {10.48550/arXiv.2502.07644}
+}
+
+@inproceedings{TODO_FairChecker,
+  url = {https://doi.org/10.1109/ICSE55347.2025.00134},
+  author    = {Sun, Yi and Zhang, Zhuo and Zhang, Xiangyu},
+  title     = {{FairChecker}: Detecting Fund-Stealing Bugs in {DeFi} Protocols via Fairness Validation},
+  booktitle = {2025 IEEE/ACM 47th International Conference on Software Engineering},
+  year      = {2025},
+  pages     = {1307--1319},
+  publisher = {IEEE},
+  doi       = {10.1109/ICSE55347.2025.00134}
+}
+
+@inproceedings{TODO_OVer,
+  url = {https://doi.org/10.1145/3597503.3639225},
+  author    = {Deng, Xun and Beillahi, Sidi Mohamed and Minwalla, Cyrus and Du, Han and Veneris, Andreas and Long, Fan},
+  title     = {Safeguarding {DeFi} Smart Contracts against Oracle Deviations},
+  booktitle = {Proceedings of the IEEE/ACM 46th International Conference on Software Engineering},
+  year      = {2024},
+  pages     = {1--12},
+  publisher = {ACM},
+  doi       = {10.1145/3597503.3639225}
+}
+
+@inproceedings{TODO_BlockLens,
+  url = {https://doi.org/10.1007/978-3-032-08124-7_32},
+  author    = {Feng, Chi and Fan, Lei},
+  title     = {{BlockLens}: Detecting Malicious Transactions in Ethereum Using {LLM} Techniques},
+  booktitle = {Information Security},
+  year      = {2025},
+  pages     = {581--601},
+  publisher = {Springer},
+  doi       = {10.1007/978-3-032-08124-7_32}
+}
+
+@inproceedings{TODO_ExecutableSolidityExploits,
+  url = {https://sol.sbc.org.br/index.php/webmedia_estendido/article/view/38210},
+  author    = {Germano, Lucas Bastos and Duarte, Julio Cesar},
+  title     = {Repairing {DeFi} Vulnerabilities: Benchmarking {LLMs} with Executable Solidity Exploits},
+  booktitle = {Proceedings of the First Brazilian Workshop on Web3 Systems},
+  year      = {2025},
+  publisher = {Brazilian Computer Society},
+  note      = {BrWeb3, WebMedia 2025}
+}
+
+@inproceedings{TODO_SoKDeFiAttacks,
+  url = {https://arxiv.org/abs/2208.13035},
+  author    = {Zhou, Liyi and Xiong, Xihan and Ernstberger, Jens and Chaliasos, Stefanos and Wang, Zhipeng and Wang, Ye and Qin, Kaihua and Wattenhofer, Roger and Song, Dawn and Gervais, Arthur},
+  title     = {{SoK}: Decentralized Finance ({DeFi}) Attacks},
+  booktitle = {2023 IEEE Symposium on Security and Privacy},
+  year      = {2023},
+  pages     = {2444--2461},
+  publisher = {IEEE},
+  eprint    = {2208.13035},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR}
+}
+
+@article{TODO_DeFiSecuritySurvey2026,
+  url = {https://doi.org/10.1016/j.eswa.2025.128431},
+  author  = {Qian, Peng and Cao, Rui and Liu, Zhenguang and Li, Wenqing and Li, Ming and Zhang, Lun and Xu, Yufeng and Chen, Jianhai and He, Qinming},
+  title   = {Comprehensive Review of Smart Contract and {DeFi} Security: Attack, Vulnerability Detection, and Automated Repair},
+  journal = {Expert Systems with Applications},
+  year    = {2025},
+  volume  = {291},
+  pages   = {128431},
+  doi     = {10.1016/j.eswa.2025.128431}
+}
+@inproceedings{TODO_PropertyGPT,
+  url = {https://doi.org/10.14722/ndss.2025.241357},
+  author    = {Liu, Ye and Xue, Yue and Wu, Daoyuan and Sun, Yuqiang and Li, Yi and Shi, Miaolei and Liu, Yang},
+  title     = {{PropertyGPT}: {LLM}-Driven Formal Verification of Smart Contracts through Retrieval-Augmented Property Generation},
+  booktitle = {Proceedings of the Network and Distributed System Security Symposium},
+  year      = {2025},
+  publisher = {Internet Society},
+  doi       = {10.14722/ndss.2025.241357},
+  eprint    = {2405.02580},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR}
+}
+
+@misc{TODO_SmartProof,
+  url = {https://doi.org/10.36227/techrxiv.176594700.04508088},
+  author       = {Nazeer, Sheeza and Mohammed, Abdul Aziz Fuzail and Amin, Adil},
+  title        = {{SmartProof}: Verifiable Pipeline for {LLM} Smart Contract Synthesis, Auditing, and Trust Scoring},
+  howpublished = {TechRxiv},
+  year         = {2025},
+  month        = dec,
+  doi          = {10.36227/techrxiv.176594700.04508088},
+  note         = {Preprint}
+}
+
+@misc{TODO_LLM_BSCVM,
+  url = {https://arxiv.org/abs/2505.17416},
+  author        = {Jin, Yanli and Li, Chunpei and Fan, Peng and Liu, Peng and Li, Xianxian and Liu, Chen and Qiu, Wangjie},
+  title         = {{LLM-BSCVM}: An {LLM}-Based Blockchain Smart Contract Vulnerability Management Framework},
+  year          = {2025},
+  month         = may,
+  publisher     = {arXiv},
+  number        = {arXiv:2505.17416},
+  eprint        = {2505.17416},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  doi           = {10.48550/arXiv.2505.17416}
+}
+
+@misc{TODO_CyberTrustAI,
+  author       = {Mandaviya, Yash},
+  title        = {{CyberTrust AI}: An {LLM}-Based Framework for Automated Smart Contract Vulnerability Detection, Classification, and Remediation},
+  year         = {2026},
+  month        = apr,
+  howpublished = {SSRN},
+  doi          = {10.2139/ssrn.6908358},
+  url          = {https://ssrn.com/abstract=6908358},
+  note         = {Preprint}
+}
+
+@misc{TODO_Knowdit,
+  url = {https://arxiv.org/abs/2603.26270},
+  author        = {Kong, Ziqiao and Xia, Wanxu and Wang, Chong and Xue, Yue and Lu, Yi and Li, Pan and Li, Shaohua and Cao, Zong and Liu, Yang},
+  title         = {{Knowdit}: Agentic Smart Contract Vulnerability Detection with Auditing Knowledge Summarization},
+  year          = {2026},
+  month         = mar,
+  publisher     = {arXiv},
+  number        = {arXiv:2603.26270},
+  eprint        = {2603.26270},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  doi           = {10.48550/arXiv.2603.26270}
+}
+
+@misc{erc4337,
+  author = {Buterin, Vitalik and Weiss, Yoav and Tirosh, Dror and
+            Nacson, Shahaf and Forshtat, Alex and Gazso, Kristof and Hess, Tjaden},
+  title  = {ERC-4337: Account Abstraction Using Alt Mempool},
+  year   = {2021},
+  note   = {Ethereum Improvement Proposal 4337},
+  url    = {https://eips.ethereum.org/EIPS/eip-4337}
+}
+
+@misc{jsonschema2020,
+  title        = {JSON Schema: A Vocabulary for Structural Validation of JSON},
+  author       = {Bhutton, Ben and Wright, Austin and Andrews, Henry and Hutton, Ben and Dennis, Greg},
+  year         = {2022},
+  howpublished = {JSON Schema Draft 2020-12},
+  url          = {https://json-schema.org/draft/2020-12/json-schema-validation}
+}
+
+@inproceedings{geng2023grammar,
+  url = {https://aclanthology.org/2023.emnlp-main.674/},
+  title     = {Grammar-Constrained Decoding for Structured NLP Tasks without Finetuning},
+  author    = {Geng, Saibo and Josifoski, Martin and Peyrard, Maxime and West, Robert},
+  booktitle = {Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing},
+  pages     = {10932--10952},
+  year      = {2023},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/2023.emnlp-main.674}
+}
+
+@misc{AaveAddressBook,
+    author = {{Aave DAO}},
+    title = {{Aave Address Book}},
+    url = {https://github.com/aave-dao/aave-address-book},
+    note = {Accessed: 30 September 2026}
+}
+
+@misc{UniswapV3Deployments,
+    author = {{Uniswap Labs}},
+    title = {{Uniswap V3 Ethereum Deployments}},
+    url = {https://developers.uniswap.org/docs/protocols/v3/deployments/v3-ethereum-deployments},
+    note = {Accessed: 30 September 2026}
+}
+
+@misc{UniswapV3Factory,
+    author = {{Uniswap}},
+    title = {{Uniswap V3 Factory Contract Interface}},
+    url = {https://github.com/Uniswap/v3-core/blob/main/contracts/interfaces/IUniswapV3Factory.sol},
+    note = {Accessed: 30 September 2026}
+}
+
+% Additional official and standards references for Chapter 4.
+% Merge these records into your existing bibliography.bib, retaining the keys
+% used by Chapter_4_Implementation_Revised.tex. No existing entries are replaced.
+
+@misc{implFastAPI,
+  author       = {{FastAPI Project}},
+  title        = {FastAPI Documentation},
+  url          = {https://fastapi.tiangolo.com/},
+  note         = {Official documentation, accessed 14 October 2026}
+}
+
+@misc{implPydantic,
+  author       = {{Pydantic Team}},
+  title        = {Pydantic Documentation},
+  url          = {https://docs.pydantic.dev/latest/},
+  note         = {Official documentation, accessed 14 October 2026}
+}
+
+@misc{implNeo4jCypher,
+  author       = {{Neo4j}},
+  title        = {Cypher Manual},
+  url          = {https://neo4j.com/docs/cypher-manual/current/},
+  note         = {Official documentation, accessed 14 October 2026}
+}
+
+@misc{implGroqJSON,
+  author       = {{Groq}},
+  title        = {Structured Outputs and JSON Object Mode},
+  url          = {https://console.groq.com/docs/structured-outputs},
+  note         = {Official documentation, accessed 14 October 2026}
+}
+
+@misc{implAaveAddressBook,
+  author       = {{Aave DAO}},
+  title        = {Aave Address Book: Official Contract Address Registry},
+  url          = {https://github.com/aave-dao/aave-address-book},
+  note         = {Source repository, accessed 14 October 2026}
+}
+
+@misc{implUniswapDeployments,
+  author       = {{Uniswap Labs}},
+  title        = {Uniswap V3 Deployments},
+  url          = {https://developers.uniswap.org/docs/protocols/v3/deployments},
+  note         = {Official documentation and deployments feed, accessed 14 October 2026}
+}
+
+@misc{implAavePool,
+  author       = {{Aave}},
+  title        = {Aave V3: Pool Smart Contract and Supported Operations},
+  url          = {https://aave.com/docs/aave-v3/smart-contracts/pool},
+  note         = {Official documentation, accessed 14 October 2026}
+}
+
+@misc{implUniswapSingleSwap,
+  author       = {{Uniswap Labs}},
+  title        = {Uniswap V3: Single Swaps},
+  url          = {https://developers.uniswap.org/docs/protocols/v3/guides/swapping/single-hop-swapping},
+  note         = {Official documentation, accessed 14 October 2026}
+}
+
+@misc{implSolidityABI,
+  author       = {{Solidity Team}},
+  title        = {Contract ABI Specification},
+  url          = {https://docs.soliditylang.org/en/latest/abi-spec.html},
+  note         = {Official documentation, accessed 14 October 2026}
+}
+
+@misc{implZeroDevSDK,
+  author       = {{ZeroDev}},
+  title        = {ZeroDev: Creating a Smart Account},
+  url          = {https://docs.zerodev.app/onboarding/create-a-smart-account},
+  note         = {Official documentation, accessed 14 October 2026}
+}
+
+@misc{implZeroDevPlugins,
+  author       = {{ZeroDev}},
+  title        = {Using Kernel Validator Plugins},
+  url          = {https://docs.zerodev.app/smart-accounts/use-plugins/overview},
+  note         = {Official documentation, accessed 14 October 2026}
+}
+
+@misc{implViem,
+  author       = {{Viem Contributors}},
+  title        = {Viem Documentation},
+  url          = {https://viem.sh/docs/getting-started},
+  note         = {Official documentation, accessed 14 October 2026}
+}
+
+@misc{implERC4337,
+  author       = {Vitalik Buterin and Yoav Weiss and Dror Tirosh and Shahaf Nacson and Alex Forshtat and Kristof Gazso and Tjaden Hess},
+  title        = {ERC-4337: Account Abstraction Using Alt Mempool},
+  howpublished = {Ethereum Improvement Proposal 4337},
+  url          = {https://eips.ethereum.org/EIPS/eip-4337},
+  note         = {Specification, accessed 14 October 2026}
+}
+
+@techreport{implNISTDSS,
+  author       = {{National Institute of Standards and Technology}},
+  title        = {Digital Signature Standard (DSS)},
+  institution  = {National Institute of Standards and Technology},
+  number       = {FIPS 186-5},
+  year         = {2023},
+  doi          = {10.6028/NIST.FIPS.186-5},
+  url          = {https://doi.org/10.6028/NIST.FIPS.186-5}
+}
+
+@misc{evalNISTSampleSize,
+  author       = {{NIST/SEMATECH}},
+  title        = {Sample Sizes Required},
+  howpublished = {NIST/SEMATECH e-Handbook of Statistical Methods, Section 7.2.4.2},
+  url          = {https://www.itl.nist.gov/div898/handbook/prc/section2/prc242.htm},
+  note         = {Accessed 22 October 2026}
+}
+
+@misc{evalNISTConfidence,
+  author       = {{NIST/SEMATECH}},
+  title        = {Confidence Intervals},
+  howpublished = {NIST/SEMATECH e-Handbook of Statistical Methods, Section 7.2.4.1},
+  url          = {https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm},
+  note         = {Accessed 22 October 2026}
+}
+
+@article{evalWilson1927,
+  author       = {Wilson, Edwin B.},
+  title        = {Probable Inference, the Law of Succession, and Statistical Inference},
+  journal      = {Journal of the American Statistical Association},
+  year         = {1927},
+  volume       = {22},
+  number       = {158},
+  pages        = {209--212},
+  doi          = {10.1080/01621459.1927.10502953},
+  url          = {https://doi.org/10.1080/01621459.1927.10502953}
+}
+% Eight references for the refined graph-based relationship analysis discussion.
+% Merge with the thesis bibliography; reuse existing entries if already present.
+
+@article{hoganKnowledgeGraphs2021,
+  author = {Hogan, Aidan and Blomqvist, Eva and Cochez, Michael and d'Amato, Claudia and de Melo, Gerard and Gutierrez, Claudio and Kirrane, Sabrina and Labra Gayo, Jos{\'e} Emilio and Navigli, Roberto and Neumaier, Sebastian and Ngonga Ngomo, Axel-Cyrille and Polleres, Axel and Rashid, Sabbir M. and Rula, Anisa and Schmelzeisen, Lukas and Sequeda, Juan and Staab, Steffen and Zimmermann, Antoine},
+  title = {Knowledge Graphs},
+  journal = {ACM Computing Surveys},
+  year = {2021},
+  volume = {54},
+  number = {4},
+  pages = {71:1--71:37},
+  doi = {10.1145/3447772},
+  url = {https://doi.org/10.1145/3447772}
+}
+
+@inproceedings{anglesPropertyGraphModel2018,
+  author = {Angles, Renzo},
+  title = {The Property Graph Database Model},
+  booktitle = {Proceedings of the 12th Alberto Mendelzon International Workshop on Foundations of Data Management},
+  series = {CEUR Workshop Proceedings},
+  volume = {2100},
+  year = {2018},
+  publisher = {CEUR-WS.org},
+  url = {https://ceur-ws.org/Vol-2100/paper26.pdf}
+}
+
+@inproceedings{francisCypher2018,
+  author = {Francis, Nadime and Green, Alastair and Guagliardo, Paolo and Libkin, Leonid and Lindaaker, Tobias and Marsault, Victor and Plantikow, Stefan and Rydberg, Mats and Selmer, Petra and Taylor, Andr{\'e}s},
+  title = {{Cypher}: An Evolving Query Language for Property Graphs},
+  booktitle = {Proceedings of the 2018 International Conference on Management of Data},
+  year = {2018},
+  pages = {1433--1445},
+  publisher = {ACM},
+  doi = {10.1145/3183713.3190657},
+  url = {https://doi.org/10.1145/3183713.3190657}
+}
+
+@article{anglesPGSchema2023,
+  author = {Angles, Renzo and Bonifati, Angela and Dumbrava, Stefania and Fletcher, George and Green, Alastair and Hidders, Jan and Li, Bei and Libkin, Leonid and Marsault, Victor and Martens, Wim and Murlak, Filip and Plantikow, Stefan and Savkovi{\'c}, Ognjen and Schmidt, Michael and Sequeda, Juan and Staworko, S{\l}awek and Tomaszuk, Dominik and Voigt, Hannes and Vrgo{\v c}, Domagoj and Wu, Mingxi and {\v Z}ivkovi{\'c}, Du{\v s}an},
+  title = {{PG-Schema}: Schemas for Property Graphs},
+  journal = {Proceedings of the ACM on Management of Data},
+  year = {2023},
+  volume = {1},
+  number = {2},
+  pages = {198:1--198:25},
+  doi = {10.1145/3589778},
+  url = {https://doi.org/10.1145/3589778}
+}
+
+@techreport{w3cSHACL2017,
+  author = {{World Wide Web Consortium}},
+  title = {Shapes Constraint Language ({SHACL})},
+  institution = {W3C},
+  type = {W3C Recommendation},
+  year = {2017},
+  month = jul,
+  url = {https://www.w3.org/TR/2017/REC-shacl-20170720/}
+}
+
+@inproceedings{cormanRecursiveSHACL2018,
+  author = {Corman, Julien and Reutter, Juan L. and Savkovi{\'c}, Ognjen},
+  title = {Semantics and Validation of Recursive {SHACL}},
+  booktitle = {The Semantic Web -- ISWC 2018},
+  year = {2018},
+  publisher = {Springer},
+  doi = {10.1007/978-3-030-00671-6_19},
+  url = {https://doi.org/10.1007/978-3-030-00671-6_19}
+}
+
+@techreport{w3cPROVO2013,
+  author = {Lebo, Timothy and Sahoo, Satya and McGuinness, Deborah},
+  title = {{PROV-O}: The {PROV} Ontology},
+  institution = {W3C},
+  type = {W3C Recommendation},
+  year = {2013},
+  month = apr,
+  note = {Edited by Timothy Lebo, Satya Sahoo, and Deborah McGuinness},
+  url = {https://www.w3.org/TR/2013/REC-prov-o-20130430/}
+}
+
+@article{darariCompletenessRDF2018,
+  author = {Darari, Fariz and Nutt, Werner and Pirr{\`o}, Giuseppe and Razniewski, Simon},
+  title = {Completeness Management for {RDF} Data Sources},
+  journal = {ACM Transactions on the Web},
+  year = {2018},
+  volume = {12},
+  number = {3},
+  pages = {18:1--18:53},
+  doi = {10.1145/3196248},
+  url = {https://doi.org/10.1145/3196248}
+}
+@inproceedings{gudgeonLoanableFunds2020,
+  author = {Lewis Gudgeon and Sam M. Werner and Daniel Perez and William J. Knottenbelt},
+  title = {{DeFi} Protocols for Loanable Funds: Interest Rates, Liquidity and Market Efficiency},
+  booktitle = {Proceedings of the 2nd ACM Conference on Advances in Financial Technologies},
+  publisher = {ACM}, year = {2020}, pages = {92--112},
+  doi = {10.1145/3419614.3423254},
+  url = {https://doi.org/10.1145/3419614.3423254}
+}
+
+@inproceedings{tsuchiyaAddressPoisoning2025,
+  author = {Taro Tsuchiya and Jin-Dong Dong and Kyle Soska and Nicolas Christin},
+  title = {Blockchain Address Poisoning},
+  booktitle = {34th USENIX Security Symposium (USENIX Security 25)},
+  publisher = {USENIX Association}, year = {2025}, pages = {1243--1262},
+  url = {https://www.usenix.org/conference/usenixsecurity25/presentation/tsuchiya}
+}
+
+@inproceedings{gallersdorferMetaMaskTLS2022,
+  author = {Ulrich Gallersd{\"o}rfer and Jonas Ebel and Florian Matthes},
+  title = {Augmenting {MetaMask} to Support {TLS}-endorsed Smart Contracts},
+  booktitle = {Data Privacy Management, Cryptocurrencies and Blockchain Technology},
+  series = {Lecture Notes in Computer Science}, volume = {13140},
+  publisher = {Springer}, year = {2022}, pages = {227--244},
+  doi = {10.1007/978-3-030-93944-1_15},
+  url = {https://doi.org/10.1007/978-3-030-93944-1_15}
+}
+
+@misc{coinbaseAgentKitActionSchemas2026,
+  author       = {{Coinbase}},
+  title        = {{AgentKit}: Action Providers and Action Schemas},
+  howpublished = {Official developer documentation},
+  url          = {https://coinbase.github.io/agentkit/agentkit/typescript/index.html},
+  note         = {Accessed: 2026-11-14}
+}
+
+@article{fanWeb3Agent2026,
+  author  = {Sizheng Fan and Tian Min},
+  title   = {{Web3Agent}: Automating On-Chain Operations via Natural Language Interfaces},
+  journal = {ACM Transactions on the Web},
+  volume  = {20},
+  number  = {1},
+  year    = {2026},
+  doi     = {10.1145/3777446},
+  url     = {https://doi.org/10.1145/3777446}
+}
+
+@inproceedings{yaoArbiter2026,
+  author    = {Duanyi Yao and Siddhartha Jagannath and
+               Baltasar Aroso and Vyas Krishnan and Ding Zhao},
+  title     = {Auditable {LLM} Arbiter for {DeFi} Security:
+               A Hybrid Graph-of-Thoughts Approach to
+               Intent--Transaction Alignment},
+  booktitle = {Workshop on LLM Assisted Security and Trust
+               Exploration (LAST-X)},
+  year      = {2026},
+  doi       = {10.14722/last-x.2026.23046},
+  url       = {https://doi.org/10.14722/last-x.2026.23046}
+}
+
+@misc{edgeGraphRAG2024,
+  author = {Darren Edge and Ha Trinh and Newman Cheng and
+            Joshua Bradley and Alex Chao and Apurva Mody and
+            Steven Truitt and Dasha Metropolitansky and
+            Robert Osazuwa Ness and Jonathan Larson},
+  title  = {From Local to Global: A Graph {RAG} Approach
+            to Query-Focused Summarization},
+  year   = {2024},
+  doi    = {10.48550/arXiv.2404.16130},
+  url    = {https://arxiv.org/abs/2404.16130},
+  note   = {arXiv:2404.16130}
+}
+
+@inproceedings{feistSlither2019,
+  author    = {Josselin Feist and Gustavo Grieco and Alex Groce},
+  title     = {Slither: A Static Analysis Framework for
+               Smart Contracts},
+  booktitle = {2019 IEEE/ACM 2nd International Workshop on
+               Emerging Trends in Software Engineering
+               for Blockchain (WETSEB)},
+  pages     = {8--15},
+  year      = {2019},
+  doi       = {10.1109/WETSEB.2019.00008},
+  url       = {https://doi.org/10.1109/WETSEB.2019.00008}
+}
+
+@inproceedings{liuPropertyGPT2025,
+  author    = {Ye Liu and Yue Xue and Daoyuan Wu and
+               Yuqiang Sun and Yi Li and Miaolei Shi and Yang Liu},
+  title     = {{PropertyGPT}: {LLM}-driven Formal Verification
+               of Smart Contracts through Retrieval-Augmented
+               Property Generation},
+  booktitle = {Network and Distributed System Security
+               Symposium (NDSS)},
+  year      = {2025},
+  url       = {https://www.ndss-symposium.org/wp-content/uploads/2025-1357-paper.pdf}
+}
+
+@misc{zeroDevPermissionPolicies2026,
+  author       = {{ZeroDev}},
+  title        = {Permissions (Session Keys)},
+  howpublished = {Official ZeroDev documentation},
+  url          = {https://docs.zerodev.app/smart-accounts/permissions/intro},
+  note         = {Accessed: 2026-11-14}
+}
+@inproceedings{angles2018propertygraph,
+  author    = {Angles, Renzo},
+  title     = {The Property Graph Database Model},
+  booktitle = {Proceedings of the 12th Alberto Mendelzon International
+               Workshop on Foundations of Data Management},
+  series    = {CEUR Workshop Proceedings},
+  volume    = {2100},
+  year      = {2018},
+  url       = {https://ceur-ws.org/Vol-2100/paper26.pdf}
+}
+
+@inproceedings{darari2013completeness,
+  author    = {Darari, Fariz and Nutt, Werner and
+               Pirr{\`o}, Giuseppe and Razniewski, Simon},
+  title     = {Completeness Statements about {RDF} Data Sources
+               and Their Use for Query Answering},
+  booktitle = {The Semantic Web -- ISWC 2013},
+  publisher = {Springer},
+  year      = {2013},
+  pages     = {66--83},
+  doi       = {10.1007/978-3-642-41335-3_5}
+}
