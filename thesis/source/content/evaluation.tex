@@ -425,7 +425,9 @@ complete semantic correctness.
 
 Figure~\ref{fig:results_category} shows the different outcomes across
 request categories. Each category contains 100
-prompts, including any operational errors. The joint measure uses the
+prompts, including any operational errors. Exact final-status agreement considers only
+the final disposition, whereas joint reference agreement
+also considers selected structured-intent fields. The joint measure uses the
 restricted reference definition described in Section~\ref{sec:evaluation_measurements}. Supported Aave operations and invalid relationships
 had high agreement with draft references; incomplete requests had the
 lowest agreement.
@@ -528,9 +530,7 @@ lowest agreement.
 \end{axis}
 \end{tikzpicture}
 \caption{Agreement with the draft reference by request
-category. Exact final-status agreement considers only
-the final disposition, whereas joint reference agreement
-also considers selected structured-intent fields.}
+category.}
 \label{fig:results_category}
 \end{figure}
 
@@ -733,7 +733,7 @@ criterion: 66 had a different final disposition and five had the expected
 clarification status but mismatched fields. Figure~\ref{fig:results_errors}
 shows the primary diagnoses obtained from retrospective inspection of the
 recorded responses and validation results. The diagnoses were assigned retrospectively from stored responses and validation
-records; they were not confirmed through a new execution after code changes.
+records; they were not confirmed through a new execution after code changes.  The highlighted intermediate-token case was the only false approval.
 
 \begin{figure}[H]
 \centering
@@ -799,7 +799,7 @@ records; they were not confirmed through a new execution after code changes.
 };
 \end{axis}
 \end{tikzpicture}
-\caption{Primary diagnoses for the 71 joint-reference mismatches. The highlighted intermediate-token case was the only false approval.}
+\caption{Primary diagnoses for the 71 joint-reference mismatches.}
 \label{fig:results_errors}
 \end{figure}
 
@@ -834,7 +834,8 @@ formulation. The final status returned for each wording was compared
 with the corresponding draft-reference status. As shown in
 Figure~\ref{fig:results_pairs}, both wordings matched the reference in
 250 pairs; only the primary wording matched in 24 pairs, only the
-alternative wording in 10, and neither wording in 16. The two observed
+alternative wording in 10, and neither wording in 16.  Each pair represents two wordings of the
+same evaluation scenario. The two observed
 statuses were identical in 263 pairs (87.67\%), although identical
 outputs do not necessarily agree with the reference. Under the stricter
 joint criterion, requiring agreement on both final status and selected
@@ -894,8 +895,7 @@ independent observations.
 \end{axis}
 \end{tikzpicture}
 \caption{Draft-reference final-status agreement across 300 pairs of
-alternative formulations. Each pair represents two wordings of the
-same evaluation scenario.}
+alternative formulations.}
 \label{fig:results_pairs}
 \end{figure}
 

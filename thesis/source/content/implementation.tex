@@ -98,7 +98,8 @@ intents. The system prompt specifies a JSON representation
 containing the action, protocol, input and output assets,
 amount, and network. Additional fields capture unsupported
 actions, unhandled constraints, and explicitly requested
-swap slippage.
+swap slippage. The complete system prompt used for structured intent
+generation is provided in Appendix~\ref{app:llm_system_prompt}.
 
 The prompt instructs the model to extract information without
 introducing assumptions about missing parameters. Unspecified
@@ -557,12 +558,6 @@ needed to establish execution context. The figures present
 selected stored relationships; the action-specific Cypher
 queries in the following section determine which of these
 relationships participate in verification.
-Listing~\ref{lst:deployment_graph_construction}
-illustrates the construction of a protocol deployment
-and its relationship to the corresponding protocol
-family and blockchain network. Source references and
-synchronization timestamps are stored as properties
-of the deployment.
 
 \subsection{Synchronization, Freshness, and Implementation Limits}
 
@@ -991,30 +986,59 @@ but does not establish successful on-chain settlement.
 The execution component incorporates a custom
 ERC-7579-compatible validator, \texttt{GraphBoundValidator},
 to enforce restricted authorization through the
-ERC-4337 smart-account validation mechanism. The authorization architecture separates the privileged
-account owner, the verification authority, and the
-restricted execution signer. Following graph re-verification,
-the complete transaction batch is prepared and checked
-against the retained approved operation. The verification
-authority authorizes the exact encoded batch, including
-contract destinations, callable functions, parameters,
-and execution order. The restricted signer cannot
-authorize modifications or additional calls without
-a corresponding authorization from the verification
-authority.
+ERC-4337 smart-account validation mechanism. The authorization
+architecture separates the privileged account owner, the
+verification authority, and the restricted execution signer.
+Following graph re-verification, the complete transaction
+batch is prepared and checked against the retained approved
+operation. The verification authority authorizes the exact
+encoded batch, including contract destinations, callable
+functions, parameters, and execution order. The restricted
+signer cannot authorize modifications or additional calls
+without a corresponding grant from the verification authority.
 
-The validator enforces the smart-account and network
-context, limited authorization validity, and single-use
-approval identifiers. The mechanism was evaluated using
-the actual ZeroDev Kernel and ERC-4337 EntryPoint
-contracts in a local EVM environment. The tests
-demonstrated successful authorization of all five
-supported operation patterns and rejection of
-unauthorized changes to execution parameters. The restricted authorization mechanism was not
-deployed on public Ethereum Sepolia. Therefore,
-public-bundler compatibility, testnet execution,
+Listing~\ref{lst:restricted_wallet_handover} summarizes the
+approval-to-submission handover. It describes the interaction
+between backend verification, transaction preparation, and
+smart-account authorization; it is not a verbatim source-code
+extract.
+
+\begin{lstlisting}[
+    basicstyle=\ttfamily\scriptsize,
+    numbers=none,
+    breaklines=true,
+    keepspaces=true,
+    columns=fullflexible,
+    caption={Restricted approval-to-execution handover (pseudocode).},
+    label={lst:restricted_wallet_handover}
+]
+approved = claim_stored_approval(verification_id)
+current = graph_reverify(approved.intent)
+require(protected_fields_match(approved, current))
+batch = prepare_ordered_transaction_calls(current)
+require(batch_matches_approved_operation(batch, approved))
+grant = authority_sign(
+    hash(batch), account, chain, approval_id, validity)
+user_op = restricted_signer_sign(batch, grant)
+submit_to_kernel_entrypoint(user_op, grant)
+\end{lstlisting}
+
+The validator enforces the smart-account and network context,
+limited authorization validity, and single-use approval
+identifiers. In particular, it checks the verification-authority
+grant and restricted-executor signature against the encoded
+operation. The validator's principal authorization checks and
+their security implications are detailed in
+Appendix~\ref{app:wallet_validator_contract}.
+
+The mechanism was evaluated using the actual ZeroDev Kernel
+and ERC-4337 EntryPoint contracts in a local EVM environment.
+The tests demonstrated successful authorization of all five
+supported operation patterns and rejection of unauthorized
+changes to execution parameters. The restricted authorization
+mechanism was not deployed on public Ethereum Sepolia.
+Therefore, public-bundler compatibility, testnet execution,
 and production-level security remain unverified.
-
 
 
 % ## 4.7 Summary ###
